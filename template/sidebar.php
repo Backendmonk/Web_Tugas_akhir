@@ -1,16 +1,5 @@
    <!-- Sidebar -->
-   <ul class="navbar-nav bg-utama sidebar sidebar-dark accordion" id="accordionSidebar">
-
-           
-
-<!-- Sidebar - Brand -->
-<a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-    <div class="sidebar-brand-icon ">
-        <img style="width: 60px;" src="../img/LogoStiki.png" alt="Image" class="img-fluid">
-    </div>
-</a>
-
-
+   <ul class="navbar-nav bg-utama sidebar sidebar-dark accordion pt-4" id="accordionSidebar">
 
 <!-- Heading -->
 <div class="sidebar-heading">
