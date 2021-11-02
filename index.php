@@ -1,71 +1,76 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<meta charset="utf-8">
+<link rel="stylesheet" href="LogCSS/style.css">
+<title>Css Style Service Box</title>
+</head>
 
-    <link rel="stylesheet" href="fonts/icomoon/style.css">
-
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    
-    <!-- Style -->
-    <link rel="stylesheet" href="css/style.css">
-
-    <title>Login #7</title>
-  </head>
-  <body>
-  
-
-  
-  <div class="content">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6">
-          <img style="width: 400px;" src="img/LogoStiki.png" alt="Image" class="img-fluid">
-        </div>
-        <div class="col-md-6 contents">
-          <div class="row justify-content-center">
-            <div class="col-md-8">
-              <div class="mb-4 text-center">
-              <h3 style=" color: #e6e6e6; ">Login</h3>
-              <h2 style=" color: #e6e6e6; " class="mb-4">SIMAKS</h2>
+<body>
+ <div class="demo">
+        <div class="container">
+            <div class="row text-center">
+                <h1 class="heading-title">Simaks Stiki</h1>
             </div>
-            <form action="#" method="post">
-              <div class="form-group first">
-                <label for="username">Username</label>
-                <input type="text" class="form-control" id="username">
 
-              </div>
-              <div class="form-group last mb-4">
-                <label for="password">Password</label>
-                <input type="password" class="form-control" id="password">
-                
-              </div>
-              
-              <div class="d-flex mb-5 align-items-center">
-              <label for="password" ><a style= " text-decoration: none;Color : white;"href="" >Register</a></label>
-              </div>
+            <div class="row">
+                <div class="col-md-4 col-sm-6">
+                    <div class="serviceBox">
+                        <div class="service-icon">
+                            <i class="fa fa-globe"></i>
+                        </div>
+                        <h3 class="title">Login Sebagai WKIII</h3>
+                        <p class="description">
+                            Deskripsi Singkat Mengenai WKIII
+                        </p>
+                    </div>
+                </div>
 
-              <input type="submit" value="Log In" class="btn btn-block btn-primary">
-            </form>
+                <div class="col-md-4 col-sm-6">
+                    <div class="serviceBox">
+                        <div class="service-icon">
+                            <i class="fa fa-rocket"></i>
+                        </div>
+                        <h3 class="title">Login Sebagai Ormawa</h3>
+                        <p class="description">
+                            Deskripsi Singkat Tentang Ormawa
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-6">
+                    <a style ="text-decoration:none;" href="http://localhost/web_tugas_akhir/kemahasiswaan/Login/login-kemahasiswaan.php">
+                    <div class="serviceBox">
+                        <div class="service-icon">
+                            <i class="fa fa-briefcase"></i>
+                        </div>
+                        <h3 class="title">Login Sebagai Kemahasiswaan</h3>
+                        <p class="description">
+                            Deskripsi Singkat
+                        </p>
+                    </div>
+                    </a>
+                </div>
+
+                <div class="col-md-4 col-sm-6">
+                    <div class="serviceBox">
+                        <div class="service-icon">
+                            <i class="fa fa-briefcase"></i>
+                        </div>
+                        <h3 class="title">Login Sebagai Pembina</h3>
+                        <p class="description">
+                            Deskripsi Singkat
+                        </p>
+                    </div>
+                </div>
             </div>
-          </div>
-          
         </div>
-        
-      </div>
     </div>
-  </div>
 
-  
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/main.js"></script>
-  </body>
+</body>
 </html>
