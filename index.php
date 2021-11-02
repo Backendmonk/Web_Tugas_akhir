@@ -62,7 +62,11 @@
                 </div>
 
                 <div class="col-md-4 col-sm-6">
+<<<<<<< Updated upstream
                 <a style ="text-decoration:none;" href="#">
+=======
+                <a style ="text-decoration:none;" href="http://localhost:8080/Projek/web_tugas_akhir/Pembina/login/login.php">
+>>>>>>> Stashed changes
                     <div class="serviceBox">
                         <div class="service-icon">
                             <i class="fa fa-briefcase"></i>
