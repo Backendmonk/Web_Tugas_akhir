@@ -20,6 +20,7 @@
 
             <div class="row">
                 <div class="col-md-4 col-sm-6">
+                <a style ="text-decoration:none;" href="#">
                     <div class="serviceBox">
                         <div class="service-icon">
                             <i class="fa fa-globe"></i>
@@ -29,9 +30,11 @@
                             Deskripsi Singkat Mengenai WKIII
                         </p>
                     </div>
+                        </a>
                 </div>
 
                 <div class="col-md-4 col-sm-6">
+                <a style ="text-decoration:none;" href="#">
                     <div class="serviceBox">
                         <div class="service-icon">
                             <i class="fa fa-rocket"></i>
@@ -41,6 +44,7 @@
                             Deskripsi Singkat Tentang Ormawa
                         </p>
                     </div>
+                    </a>
                 </div>
 
                 <div class="col-md-4 col-sm-6">
@@ -58,6 +62,7 @@
                 </div>
 
                 <div class="col-md-4 col-sm-6">
+                <a style ="text-decoration:none;" href="#">
                     <div class="serviceBox">
                         <div class="service-icon">
                             <i class="fa fa-briefcase"></i>
@@ -67,6 +72,7 @@
                             Deskripsi Singkat
                         </p>
                     </div>
+                        </a>
                 </div>
             </div>
         </div>
