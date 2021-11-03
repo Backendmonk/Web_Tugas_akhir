@@ -61,10 +61,13 @@
               </div>
               
               <div class="d-flex mb-5 align-items-center">
-              <label for="password" ><a style= " text-decoration: none;Color : white;"href="" >Register</a></label>
+             
               </div>
 
-              <input name ="flog" type="submit" value="Log In" class="btn btn-block btn-primary">
+              <input name ="flog" type="submit" value="login"  class="btn btn-block btn-primary">
+
+              <a href="logoutKemahasiswaan.php">aaaa</a>
+          
             </form>
             </div>
           </div>
@@ -93,39 +96,43 @@
         $arr = mysqli_fetch_array($qlog);
 
         //cek apakah akun yang dimasukkan terdaftar
-        if($rows == 1){
-          //inputkan nidn kedalam session userweb kalau akun ada
-          if($password = $arr['PASSWORD_KEMAHASISWAAN']){
-            session_start();
-            $_SESSION['userweb'] = $arr('NIDN_KEMAHASISWAAN');
-            header("location:../index.php");
+        if ($rows ==  1) {
+					if (password_verify($password,$arr['PASSWORD_KEMAHASISWAAN'])) {
 
-          }else{
-            ?>
-						<script>
-							Swal.fire({
-							icon: 'error',
-							title: 'Oops...',
-							text: 'Password Salah',
-							
-							})
-							   </script>
-						 <?php
-				
-          }
-         
-        }else{
-          ?>
+						session_start();
+						$_SESSION['userweb'] = $arr['NIDN_KEMAHASISWAAN'];
+						header("Location: ../index.php");
+						}
+						
+					
+					else{
+							?>
+                    		<script>
+                                Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'Password Salah',
+                                
+                                })
+                      	         </script>
+            			 	<?php
+					
+							}
+				}
+				else{
+					?>
 						<script>
 									Swal.fire({
 									icon: 'error',
 									title: 'Oops...',
-									text: 'User Kemahasiswaan Tidak Ditemukan',
+									text: 'User Tidak Ditemukan',
 									
 									})
 									</script>
 				<?php
-        }
-      }
+
+				}
+			}
+
 
   ?>
