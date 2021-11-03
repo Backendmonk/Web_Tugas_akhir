@@ -120,7 +120,7 @@
 									Swal.fire({
 									icon: 'error',
 									title: 'Oops...',
-									text: 'User Tidak Ditemukan',
+									text: 'User Kemahasiswaan Tidak Ditemukan',
 									
 									})
 									</script>
