@@ -95,7 +95,7 @@
         //cek apakah akun yang dimasukkan terdaftar
         if($rows == 1){
           //inputkan nidn kedalam session userweb kalau akun ada
-          if($password = $arr['password']){
+          if($password = $arr['PASSWORD']){
             session_start();
             $_SESSION['userweb'] = $arr('NIDN_KEMAHASISWAAN');
             header("location:../index.php");
