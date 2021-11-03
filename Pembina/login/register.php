@@ -6,10 +6,6 @@ error_reporting(0);
  
 session_start();
  
-if (isset($_SESSION['NIDN'])) {
-    header("Location: ../index.php");
-}
- 
 if (isset($_POST['submit'])) {
   
     $NIDN = $_POST['NIDN'];
