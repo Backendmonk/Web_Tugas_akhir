@@ -1,4 +1,14 @@
 <!doctype html>
+
+<?php
+
+      include "../../inc/koneksi.php";
+      session_start();
+      //cek sesi apakah userweb (NIDN) sudah masuk dalam session ? kalau sudah header langsung ke index
+		    if (@$_SESSION['userweb']!="") {
+			header("Location: ../index.php");
+	}
+?>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -38,13 +48,13 @@
             </div>
             <form action="#" method="post">
               <div class="form-group first">
-                <label for="username">Username</label>
-                <input type="text" class="form-control" id="username">
+                <label for="username">NIDN</label>
+                <input type="text" class="form-control" name="NIDN">
 
               </div>
               <div class="form-group last mb-4">
                 <label for="password">Password</label>
-                <input type="password" class="form-control" id="password">
+                <input type="password" class="form-control" name="password">
                 
               </div>
               
@@ -52,7 +62,7 @@
               <label for="password" ><a style= " text-decoration: none;Color : white;"href="" >Register</a></label>
               </div>
 
-              <input type="submit" value="Log In" class="btn btn-block btn-primary">
+              <input name ="flog" type="submit" value="Log In" class="btn btn-block btn-primary">
             </form>
             </div>
           </div>
@@ -70,3 +80,28 @@
     <script src="../../js/main.js"></script>
   </body>
 </html>
+
+<?php
+      if(isset($_POST['flog'])){
+        $nidn=$_POST['nidn'];
+        $password = $_POST['password'];
+
+        $qlog = mysqli_querry($koneksi,"SELECT * FROM kemahasiswaan where `NIDN_KEMAHASISWAAN` = $nidn ");
+        $rows = mysqli_num_rows($qlog);
+        $arr = mysqli_fetch_array($qlog);
+
+        //cek apakah akun yang dimasukkan terdaftar
+        if($rows == 1){
+          //inputkan nidn kedalam session userweb kalau akun ada
+          session_start();
+          $_SESSION['userweb'] = $arr('NIDN_KEMAHASISWAAN');
+          header("location:../index.php");
+          
+        }else{
+          echo "akun tidak terdaftar";
+        }
+      }else{
+        
+      }
+
+  ?>
