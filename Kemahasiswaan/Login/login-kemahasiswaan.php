@@ -25,6 +25,8 @@
     
     <!-- Style -->
     <link rel="stylesheet" href="../../css/style.css">
+    <!-- Sweet Alert -->
+			<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     <title>Login #7</title>
   </head>
@@ -83,25 +85,47 @@
 
 <?php
       if(isset($_POST['flog'])){
-        $nidn=$_POST['nidn'];
+        $nidn=$_POST['NIDN'];
         $password = $_POST['password'];
 
-        $qlog = mysqli_querry($koneksi,"SELECT * FROM kemahasiswaan where `NIDN_KEMAHASISWAAN` = $nidn ");
+        $qlog = mysqli_query($koneksi,"SELECT * FROM `kemahasiswaan` where `NIDN_KEMAHASISWAAN` = '$nidn' ");
         $rows = mysqli_num_rows($qlog);
         $arr = mysqli_fetch_array($qlog);
 
         //cek apakah akun yang dimasukkan terdaftar
         if($rows == 1){
           //inputkan nidn kedalam session userweb kalau akun ada
-          session_start();
-          $_SESSION['userweb'] = $arr('NIDN_KEMAHASISWAAN');
-          header("location:../index.php");
-          
+          if($password = $arr['password']){
+            session_start();
+            $_SESSION['userweb'] = $arr('NIDN_KEMAHASISWAAN');
+            header("location:../index.php");
+
+          }else{
+            ?>
+						<script>
+							Swal.fire({
+							icon: 'error',
+							title: 'Oops...',
+							text: 'Password Salah',
+							
+							})
+							   </script>
+						 <?php
+				
+          }
+         
         }else{
-          echo "akun tidak terdaftar";
+          ?>
+						<script>
+									Swal.fire({
+									icon: 'error',
+									title: 'Oops...',
+									text: 'User Tidak Ditemukan',
+									
+									})
+									</script>
+				<?php
         }
-      }else{
-        
       }
 
   ?>
