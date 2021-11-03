@@ -27,7 +27,7 @@
                         </div>
                         <h3 class="title">Login Sebagai WKIII</h3>
                         <p class="description">
-                            Deskripsi Singkat Mengenai WKIII
+                        Wakil Ketua III (WK III) merupakan wakil ke-3 dari Ketua STMIK STIKOM Indonesia bertugas memonitoring bidang yang berhubungan dengan kemahasiswaan, alumni, pusat karir, dan bimbingan konseling.
                         </p>
                     </div>
                         </a>
@@ -41,7 +41,7 @@
                         </div>
                         <h3 class="title">Login Sebagai Ormawa</h3>
                         <p class="description">
-                            Deskripsi Singkat Tentang Ormawa
+                        Organisasi Mahasiswa (ORMAWA) merupakan organisasi yang mewadahi mahasiswa dalam mengembangkan skill yang dikuasainya.
                         </p>
                     </div>
                     </a>
@@ -55,7 +55,7 @@
                         </div>
                         <h3 class="title">Login Sebagai Kemahasiswaan</h3>
                         <p class="description">
-                            Deskripsi Singkat
+                        Bidang Kemahasiswaan merupakan bidang yang berada di bawah naungan WK III, bertugas untuk memonitoring segala kegiatan yang akan dan atau diselenggarakan oleh ORMAWA.
                         </p>
                     </div>
                     </a>
@@ -69,7 +69,7 @@
                         </div>
                         <h3 class="title">Login Sebagai Pembina</h3>
                         <p class="description">
-                            Deskripsi Singkat
+                        Pembina adalah seseorang yang membimbing Organisasi Mahasiswa (ORMAWA) maupun Unit Kegiatan Mahasiswa (UKM).
                         </p>
                     </div>
                         </a>
