@@ -10,17 +10,29 @@ if (isset($_POST['submit'])) {
   
     $NIDN = $_POST['NIDN'];
     $password = $_POST['password'];
- 
-    $sql = "SELECT * FROM pembina WHERE NIDN='$NIDN' AND PASSOWRD_PEMBINA='$password'";
-    $result = mysqli_query($koneksi, $sql);
-    if ($result->num_rows > 0) {
-        $row = mysqli_fetch_assoc($result);
-        $_SESSION['NIDN'] = $row['NIDN'];
-        $_SESSION['nama'] = $row['NAMA_PEMBINA'];
-        header("Location: ../index.php");
-    } else {
-        echo "<script>alert('NIDN atau password Anda salah. Silahkan coba lagi!')</script>";
-    }
+    $NAMA = $_POST['NAMA'];
+    $ALAMAT = $_POST['ALAMAT'];
+    $NO = $_POST['NO'];
+
+      $sql = "SELECT * FROM pembina WHERE NIDN='$NIDN'";
+      $result = mysqli_query($conn, $sql);
+      if (!$result->num_rows > 0) {
+          $sql = "INSERT INTO pembina (NAMA_PEMBINA, NIDN, PASSOWRD_PEMBINA,ALAMAT_PEMBINA,NO_TELP_PEMBINA)
+                  VALUES ('$NAMA', '$NIDN', '$password',$ALAMAT,$NO)";
+          $result = mysqli_query($conn, $sql);
+          if ($result) {
+              echo "<script>alert('Selamat, registrasi berhasil!')</script>";
+              $username = "";
+              $email = "";
+              $_POST['password'] = "";
+          } else {
+              echo "<script>alert('Woops! Terjadi kesalahan.')</script>";
+          }
+      } else {
+          echo "<script>alert('Woops! NIDN Sudah Terdaftar.')</script>";
+      }
+       
+  
 }
 
 ?>
@@ -59,12 +71,8 @@ if (isset($_POST['submit'])) {
           <div class="row justify-content-center">
             <div class="col-md-8">
               <div class="mb-4 text-center">
-              <div class="alert alert-warning" role="alert">
-                <?php echo $_SESSION['error']?>
-              </div>
-              <h3 style=" color: #e6e6e6; ">Login</h3>
+              <h3 style=" color: #e6e6e6; ">REGISTER PEMBINA</h3>
               <h2 style=" color: #e6e6e6; " class="mb-4">SIMAKS</h2>
-              <h4 style=" color: #e6e6e6; " class="mb-4">Pembina</h4>
             </div>
             <form action="" method="post">
               <div class="form-group first">
@@ -72,10 +80,27 @@ if (isset($_POST['submit'])) {
                 <input type="text" class="form-control" id="NIDN" name="NIDN" required>
 
               </div>
-              <div class="form-group last mb-4">
+              <div class="form-group first" style="border-radius: 0px;">
                 <label for="password">Password</label>
                 <input type="password" class="form-control" id="password" name="password" required>
                 
+              </div>
+              <div class="form-group first" style="border-radius: 0px;">
+                <label for="NIDN">NAMA</label>
+                <input type="text" class="form-control" id="NIDN" name="NAMA" required>
+
+              </div>
+             
+              <div class="form-group first" style="border-radius: 0px;">
+                <label for="NIDN">ALAMAT</label>
+                <input type="text" class="form-control" id="NIDN" name="ALAMAT" required>
+
+              </div>
+             
+              <div class="form-group last mb-4" >
+                <label for="NIDN">NO TELEPON</label>
+                <input type="text" class="form-control" id="NIDN" name="NO" required>
+
               </div>
               
               <input type="submit" name="submit" value="Log In" class="btn btn-block btn-primary">

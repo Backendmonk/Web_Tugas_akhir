@@ -63,9 +63,6 @@ if (isset($_POST['submit'])) {
           <div class="row justify-content-center">
             <div class="col-md-8">
               <div class="mb-4 text-center">
-              <div class="alert alert-warning" role="alert">
-                <?php echo $_SESSION['error']?>
-              </div>
               <h3 style=" color: #e6e6e6; ">Login</h3>
               <h2 style=" color: #e6e6e6; " class="mb-4">SIMAKS</h2>
               <h4 style=" color: #e6e6e6; " class="mb-4">Pembina</h4>
