@@ -47,6 +47,7 @@
                     </a>
                 </div>
             </div>
+            <br>
             <div class="row">
                 <div class=" col-sm-6">
                     <a style ="text-decoration:none;" href="http://localhost/web_tugas_akhir/kemahasiswaan/Login/login-kemahasiswaan.php">
