@@ -18,8 +18,8 @@
                 <h1 class="heading-title">Simaks Stiki</h1>
             </div>
 
-            <div class="row">
-                <div class="col-md-4 col-sm-6">
+            <div class="row mb-2">
+                <div class=" col-sm-6">
                 <a style ="text-decoration:none;" href="#">
                     <div class="serviceBox">
                         <div class="service-icon">
@@ -33,7 +33,7 @@
                         </a>
                 </div>
 
-                <div class="col-md-4 col-sm-6">
+                <div class=" col-sm-6">
                 <a style ="text-decoration:none;" href="#">
                     <div class="serviceBox">
                         <div class="service-icon">
@@ -46,8 +46,9 @@
                     </div>
                     </a>
                 </div>
-
-                <div class="col-md-4 col-sm-6">
+            </div>
+            <div class="row">
+                <div class=" col-sm-6">
                     <a style ="text-decoration:none;" href="http://localhost/web_tugas_akhir/kemahasiswaan/Login/login-kemahasiswaan.php">
                     <div class="serviceBox">
                         <div class="service-icon">
@@ -61,7 +62,7 @@
                     </a>
                 </div>
 
-                <div class="col-md-4 col-sm-6">
+                <div class=" col-sm-6">
                 <a style ="text-decoration:none;" href="http://localhost:8080/Projek/web_tugas_akhir/Pembina/login/login.php">
                     <div class="serviceBox">
                         <div class="service-icon">
@@ -74,7 +75,8 @@
                     </div>
                         </a>
                 </div>
-            </div>
+                </div>
+            
         </div>
     </div>
 
