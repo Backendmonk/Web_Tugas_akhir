@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <!-- panggil sesi -->
-    <?php
-            include "SessionKemahasiswaan.php";
-    ?>  
+<?php
+
+        include "SessionKemahasiswaan.php";
+
+?>
 <head>
 
     <meta charset="utf-8">
@@ -20,11 +21,11 @@
 </head>
 
 <body id="page-top">
-<?php include '../template/navbar.php' ?>
+<?php include 'Template/navbar.php' ?>
     <!-- Page Wrapper -->
     <div id="wrapper">
 
-    <?php include '../template/sidebar.php' ?>
+    <?php include 'Template/sidebar.php' ?>
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column pt-4">
 
