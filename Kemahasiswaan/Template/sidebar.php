@@ -19,7 +19,7 @@
    <li class="nav-item active">
     <a class="nav-link" href="index.html">
         <i class="fas fa-fw fa-tachometer-alt"></i>
-        <span>Dashboard</span></a>
+        <span>Approval Kegiatan</span></a>
 </li>
  <!-- Divider -->
  <hr class="sidebar-divider">
@@ -28,7 +28,7 @@
    <li class="nav-item active">
     <a class="nav-link" href="index.html">
         <i class="fas fa-fw fa-tachometer-alt"></i>
-        <span>Dashboard</span></a>
+        <span>Kegiatan Ormawa</span></a>
 </li>
  <!-- Divider -->
  <hr class="sidebar-divider">
