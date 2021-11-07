@@ -1,9 +1,10 @@
-<?php 
-session_start();
-?>
 <!DOCTYPE html>
 <html lang="en">
+<?php
 
+        include "SessionPembina.php";
+
+?>
 <head>
 
     <meta charset="utf-8">
@@ -19,11 +20,11 @@ session_start();
 </head>
 
 <body id="page-top">
-<?php include '../template/navbar.php' ?>
+<?php include 'template/navbar.php' ?>
     <!-- Page Wrapper -->
     <div id="wrapper">
 
-    <?php include '../template/sidebar.php' ?>
+    <?php include 'template/sidebar.php' ?>
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column pt-4">
 

@@ -1,35 +1,14 @@
-<?php 
-
-include '../../inc/koneksi.php';
- 
-error_reporting(0);
- 
-session_start();
- 
-if (isset($_SESSION['NIDN'])) {
-    header("Location: ../index.php");
-}
- 
-if (isset($_POST['submit'])) {
-  
-    $NIDN = $_POST['NIDN'];
-    $password = $_POST['password'];
- 
-    $sql = "SELECT * FROM pembina WHERE NIDN='$NIDN' AND PASSOWRD_PEMBINA='$password'";
-    $result = mysqli_query($koneksi, $sql);
-    if ($result->num_rows > 0) {
-        $row = mysqli_fetch_assoc($result);
-        $_SESSION['NIDN'] = $row['NIDN'];
-        $_SESSION['nama'] = $row['NAMA_PEMBINA'];
-        header("Location: ../index.php");
-    } else {
-        echo "<script>alert('NIDN atau password Anda salah. Silahkan coba lagi!')</script>";
-    }
-}
-
-?>
-
 <!doctype html>
+
+<?php
+
+      include "../../inc/koneksi.php";
+      session_start();
+      //cek sesi apakah userweb_Pemb (NIDN) sudah masuk dalam session ? kalau sudah header langsung ke index
+		    if (@$_SESSION['userweb_Pemb']!="") {
+			header("Location: ../Home-Pembina.php.php");
+	}
+?>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -46,6 +25,8 @@ if (isset($_POST['submit'])) {
     
     <!-- Style -->
     <link rel="stylesheet" href="../../css/style.css">
+    <!-- Sweet Alert -->
+			<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     <title>Login #7</title>
   </head>
@@ -65,21 +46,28 @@ if (isset($_POST['submit'])) {
               <div class="mb-4 text-center">
               <h3 style=" color: #e6e6e6; ">Login</h3>
               <h2 style=" color: #e6e6e6; " class="mb-4">SIMAKS</h2>
-              <h4 style=" color: #e6e6e6; " class="mb-4">Pembina</h4>
+              <h4 style=" color: #e6e6e6; " class="mb-4">Kemahasiswaan</h4>
             </div>
-            <form action="" method="post">
+            <form action="#" method="post">
               <div class="form-group first">
-                <label for="NIDN">NIDN</label>
-                <input type="text" class="form-control" id="NIDN" name="NIDN" required>
+                <label for="username">NIDN</label>
+                <input type="text" class="form-control" name="NIDN">
 
               </div>
               <div class="form-group last mb-4">
                 <label for="password">Password</label>
-                <input type="password" class="form-control" id="password" name="password" required>
+                <input type="password" class="form-control" name="password">
                 
               </div>
               
-              <input type="submit" name="submit" value="Log In" class="btn btn-block btn-primary">
+              <div class="d-flex mb-5 align-items-center">
+             
+              </div>
+
+              <input name ="flog" type="submit" value="login"  class="btn btn-block btn-primary">
+
+
+          
             </form>
             </div>
           </div>
@@ -97,3 +85,54 @@ if (isset($_POST['submit'])) {
     <script src="../../js/main.js"></script>
   </body>
 </html>
+
+<?php
+      if(isset($_POST['flog'])){
+        $nidn=$_POST['NIDN'];
+        $password = $_POST['password'];
+        error_reporting(0);
+        $qlog = mysqli_query($koneksi,"SELECT * FROM `pembina` where `NIDN = '$nidn' ");
+        $rows = mysqli_num_rows($qlog);
+        $arr = mysqli_fetch_array($qlog);
+
+        //cek apakah akun yang dimasukkan terdaftar
+        if ($rows ==  1) {
+					if (password_verify($password,$arr['PASSWORD_PEMBINA'])) {
+
+						session_start();
+						$_SESSION['userweb_Pemb'] = $arr['NIDN'];
+						header("Location: ../Home-Pembina.php");
+						}
+						
+					
+					else{
+							?>
+                    		<script>
+                                Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'Password Salah',
+                                
+                                })
+                      	         </script>
+            			 	<?php
+					
+							}
+				}
+				else{
+					?>
+						<script>
+									Swal.fire({
+									icon: 'error',
+									title: 'Oops...',
+									text: 'User Tidak Ditemukan',
+									
+									})
+									</script>
+				<?php
+
+				}
+			}
+
+
+  ?>

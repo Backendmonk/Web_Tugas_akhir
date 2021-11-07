@@ -6,7 +6,7 @@
       session_start();
       //cek sesi apakah userweb (NIDN) sudah masuk dalam session ? kalau sudah header langsung ke index
 		    if (@$_SESSION['userweb']!="") {
-			header("Location: ../index.php");
+			header("Location: ../Home-Kemahasiswaan.php");
 	}
 ?>
 <html lang="en">
@@ -66,7 +66,7 @@
 
               <input name ="flog" type="submit" value="login"  class="btn btn-block btn-primary">
 
-              <a href="logoutKemahasiswaan.php">aaaa</a>
+
           
             </form>
             </div>
@@ -101,7 +101,7 @@
 
 						session_start();
 						$_SESSION['userweb'] = $arr['NIDN_KEMAHASISWAAN'];
-						header("Location: ../index.php");
+						header("Location: ../Home-Kemahasiswaan.php.php");
 						}
 						
 					

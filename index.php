@@ -64,7 +64,7 @@
                 </div>
 
                 <div class=" col-sm-6">
-                <a style ="text-decoration:none;" href="http://localhost:8080/Projek/web_tugas_akhir/Pembina/login/login.php">
+                <a style ="text-decoration:none;" href="http://localhost/web_tugas_akhir/Pembina/login/login.php">
                     <div class="serviceBox">
                         <div class="service-icon">
                             <i class="fa fa-briefcase"></i>
