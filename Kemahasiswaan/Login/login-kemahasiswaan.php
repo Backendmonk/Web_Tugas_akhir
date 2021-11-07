@@ -90,7 +90,7 @@
       if(isset($_POST['flog'])){
         $nidn=$_POST['NIDN'];
         $password = $_POST['password'];
-
+        error_reporting(0);
         $qlog = mysqli_query($koneksi,"SELECT * FROM `kemahasiswaan` where `NIDN_KEMAHASISWAAN` = '$nidn' ");
         $rows = mysqli_num_rows($qlog);
         $arr = mysqli_fetch_array($qlog);
@@ -98,7 +98,7 @@
         //cek apakah akun yang dimasukkan terdaftar
         if ($rows ==  1) {
 					if (password_verify($password,$arr['PASSWORD_KEMAHASISWAAN'])) {
-
+            
 						session_start();
 						$_SESSION['userweb'] = $arr['NIDN_KEMAHASISWAAN'];
 						header("Location: ../Home-Kemahasiswaan.php.php");

@@ -96,6 +96,7 @@
         $arr = mysqli_fetch_array($qlog);
 
         //cek apakah akun yang dimasukkan terdaftar
+        //penamaan sesi harus unik
         if ($rows ==  1) {
 					if (password_verify($password,$arr['PASSWORD_PEMBINA'])) {
 
