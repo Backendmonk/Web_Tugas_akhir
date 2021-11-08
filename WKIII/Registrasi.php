@@ -1,6 +1,6 @@
 <?php 
 
-include '../../inc/koneksi.php';
+include '../inc/koneksi.php';
  
 error_reporting(0);
  
@@ -18,20 +18,20 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="../../fonts/icomoon/style.css">
+    <link rel="stylesheet" href="../fonts/icomoon/style.css">
 
-    <link rel="stylesheet" href="../../css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../css/owl.carousel.min.css">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
     
     <!-- Style -->
-    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 
-     <!-- Sweet Alert -->
+       <!-- Sweet Alert -->
 			<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
-    <title>REGISTER Penbina SIMAKS</title>
+    <title>REGISTER WKIII SIMAKS</title>
   </head>
   <body>
   
@@ -41,13 +41,13 @@ session_start();
     <div class="container">
       <div class="row">
         <div class="col-md-6">
-          <img style="width: 400px;" src="../../img/LogoStiki.png" alt="Image" class="img-fluid">
+          <img style="width: 400px;" src="../img/LogoStiki.png" alt="Image" class="img-fluid">
         </div>
         <div class="col-md-6 contents">
           <div class="row justify-content-center">
             <div class="col-md-8">
               <div class="mb-4 text-center">
-              <h3 style=" color: #e6e6e6; ">REGISTER PEMBINA</h3>
+              <h3 style=" color: #e6e6e6; ">REGISTER WKIII</h3>
               <h2 style=" color: #e6e6e6; " class="mb-4">SIMAKS</h2>
             </div>
             <form action="" method="post">
@@ -62,20 +62,14 @@ session_start();
                 
               </div>
               <div class="form-group first" style="border-radius: 0px;">
-                <label for="NIDN">NAMA</label>
+                <label for="NIDN">Nama</label>
                 <input type="text" class="form-control" id="NIDN" name="NAMA" required>
 
               </div>
              
-              <div class="form-group first" style="border-radius: 0px;">
-                <label for="NIDN">ALAMAT</label>
-                <input type="text" class="form-control" id="NIDN" name="ALAMAT" required>
-
-              </div>
-             
               <div class="form-group last mb-4" >
-                <label for="NIDN">NO TELEPON</label>
-                <input type="text" class="form-control" id="NIDN" name="NO" required>
+                <label for="NIDN">Jabatan</label>
+                <input type="text" class="form-control" id="jabatan" name="Jabatan" required>
 
               </div>
               
@@ -91,12 +85,13 @@ session_start();
   </div>
 
   
-    <script src="../../js/jquery-3.3.1.min.js"></script>
-    <script src="../../js/popper.min.js"></script>
-    <script src="../../js/bootstrap.min.js"></script>
-    <script src="../../js/main.js"></script>
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="../js/popper.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/main.js"></script>
   </body>
 </html>
+
 
 <?php 
 if (isset($_POST['submit'])) {
@@ -104,23 +99,20 @@ if (isset($_POST['submit'])) {
   $NIDN = $_POST['NIDN'];
   $password = $_POST['password'];
   $NAMA = $_POST['NAMA'];
-  $ALAMAT = $_POST['ALAMAT'];
-  $NO = $_POST['NO'];
+  $Jabatan = $_POST['Jabatan'];
 
-    $sql = "SELECT * FROM pembina WHERE NIDN='$NIDN'";
+    $sql = "SELECT * FROM kemahasiswaan WHERE NIDN='$NIDN'";
     $result = mysqli_query($koneksi, $sql);
     if (!$result->num_rows > 0) {
-        $sql = "INSERT INTO pembina (NAMA_PEMBINA, NIDN, PASSOWRD_PEMBINA,ALAMAT_PEMBINA,NO_TELP_PEMBINA)
-                VALUES ('$NAMA', '$NIDN', '$password','$ALAMAT','$NO')";
+        $sql = "INSERT INTO wkiii (NAMA_WKIII, NIDN_WKIII, PASSWORD_WKIII,JABATAN_WKIII)
+                VALUES ('$NAMA', '$NIDN', '$password','$Jabatan')";
         $result = mysqli_query($koneksi, $sql);
         if ($result) {
-          $_POST['NIDN'] = '';
-          $_POST['password'] = '';
-          $_POST['NAMA'] = '';
-          $_POST['ALAMAT'] = ''; 
-          $_POST['NO'] = '';
-
-          ?>
+            $_POST['NIDN']="";
+            $_POST['NAMA']="";
+            $_POST['Jabatan']="";
+            $_POST['password'] = "";
+            ?>
             <script>
               Swal.fire({
               icon: 'success',
@@ -157,5 +149,4 @@ if (isset($_POST['submit'])) {
     }
 
 }
-
 ?>

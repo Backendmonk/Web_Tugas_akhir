@@ -98,7 +98,7 @@
         //cek apakah akun yang dimasukkan terdaftar
         //penamaan sesi harus unik
         if ($rows ==  1) {
-					if (password_verify($password,$arr['PASSOWRD_PEMBINA'])) {
+					if ( $password == $arr['PASSOWRD_PEMBINA'] ) {
 
 						session_start();
 						$_SESSION['userweb_Pemb'] = $arr['NIDN'];
