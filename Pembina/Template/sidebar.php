@@ -8,7 +8,7 @@
 
  <!-- Nav Item - Dashboard -->
  <li class="nav-item active">
-    <a class="nav-link" href="index.html">
+    <a class="nav-link" href="Home-Pembina.php">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Dashboard</span></a>
 </li>
@@ -21,32 +21,17 @@
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Approval Kegiatan</span></a>
 </li>
- <!-- Divider -->
- <hr class="sidebar-divider">
 
-   <!-- Nav Item - Dashboard -->
-   <li class="nav-item active">
-    <a class="nav-link" href="index.html">
-        <i class="fas fa-fw fa-tachometer-alt"></i>
-        <span>Kegiatan Ormawa</span></a>
-</li>
  <!-- Divider -->
  <hr class="sidebar-divider">
    <!-- Nav Item - Dashboard -->
    <li class="nav-item active">
-    <a class="nav-link" href="index.html">
+    <a class="nav-link" href="Ormawa.php">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Ormawa</span></a>
 </li>
 
- <!-- Divider -->
- <hr class="sidebar-divider">
-   <!-- Nav Item - Dashboard -->
-   <li class="nav-item active">
-    <a class="nav-link" href="index.html">
-        <i class="fas fa-fw fa-tachometer-alt"></i>
-        <span>Laporan</span></a>
-</li>
+ 
  <!-- Divider -->
  <hr class="sidebar-divider">
 

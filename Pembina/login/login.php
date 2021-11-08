@@ -28,7 +28,7 @@
     <!-- Sweet Alert -->
 			<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
-    <title>Login #7</title>
+    <title>Login Pembina Ormawa</title>
   </head>
   <body>
   
@@ -46,7 +46,7 @@
               <div class="mb-4 text-center">
               <h3 style=" color: #e6e6e6; ">Login</h3>
               <h2 style=" color: #e6e6e6; " class="mb-4">SIMAKS</h2>
-              <h4 style=" color: #e6e6e6; " class="mb-4">Kemahasiswaan</h4>
+              <h4 style=" color: #e6e6e6; " class="mb-4">Pembina</h4>
             </div>
             <form action="#" method="post">
               <div class="form-group first">
@@ -91,14 +91,14 @@
         $nidn=$_POST['NIDN'];
         $password = $_POST['password'];
         error_reporting(0);
-        $qlog = mysqli_query($koneksi,"SELECT * FROM `pembina` where `NIDN = '$nidn' ");
+        $qlog = mysqli_query($koneksi,"SELECT * FROM `pembina` where `NIDN` = '$nidn' ");
         $rows = mysqli_num_rows($qlog);
         $arr = mysqli_fetch_array($qlog);
 
         //cek apakah akun yang dimasukkan terdaftar
         //penamaan sesi harus unik
         if ($rows ==  1) {
-					if (password_verify($password,$arr['PASSWORD_PEMBINA'])) {
+					if (password_verify($password,$arr['PASSOWRD_PEMBINA'])) {
 
 						session_start();
 						$_SESSION['userweb_Pemb'] = $arr['NIDN'];
