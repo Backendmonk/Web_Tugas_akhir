@@ -46,12 +46,12 @@
               <div class="mb-4 text-center">
               <h3 style=" color: #e6e6e6; ">Login</h3>
               <h2 style=" color: #e6e6e6; " class="mb-4">SIMAKS</h2>
-              <h4 style=" color: #e6e6e6; " class="mb-4">Pembina</h4>
+              <h4 style=" color: #e6e6e6; " class="mb-4">Pengurus Ormawa</h4>
             </div>
             <form action="#" method="post">
               <div class="form-group first">
-                <label for="username">NIDN</label>
-                <input type="text" class="form-control" name="NIDN">
+                <label for="username">Username Ketua</label>
+                <input type="text" class="form-control" name="Username">
 
               </div>
               <div class="form-group last mb-4">
@@ -88,21 +88,21 @@
 
 <?php
       if(isset($_POST['flog'])){
-        $nidn=$_POST['NIDN'];
+        $user=$_POST['Username'];
         $password = $_POST['password'];
         error_reporting(0);
-        $qlog = mysqli_query($koneksi,"SELECT * FROM `pembina` where `NIDN` = '$nidn' ");
+        $qlog = mysqli_query($koneksi,"SELECT * FROM `pengurus_ormawa` where `USERNAME_KETUA` = '$user' ");
         $rows = mysqli_num_rows($qlog);
         $arr = mysqli_fetch_array($qlog);
 
         //cek apakah akun yang dimasukkan terdaftar
         //penamaan sesi harus unik
         if ($rows ==  1) {
-					if (password_verify($password,$arr['PASSOWRD_PEMBINA'])) {
+					if (password_verify($password,$arr['PASSWORD_KETUA'])) {
 
 						session_start();
-						$_SESSION['userweb_Pemb'] = $arr['NIDN'];
-						header("Location: ../Home-Pembina.php");
+						$_SESSION['userweb_orm'] = $arr['USERNAME_KETUA'];
+						header("Location: ../Home-Pengurus.php");
 						}
 						
 					

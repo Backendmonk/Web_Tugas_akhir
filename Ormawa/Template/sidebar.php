@@ -19,7 +19,7 @@
    <li class="nav-item active">
     <a class="nav-link" href="index.html">
         <i class="fas fa-fw fa-tachometer-alt"></i>
-        <span>Approval Kegiatan</span></a>
+        <span>Pengajuan Kegiatan</span></a>
 </li>
 
  <!-- Divider -->
@@ -28,7 +28,25 @@
    <li class="nav-item active">
     <a class="nav-link" href="Ormawa.php">
         <i class="fas fa-fw fa-tachometer-alt"></i>
-        <span>Ormawa</span></a>
+        <span>Pembina Ormawa</span></a>
+</li>
+
+ <!-- Divider -->
+ <hr class="sidebar-divider">
+   <!-- Nav Item - Dashboard -->
+   <li class="nav-item active">
+    <a class="nav-link" href="Ormawa.php">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Administrasi</span></a>
+</li>
+
+<!-- Divider -->
+<hr class="sidebar-divider">
+   <!-- Nav Item - Dashboard -->
+   <li class="nav-item active">
+    <a class="nav-link" href="Ormawa.php">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Struktur Organisasi</span></a>
 </li>
 
  
