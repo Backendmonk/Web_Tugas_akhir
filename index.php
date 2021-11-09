@@ -20,7 +20,7 @@
 
             <div class="row mb-2">
                 <div class=" col-sm-6">
-                <a style ="text-decoration:none;" href="#">
+                <a style ="text-decoration:none;" href="http://localhost/web_tugas_akhir/WKIII/login/login.php">
                     <div class="serviceBox">
                         <div class="service-icon">
                             <i class="fa fa-globe"></i>
@@ -34,7 +34,7 @@
                 </div>
 
                 <div class=" col-sm-6">
-                <a style ="text-decoration:none;" href="#">
+                <a style ="text-decoration:none;" href="http://localhost/web_tugas_akhir/Ormawa/login/login.php">
                     <div class="serviceBox">
                         <div class="service-icon">
                             <i class="fa fa-rocket"></i>
