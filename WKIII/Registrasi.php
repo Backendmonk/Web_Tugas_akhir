@@ -97,7 +97,8 @@ session_start();
 if (isset($_POST['submit'])) {
   
   $NIDN = $_POST['NIDN'];
-  $password = $_POST['password'];
+  $pass = $_POST['password'];
+  $password = password_hash($pass,PASSWORD_DEFAULT);
   $NAMA = $_POST['NAMA'];
   $Jabatan = $_POST['Jabatan'];
 
