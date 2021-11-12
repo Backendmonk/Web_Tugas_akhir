@@ -102,7 +102,7 @@
 
 						session_start();
 						$_SESSION['userweb_Pemb'] = $arr['NIDN'];
-						header("Location: ../Home-Pembina.php");
+						header("Location: ../index.php");
 						}
 						
 					

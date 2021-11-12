@@ -102,7 +102,7 @@
             
 						session_start();
 						$_SESSION['userweb'] = $arr['NIDN_KEMAHASISWAAN'];
-						header("Location: ../Home-Kemahasiswaan.php.php");
+						header("Location: ../index.php");
 						}
 						
 					
