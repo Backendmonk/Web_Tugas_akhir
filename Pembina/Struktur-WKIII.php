@@ -1,10 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php
 
-        include "SessionPembina.php";
-
-?>
 <head>
 
     <meta charset="utf-8">
@@ -15,16 +11,16 @@
 
     <title>SB Admin 2 - Dashboard</title>
 
-<?php include '../template/head.php' ?>
+
 
 </head>
 
 <body id="page-top">
-<?php include 'template/navbar.php' ?>
+
     <!-- Page Wrapper -->
     <div id="wrapper">
 
-    <?php include 'template/sidebar.php' ?>
+   
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column pt-4">
 
@@ -91,13 +87,7 @@
     
     </div>
     <!-- End of Page Wrapper -->
-<!-- Footer -->
-<?php include '../template/footer.php' ?>
-            <!-- End of Footer -->
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
+
 
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
