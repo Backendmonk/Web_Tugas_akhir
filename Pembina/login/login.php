@@ -6,7 +6,7 @@
       session_start();
       //cek sesi apakah userweb_Pemb (NIDN) sudah masuk dalam session ? kalau sudah header langsung ke index
 		    if (@$_SESSION['userweb_Pemb']!="") {
-			header("Location: ../Home-Pembina.php.php");
+			header("Location: ../index.php");
 	}
 ?>
 <html lang="en">

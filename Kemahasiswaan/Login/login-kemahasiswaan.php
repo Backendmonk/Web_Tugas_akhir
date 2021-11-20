@@ -6,7 +6,7 @@
       session_start();
       //cek sesi apakah userweb (NIDN) sudah masuk dalam session ? kalau sudah header langsung ke index
 		    if (@$_SESSION['userweb']!="") {
-			header("Location: ../Home-Kemahasiswaan.php");
+			header("Location: ../index.php");
 	}
 ?>
 <html lang="en">
