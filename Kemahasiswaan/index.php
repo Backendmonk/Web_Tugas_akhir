@@ -48,6 +48,14 @@
                     <main class="col overflow-auto h-100">
             <div class="bg-light border rounded-3 p-3">
                 <h2>Main</h2>
+                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
 
                 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
@@ -66,19 +74,16 @@
                                 </p>
                             </figure>
                             </div>
+                            
                             <div class="carousel-item">
-                            <center><img class="d-block w-50" src="../img/LogoStiki.png" alt="Second slide">
+                            <?php
+                                include "Struktur-WKIII.php";
+                            ?>
                             </div>
+                            
                         
                         </div>
-                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Next</span>
-                        </a>
+                       
                         </div>
 
 
