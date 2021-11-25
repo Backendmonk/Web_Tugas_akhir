@@ -60,7 +60,7 @@
                 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                            <script src="https://code.highcharts.com/highcharts.js"></script>
+                             <script src="https://code.highcharts.com/highcharts.js"></script>
                             <script src="https://code.highcharts.com/modules/exporting.js"></script>
                             <script src="https://code.highcharts.com/modules/export-data.js"></script>
                             <script src="https://code.highcharts.com/modules/accessibility.js"></script>
@@ -68,11 +68,11 @@
                             <figure class="highcharts-figure">
                                 <div id="container"></div>
                                 <p class="highcharts-description">
-                                    This chart shows the use of a logarithmic y-axis. Logarithmic axes can
-                                    be useful when dealing with data with spikes or large value gaps,
-                                    as they allow variance in the smaller values to remain visible.
+                                    This chart shows how data labels can be added to the data series. This
+                                    can increase readability and comprehension for small datasets.
                                 </p>
                             </figure>
+
                             </div>
                             
                             <div class="carousel-item">
@@ -140,7 +140,7 @@
         </div>
     </div>
 
-  
+    <?php include '../template/footInc.php' ?>
 
 </body>
 
@@ -191,42 +191,165 @@
     background: #f1f7ff;
 }
 
+
 </style>
+
+
 
 
 <script>
 
 Highcharts.chart('container', {
-
-title: {
-    text: 'Logarithmic axis demo'
-},
-
-xAxis: {
-    tickInterval: 1,
-    type: 'logarithmic',
-    accessibility: {
-        rangeDescription: 'Range: 1 to 10'
-    }
-},
-
-yAxis: {
-    type: 'logarithmic',
-    minorTickInterval: 0.1,
-    accessibility: {
-        rangeDescription: 'Range: 0.1 to 1000'
-    }
-},
-
-tooltip: {
-    headerFormat: '<b>{series.name}</b><br />',
-    pointFormat: 'x = {point.x}, y = {point.y}'
-},
-
-series: [{
-    data: [1, 2, 4, 8, 16, 32, 64, 128, 256, 512],
-    pointStart: 1
-}]
+    chart: {
+        type: 'line'
+    },
+    
+    title: {
+        text: 'Kegiatan Mahasiswa tahun <?php echo date('Y');  ?> '
+    },
+   
+    xAxis: {
+        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+    },
+    yAxis: {
+        title: {
+            text: 'Jumlah Kegiatan'
+        }
+    },
+    plotOptions: {
+        line: {
+            dataLabels: {
+                enabled: true
+            },
+            enableMouseTracking: false
+        }
+    },
+    series: [{
+        name: 'Kegiatan',
+        data: [
+            <?php
+            $tahun = date('Y');
+              $nov = mysqli_query($koneksi, "SELECT count(ID_LPJ)as lpj FROM `lpj` WHERE ( MONTH(`TGL_PENGAJUANLPJ`) = 1) AND (YEAR(`TGL_PENGAJUANLPJ`)= $tahun) GROUP BY month(`TGL_PENGAJUANLPJ`)");
+              $nov_num = mysqli_fetch_array($nov);
+              if ($nov_num < 1){
+                    echo 0;
+              }else{
+                echo $nov_num['lpj'];
+              }
+              
+      ?>, 
+        <?php
+             $tahun = date('Y');     
+              $nov = mysqli_query($koneksi, "SELECT count(ID_LPJ)as lpj FROM `lpj` WHERE ( MONTH(`TGL_PENGAJUANLPJ`) = 2) AND (YEAR(`TGL_PENGAJUANLPJ`)= $tahun) GROUP BY month(`TGL_PENGAJUANLPJ`)");
+              $nov_num = mysqli_fetch_array($nov);
+              if ($nov_num < 1){
+                echo 0;
+          }else{
+            echo $nov_num['lpj'];
+          }
+      ?>, 
+      <?php
+            $tahun = date('Y');  
+              $nov = mysqli_query($koneksi, "SELECT count(ID_LPJ)as lpj FROM `lpj` WHERE ( MONTH(`TGL_PENGAJUANLPJ`) = 3) AND (YEAR(`TGL_PENGAJUANLPJ`)= $tahun) GROUP BY month(`TGL_PENGAJUANLPJ`)");
+              $nov_num = mysqli_fetch_array($nov);
+              if ($nov_num < 1){
+                echo 0;
+          }else{
+            echo $nov_num['lpj'];
+          }
+      ?>, 
+        <?php
+             $tahun = date('Y');  
+              $nov = mysqli_query($koneksi, "SELECT count(ID_LPJ)as lpj FROM `lpj` WHERE ( MONTH(`TGL_PENGAJUANLPJ`) = 4) AND (YEAR(`TGL_PENGAJUANLPJ`)= $tahun) GROUP BY month(`TGL_PENGAJUANLPJ`)");
+              $nov_num = mysqli_fetch_array($nov);
+              if ($nov_num < 1){
+                echo 0;
+          }else{
+            echo $nov_num['lpj'];
+          }
+      ?>, 
+      <?php
+            $tahun = date('Y');  
+              $nov = mysqli_query($koneksi, "SELECT count(ID_LPJ)as lpj FROM `lpj` WHERE ( MONTH(`TGL_PENGAJUANLPJ`) = 5) AND (YEAR(`TGL_PENGAJUANLPJ`)= $tahun) GROUP BY month(`TGL_PENGAJUANLPJ`)");
+              $nov_num = mysqli_fetch_array($nov);
+              if ($nov_num < 1){
+                echo 0;
+          }else{
+            echo $nov_num['lpj'];
+          }
+      ?>, 
+        <?php
+            $tahun = date('Y');  
+              $nov = mysqli_query($koneksi, "SELECT count(ID_LPJ)as lpj FROM `lpj` WHERE ( MONTH(`TGL_PENGAJUANLPJ`) = 6) AND (YEAR(`TGL_PENGAJUANLPJ`)= $tahun) GROUP BY month(`TGL_PENGAJUANLPJ`)");
+              $nov_num = mysqli_fetch_array($nov);
+              if ($nov_num < 1){
+                echo 0;
+          }else{
+            echo $nov_num['lpj'];
+          }
+      ?>, 
+       <?php
+             $tahun = date('Y'); 
+              $nov = mysqli_query($koneksi, "SELECT count(ID_LPJ)as lpj FROM `lpj` WHERE ( MONTH(`TGL_PENGAJUANLPJ`) = 7) AND (YEAR(`TGL_PENGAJUANLPJ`)= $tahun) GROUP BY month(`TGL_PENGAJUANLPJ`)");
+              $nov_num = mysqli_fetch_array($nov);
+              if ($nov_num < 1){
+                echo 0;
+          }else{
+            echo $nov_num['lpj'];
+          }
+      ?>, 
+     <?php
+            $tahun = date('Y'); 
+              $nov = mysqli_query($koneksi, "SELECT count(ID_LPJ)as lpj FROM `lpj` WHERE ( MONTH(`TGL_PENGAJUANLPJ`) = 8) AND (YEAR(`TGL_PENGAJUANLPJ`)= $tahun) GROUP BY month(`TGL_PENGAJUANLPJ`)");
+              $nov_num = mysqli_fetch_array($nov);
+              if ($nov_num < 1){
+                echo 0;
+          }else{
+            echo $nov_num['lpj'];
+          }
+      ?>, 
+     <?php
+     $tahun = date('Y'); 
+    
+              $nov = mysqli_query($koneksi, "SELECT count(ID_LPJ)as lpj FROM `lpj` WHERE ( MONTH(`TGL_PENGAJUANLPJ`) = 9) AND (YEAR(`TGL_PENGAJUANLPJ`)= $tahun) GROUP BY month(`TGL_PENGAJUANLPJ`)");
+              $nov_num = mysqli_fetch_array($nov);
+              if ($nov_num < 1){
+                echo 0;
+          }else{
+            echo $nov_num['lpj'];
+          };
+      ?>, 
+     <?php
+     $tahun = date('Y'); 
+              $nov = mysqli_query($koneksi, "SELECT count(ID_LPJ)as lpj FROM `lpj` WHERE ( MONTH(`TGL_PENGAJUANLPJ`) = 10) AND (YEAR(`TGL_PENGAJUANLPJ`)= $tahun) GROUP BY month(`TGL_PENGAJUANLPJ`)");
+              $nov_num = mysqli_fetch_array($nov);
+              if ($nov_num < 1){
+                echo 0;
+          }else{
+            echo $nov_num['lpj'];
+          }
+      ?>, 
+      <?php
+     $tahun = date('Y'); 
+              $nov = mysqli_query($koneksi, "SELECT count(ID_LPJ)as lpj FROM `lpj` WHERE ( MONTH(`TGL_PENGAJUANLPJ`) = 11) AND (YEAR(`TGL_PENGAJUANLPJ`)= $tahun)   GROUP BY month(`TGL_PENGAJUANLPJ`)");
+              $nov_num = mysqli_fetch_array($nov);
+              if ($nov_num < 1){
+                echo 0;
+          }else{
+            echo $nov_num['lpj'];
+          }
+      ?>,
+     <?php
+     $tahun = date('Y'); 
+              $nov = mysqli_query($koneksi, "SELECT count(ID_LPJ)as lpj FROM `lpj` WHERE ( MONTH(`TGL_PENGAJUANLPJ`) = 12) AND (YEAR(`TGL_PENGAJUANLPJ`)= $tahun)  GROUP BY month(`TGL_PENGAJUANLPJ`)");
+              $nov_num = mysqli_fetch_array($nov);
+              if ($nov_num < 1){
+                echo 0;
+          }else{
+            echo $nov_num['lpj'];
+          }
+      ?>
+       ]
+    }]
 });
-
     </script>
