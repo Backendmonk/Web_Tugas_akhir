@@ -112,7 +112,7 @@
                                 Swal.fire({
                                 icon: 'error',
                                 title: 'Oops...',
-                                text: 'Password Salah',
+                                text: 'Password atau NIDN Salah',
                                 
                                 })
                       	         </script>

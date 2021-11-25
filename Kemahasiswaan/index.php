@@ -86,8 +86,6 @@
                        
                         </div>
 
-
-                                          
             </div>
         </main>
                     </div>
@@ -119,32 +117,60 @@
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
-
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-  
+<!-- tempat sumon kodingan modal -->
+<?php include 'Template/modal.php' ?>
 
 </body>
 
 </html>
+
+<?php 
+    if (isset($_POST['submit'])) {
+        if ($_POST['pass1'] == $_POST['pass2']) {
+            $pass = $_POST['pass1'];
+            $password = password_hash($pass,PASSWORD_DEFAULT);
+        }
+        $NIDN = $_POST['NIDN'];
+        $NAMA = $_POST['NAMA'];
+        $Jabatan = $_POST['Jabatan'];
+              $sql = "UPDATE kemahasiswaan set NAMA_KEMAHASISWAAN = '$NAMA', PASSWORD_KEMAHASISWAAN = '$password' , JABATAN_kEMAHASISWAAN = '$Jabatan' where NIDN_KEMAHASISWAAN = '$NIDN'";
+              $result = mysqli_query($koneksi, $sql);
+              if ($result) {
+            
+                $_POST['NAMA']="";
+                $_POST['Jabatan']="";
+                  $_POST['password'] = "";
+                  ?>
+                  <script>
+                    Swal.fire({
+                    icon: 'success',
+                    title: 'success',
+                    text: 'register pembina berhasil',
+                    
+                    })
+                </script>
+              <?php
+                
+              } else {
+                ?>
+                <script>
+                Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'register gagal',
+                
+                })
+              </script>
+              <?php
+              }
+         
+            ?>
+          
+          <?php
+          
+      
+      }
+?>
 
 <style>
 
