@@ -3,7 +3,7 @@
 <html lang="en">
 <?php
 
-        //include "SessionKemahasiswaan.php";
+         include "SessionKemahasiswaan.php";
 
 ?>
 <head>
@@ -17,7 +17,6 @@
     <title>SB Admin 2 - Dashboard</title>
 
 <?php include '../template/head.php' ?>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <!-- Optional theme -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
@@ -29,11 +28,11 @@
 </head>
 
 <body id="page-top">
-<?php include 'Template/navbar.php' ?>
+<?php include 'template/navbar.php' ?>
     <!-- Page Wrapper -->
     <div id="wrapper">
 
-    <?php include 'Template/sidebar.php' ?>
+    <?php include 'template/sidebar.php' ?>
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column pt-4">
 
@@ -42,7 +41,9 @@
                 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
+                <main class="col overflow-auto h-100">
+            <div class="bg-light border rounded-3 p-3">
+                <h2>Main</h2>
 
             <div class="row mb-2">
             <div class=" col-sm-6  text-center" >
@@ -63,10 +64,11 @@
                     </a>
                 </div>
             </div>
-            
+             </div>
+        </main>
         </div>
     </div>
-  
+   
 </div>
 <!-- /.container-fluid -->
 
