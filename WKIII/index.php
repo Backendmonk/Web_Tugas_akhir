@@ -227,8 +227,8 @@ Highcharts.chart('container', {
         name: 'Kegiatan',
         data: [
             <?php
-    
-              $nov = mysqli_query($koneksi, "SELECT count(ID_LPJ)as lpj FROM `lpj` WHERE ( MONTH(`TGL_PENGAJUANLPJ`) = 1) GROUP BY month(`TGL_PENGAJUANLPJ`)");
+            $tahun = date('Y');
+              $nov = mysqli_query($koneksi, "SELECT count(ID_LPJ)as lpj FROM `lpj` WHERE ( MONTH(`TGL_PENGAJUANLPJ`) = 1) AND (YEAR(`TGL_PENGAJUANLPJ`)= $tahun) GROUP BY month(`TGL_PENGAJUANLPJ`)");
               $nov_num = mysqli_fetch_array($nov);
               if ($nov_num < 1){
                     echo 0;
@@ -238,8 +238,8 @@ Highcharts.chart('container', {
               
       ?>, 
         <?php
-    
-              $nov = mysqli_query($koneksi, "SELECT count(ID_LPJ)as lpj FROM `lpj` WHERE ( MONTH(`TGL_PENGAJUANLPJ`) = 2) GROUP BY month(`TGL_PENGAJUANLPJ`)");
+             $tahun = date('Y');     
+              $nov = mysqli_query($koneksi, "SELECT count(ID_LPJ)as lpj FROM `lpj` WHERE ( MONTH(`TGL_PENGAJUANLPJ`) = 2) AND (YEAR(`TGL_PENGAJUANLPJ`)= $tahun) GROUP BY month(`TGL_PENGAJUANLPJ`)");
               $nov_num = mysqli_fetch_array($nov);
               if ($nov_num < 1){
                 echo 0;
@@ -248,8 +248,8 @@ Highcharts.chart('container', {
           }
       ?>, 
       <?php
-    
-              $nov = mysqli_query($koneksi, "SELECT count(ID_LPJ)as lpj FROM `lpj` WHERE ( MONTH(`TGL_PENGAJUANLPJ`) = 3) GROUP BY month(`TGL_PENGAJUANLPJ`)");
+            $tahun = date('Y');  
+              $nov = mysqli_query($koneksi, "SELECT count(ID_LPJ)as lpj FROM `lpj` WHERE ( MONTH(`TGL_PENGAJUANLPJ`) = 3) AND (YEAR(`TGL_PENGAJUANLPJ`)= $tahun) GROUP BY month(`TGL_PENGAJUANLPJ`)");
               $nov_num = mysqli_fetch_array($nov);
               if ($nov_num < 1){
                 echo 0;
@@ -258,8 +258,8 @@ Highcharts.chart('container', {
           }
       ?>, 
         <?php
-    
-              $nov = mysqli_query($koneksi, "SELECT count(ID_LPJ)as lpj FROM `lpj` WHERE ( MONTH(`TGL_PENGAJUANLPJ`) = 4) GROUP BY month(`TGL_PENGAJUANLPJ`)");
+             $tahun = date('Y');  
+              $nov = mysqli_query($koneksi, "SELECT count(ID_LPJ)as lpj FROM `lpj` WHERE ( MONTH(`TGL_PENGAJUANLPJ`) = 4) AND (YEAR(`TGL_PENGAJUANLPJ`)= $tahun) GROUP BY month(`TGL_PENGAJUANLPJ`)");
               $nov_num = mysqli_fetch_array($nov);
               if ($nov_num < 1){
                 echo 0;
@@ -268,8 +268,8 @@ Highcharts.chart('container', {
           }
       ?>, 
       <?php
-    
-              $nov = mysqli_query($koneksi, "SELECT count(ID_LPJ)as lpj FROM `lpj` WHERE ( MONTH(`TGL_PENGAJUANLPJ`) = 5) GROUP BY month(`TGL_PENGAJUANLPJ`)");
+            $tahun = date('Y');  
+              $nov = mysqli_query($koneksi, "SELECT count(ID_LPJ)as lpj FROM `lpj` WHERE ( MONTH(`TGL_PENGAJUANLPJ`) = 5) AND (YEAR(`TGL_PENGAJUANLPJ`)= $tahun) GROUP BY month(`TGL_PENGAJUANLPJ`)");
               $nov_num = mysqli_fetch_array($nov);
               if ($nov_num < 1){
                 echo 0;
@@ -278,8 +278,8 @@ Highcharts.chart('container', {
           }
       ?>, 
         <?php
-    
-              $nov = mysqli_query($koneksi, "SELECT count(ID_LPJ)as lpj FROM `lpj` WHERE ( MONTH(`TGL_PENGAJUANLPJ`) = 6) GROUP BY month(`TGL_PENGAJUANLPJ`)");
+            $tahun = date('Y');  
+              $nov = mysqli_query($koneksi, "SELECT count(ID_LPJ)as lpj FROM `lpj` WHERE ( MONTH(`TGL_PENGAJUANLPJ`) = 6) AND (YEAR(`TGL_PENGAJUANLPJ`)= $tahun) GROUP BY month(`TGL_PENGAJUANLPJ`)");
               $nov_num = mysqli_fetch_array($nov);
               if ($nov_num < 1){
                 echo 0;
@@ -288,8 +288,8 @@ Highcharts.chart('container', {
           }
       ?>, 
        <?php
-    
-              $nov = mysqli_query($koneksi, "SELECT count(ID_LPJ)as lpj FROM `lpj` WHERE ( MONTH(`TGL_PENGAJUANLPJ`) = 7) GROUP BY month(`TGL_PENGAJUANLPJ`)");
+             $tahun = date('Y'); 
+              $nov = mysqli_query($koneksi, "SELECT count(ID_LPJ)as lpj FROM `lpj` WHERE ( MONTH(`TGL_PENGAJUANLPJ`) = 7) AND (YEAR(`TGL_PENGAJUANLPJ`)= $tahun) GROUP BY month(`TGL_PENGAJUANLPJ`)");
               $nov_num = mysqli_fetch_array($nov);
               if ($nov_num < 1){
                 echo 0;
@@ -298,8 +298,8 @@ Highcharts.chart('container', {
           }
       ?>, 
      <?php
-    
-              $nov = mysqli_query($koneksi, "SELECT count(ID_LPJ)as lpj FROM `lpj` WHERE ( MONTH(`TGL_PENGAJUANLPJ`) = 8) GROUP BY month(`TGL_PENGAJUANLPJ`)");
+            $tahun = date('Y'); 
+              $nov = mysqli_query($koneksi, "SELECT count(ID_LPJ)as lpj FROM `lpj` WHERE ( MONTH(`TGL_PENGAJUANLPJ`) = 8) AND (YEAR(`TGL_PENGAJUANLPJ`)= $tahun) GROUP BY month(`TGL_PENGAJUANLPJ`)");
               $nov_num = mysqli_fetch_array($nov);
               if ($nov_num < 1){
                 echo 0;
@@ -308,8 +308,9 @@ Highcharts.chart('container', {
           }
       ?>, 
      <?php
+     $tahun = date('Y'); 
     
-              $nov = mysqli_query($koneksi, "SELECT count(ID_LPJ)as lpj FROM `lpj` WHERE ( MONTH(`TGL_PENGAJUANLPJ`) = 9) GROUP BY month(`TGL_PENGAJUANLPJ`)");
+              $nov = mysqli_query($koneksi, "SELECT count(ID_LPJ)as lpj FROM `lpj` WHERE ( MONTH(`TGL_PENGAJUANLPJ`) = 9) AND (YEAR(`TGL_PENGAJUANLPJ`)= $tahun) GROUP BY month(`TGL_PENGAJUANLPJ`)");
               $nov_num = mysqli_fetch_array($nov);
               if ($nov_num < 1){
                 echo 0;
@@ -318,8 +319,8 @@ Highcharts.chart('container', {
           };
       ?>, 
      <?php
-    
-              $nov = mysqli_query($koneksi, "SELECT count(ID_LPJ)as lpj FROM `lpj` WHERE ( MONTH(`TGL_PENGAJUANLPJ`) = 10) GROUP BY month(`TGL_PENGAJUANLPJ`)");
+     $tahun = date('Y'); 
+              $nov = mysqli_query($koneksi, "SELECT count(ID_LPJ)as lpj FROM `lpj` WHERE ( MONTH(`TGL_PENGAJUANLPJ`) = 10) AND (YEAR(`TGL_PENGAJUANLPJ`)= $tahun) GROUP BY month(`TGL_PENGAJUANLPJ`)");
               $nov_num = mysqli_fetch_array($nov);
               if ($nov_num < 1){
                 echo 0;
@@ -328,8 +329,8 @@ Highcharts.chart('container', {
           }
       ?>, 
       <?php
-    
-              $nov = mysqli_query($koneksi, "SELECT count(ID_LPJ)as lpj FROM `lpj` WHERE ( MONTH(`TGL_PENGAJUANLPJ`) = 11) GROUP BY month(`TGL_PENGAJUANLPJ`)");
+     $tahun = date('Y'); 
+              $nov = mysqli_query($koneksi, "SELECT count(ID_LPJ)as lpj FROM `lpj` WHERE ( MONTH(`TGL_PENGAJUANLPJ`) = 11) AND (YEAR(`TGL_PENGAJUANLPJ`)= $tahun)   GROUP BY month(`TGL_PENGAJUANLPJ`)");
               $nov_num = mysqli_fetch_array($nov);
               if ($nov_num < 1){
                 echo 0;
@@ -338,8 +339,8 @@ Highcharts.chart('container', {
           }
       ?>,
      <?php
-    
-              $nov = mysqli_query($koneksi, "SELECT count(ID_LPJ)as lpj FROM `lpj` WHERE ( MONTH(`TGL_PENGAJUANLPJ`) = 12) GROUP BY month(`TGL_PENGAJUANLPJ`)");
+     $tahun = date('Y'); 
+              $nov = mysqli_query($koneksi, "SELECT count(ID_LPJ)as lpj FROM `lpj` WHERE ( MONTH(`TGL_PENGAJUANLPJ`) = 12) AND (YEAR(`TGL_PENGAJUANLPJ`)= $tahun)  GROUP BY month(`TGL_PENGAJUANLPJ`)");
               $nov_num = mysqli_fetch_array($nov);
               if ($nov_num < 1){
                 echo 0;
