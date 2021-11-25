@@ -1,89 +1,85 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<meta charset="utf-8">
+<link rel="stylesheet" href="LogCSS/style.css">
+<title>Login Area</title>
+</head>
 
-    <link rel="stylesheet" href="fonts/icomoon/style.css">
-
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    
-    <!-- Style -->
-    <link rel="stylesheet" href="css/style.css">
-
-    <title>Login #7</title>
-  </head>
-  <body>
-  
-
-  
-  <div class="content">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6">
-          <img src="images/undraw_remotely_2j6y.svg" alt="Image" class="img-fluid">
-        </div>
-        <div class="col-md-6 contents">
-          <div class="row justify-content-center">
-            <div class="col-md-8">
-              <div class="mb-4">
-              <h3>Sign In</h3>
-              <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.</p>
+<body>
+ <div class="demo">
+        <div class="container">
+            <div class="row text-center">
+                <h1 class="heading-title">Simaks Stiki</h1>
             </div>
-            <form action="#" method="post">
-              <div class="form-group first">
-                <label for="username">Username</label>
-                <input type="text" class="form-control" id="username">
 
-              </div>
-              <div class="form-group last mb-4">
-                <label for="password">Password</label>
-                <input type="password" class="form-control" id="password">
-                
-              </div>
-              
-              <div class="d-flex mb-5 align-items-center">
-                <label class="control control--checkbox mb-0"><span class="caption">Remember me</span>
-                  <input type="checkbox" checked="checked"/>
-                  <div class="control__indicator"></div>
-                </label>
-                <span class="ml-auto"><a href="#" class="forgot-pass">Forgot Password</a></span> 
-              </div>
+            <div class="row mb-2">
+                <div class=" col-sm-6">
+                <a style ="text-decoration:none;" href="http://localhost/web_tugas_akhir/WKIII/login">
+                    <div class="serviceBox">
+                        <div class="service-icon">
+                            <i class="fa fa-globe"></i>
+                        </div>
+                        <h3 class="title">Login Sebagai WKIII</h3>
+                        <p class="description">
+                        Wakil Ketua III (WK III) merupakan wakil ke-3 dari Ketua STMIK STIKOM Indonesia bertugas memonitoring bidang yang berhubungan dengan kemahasiswaan, alumni, pusat karir, dan bimbingan konseling.
+                        </p>
+                    </div>
+                        </a>
+                </div>
 
-              <input type="submit" value="Log In" class="btn btn-block btn-primary">
-
-              <span class="d-block text-left my-4 text-muted">&mdash; or login with &mdash;</span>
-              
-              <div class="social-login">
-                <a href="#" class="facebook">
-                  <span class="icon-facebook mr-3"></span> 
-                </a>
-                <a href="#" class="twitter">
-                  <span class="icon-twitter mr-3"></span> 
-                </a>
-                <a href="#" class="google">
-                  <span class="icon-google mr-3"></span> 
-                </a>
-              </div>
-            </form>
+                <div class=" col-sm-6">
+                <a style ="text-decoration:none;" href="http://localhost/web_tugas_akhir/Ormawa/login">
+                    <div class="serviceBox">
+                        <div class="service-icon">
+                            <i class="fa fa-rocket"></i>
+                        </div>
+                        <h3 class="title">Login Sebagai Ormawa</h3>
+                        <p class="description">
+                        Organisasi Mahasiswa (ORMAWA) merupakan organisasi yang mewadahi mahasiswa dalam mengembangkan skill yang dikuasainya.
+                        </p>
+                    </div>
+                    </a>
+                </div>
             </div>
-          </div>
-          
+            <br>
+            <div class="row">
+                <div class=" col-sm-6">
+                    <a style ="text-decoration:none;" href="http://localhost/web_tugas_akhir/kemahasiswaan/Login">
+                    <div class="serviceBox">
+                        <div class="service-icon">
+                            <i class="fa fa-briefcase"></i>
+                        </div>
+                        <h3 class="title">Login Sebagai Kemahasiswaan</h3>
+                        <p class="description">
+                        Bidang Kemahasiswaan merupakan bidang yang berada di bawah naungan WK III, bertugas untuk memonitoring segala kegiatan yang akan dan atau diselenggarakan oleh ORMAWA.
+                        </p>
+                    </div>
+                    </a>
+                </div>
+
+                <div class=" col-sm-6">
+                <a style ="text-decoration:none;" href="http://localhost/web_tugas_akhir/Pembina/login">
+                    <div class="serviceBox">
+                        <div class="service-icon">
+                            <i class="fa fa-briefcase"></i>
+                        </div>
+                        <h3 class="title">Login Sebagai Pembina</h3>
+                        <p class="description">
+                        Pembina adalah seseorang yang membimbing Organisasi Mahasiswa (ORMAWA) maupun Unit Kegiatan Mahasiswa (UKM).
+                        </p>
+                    </div>
+                        </a>
+                </div>
+                </div>
+            
         </div>
-        
-      </div>
     </div>
-  </div>
 
-  
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/main.js"></script>
-  </body>
+</body>
 </html>
