@@ -34,7 +34,7 @@
                 </div>
 
                 <div class=" col-sm-6">
-                <a style ="text-decoration:none;" href="http://localhost/web_tugas_akhir/Ormawa/login/login.php">
+                <a style ="text-decoration:none;" href="http://localhost/web_tugas_akhir/Ormawa/login">
                     <div class="serviceBox">
                         <div class="service-icon">
                             <i class="fa fa-rocket"></i>
@@ -50,7 +50,7 @@
             <br>
             <div class="row">
                 <div class=" col-sm-6">
-                    <a style ="text-decoration:none;" href="http://localhost/web_tugas_akhir/kemahasiswaan/Login/login-kemahasiswaan.php">
+                    <a style ="text-decoration:none;" href="http://localhost/web_tugas_akhir/kemahasiswaan/Login">
                     <div class="serviceBox">
                         <div class="service-icon">
                             <i class="fa fa-briefcase"></i>
@@ -64,7 +64,7 @@
                 </div>
 
                 <div class=" col-sm-6">
-                <a style ="text-decoration:none;" href="http://localhost/web_tugas_akhir/Pembina/login/login.php">
+                <a style ="text-decoration:none;" href="http://localhost/web_tugas_akhir/Pembina/login">
                     <div class="serviceBox">
                         <div class="service-icon">
                             <i class="fa fa-briefcase"></i>
