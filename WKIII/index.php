@@ -3,6 +3,7 @@
 <?php
 
         include "SessionWKIII.php";
+        include "../inc/koneksi.php";
 
 ?>
 <head>
@@ -13,7 +14,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Pengurus Ormawa</title>
+    <title>WKIII</title>
 
 <?php include '../template/head.php' ?>
 
@@ -46,14 +47,46 @@
                     <main class="col overflow-auto h-100">
             <div class="bg-light border rounded-3 p-3">
                 <h2>Main</h2>
-                <p>Sriracha biodiesel taxidermy organic post-ironic, Intelligentsia salvia mustache 90's code editing brunch. Butcher polaroid VHS art party, hashtag Brooklyn deep v PBR narwhal sustainable mixtape swag wolf squid tote bag. Tote bag cronut semiotics, raw denim deep v taxidermy messenger bag. Tofu YOLO Etsy, direct trade ethical Odd Future jean shorts paleo. Forage Shoreditch tousled aesthetic irony, street art organic Bushwick artisan cliche semiotics ugh synth chillwave meditation. Shabby chic lomo plaid vinyl chambray Vice. Vice sustainable cardigan, Williamsburg master cleanse hella DIY 90's blog.</p>
-                <p>Ethical Kickstarter PBR asymmetrical lo-fi. Dreamcatcher street art Carles, stumptown gluten-free Kickstarter artisan Wes Anderson wolf pug. Godard sustainable you probably haven't heard of them, vegan farm-to-table Williamsburg slow-carb readymade disrupt deep v. Meggings seitan Wes Anderson semiotics, cliche American Apparel whatever. Helvetica cray plaid, vegan brunch Banksy leggings +1 direct trade. Wayfarers codeply PBR selfies. Banh mi McSweeney's Shoreditch selfies, forage fingerstache food truck occupy YOLO Pitchfork fixie iPhone fanny pack art party Portland.</p>
-                <hr />
-                <h4>More content...</h4>
-                <p>Ethical Kickstarter PBR asymmetrical lo-fi. Dreamcatcher street art Carles, stumptown gluten-free Kickstarter artisan Wes Anderson wolf pug. Godard sustainable you probably haven't heard of them, vegan farm-to-table Williamsburg slow-carb readymade disrupt deep v. Meggings seitan Wes Anderson semiotics, cliche American Apparel whatever. Helvetica cray plaid, vegan brunch Banksy leggings +1 direct trade. Wayfarers codeply PBR selfies. Banh mi McSweeney's Shoreditch selfies, forage fingerstache food truck occupy YOLO Pitchfork fixie iPhone fanny pack art party Portland.</p>
-                <hr />
-                <h4>More content...</h4>
-                <p>Sriracha biodiesel taxidermy organic post-ironic, Intelligentsia salvia mustache 90's code editing brunch. Butcher polaroid VHS art party, hashtag Brooklyn deep v PBR narwhal sustainable mixtape swag wolf squid tote bag. Tote bag cronut semiotics, raw denim deep v taxidermy messenger bag. Tofu YOLO Etsy, direct trade ethical Odd Future jean shorts paleo. Forage Shoreditch tousled aesthetic irony, street art organic Bushwick artisan cliche semiotics ugh synth chillwave meditation. Shabby chic lomo plaid vinyl chambray Vice. Vice sustainable cardigan, Williamsburg master cleanse hella DIY 90's blog.</p>
+                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+
+                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                            <script src="https://code.highcharts.com/highcharts.js"></script>
+                            <script src="https://code.highcharts.com/modules/exporting.js"></script>
+                            <script src="https://code.highcharts.com/modules/export-data.js"></script>
+                            <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+                            <figure class="highcharts-figure">
+                                <div id="container"></div>
+                                <p class="highcharts-description">
+                                    This chart shows how data labels can be added to the data series. This
+                                    can increase readability and comprehension for small datasets.
+                                </p>
+                            </figure>
+
+                            </div>
+                            
+                            <div class="carousel-item">
+                            <?php
+                                include "Struktur-WKIII.php";
+                            ?>
+                            </div>
+                            
+                        
+                        </div>
+                       
+                        </div>
+
+
+                                          
             </div>
         </main>
                     </div>
@@ -100,7 +133,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login/logout.php">Logout</a>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
                 </div>
             </div>
         </div>
@@ -126,3 +159,210 @@
 </body>
 
 </html>
+
+<style>
+
+.highcharts-figure,
+.highcharts-data-table table {
+    min-width: 360px;
+    max-width: 800px;
+    margin: 1em auto;
+}
+
+.highcharts-data-table table {
+    font-family: Verdana, sans-serif;
+    border-collapse: collapse;
+    border: 1px solid #ebebeb;
+    margin: 10px auto;
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+}
+
+.highcharts-data-table caption {
+    padding: 1em 0;
+    font-size: 1.2em;
+    color: #555;
+}
+
+.highcharts-data-table th {
+    font-weight: 600;
+    padding: 0.5em;
+}
+
+.highcharts-data-table td,
+.highcharts-data-table th,
+.highcharts-data-table caption {
+    padding: 0.5em;
+}
+
+.highcharts-data-table thead tr,
+.highcharts-data-table tr:nth-child(even) {
+    background: #f8f8f8;
+}
+
+.highcharts-data-table tr:hover {
+    background: #f1f7ff;
+}
+
+
+</style>
+
+
+
+
+<script>
+
+Highcharts.chart('container', {
+    chart: {
+        type: 'line'
+    },
+    
+    title: {
+        text: 'Kegiatan Mahasiswa tahun <?php echo date('Y');  ?> '
+    },
+   
+    xAxis: {
+        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+    },
+    yAxis: {
+        title: {
+            text: 'Jumlah Kegiatan'
+        }
+    },
+    plotOptions: {
+        line: {
+            dataLabels: {
+                enabled: true
+            },
+            enableMouseTracking: false
+        }
+    },
+    series: [{
+        name: 'Kegiatan',
+        data: [
+            <?php
+    
+              $nov = mysqli_query($koneksi, "SELECT count(ID_LPJ)as lpj FROM `lpj` WHERE ( MONTH(`TGL_PENGAJUANLPJ`) = 1) GROUP BY month(`TGL_PENGAJUANLPJ`)");
+              $nov_num = mysqli_fetch_array($nov);
+              if ($nov_num < 1){
+                    echo 0;
+              }else{
+                echo $nov_num['lpj'];
+              }
+              
+      ?>, 
+        <?php
+    
+              $nov = mysqli_query($koneksi, "SELECT count(ID_LPJ)as lpj FROM `lpj` WHERE ( MONTH(`TGL_PENGAJUANLPJ`) = 2) GROUP BY month(`TGL_PENGAJUANLPJ`)");
+              $nov_num = mysqli_fetch_array($nov);
+              if ($nov_num < 1){
+                echo 0;
+          }else{
+            echo $nov_num['lpj'];
+          }
+      ?>, 
+      <?php
+    
+              $nov = mysqli_query($koneksi, "SELECT count(ID_LPJ)as lpj FROM `lpj` WHERE ( MONTH(`TGL_PENGAJUANLPJ`) = 3) GROUP BY month(`TGL_PENGAJUANLPJ`)");
+              $nov_num = mysqli_fetch_array($nov);
+              if ($nov_num < 1){
+                echo 0;
+          }else{
+            echo $nov_num['lpj'];
+          }
+      ?>, 
+        <?php
+    
+              $nov = mysqli_query($koneksi, "SELECT count(ID_LPJ)as lpj FROM `lpj` WHERE ( MONTH(`TGL_PENGAJUANLPJ`) = 4) GROUP BY month(`TGL_PENGAJUANLPJ`)");
+              $nov_num = mysqli_fetch_array($nov);
+              if ($nov_num < 1){
+                echo 0;
+          }else{
+            echo $nov_num['lpj'];
+          }
+      ?>, 
+      <?php
+    
+              $nov = mysqli_query($koneksi, "SELECT count(ID_LPJ)as lpj FROM `lpj` WHERE ( MONTH(`TGL_PENGAJUANLPJ`) = 5) GROUP BY month(`TGL_PENGAJUANLPJ`)");
+              $nov_num = mysqli_fetch_array($nov);
+              if ($nov_num < 1){
+                echo 0;
+          }else{
+            echo $nov_num['lpj'];
+          }
+      ?>, 
+        <?php
+    
+              $nov = mysqli_query($koneksi, "SELECT count(ID_LPJ)as lpj FROM `lpj` WHERE ( MONTH(`TGL_PENGAJUANLPJ`) = 6) GROUP BY month(`TGL_PENGAJUANLPJ`)");
+              $nov_num = mysqli_fetch_array($nov);
+              if ($nov_num < 1){
+                echo 0;
+          }else{
+            echo $nov_num['lpj'];
+          }
+      ?>, 
+       <?php
+    
+              $nov = mysqli_query($koneksi, "SELECT count(ID_LPJ)as lpj FROM `lpj` WHERE ( MONTH(`TGL_PENGAJUANLPJ`) = 7) GROUP BY month(`TGL_PENGAJUANLPJ`)");
+              $nov_num = mysqli_fetch_array($nov);
+              if ($nov_num < 1){
+                echo 0;
+          }else{
+            echo $nov_num['lpj'];
+          }
+      ?>, 
+     <?php
+    
+              $nov = mysqli_query($koneksi, "SELECT count(ID_LPJ)as lpj FROM `lpj` WHERE ( MONTH(`TGL_PENGAJUANLPJ`) = 8) GROUP BY month(`TGL_PENGAJUANLPJ`)");
+              $nov_num = mysqli_fetch_array($nov);
+              if ($nov_num < 1){
+                echo 0;
+          }else{
+            echo $nov_num['lpj'];
+          }
+      ?>, 
+     <?php
+    
+              $nov = mysqli_query($koneksi, "SELECT count(ID_LPJ)as lpj FROM `lpj` WHERE ( MONTH(`TGL_PENGAJUANLPJ`) = 9) GROUP BY month(`TGL_PENGAJUANLPJ`)");
+              $nov_num = mysqli_fetch_array($nov);
+              if ($nov_num < 1){
+                echo 0;
+          }else{
+            echo $nov_num['lpj'];
+          };
+      ?>, 
+     <?php
+    
+              $nov = mysqli_query($koneksi, "SELECT count(ID_LPJ)as lpj FROM `lpj` WHERE ( MONTH(`TGL_PENGAJUANLPJ`) = 10) GROUP BY month(`TGL_PENGAJUANLPJ`)");
+              $nov_num = mysqli_fetch_array($nov);
+              if ($nov_num < 1){
+                echo 0;
+          }else{
+            echo $nov_num['lpj'];
+          }
+      ?>, 
+      <?php
+    
+              $nov = mysqli_query($koneksi, "SELECT count(ID_LPJ)as lpj FROM `lpj` WHERE ( MONTH(`TGL_PENGAJUANLPJ`) = 11) GROUP BY month(`TGL_PENGAJUANLPJ`)");
+              $nov_num = mysqli_fetch_array($nov);
+              if ($nov_num < 1){
+                echo 0;
+          }else{
+            echo $nov_num['lpj'];
+          }
+      ?>,
+     <?php
+    
+              $nov = mysqli_query($koneksi, "SELECT count(ID_LPJ)as lpj FROM `lpj` WHERE ( MONTH(`TGL_PENGAJUANLPJ`) = 12) GROUP BY month(`TGL_PENGAJUANLPJ`)");
+              $nov_num = mysqli_fetch_array($nov);
+              if ($nov_num < 1){
+                echo 0;
+          }else{
+            echo $nov_num['lpj'];
+          }
+      ?>
+       ]
+    }]
+});
+    </script>
