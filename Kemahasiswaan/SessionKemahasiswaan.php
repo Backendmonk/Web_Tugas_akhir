@@ -4,7 +4,7 @@
             session_start();
             //cek apakah session user masih berjalan atau tidak 
             if(!isset($_SESSION['userweb'])){
-                header("location:login/login-kemahasiswaan.php");
+                header("location:login");
             }
             
             $id = mysqli_query($koneksi,"SELECT * FROM `kemahasiswaan` WHERE `NIDN_KEMAHASISWAAN` = '$_SESSION[userweb]' ");
