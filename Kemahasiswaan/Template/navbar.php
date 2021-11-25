@@ -16,7 +16,7 @@
     <!-- Nav Item - User Information -->
     <li class="nav-item dropdown no-arrow">
         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
             <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= $array['NAMA_KEMAHASISWAAN']?></span>
             <img class="img-profile rounded-circle"
                 src="img/undraw_profile.svg">
