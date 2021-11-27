@@ -81,7 +81,7 @@ if (isset($_POST['submit'])) {
     $sql = "SELECT * FROM pembina WHERE NIDN='$NIDN'";
     $result = mysqli_query($koneksi, $sql);
     if (!$result->num_rows > 0) {
-        $sql = "INSERT INTO pengurus_ormawa (NAMA_PEMBINA, ID_ORMAWA, PASSOWRD_KETUA,NIDN,NO_TELP_PEMBINA)
+        $sql = "INSERT INTO pengurus_ormawa (NAMA_PEMBINA, ID_ORMAWA, PASSWORD_KETUA,NIDN,NO_TELP_PEMBINA)
                   VALUES ('$NAMA', '$NIDN', '$password',$ALAMAT,$NO)";
         $result = mysqli_query($koneksi, $sql);
         if ($result) {

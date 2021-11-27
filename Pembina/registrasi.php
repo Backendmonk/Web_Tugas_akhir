@@ -27,7 +27,7 @@ session_start();
     <div class="container">
       <div class="row">
         <div class="col-md-6">
-          <img style="width: 400px;" src="../../img/LogoStiki.png" alt="Image" class="img-fluid">
+          <img style="width: 400px;" src="../img/LogoStiki.png" alt="Image" class="img-fluid">
         </div>
         <div class="col-md-6 contents">
           <div class="row justify-content-center">
@@ -77,10 +77,10 @@ session_start();
   </div>
 
   
-    <script src="../../js/jquery-3.3.1.min.js"></script>
-    <script src="../../js/popper.min.js"></script>
-    <script src="../../js/bootstrap.min.js"></script>
-    <script src="../../js/main.js"></script>
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="../js/popper.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/main.js"></script>
   </body>
 </html>
 
@@ -117,7 +117,7 @@ if (isset($_POST['submit'])) {
               })
           </script>
         <?php
-          
+          header("Location: login/index.php");
         } else {
           ?>
           <script>

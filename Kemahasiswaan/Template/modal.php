@@ -12,7 +12,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <a class="btn btn-primary" href="Login/logout.php">Logout</a>
                 </div>
             </div>
         </div>
@@ -30,13 +30,14 @@
       </div>
       <div class="modal-body">
         <form action="" method="post">
-        <input class="form-control mb-2" name="NIDN"type="text" value="<?= $array['NIDN_KEMAHASISWAAN']?>"   placeholder="Default input" required disabled>
+        <input class="form-control mb-2" name="NIDN"type="text" value="<?= $array['NIDN_KEMAHASISWAAN']?>"   placeholder="Default input" required hidden>
+        <input class="form-control mb-2" type="text" value="<?= $array['NIDN_KEMAHASISWAAN']?>"   placeholder="Default input" required disabled>
         <input class="form-control mb-2" name="NAMA" type="text" value="<?= $array['NAMA_KEMAHASISWAAN']?>" placeholder="Default input" required>
         <input class="form-control mb-2" name="Jabatan" type="text" value="<?= $array['JABATAN_KEMAHASISWAAN']?>"  placeholder="Default input" required>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" name="submit" class="btn btn-primary">Simpan</button>
+        <button type="submit" name="submit1" class="btn btn-primary">Simpan</button>
         </form>
       </div>
     </div>
@@ -56,14 +57,15 @@
       </div>
       <div class="modal-body">
         <form action="" method="post">
-        <input disabled hidden class="form-control mb-2" name="pass"type="text" value="<?= $array['PASSWORD_KEMAHASISWAAN']?>"   placeholder="Default input" required disabled>
+        <input class="form-control mb-2" name="NIDN"type="text" value="<?= $array['NIDN_KEMAHASISWAAN']?>"   placeholder="Default input" required hidden>
+        <input  hidden class="form-control mb-2" name="pass"type="text" value="<?= $array['PASSWORD_KEMAHASISWAAN']?>"   placeholder="Default input" required >
         <input class="form-control mb-2" name="pass1" type="text"  placeholder="Password" required>
         <input class="form-control mb-2" name="passB" type="text"  placeholder="Password Baru" required>
-        <input class="form-control mb-2" name="PassBK" type="text"  placeholder="Konfirmasi Password" required>
+        <input class="form-control mb-2" name="passBK" type="text"  placeholder="Konfirmasi Password" required>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" name="submit" class="btn btn-primary">Simpan</button>
+        <button type="submit" name="submit2" class="btn btn-primary">Simpan</button>
         </form>
       </div>
     </div>

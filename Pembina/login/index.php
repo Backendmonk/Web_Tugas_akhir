@@ -94,11 +94,10 @@
         $qlog = mysqli_query($koneksi,"SELECT * FROM `pembina` where `NIDN` = '$nidn' ");
         $rows = mysqli_num_rows($qlog);
         $arr = mysqli_fetch_array($qlog);
-
         //cek apakah akun yang dimasukkan terdaftar
         //penamaan sesi harus unik
         if ($rows ==  1) {
-					if ( $password == $arr['PASSOWRD_PEMBINA'] ) {
+					if ( password_verify($password,$arr['PASSOWRD_PEMBINA']) ) {
 
 						session_start();
 						$_SESSION['userweb_Pemb'] = $arr['NIDN'];

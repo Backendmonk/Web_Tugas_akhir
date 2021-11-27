@@ -111,7 +111,7 @@ if (isset($_POST['submit'])) {
               })
           </script>
         <?php
-          
+          header("Location: Login/index.php");
         } else {
           ?>
           <script>

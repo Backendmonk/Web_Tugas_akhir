@@ -115,3 +115,5 @@
 
 </body>
 </html>
+
+<?php include 'Template/EditProfilePass.php' ?>
