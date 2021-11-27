@@ -229,8 +229,22 @@ aria-hidden="true">
         $ekstensi = array('doc','docx','pdf');
         $filename = $_FILES['konsep']['name'];
         $ext = pathinfo($filename, PATHINFO_EXTENSION);
-        $konsep = $rand.'_'.$filename;
+        if (!in_array($ekstensi,$ext)){
+           ?>
+                <script>
+									Swal.fire({
+									icon: 'error',
+									title: 'Oops...',
+									text: 'Ekstensi Konsep Kegiatan Salah',
+									
+									})
+									</script>
+           <?php
+        }
+        else{
         move_uploaded_file($_FILES['konsep']['tmp_name'], 'f_kegiatan/'.$rand.'_'.$filename);
+        $konsep = $rand.'_'.$filename;
+       }
         //
 
         // sub kegiatan
@@ -238,8 +252,22 @@ aria-hidden="true">
         $ekstensi = array('doc','docx','pdf');
         $filename = $_FILES['sub_kegiatan']['name'];
         $ext = pathinfo($filename, PATHINFO_EXTENSION);
-        $sub_kegiatan = $rand.'_'.$filename;
+        if (!in_array($ekstensi,$ext)){
+          ?>
+               <script>
+                 Swal.fire({
+                 icon: 'error',
+                 title: 'Oops...',
+                 text: 'Ekstensi Sub Kegiatan Salah',
+                 
+                 })
+                 </script>
+          <?php
+       }
+       else{
         move_uploaded_file($_FILES['sub_kegiatan']['tmp_name'], 'f_subkegiatan/'.$rand.'_'.$filename);
+        $sub_kegiatan = $rand.'_'.$filename;
+       }
         //
 
         // latar belakang
@@ -248,8 +276,23 @@ aria-hidden="true">
         $ekstensi = array('doc','docx','pdf');
         $filename = $_FILES['latar_belakang']['name'];
         $ext = pathinfo($filename, PATHINFO_EXTENSION);
-        $sub_kegiatan = $rand.'_'.$filename;
+        if (!in_array($ekstensi,$ext)){
+          ?>
+               <script>
+                 Swal.fire({
+                 icon: 'error',
+                 title: 'Oops...',
+                 text: 'Ekstensi Latar Belakang Salah',
+                 
+                 })
+                 </script>
+          <?php
+       }
+       else{
         move_uploaded_file($_FILES['latar_belakang']['tmp_name'], 'f_latarbelakang/'.$rand.'_'.$filename);
+        $sub_kegiatan = $rand.'_'.$filename;
+       }
+        
         //
 
         //tujuan
@@ -257,8 +300,23 @@ aria-hidden="true">
         $ekstensi = array('doc','docx','pdf');
         $filename = $_FILES['tujuan']['name'];
         $ext = pathinfo($filename, PATHINFO_EXTENSION);
-        $tujuan = $rand.'_'.$filename;
+        if (!in_array($ekstensi,$ext)){
+          ?>
+               <script>
+                 Swal.fire({
+                 icon: 'error',
+                 title: 'Oops...',
+                 text: 'Ekstensi Tujuan Salah',
+                 
+                 })
+                 </script>
+          <?php
+       }
+       else{
         move_uploaded_file($_FILES['tujuan']['tmp_name'], 'f_tujuan/'.$rand.'_'.$filename);
+        $tujuan = $rand.'_'.$filename;
+       }
+        
         //
 
         $tempat = $_POST['tempat'];
@@ -270,15 +328,76 @@ aria-hidden="true">
         $ekstensi = array('doc','docx','pdf');
         $filename = $_FILES['sk']['name'];
         $ext = pathinfo($filename, PATHINFO_EXTENSION);
+        if (!in_array($ekstensi,$ext)){
+          ?>
+               <script>
+                 Swal.fire({
+                 icon: 'error',
+                 title: 'Oops...',
+                 text: 'Ekstensi SK Salah',
+                 
+                 })
+                 </script>
+          <?php
+       }
+       else{
         $sk = $rand.'_'.$filename;
         move_uploaded_file($_FILES['sk']['tmp_name'], 'f_SK/'.$rand.'_'.$filename);
+      }
         //
 
         //timeline
-        $timeline = $_POST['timeline'];
-
+       
+        $sk = $_POST['timeline'];
+        $ran_Num = rand();
+        $ekstensi = array('doc','docx','pdf');
+        $filename = $_FILES['timeline']['name'];
+        $ext = pathinfo($filename, PATHINFO_EXTENSION);
+        if (!in_array($ekstensi,$ext)){
+          ?>
+               <script>
+                 Swal.fire({
+                 icon: 'error',
+                 title: 'Oops...',
+                 text: 'Ekstensi Timeline Salah',
+                 
+                 })
+                 </script>
+          <?php
+       }
+       else{
+        $timeline = $rand.'_'.$filename;
+        move_uploaded_file($_FILES['timeline']['tmp_name'], 'f_timeline/'.$rand.'_'.$filename);
+       }
+        
         //
+
+        //rab
         $rab = $_POST['rab'];
+        $sk = $_POST['rab'];
+        $ran_Num = rand();
+        $ekstensi = array('doc','docx','pdf');
+        $filename = $_FILES['rab']['name'];
+        $rab = pathinfo($filename, PATHINFO_EXTENSION);
+        if (!in_array($ekstensi,$ext)){
+          ?>
+               <script>
+                 Swal.fire({
+                 icon: 'error',
+                 title: 'Oops...',
+                 text: 'Ekstensi RAB Salah',
+                 
+                 })
+                 </script>
+          <?php
+       }
+       else{
+        $sk = $rand.'_'.$filename;
+        move_uploaded_file($_FILES['ra']['tmp_name'], 'f_rab/'.$rand.'_'.$filename);
+       }
+        
+        //
+
         $ketua = $_POST['ketua'];
         $contac = $_POST['contact'];
         $kategori = $_POST['kategori'];
