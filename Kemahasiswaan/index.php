@@ -130,7 +130,7 @@
 
 <?php 
     if (isset($_POST['submit'])) {
-        if ($_POST['pass1'] == $_POST['pass2']) {
+        if ($_POST['pass'] == $_POST['pass1']) {
             $pass = $_POST['pass1'];
             $password = password_hash($pass,PASSWORD_DEFAULT);
         }

@@ -12,7 +12,6 @@
 <!-- Topbar Navbar -->
 <ul class="navbar-nav ml-auto">
 
-   
     <!-- Nav Item - User Information -->
     <li class="nav-item dropdown no-arrow">
         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
@@ -27,6 +26,10 @@
             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#staticBackdrop">
                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                 Profil
+            </a>
+            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#staticBackdropPass">
+                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                Password
             </a>
             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>

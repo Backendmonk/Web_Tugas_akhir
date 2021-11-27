@@ -25,18 +25,18 @@ session_start();
     <div class="container">
       <div class="row">
         <div class="col-md-6">
-          <img style="width: 400px;" src="../../img/LogoStiki.png" alt="Image" class="img-fluid">
+          <img style="width: 400px;" src="../img/LogoStiki.png" alt="Image" class="img-fluid">
         </div>
         <div class="col-md-6 contents">
           <div class="row justify-content-center">
             <div class="col-md-8">
               <div class="mb-4 text-center">
-              <h3 style=" color: #e6e6e6; ">REGISTER PEMBINA</h3>
+              <h3 style=" color: #e6e6e6; ">REGISTER ORMAWA</h3>
               <h2 style=" color: #e6e6e6; " class="mb-4">SIMAKS</h2>
             </div>
             <form action="" method="post">
               <div class="form-group first">
-                <label for="NIDN">NIDN</label>
+                <label for="NIDN">ID</label>
                 <input type="text" class="form-control" id="NIDN" name="NIDN" required>
 
               </div>
@@ -46,20 +46,8 @@ session_start();
                 
               </div>
               <div class="form-group first" style="border-radius: 0px;">
-                <label for="NIDN">NAMA</label>
+                <label for="NIDN">NAMA Ormawa</label>
                 <input type="text" class="form-control" id="NIDN" name="NAMA" required>
-
-              </div>
-             
-              <div class="form-group first" style="border-radius: 0px;">
-                <label for="NIDN">ALAMAT</label>
-                <input type="text" class="form-control" id="NIDN" name="ALAMAT" required>
-
-              </div>
-             
-              <div class="form-group last mb-4" >
-                <label for="NIDN">NO TELEPON</label>
-                <input type="text" class="form-control" id="NIDN" name="NO" required>
 
               </div>
               
@@ -89,19 +77,16 @@ if (isset($_POST['submit'])) {
   $pw = $_PPOST['password'];
   $password = password_hash($pw, PASSWORD_DEFAULT);
   $NAMA = $_POST['NAMA'];
-  $ALAMAT = $_POST['ALAMAT'];
-  $NO = $_POST['NO'];
 
     $sql = "SELECT * FROM pembina WHERE NIDN='$NIDN'";
     $result = mysqli_query($koneksi, $sql);
     if (!$result->num_rows > 0) {
-        $sql = "INSERT INTO pembina (NAMA_PEMBINA, NIDN, PASSOWRD_PEMBINA,ALAMAT_PEMBINA,NO_TELP_PEMBINA)
+        $sql = "INSERT INTO pengurus_ormawa (NAMA_PEMBINA, ID_ORMAWA, PASSOWRD_KETUA,NIDN,NO_TELP_PEMBINA)
                   VALUES ('$NAMA', '$NIDN', '$password',$ALAMAT,$NO)";
         $result = mysqli_query($koneksi, $sql);
         if ($result) {
             $_POST['NIDN']="";
           $_POST['NAMA']="";
-          $_POST['Jabatan']="";
             $_POST['password'] = "";
             ?>
             <script>
@@ -132,7 +117,7 @@ if (isset($_POST['submit'])) {
       Swal.fire({
       icon: 'error',
       title: 'Oops...',
-      text: 'NIM SUDAH Terpakai',
+      text: 'ID SUDAH Terpakai',
       
       })
     </script>
