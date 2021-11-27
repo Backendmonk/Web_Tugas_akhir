@@ -225,39 +225,52 @@ aria-hidden="true">
         $nama = $_POST['nama_kegiatan'];
         
        // konsep kegiatan
-        $ran_Num = rand();
-        $filename = $_FILES['konsep']['name'];
+        $ran_Num_kg = rand();
+        $filename_kg = $_FILES['konsep']['name'];
+        $ext_kg = pathinfo($filename_kg, PATHINFO_EXTENSION);
+        $ekstensi_kg = array('doc','docx','pdf');
   
         // sub kegiatan
-        $ran_Num = rand();
-        $ekstensi = array('doc','docx','pdf');
+        $ran_Num_sb = rand();
+        $filename_sb = $_FILES['latar_belakang']['name'];
+        $ext_sb = pathinfo($filename_sb, PATHINFO_EXTENSION);
+        $ekstensi_sb = array('doc','docx','pdf');
 
         // latar belakang
-        $ran_Num = rand();
-        $filename = $_FILES['latar_belakang']['name'];
+        $ran_Num_lb = rand();
+        $filename_lb= $_FILES['latar_belakang']['name'];
+        $ext_lb = pathinfo($filename_lb, PATHINFO_EXTENSION);
+        $ekstensi_lb = array('doc','docx','pdf');
       
         //tujuan
-        $ran_Num = rand();
-        $filename = $_FILES['tujuan']['name'];
+        $ran_Num_tj = rand();
+        $filename_tj = $_FILES['tujuan']['name'];
+        $ext_tj = pathinfo($filename_tj, PATHINFO_EXTENSION);
+        $ekstensi_tj = array('doc','docx','pdf');
 
         $tempat = $_POST['tempat'];
         $tanggal = $_POST['tanggal'];
 
         //Sk
-        $ran_Num = rand();
-        $filename = $_FILES['sk']['name'];
+        $ran_Num_sk  = rand();
+        $filename_sk = $_FILES['sk']['name'];
+        $ext_sk  = pathinfo($filename_sk, PATHINFO_EXTENSION);
+        $ekstensi_sk  = array('doc','docx','pdf');
 
         //timeline
        
-        $ran_Num = rand();
-        $filename = $_FILES['timeline']['name'];
+        $ran_Num_tm = rand();
+        $filename_tm = $_FILES['timeline']['name'];
+        $ext_tm = pathinfo($filename_tm, PATHINFO_EXTENSION);
+        $ekstensi_tm = array('doc','docx','pdf');
      
         //rab
-        $ran_Num = rand();
-        $filename = $_FILES['rab']['name'];
+        $ran_Num_rb = rand();
+        $filename_rb = $_FILES['rab']['name'];
+        $ext_rb = pathinfo($filename_rb, PATHINFO_EXTENSION);
+        $ekstensi_rb = array('doc','docx','pdf');
 
-        $ext = pathinfo($filename, PATHINFO_EXTENSION);
-        $ekstensi = array('doc','docx','pdf');
+    
         $ketua = $_POST['ketua'];
         $contac = $_POST['contact'];
         $kategori = $_POST['kategori'];
@@ -272,26 +285,113 @@ aria-hidden="true">
         $id_ormawa =  $arr_ID['idormawa'];
         //
         
+        if(!in_array($ext_kg,$ekstensi_kg)){
+              ?>
+              <script>
+                    Swal.fire({
+                    icon: 'error',
+                    title: 'Gagal',
+                    text: 'Ekstensi Salah',
+                    
+                    })
+                    </script>
+          <?php
+        }
+        elseif (!in_array($ext_lb,$ekstensi_lb)) {
+              ?>
+              <script>
+                    Swal.fire({
+                    icon: 'error',
+                    title: 'Gagal',
+                    text: 'Ekstensi Salah',
+                    
+                    })
+                    </script>
+          <?php
+        }
+        elseif (!in_array($ext_rb,$ekstensi_rb)) {
+          ?>
+              <script>
+                    Swal.fire({
+                    icon: 'error',
+                    title: 'Gagal',
+                    text: 'Ekstensi Salah',
+                    
+                    })
+                    </script>
+          <?php
+        }
+        elseif (!in_array($ext_sb,$ekstensi_sb)) {
+          ?>
+              <script>
+                    Swal.fire({
+                    icon: 'error',
+                    title: 'Gagal',
+                    text: 'Ekstensi Salah',
+                    
+                    })
+                    </script>
+          <?php
+        }
+        elseif (!in_array($ext_sk,$ekstensi_sk)) {
+          ?>
+              <script>
+                    Swal.fire({
+                    icon: 'error',
+                    title: 'Gagal',
+                    text: 'Ekstensi Salah',
+                    
+                    })
+                    </script>
+          <?php
+        }
+        elseif (!in_array($ext_tj,$ekstensi_tj)) {
+          ?>
+              <script>
+                    Swal.fire({
+                    icon: 'error',
+                    title: 'Gagal',
+                    text: 'Ekstensi Salah',
+                    
+                    })
+                    </script>
+          <?php
+        }
+        elseif (!in_array($ext_tm,$ekstensi_tm)) {
+          ?>
+              <script>
+                    Swal.fire({
+                    icon: 'error',
+                    title: 'Gagal',
+                    text: 'Ekstensi Salah',
+                    
+                    })
+                    </script>
+          <?php
+        }
+        else{
         // tmp file
-         move_uploaded_file($_FILES['konsep']['tmp_name'], 'f_kegiatan/'.$ran_Num.'_'.$filename);
-         $konsep = $ran_Num.'_'.$filename;
+         move_uploaded_file($_FILES['konsep']['tmp_name'], 'f_kegiatan/'.$ran_Num_kg.'_'.$filename_kg);
+         $konsep = $ran_Num_kg.'_'.$filename_kg;
 
-         move_uploaded_file($_FILES['sub_kegiatan']['tmp_name'], 'f_subkegiatan/'.$ran_Num.'_'.$filename);
-         $sub_kegiatan = $ran_Num.'_'.$filename;
+         move_uploaded_file($_FILES['sub_kegiatan']['tmp_name'], 'f_subkegiatan/'.$ran_Num_sb.'_'.$filename_sb);
+         $sub_kegiatan = $ran_Num_sb.'_'.$filename_sb;
          
-         move_uploaded_file($_FILES['latar_belakang']['tmp_name'], 'f_latarbelakang/'.$ran_Num.'_'.$filename);
-         $latar_belakang = $ran_Num.'_'.$filename;
-         move_uploaded_file($_FILES['tujuan']['tmp_name'], 'f_tujuan/'.$ran_Num.'_'.$filename);
-         $tujuan = $ran_Num.'_'.$filename;
+         move_uploaded_file($_FILES['latar_belakang']['tmp_name'], 'f_latarbelakang/'.$ran_Num_lb.'_'.$filename_lb);
+         $latar_belakang = $ran_Num_lb.'_'.$filename_lb;
+
+         move_uploaded_file($_FILES['tujuan']['tmp_name'], 'f_tujuan/'.$ran_Num_tj .'_'.$filename_tj );
+         $tujuan = $ran_Num_tj .'_'.$filename_tj ;
         
-         move_uploaded_file($_FILES['sk']['tmp_name'], 'f_SK/'.$ran_Num.'_'.$filename);
-         $sk = $ran_Num.'_'.$filename;
+         move_uploaded_file($_FILES['sk']['tmp_name'], 'f_SK/'.$ran_Num_sk .'_'.$filename_sk );
+         $sk = $ran_Num_sk .'_'.$filename_sk ;
          
-         move_uploaded_file($_FILES['timeline']['tmp_name'], 'f_timeline/'.$ran_Num.'_'.$filename);
-         $timeline = $ran_Num.'_'.$filename;
+         move_uploaded_file($_FILES['timeline']['tmp_name'], 'f_timeline/'.$ran_Num_tm.'_'.$filename_tm);
+         $timeline = $ran_Num_tm.'_'.$filename_tm;
+
+         move_uploaded_file($_FILES['rab']['tmp_name'], 'f_rab/'.$ran_Num_rb.'_'.$filename_rb);
+         $rab = $ran_Num_rb.'_'.$filename_rb;
         
-         move_uploaded_file($_FILES['rab']['tmp_name'], 'f_rab/'.$ran_Num.'_'.$filename);
-         $rab = $ran_Num.'_'.$filename;
        
 
           //insert query
@@ -311,17 +411,9 @@ aria-hidden="true">
        
         
 
+                }
         
-        
-
-
-
-        
-
-    
-
-
-
+      
       }
 
 ?>
