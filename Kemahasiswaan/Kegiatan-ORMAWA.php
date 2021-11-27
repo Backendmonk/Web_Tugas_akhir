@@ -31,7 +31,6 @@
 <?php include 'template/navbar.php' ?>
     <!-- Page Wrapper -->
     <div id="wrapper">
-
     <?php include 'template/sidebar.php' ?>
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column pt-4">

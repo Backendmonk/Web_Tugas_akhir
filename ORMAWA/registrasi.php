@@ -1,6 +1,6 @@
 <?php 
 
-include '../../inc/koneksi.php';
+include '../inc/koneksi.php';
  
 error_reporting(0);
  
@@ -108,7 +108,7 @@ if (isset($_POST['submit'])) {
               Swal.fire({
               icon: 'success',
               title: 'success',
-              text: 'register pembina berhasil',
+              text: 'register Ormawa berhasil',
               
               })
           </script>
@@ -132,7 +132,7 @@ if (isset($_POST['submit'])) {
       Swal.fire({
       icon: 'error',
       title: 'Oops...',
-      text: 'NIDN SUDAH Terpakai',
+      text: 'NIM SUDAH Terpakai',
       
       })
     </script>
