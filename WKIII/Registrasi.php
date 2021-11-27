@@ -105,7 +105,7 @@ if (isset($_POST['submit'])) {
               Swal.fire({
               icon: 'success',
               title: 'success',
-              text: 'register pembina berhasil',
+              text: 'register WKIII berhasil',
               
               })
           </script>
