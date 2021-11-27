@@ -52,7 +52,7 @@
 
                     ?>
 
-                    <form class="row g-3">
+                    <form class="row g-3" method = "post" enctype = "multipart/form-data">
   <div class="col-md-6">
     <label for="inputEmail4" class="form-label">ID Kegiatan</label>
     <input type="text" readonly class="form-control"  value = " <?php echo $random ?> " id="inputEmail4" name = "ID">
@@ -77,23 +77,23 @@
   </div>
   <div class="col-md-6">
     <label for="inputEmail4" class="form-label">Sub Kegiatan</label>
-    <input type="file" class="form-control" id="inputEmail4" name="Sub_kegiatan">
+    <input type="file" class="form-control" id="inputEmail4" name="sub_kegiatan">
   </div>
   <div class="col-md-6">
     <label for="inputPassword4" class="form-label">Pj Kegiatan</label>
-    <input type="text" class="form-control" id="inputPassword4">
+    <input type="text" class="form-control" id="inputPassword4" name ="pj">
   </div>
   <div class="col-md-6">
     <label for="inputPassword4" class="form-label">Latar Belakang</label>
-    <input type="file" class="form-control" id="inputPassword4" name= "Latar_belakang">
+    <input type="file" class="form-control" id="inputPassword4" name= "latar_belakang">
   </div>
   <div class="col-md-6">
     <label for="inputPassword4" class="form-label">Tujuan Kegiatan</label>
-    <input type="file" class="form-control" id="inputPassword4" name="Tujuan">
+    <input type="file" class="form-control" id="inputPassword4" name="tujuan">
   </div>
   <div class="col-md-6">
     <label for="inputPassword4" class="form-label">Tanggal Kegiatan</label>
-    <input type="text" class="form-control" id="inputPassword4">
+    <input type="date" class="form-control" id="inputPassword4" name="tanggal">
   </div>
   <div class="col-md-6">
     <label for="inputPassword4" class="form-label">Tempat kegiatan</label>
@@ -148,7 +148,7 @@
   <div class="col-12">
       <br>
     
-    <button type="submit" class="btn btn-primary">Sign in</button>
+    <button type="submit" class="btn btn-primary" name = "ajukan">Ajukan</button>
   </div>
   
 </form>
@@ -213,3 +213,95 @@ aria-hidden="true">
 
 </body>
 </html>
+
+
+
+
+<?php 
+    error_reporting(0);
+
+      if(isset($_POST['ajukan'])){
+        $id = $_POST['ID'];
+        $nama = $_POST['nama_kegiatan'];
+        
+       // konsep kegiatan
+        $ran_Num = rand();
+        $ekstensi = array('doc','docx','pdf');
+        $filename = $_FILES['konsep']['name'];
+        $ext = pathinfo($filename, PATHINFO_EXTENSION);
+        $konsep = $rand.'_'.$filename;
+        move_uploaded_file($_FILES['konsep']['tmp_name'], 'f_kegiatan/'.$rand.'_'.$filename);
+        //
+
+        // sub kegiatan
+        $ran_Num = rand();
+        $ekstensi = array('doc','docx','pdf');
+        $filename = $_FILES['sub_kegiatan']['name'];
+        $ext = pathinfo($filename, PATHINFO_EXTENSION);
+        $sub_kegiatan = $rand.'_'.$filename;
+        move_uploaded_file($_FILES['sub_kegiatan']['tmp_name'], 'f_subkegiatan/'.$rand.'_'.$filename);
+        //
+
+        // latar belakang
+        $latar_belakang = $_POST['latar_belakang'];
+        $ran_Num = rand();
+        $ekstensi = array('doc','docx','pdf');
+        $filename = $_FILES['latar_belakang']['name'];
+        $ext = pathinfo($filename, PATHINFO_EXTENSION);
+        $sub_kegiatan = $rand.'_'.$filename;
+        move_uploaded_file($_FILES['latar_belakang']['tmp_name'], 'f_latarbelakang/'.$rand.'_'.$filename);
+        //
+
+        //tujuan
+        $ran_Num = rand();
+        $ekstensi = array('doc','docx','pdf');
+        $filename = $_FILES['tujuan']['name'];
+        $ext = pathinfo($filename, PATHINFO_EXTENSION);
+        $tujuan = $rand.'_'.$filename;
+        move_uploaded_file($_FILES['tujuan']['tmp_name'], 'f_tujuan/'.$rand.'_'.$filename);
+        //
+
+        $tempat = $_POST['tempat'];
+        $tanggal = $_POST['tanggal'];
+
+        //Sk
+        $sk = $_POST['sk'];
+        $ran_Num = rand();
+        $ekstensi = array('doc','docx','pdf');
+        $filename = $_FILES['sk']['name'];
+        $ext = pathinfo($filename, PATHINFO_EXTENSION);
+        $sk = $rand.'_'.$filename;
+        move_uploaded_file($_FILES['sk']['tmp_name'], 'f_SK/'.$rand.'_'.$filename);
+        //
+
+        //timeline
+        $timeline = $_POST['timeline'];
+
+        //
+        $rab = $_POST['rab'];
+        $ketua = $_POST['ketua'];
+        $contac = $_POST['contact'];
+        $kategori = $_POST['kategori'];
+        $pj = $_POST['pj'];
+        $status = 'Belum Diterima';
+        $nama_ormawa = $_POST['nama_ormawa'];
+        
+        //get ormawa id
+
+        $getid = mysqli_query($koneksi,"SELECT ID_ORMAWA as idormawa FROM `ormawa` Where NAMA_ORMAWA ='$nama_ormawa' ");
+        $arr_ID = mysqli_fetch_array($getid);
+
+        $id_ormawa =  $arr_ID['idormawa'];
+        
+
+
+
+        
+
+    
+
+
+
+      }
+
+?>
