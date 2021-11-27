@@ -218,67 +218,59 @@ aria-hidden="true">
 
 
 <?php 
-    error_reporting(0);
+    
 
       if(isset($_POST['ajukan'])){
         $id = $_POST['ID'];
         $nama = $_POST['nama_kegiatan'];
         
        // konsep kegiatan
-        $ran_Num = rand();
-        $ekstensi = array('doc','docx','pdf');
-        $filename = $_FILES['konsep']['name'];
-        $ext = pathinfo($filename, PATHINFO_EXTENSION);
-        $konsep = $rand.'_'.$filename;
-        move_uploaded_file($_FILES['konsep']['tmp_name'], 'f_kegiatan/'.$rand.'_'.$filename);
-        //
-
+        $ran_Num_kg = rand();
+        $filename_kg = $_FILES['konsep']['name'];
+        $ext_kg = pathinfo($filename_kg, PATHINFO_EXTENSION);
+        $ekstensi_kg = array('doc','docx','pdf');
+  
         // sub kegiatan
-        $ran_Num = rand();
-        $ekstensi = array('doc','docx','pdf');
-        $filename = $_FILES['sub_kegiatan']['name'];
-        $ext = pathinfo($filename, PATHINFO_EXTENSION);
-        $sub_kegiatan = $rand.'_'.$filename;
-        move_uploaded_file($_FILES['sub_kegiatan']['tmp_name'], 'f_subkegiatan/'.$rand.'_'.$filename);
-        //
+        $ran_Num_sb = rand();
+        $filename_sb = $_FILES['latar_belakang']['name'];
+        $ext_sb = pathinfo($filename_sb, PATHINFO_EXTENSION);
+        $ekstensi_sb = array('doc','docx','pdf');
 
         // latar belakang
-        $latar_belakang = $_POST['latar_belakang'];
-        $ran_Num = rand();
-        $ekstensi = array('doc','docx','pdf');
-        $filename = $_FILES['latar_belakang']['name'];
-        $ext = pathinfo($filename, PATHINFO_EXTENSION);
-        $sub_kegiatan = $rand.'_'.$filename;
-        move_uploaded_file($_FILES['latar_belakang']['tmp_name'], 'f_latarbelakang/'.$rand.'_'.$filename);
-        //
-
+        $ran_Num_lb = rand();
+        $filename_lb= $_FILES['latar_belakang']['name'];
+        $ext_lb = pathinfo($filename_lb, PATHINFO_EXTENSION);
+        $ekstensi_lb = array('doc','docx','pdf');
+      
         //tujuan
-        $ran_Num = rand();
-        $ekstensi = array('doc','docx','pdf');
-        $filename = $_FILES['tujuan']['name'];
-        $ext = pathinfo($filename, PATHINFO_EXTENSION);
-        $tujuan = $rand.'_'.$filename;
-        move_uploaded_file($_FILES['tujuan']['tmp_name'], 'f_tujuan/'.$rand.'_'.$filename);
-        //
+        $ran_Num_tj = rand();
+        $filename_tj = $_FILES['tujuan']['name'];
+        $ext_tj = pathinfo($filename_tj, PATHINFO_EXTENSION);
+        $ekstensi_tj = array('doc','docx','pdf');
 
         $tempat = $_POST['tempat'];
         $tanggal = $_POST['tanggal'];
 
         //Sk
-        $sk = $_POST['sk'];
-        $ran_Num = rand();
-        $ekstensi = array('doc','docx','pdf');
-        $filename = $_FILES['sk']['name'];
-        $ext = pathinfo($filename, PATHINFO_EXTENSION);
-        $sk = $rand.'_'.$filename;
-        move_uploaded_file($_FILES['sk']['tmp_name'], 'f_SK/'.$rand.'_'.$filename);
-        //
+        $ran_Num_sk  = rand();
+        $filename_sk = $_FILES['sk']['name'];
+        $ext_sk  = pathinfo($filename_sk, PATHINFO_EXTENSION);
+        $ekstensi_sk  = array('doc','docx','pdf');
 
         //timeline
-        $timeline = $_POST['timeline'];
+       
+        $ran_Num_tm = rand();
+        $filename_tm = $_FILES['timeline']['name'];
+        $ext_tm = pathinfo($filename_tm, PATHINFO_EXTENSION);
+        $ekstensi_tm = array('doc','docx','pdf');
+     
+        //rab
+        $ran_Num_rb = rand();
+        $filename_rb = $_FILES['rab']['name'];
+        $ext_rb = pathinfo($filename_rb, PATHINFO_EXTENSION);
+        $ekstensi_rb = array('doc','docx','pdf');
 
-        //
-        $rab = $_POST['rab'];
+    
         $ketua = $_POST['ketua'];
         $contac = $_POST['contact'];
         $kategori = $_POST['kategori'];
@@ -290,18 +282,138 @@ aria-hidden="true">
 
         $getid = mysqli_query($koneksi,"SELECT ID_ORMAWA as idormawa FROM `ormawa` Where NAMA_ORMAWA ='$nama_ormawa' ");
         $arr_ID = mysqli_fetch_array($getid);
-
         $id_ormawa =  $arr_ID['idormawa'];
+        //
+        
+        if(!in_array($ext_kg,$ekstensi_kg)){
+              ?>
+              <script>
+                    Swal.fire({
+                    icon: 'error',
+                    title: 'Gagal',
+                    text: 'Ekstensi Salah',
+                    
+                    })
+                    </script>
+          <?php
+        }
+        elseif (!in_array($ext_lb,$ekstensi_lb)) {
+              ?>
+              <script>
+                    Swal.fire({
+                    icon: 'error',
+                    title: 'Gagal',
+                    text: 'Ekstensi Salah',
+                    
+                    })
+                    </script>
+          <?php
+        }
+        elseif (!in_array($ext_rb,$ekstensi_rb)) {
+          ?>
+              <script>
+                    Swal.fire({
+                    icon: 'error',
+                    title: 'Gagal',
+                    text: 'Ekstensi Salah',
+                    
+                    })
+                    </script>
+          <?php
+        }
+        elseif (!in_array($ext_sb,$ekstensi_sb)) {
+          ?>
+              <script>
+                    Swal.fire({
+                    icon: 'error',
+                    title: 'Gagal',
+                    text: 'Ekstensi Salah',
+                    
+                    })
+                    </script>
+          <?php
+        }
+        elseif (!in_array($ext_sk,$ekstensi_sk)) {
+          ?>
+              <script>
+                    Swal.fire({
+                    icon: 'error',
+                    title: 'Gagal',
+                    text: 'Ekstensi Salah',
+                    
+                    })
+                    </script>
+          <?php
+        }
+        elseif (!in_array($ext_tj,$ekstensi_tj)) {
+          ?>
+              <script>
+                    Swal.fire({
+                    icon: 'error',
+                    title: 'Gagal',
+                    text: 'Ekstensi Salah',
+                    
+                    })
+                    </script>
+          <?php
+        }
+        elseif (!in_array($ext_tm,$ekstensi_tm)) {
+          ?>
+              <script>
+                    Swal.fire({
+                    icon: 'error',
+                    title: 'Gagal',
+                    text: 'Ekstensi Salah',
+                    
+                    })
+                    </script>
+          <?php
+        }
+        else{
+        // tmp file
+         move_uploaded_file($_FILES['konsep']['tmp_name'], 'f_kegiatan/'.$ran_Num_kg.'_'.$filename_kg);
+         $konsep = $ran_Num_kg.'_'.$filename_kg;
+
+         move_uploaded_file($_FILES['sub_kegiatan']['tmp_name'], 'f_subkegiatan/'.$ran_Num_sb.'_'.$filename_sb);
+         $sub_kegiatan = $ran_Num_sb.'_'.$filename_sb;
+         
+         move_uploaded_file($_FILES['latar_belakang']['tmp_name'], 'f_latarbelakang/'.$ran_Num_lb.'_'.$filename_lb);
+         $latar_belakang = $ran_Num_lb.'_'.$filename_lb;
+
+         move_uploaded_file($_FILES['tujuan']['tmp_name'], 'f_tujuan/'.$ran_Num_tj .'_'.$filename_tj );
+         $tujuan = $ran_Num_tj .'_'.$filename_tj ;
+        
+         move_uploaded_file($_FILES['sk']['tmp_name'], 'f_SK/'.$ran_Num_sk .'_'.$filename_sk );
+         $sk = $ran_Num_sk .'_'.$filename_sk ;
+         
+         move_uploaded_file($_FILES['timeline']['tmp_name'], 'f_timeline/'.$ran_Num_tm.'_'.$filename_tm);
+         $timeline = $ran_Num_tm.'_'.$filename_tm;
+
+         move_uploaded_file($_FILES['rab']['tmp_name'], 'f_rab/'.$ran_Num_rb.'_'.$filename_rb);
+         $rab = $ran_Num_rb.'_'.$filename_rb;
+        
+       
+
+          //insert query
+          $ins = mysqli_query($koneksi,"INSERT INTO `pengajuan_kegiatan`(`ID_PENGAJUAN`, `ID_ORMAWA`, `NAMA_ORMAWA_FK`, `NAMA_KEGIATAN`, `KONSEP_KEGIATAN`, `SUB_KEGIATAN`, `PJ_KEGIATAN`, `LATAR_BELAKANG`, `TUJUAN_KEGIATAN`, `TGL_KEGIATAN`, `TEMPAT_KEGIATAN`, `SK_KEPANITIAAN`, `TIMELINE_KEGIATAN`, `RAB`, `KETUA_PANITIA`, `CONTAC_PERSON`, `KATEGORI_KEGIATAN`, `STATUS`) VALUES ('$id','$id_ormawa','$nama_ormawa','$nama','$konsep','$sub_kegiatan','$pj','$latar_belakang','$tujuan','$tanggal','$tempat','$sk','$timeline','$rab','$ketua','$contac','$kategori','$status')");
+
+          ?>
+						<script>
+									Swal.fire({
+									icon: 'success',
+									title: 'Berhasil',
+									text: 'Pengajuan Berhasil',
+									
+									})
+									</script>
+				<?php
+        
+       
         
 
-
-
+                }
         
-
-    
-
-
-
+      
       }
 
 ?>
