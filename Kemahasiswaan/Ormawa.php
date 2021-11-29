@@ -78,7 +78,7 @@
                                                                     <td><?php 
                                                                     // manggil nama-nama pembina
                                                                         $NIDN = $data['NIDN'];
-                                                                        $id = mysqli_query($koneksi,"SELECT NAMA_PEMBINA FROM `pembina` WHERE `NIDN` = '$NIDN' ");
+                                                                        $id = mysqli_query($koneksi,"SELECT NAMA_PEMBINA, NIDN  FROM `pembina` WHERE `NIDN` = '$NIDN' ");
                                                                         $array = mysqli_fetch_array($id);
                                                                     echo $array['NAMA_PEMBINA'] ;?>
                                                                     </td>
@@ -111,12 +111,52 @@
                                                                     <td>
 
                                                                             <!-- <button type="submit" name="TambahKetua" class="btn btn-success"  data-toggle="modal" data-target="#staticBackdropKetua<?= $data['ID_ORMAWA'] ?>">edit Ketua</button> -->
-                                                                            <button type="button" name="EditOrmawa" class="btn btn-warning">Edit</button>
+                                                                            <button type="button" name="EditOrmawa" class="btn btn-warning" data-toggle="modal" data-target="#edit<?= $data['ID_ORMAWA'] ?>">Edit</button>
                                                                             <button type="button" name="DeleteOrmawa" class="btn btn-danger">Delete</button>
                                                                     </td>
                                                                 </tr>
                                                             
-                                                    
+                                                    <!--Edit Ormawa Modal -->
+                                                        <div class="modal fade" id="edit<?= $data['ID_ORMAWA'] ?>" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="staticBackdropLabel">Tambah Ormawa</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <form action="" method="post">
+                                                                <input class="form-control mb-2" name="id" type="text"  value="<?= $data['ID_ORMAWA'] ?>"  placeholder="ID Ormawa" required hidden>
+                                                                <input class="form-control mb-2" name="id" type="text"  value="<?= $data['ID_ORMAWA'] ?>"  placeholder="ID Ormawa" required disabled>
+                                                                <input class="form-control mb-2" name="namaOr" type="text"  placeholder="Nama Ormawa" value="<?= $data['NAMA_ORMAWA'] ?>" required>
+                                                                <input class="form-control mb-2" name="namaK" type="text"  placeholder="Nama Ketua" value="<?=$DK['NAMA_KETUA'] ?>" required>
+                                                                <input class="form-control mb-2" name="userK" type="text"  value="<?=$DK['USERNAME_KETUA'] ?>"  placeholder="Username Ketua" required>
+                                                                <input class="form-control mb-2" name="passKetua" type="password"  placeholder="password ketua" required>
+                                                                <select name="NIDN" required>
+                                                                <option  value="<?=$array['NIDN'] ?>"  hidden><?=$array['NAMA_PEMBINA']?></option>
+                                                                    <?php
+                                                                    $q = mysqli_query($koneksi,"SELECT NIDN,NAMA_PEMBINA FROM `pembina`");
+                                                                                                    
+
+                                                                    while ($data = mysqli_fetch_array($q)) {
+                                                                        ?>
+                                                                                <option value="<?php echo $data['NIDN']; ?>"><?php echo $data['NAMA_PEMBINA']; ?></option>
+
+                                                                    <?php
+                                                                    }
+                                                                    ?>
+                                                                </select>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                <button type="submit" name="submit3" class="btn btn-primary">Simpan</button>
+                                                                </form>
+                                                            </div>
+                                                            </div>
+                                                        </div>
+                                                        </div>
                                                 <?php
                                                 }
 
@@ -247,6 +287,8 @@
     </div>
   </div>
 </div>
+
+ 
 </body>
 
 </html>
@@ -261,10 +303,9 @@
     if (!$q->num_rows > 0) {
         $id = $_POST['id'];
         $NAMA = $_POST['namaOr'];
-        
         $userK =$_POST['userK'];
         $namaK =$_POST['namaK'];
-        $passk =$_POST['passKetua'];
+        $passk = password_hash($_POST['passKetua'],PASSWORD_DEFAULT);
             // query insert ormawa
          $sql = "INSERT INTO ormawa (NAMA_ORMAWA, NIDN,ID_ORMAWA)
          VALUES ('$NAMA', '$NIDN','$id');";

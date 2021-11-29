@@ -19,7 +19,7 @@
     </div>
 
   <!--Profile Modal -->
-<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="profile" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -30,10 +30,9 @@
       </div>
       <div class="modal-body">
         <form action="" method="post">
-        <input class="form-control mb-2" name="NIDN"type="text" value="<?= $array['NIDN_KEMAHASISWAAN']?>"   placeholder="Default input" required hidden>
-        <input class="form-control mb-2" type="text" value="<?= $array['NIDN_KEMAHASISWAAN']?>"   placeholder="Default input" required disabled>
-        <input class="form-control mb-2" name="NAMA" type="text" value="<?= $array['NAMA_KEMAHASISWAAN']?>" placeholder="Default input" required>
-        <input class="form-control mb-2" name="Jabatan" type="text" value="<?= $array['JABATAN_KEMAHASISWAAN']?>"  placeholder="Default input" required>
+        <input class="form-control mb-2" name="NIDN"type="text" value="<?= $array['USERNAME_KETUA']?>"   placeholder="Default input" required hidden>
+        <input class="form-control mb-2" type="text" value="<?= $array['USERNAME_KETUA']?>"   placeholder="Default input" required disabled>
+        <input class="form-control mb-2" name="NAMA" type="text" value="<?= $array['NAMA_KETUA']?>" placeholder="Default input" required>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -46,7 +45,7 @@
 
 
  <!--Password Modal -->
- <div class="modal fade" id="staticBackdropPass" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+ <div class="modal fade" id="pass" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -57,8 +56,8 @@
       </div>
       <div class="modal-body">
         <form action="" method="post">
-        <input class="form-control mb-2" name="NIDN"type="text" value="<?= $array['NIDN_KEMAHASISWAAN']?>"   placeholder="Default input" required hidden>
-        <input  hidden class="form-control mb-2" name="pass"type="password" value="<?= $array['PASSWORD_KEMAHASISWAAN']?>"   placeholder="Default input" required >
+        <input class="form-control mb-2" name="NIDN"type="text" value="<?= $array['USERNAME_KETUA']?>"   placeholder="Default input" required hidden>
+        <input  hidden class="form-control mb-2" name="pass"type="password" value="<?= $array['PASSWORD_KETUA']?>"   placeholder="Default input" required >
         <input class="form-control mb-2" name="pass1" type="password"  placeholder="Password" required>
         <input class="form-control mb-2" name="passB" type="password"  placeholder="Password Baru" required>
         <input class="form-control mb-2" name="passBK" type="password"  placeholder="Konfirmasi Password" required>
@@ -71,3 +70,4 @@
     </div>
   </div>
 </div>
+

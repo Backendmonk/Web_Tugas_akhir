@@ -89,7 +89,7 @@ if (isset($_POST['submit'])) {
   $NAMA = $_POST['NAMA'];
   $Jabatan = $_POST['Jabatan'];
 
-    $sql = "SELECT * FROM kemahasiswaan WHERE NIDN='$NIDN'";
+    $sql = "SELECT * FROM wkiii WHERE NIDN_WKIII='$NIDN'";
     $result = mysqli_query($koneksi, $sql);
     if (!$result->num_rows > 0) {
         $sql = "INSERT INTO wkiii (NAMA_WKIII, NIDN_WKIII, PASSWORD_WKIII,JABATAN_WKIII)
