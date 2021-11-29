@@ -21,6 +21,14 @@
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Approval Kegiatan</span></a>
 </li>
+ <!-- Divider -->
+ <hr class="sidebar-divider">
+   <!-- Nav Item - Dashboard -->
+   <li class="nav-item active">
+    <a class="nav-link" href="Kegiatan-ORMAWA.php">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Kegiatan Ormawa</span></a>
+</li>
 
  <!-- Divider -->
  <hr class="sidebar-divider">
