@@ -129,6 +129,7 @@
 </html>
 
 <?php 
+include 'Template/EditProfilePass.php';
     if (isset($_POST['submit'])) {
         if ($_POST['pass'] == $_POST['pass1']) {
             $pass = $_POST['pass1'];

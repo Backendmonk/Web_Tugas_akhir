@@ -214,10 +214,6 @@
     <script src="../js/demo/datatables-demo.js"></script>
 
 
-<!-- summon modal -->
-<?php include 'Template/modal.php' ?>
-
-
 <!-- summon modal untuk semua halaman-->
 <?php include 'Template/modal.php' ?>
 
