@@ -208,25 +208,25 @@
         $nama = $_POST['nama_kegiatan'];
         
        // konsep kegiatan
-        $ran_Num_kg = rand();
+        $ran_Num_kg = $_POST['nama_kegiatan'];
         $filename_kg = $_FILES['konsep']['name'];
         $ext_kg = pathinfo($filename_kg, PATHINFO_EXTENSION);
         $ekstensi_kg = array('doc','docx','pdf');
   
         // sub kegiatan
-        $ran_Num_sb = rand();
+        $ran_Num_sb = $_POST['nama_kegiatan'];
         $filename_sb = $_FILES['latar_belakang']['name'];
         $ext_sb = pathinfo($filename_sb, PATHINFO_EXTENSION);
         $ekstensi_sb = array('doc','docx','pdf');
 
         // latar belakang
-        $ran_Num_lb = rand();
+        $ran_Num_lb = $_POST['nama_kegiatan'];
         $filename_lb= $_FILES['latar_belakang']['name'];
         $ext_lb = pathinfo($filename_lb, PATHINFO_EXTENSION);
         $ekstensi_lb = array('doc','docx','pdf');
       
         //tujuan
-        $ran_Num_tj = rand();
+        $ran_Num_tj = $_POST['nama_kegiatan'];
         $filename_tj = $_FILES['tujuan']['name'];
         $ext_tj = pathinfo($filename_tj, PATHINFO_EXTENSION);
         $ekstensi_tj = array('doc','docx','pdf');
@@ -235,20 +235,20 @@
         $tanggal = $_POST['tanggal'];
 
         //Sk
-        $ran_Num_sk  = rand();
+        $ran_Num_sk  = $_POST['nama_kegiatan'];
         $filename_sk = $_FILES['sk']['name'];
         $ext_sk  = pathinfo($filename_sk, PATHINFO_EXTENSION);
         $ekstensi_sk  = array('doc','docx','pdf');
 
         //timeline
        
-        $ran_Num_tm = rand();
+        $ran_Num_tm = $_POST['nama_kegiatan'];
         $filename_tm = $_FILES['timeline']['name'];
         $ext_tm = pathinfo($filename_tm, PATHINFO_EXTENSION);
         $ekstensi_tm = array('doc','docx','pdf');
      
         //rab
-        $ran_Num_rb = rand();
+        $ran_Num_rb = $_POST['nama_kegiatan'];
         $filename_rb = $_FILES['rab']['name'];
         $ext_rb = pathinfo($filename_rb, PATHINFO_EXTENSION);
         $ekstensi_rb = array('doc','docx','pdf');

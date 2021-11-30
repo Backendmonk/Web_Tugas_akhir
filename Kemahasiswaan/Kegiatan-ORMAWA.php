@@ -42,7 +42,7 @@
                 <div class="container-fluid">
                 <main class="col overflow-auto h-100">
             <div class="bg-light border rounded-3 p-3">
-                <h2>Main</h2>
+   
                 <?php
 
                     $hitung = mysqli_query($koneksi,"SELECT count(`ID_PENGAJUAN`) as id FROM `pengajuan_kegiatan` WHERE `STATUS` = 'Belum Diterima' ");
@@ -53,7 +53,7 @@
                     ?>
             <div class="row mb-2">
             <div class=" col-sm-6  text-center" >
-                <a style ="text-decoration:none;" href="http://localhost/web_tugas_akhir/Ormawa/login/login.php">
+                <a style ="text-decoration:none;" href="Approval_pengajuan.php">
                     <div class="serviceBox  border" style="height: 200px; padding:50px" >
                             <i style="font-size: 40px; padding-left:-100px" class="fa fa-rocket" style="width: 80px;"></i>
                             <h3 class="title">Pengajuan Kegiatan</h3>
