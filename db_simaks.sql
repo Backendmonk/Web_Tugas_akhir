@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 31, 2021 at 05:04 AM
+-- Generation Time: Nov 30, 2021 at 03:37 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 7.4.16
 
@@ -40,6 +40,13 @@ CREATE TABLE `approval_lpj` (
   `REVISI_LPJ` mediumtext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `approval_lpj`
+--
+
+INSERT INTO `approval_lpj` (`ID_APPROVALLPJ`, `NIDN_WKIII`, `NIDN_KEMAHASISWAAN`, `APPROVAL_LPJ_KEMAHASISWAAN`, `APPROVAL_LPJ_WKIII`, `LAPORAN_LPJ`, `REVISI_LPJ`) VALUES
+('0002', '234', '123', 'test', 'test', 'test', 'test');
+
 -- --------------------------------------------------------
 
 --
@@ -56,6 +63,13 @@ CREATE TABLE `approval_proposal` (
   `LAPORAN_PROPOSAL` mediumtext DEFAULT NULL,
   `REVISI` mediumtext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `approval_proposal`
+--
+
+INSERT INTO `approval_proposal` (`ID_APPROVAL`, `NIDN_WKIII`, `NIDN_KEMAHASISWAAN`, `APPROVAL_PROPOSAL_KEMAHASISWAAN`, `APPROVAL_PROPOSAL_WKIII`, `LAPORAN_PROPOSAL`, `REVISI`) VALUES
+('21231', '234', '123', 'test', 'test', 'test', 'test');
 
 -- --------------------------------------------------------
 
@@ -75,6 +89,13 @@ CREATE TABLE `bukti_kegiatan` (
   `SERTIFIKAT` mediumtext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `bukti_kegiatan`
+--
+
+INSERT INTO `bukti_kegiatan` (`ID_BUKTIKEGIATAN`, `ID_PROPOSAL`, `BERITA_ACARA`, `ABSENSI_BK`, `DOKUMENTASI`, `DOKUMENTASI2`, `DOKUMENTASI3`, `SERTIFIKAT`) VALUES
+('99', '212', '2021-11-26', 'asdasdasdasdas', 'dasasd', 'sadasd', 'asdasd', 'asdasd');
+
 -- --------------------------------------------------------
 
 --
@@ -88,6 +109,13 @@ CREATE TABLE `kemahasiswaan` (
   `JABATAN_KEMAHASISWAAN` varchar(100) DEFAULT NULL,
   `PASSWORD_KEMAHASISWAAN` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `kemahasiswaan`
+--
+
+INSERT INTO `kemahasiswaan` (`NIDN_KEMAHASISWAAN`, `NAMA_KEMAHASISWAAN`, `JABATAN_KEMAHASISWAAN`, `PASSWORD_KEMAHASISWAAN`) VALUES
+('123', 'arya', 'ketua', '$2y$10$a.DSeF6PKlWRtotLbWZ0gu/1Z9V38gOfV8N1ZqhXswyfHf8rWvrem');
 
 -- --------------------------------------------------------
 
@@ -117,6 +145,13 @@ CREATE TABLE `lpj` (
   `LPJ` mediumtext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `lpj`
+--
+
+INSERT INTO `lpj` (`ID_LPJ`, `ID_APPROVALLPJ`, `ID_BUKTIKEGIATAN`, `TGL_PENGAJUANLPJ`, `LPJ`) VALUES
+('21312312', '0002', '99', '2021-11-24', 'eqweqwewq');
+
 -- --------------------------------------------------------
 
 --
@@ -129,6 +164,13 @@ CREATE TABLE `ormawa` (
   `NIDN` int(11) DEFAULT NULL,
   `NAMA_ORMAWA` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `ormawa`
+--
+
+INSERT INTO `ormawa` (`ID_ORMAWA`, `NIDN`, `NAMA_ORMAWA`) VALUES
+('001', 234, 'E-Sport STIKI');
 
 -- --------------------------------------------------------
 
@@ -144,6 +186,13 @@ CREATE TABLE `pembina` (
   `ALAMAT_PEMBINA` varchar(100) DEFAULT NULL,
   `NO_TELP_PEMBINA` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `pembina`
+--
+
+INSERT INTO `pembina` (`NIDN`, `NAMA_PEMBINA`, `PASSOWRD_PEMBINA`, `ALAMAT_PEMBINA`, `NO_TELP_PEMBINA`) VALUES
+(234, 'Gede', '$2y$10$a.DSeF6PKlWRtotLbWZ0gu/1Z9V38gOfV8N1ZqhXswyfHf8rWvrem', 'Dawas', '02518484864867');
 
 -- --------------------------------------------------------
 
@@ -173,6 +222,16 @@ CREATE TABLE `pengajuan_kegiatan` (
   `STATUS` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `pengajuan_kegiatan`
+--
+
+INSERT INTO `pengajuan_kegiatan` (`ID_PENGAJUAN`, `ID_ORMAWA`, `NAMA_ORMAWA_FK`, `NAMA_KEGIATAN`, `KONSEP_KEGIATAN`, `SUB_KEGIATAN`, `PJ_KEGIATAN`, `LATAR_BELAKANG`, `TUJUAN_KEGIATAN`, `TGL_KEGIATAN`, `TEMPAT_KEGIATAN`, `SK_KEPANITIAAN`, `TIMELINE_KEGIATAN`, `RAB`, `KETUA_PANITIA`, `CONTAC_PERSON`, `KATEGORI_KEGIATAN`, `STATUS`) VALUES
+(' 109 ', '001', 'E-Sport STIKI', 'Section-10', '1571087786_1 (1).doc', '2014887571_1 (2).docx', 'wqweq', '340213952_1 (2).docx', '116403418_1 (3).docx', '2021-12-02', 'saxzczxcxz', '187158400_1 (4).docx', '1278786969_1 (5).docx', '1075533404_1 (6).docx', 'Wayan', '434564545', 'sdfsddfs', 'Belum Diterima'),
+(' 397 ', '001', 'E-Sport STIKI', 'Section 4', '1972079667_Kuis Pertemuan 3 - Kewirausahaan.docx', '2047393714_Kuis Pertemuan 6.docx', 'Entah', '1983245168_Kuis Pertemuan 6.docx', '206474805_Kuis Pertemuan 5.docx', '2021-11-29', 'Entah', '233653704_Nama.docx', '1025213298_Ujian Tengah Semester _ I Wayan Arya Pratama Putra _ 18101020.docx', '731706130_Tugas Pertemuan 6.docx', 'nyoman', '099234234', 'Entah', 'Belum Diterima'),
+(' 90 ', '001', 'E-Sport STIKI', 'Section 2', 'Section 2_BodyHealthy.docx', 'Section 2_Doc1.docx', 'sadsad', 'Section 2_Doc1.docx', 'Section 2_Doc2.docx', '0000-00-00', '', 'Section 2_Pertemuan 4 Hasil Dan Pembahasan.docx', 'Section 2_Rev_Template Laporan MK Seminar_191021 (1) (1).docx', 'Section 2_Soal Mid test (F,FA).doc', 'Made', '008978', 'qweqwe', 'Belum Diterima'),
+('112', '001', 'sad', 'asda', 'sad', 'asd', 'asd', 'sad', 'asd', '2021-11-02', 'asd', 'asd', 'asd', 'asd', 'asd', 'asd', 'asd', 'asd');
+
 -- --------------------------------------------------------
 
 --
@@ -198,6 +257,64 @@ CREATE TABLE `pengurus_ormawa` (
   `GAMBAR_STRUKTUR_ORGANISASI` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `pengurus_ormawa`
+--
+
+INSERT INTO `pengurus_ormawa` (`USERNAME_KETUA`, `ID_ORMAWA`, `PASSWORD_KETUA`, `NAMA_KETUA`, `NAMA_WAKIL`, `NAMA_WAKIL2`, `SEKRETARIS1`, `SEKRETARIS2`, `BENDAHARA1`, `BENDAHARA2`, `RENJA`, `AD_ART`, `MASA_JABATAN`, `TAHUN_DILANTIK`, `GAMBAR_STRUKTUR_ORGANISASI`) VALUES
+('admin', '001', '$2y$10$a.DSeF6PKlWRtotLbWZ0gu/1Z9V38gOfV8N1ZqhXswyfHf8rWvrem', 'Wayan', 'Made', 'ketut', 'putu', 'nyoman', 'komang', 'sultan', 'fdsdfs', 'sdfsdfsdfs', '2021-11-08', '2022-11-08', 'fsdfsdfds');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `persetujuan_kemahasiswaan`
+--
+
+DROP TABLE IF EXISTS `persetujuan_kemahasiswaan`;
+CREATE TABLE `persetujuan_kemahasiswaan` (
+  `id_Persetujuan` varchar(100) NOT NULL,
+  `id_pengajuan` varchar(100) NOT NULL,
+  `NIDN_kemahsiswaan` varchar(100) NOT NULL,
+  `approval_status` enum('Approve','Tolak','','') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `persetujuan_kemahasiswaan`
+--
+
+INSERT INTO `persetujuan_kemahasiswaan` (`id_Persetujuan`, `id_pengajuan`, `NIDN_kemahsiswaan`, `approval_status`) VALUES
+('1031315368', ' 109', '123', 'Approve'),
+('178732249', ' 397', '123', 'Tolak'),
+('513379155', ' 90', '123', 'Approve');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `persetujuan_pembina`
+--
+
+DROP TABLE IF EXISTS `persetujuan_pembina`;
+CREATE TABLE `persetujuan_pembina` (
+  `id_Persetujuan` varchar(100) NOT NULL,
+  `id_pengajuan` varchar(100) NOT NULL,
+  `NIDN_pembina` int(11) NOT NULL,
+  `approval_status` enum('Approve','Tolak','','') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `persetujuan_wkiii`
+--
+
+DROP TABLE IF EXISTS `persetujuan_wkiii`;
+CREATE TABLE `persetujuan_wkiii` (
+  `id_Persetujuan` varchar(100) NOT NULL,
+  `id_pengajuan` varchar(100) NOT NULL,
+  `NIDN_WKIII` varchar(100) NOT NULL,
+  `approval_status` enum('Approve','Tolak','','') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 -- --------------------------------------------------------
 
 --
@@ -213,6 +330,13 @@ CREATE TABLE `proposal` (
   `ABSENSI_PROPOSAL` mediumtext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `proposal`
+--
+
+INSERT INTO `proposal` (`ID_PROPOSAL`, `ID_APPROVAL`, `ID_PENGAJUAN`, `TANNGGAL_PENGAJUANPROPOSAL`, `ABSENSI_PROPOSAL`) VALUES
+('212', '21231', '112', '2021-11-18', 'wewe');
+
 -- --------------------------------------------------------
 
 --
@@ -226,6 +350,14 @@ CREATE TABLE `wkiii` (
   `JABATAN_WKIII` varchar(100) DEFAULT NULL,
   `PASSWORD_WKIII` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `wkiii`
+--
+
+INSERT INTO `wkiii` (`NIDN_WKIII`, `NAMA_WKIII`, `JABATAN_WKIII`, `PASSWORD_WKIII`) VALUES
+('234', 'ketut', 'Ketua', '$2y$10$6v4zlzN5/eI2W8SjW0XdBuRJ1mMYElA5ICyRJbbQPao9OUN4EqYXm'),
+('667', 'Dewa', 'ketua', '$2y$10$a.DSeF6PKlWRtotLbWZ0gu/1Z9V38gOfV8N1ZqhXswyfHf8rWvrem');
 
 --
 -- Indexes for dumped tables
@@ -303,6 +435,30 @@ ALTER TABLE `pengurus_ormawa`
   ADD KEY `MEMILIKI_FK` (`ID_ORMAWA`);
 
 --
+-- Indexes for table `persetujuan_kemahasiswaan`
+--
+ALTER TABLE `persetujuan_kemahasiswaan`
+  ADD PRIMARY KEY (`id_Persetujuan`),
+  ADD KEY `pengajuan_fk` (`id_pengajuan`),
+  ADD KEY `nidn_kemahasiswaan_fk` (`NIDN_kemahsiswaan`);
+
+--
+-- Indexes for table `persetujuan_pembina`
+--
+ALTER TABLE `persetujuan_pembina`
+  ADD PRIMARY KEY (`id_Persetujuan`),
+  ADD KEY `pengajuan_pembina_fk` (`id_pengajuan`),
+  ADD KEY `NIDN_PEMBINA_FK_` (`NIDN_pembina`);
+
+--
+-- Indexes for table `persetujuan_wkiii`
+--
+ALTER TABLE `persetujuan_wkiii`
+  ADD PRIMARY KEY (`id_Persetujuan`),
+  ADD KEY `pengajuan_fk_WKIII` (`id_pengajuan`),
+  ADD KEY `NIDN_WKIII_FK` (`NIDN_WKIII`);
+
+--
 -- Indexes for table `proposal`
 --
 ALTER TABLE `proposal`
@@ -370,6 +526,27 @@ ALTER TABLE `pengajuan_kegiatan`
 --
 ALTER TABLE `pengurus_ormawa`
   ADD CONSTRAINT `FK_ID_ORMAWA_Pengurus` FOREIGN KEY (`ID_ORMAWA`) REFERENCES `ormawa` (`ID_ORMAWA`);
+
+--
+-- Constraints for table `persetujuan_kemahasiswaan`
+--
+ALTER TABLE `persetujuan_kemahasiswaan`
+  ADD CONSTRAINT `nidn_kemahasiswaan_fk` FOREIGN KEY (`NIDN_kemahsiswaan`) REFERENCES `kemahasiswaan` (`NIDN_KEMAHASISWAAN`),
+  ADD CONSTRAINT `pengajuan_fk` FOREIGN KEY (`id_pengajuan`) REFERENCES `pengajuan_kegiatan` (`ID_PENGAJUAN`);
+
+--
+-- Constraints for table `persetujuan_pembina`
+--
+ALTER TABLE `persetujuan_pembina`
+  ADD CONSTRAINT `NIDN_PEMBINA_FK_` FOREIGN KEY (`NIDN_pembina`) REFERENCES `pembina` (`NIDN`),
+  ADD CONSTRAINT `pengajuan_pembina_fk` FOREIGN KEY (`id_pengajuan`) REFERENCES `pengajuan_kegiatan` (`ID_PENGAJUAN`);
+
+--
+-- Constraints for table `persetujuan_wkiii`
+--
+ALTER TABLE `persetujuan_wkiii`
+  ADD CONSTRAINT `NIDN_WKIII_FK` FOREIGN KEY (`NIDN_WKIII`) REFERENCES `wkiii` (`NIDN_WKIII`),
+  ADD CONSTRAINT `pengajuan_fk_WKIII` FOREIGN KEY (`id_pengajuan`) REFERENCES `pengajuan_kegiatan` (`ID_PENGAJUAN`);
 
 --
 -- Constraints for table `proposal`
