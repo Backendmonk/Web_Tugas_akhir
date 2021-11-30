@@ -111,11 +111,47 @@
                                                                     <td>
 
                                                                             <!-- <button type="submit" name="TambahKetua" class="btn btn-success"  data-toggle="modal" data-target="#staticBackdropKetua<?= $data['ID_ORMAWA'] ?>">edit Ketua</button> -->
-                                                                            <button type="button" name="EditOrmawa" class="btn btn-warning" data-toggle="modal" data-target="#edit<?= $data['ID_ORMAWA'] ?>">Edit</button>
-                                                                            <button type="button" name="DeleteOrmawa" class="btn btn-danger">Delete</button>
+                                                                            <div class="row">
+                                                                                <div class="col-6"> 
+                                                                                    <button type="button"  class="btn btn-warning" data-toggle="modal" data-target="#edit<?= $data['ID_ORMAWA'] ?>">
+                                                                                        Edit
+                                                                                    </button>
+                                                                                </div>
+                                                                                <div class="col-6">
+                                                                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#hapus<?= $data['ID_ORMAWA'] ?>">
+                                                                                        Delete
+                                                                                    </button>
+                                                                                </div>
+                                                                            </div>
+                                                                           
+                                                                            
                                                                     </td>
                                                                 </tr>
                                                             
+                                                    <!--hps Ormawa Modal -->
+                                                    <div class="modal fade" id="hapus<?= $data['ID_ORMAWA'] ?>" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="staticBackdropLabel">hapus Ormawa</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <form action="" method="post">
+                                                                <input type="text" name="id" value="<?= $data['ID_ORMAWA'] ?>" hidden>
+                                                                Apakah kamu yakin untuk menghapus seluruh data ormawa???
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                <button type="submit" name="hapus" class="btn btn-primary">Hapus</button>
+                                                                </form>
+                                                            </div>
+                                                            </div>
+                                                        </div>
+                                                        </div>
+
                                                     <!--Edit Ormawa Modal -->
                                                         <div class="modal fade" id="edit<?= $data['ID_ORMAWA'] ?>" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                                         <div class="modal-dialog">
@@ -133,8 +169,9 @@
                                                                 <input class="form-control mb-2" name="namaOr" type="text"  placeholder="Nama Ormawa" value="<?= $data['NAMA_ORMAWA'] ?>" required>
                                                                 <input class="form-control mb-2" name="namaK" type="text"  placeholder="Nama Ketua" value="<?=$DK['NAMA_KETUA'] ?>" required>
                                                                 <input class="form-control mb-2" name="userK" type="text"  value="<?=$DK['USERNAME_KETUA'] ?>"  placeholder="Username Ketua" required>
-                                                                <input class="form-control mb-2" name="passKetua" type="password"  placeholder="password ketua" required>
-                                                                <select name="NIDN" required>
+                                                                <input class="form-control mb-2" name="passKetua" type="password"  placeholder="password ketua" >
+                                                                <input type="text" value="<?=$array['NIDN'] ?>" name="pembinaLama" hidden>
+                                                                <select class="form-select" name="NIDN" required>
                                                                 <option  value="<?=$array['NIDN'] ?>"  hidden><?=$array['NAMA_PEMBINA']?></option>
                                                                     <?php
                                                                     $q = mysqli_query($koneksi,"SELECT NIDN,NAMA_PEMBINA FROM `pembina`");
@@ -151,12 +188,15 @@
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                                <button type="submit" name="submit3" class="btn btn-primary">Simpan</button>
+                                                                <button type="submit" name="edit" class="btn btn-primary">Simpan</button>
                                                                 </form>
                                                             </div>
                                                             </div>
                                                         </div>
                                                         </div>
+
+                                                         
+
                                                 <?php
                                                 }
 
@@ -260,19 +300,19 @@
         <input class="form-control mb-2" name="namaK" type="text"  placeholder="Nama Ketua" required>
         <input class="form-control mb-2" name="userK" type="text"  placeholder="Username Ketua" required>
         <input class="form-control mb-2" name="passKetua" type="password"  placeholder="password ketua" required>
-        <select name="NIDN" required>
-        <option  hidden>--- PILIH PEMBINA ---</option>
-            <?php
-             $q = mysqli_query($koneksi,"SELECT NIDN,NAMA_PEMBINA FROM `pembina`");
-                                            
+        <select name="NIDN" class="form-select" required>
+            <option  hidden>--- PILIH PEMBINA ---</option>
+                <?php
+                $q = mysqli_query($koneksi,"SELECT NIDN,NAMA_PEMBINA FROM `pembina`");
+                                                
 
-             while ($data = mysqli_fetch_array($q)) {
-                 ?>
-                         <option value="<?php echo $data['NIDN']; ?>"><?php echo $data['NAMA_PEMBINA']; ?></option>
+                while ($data = mysqli_fetch_array($q)) {
+                    ?>
+                            <option value="<?php echo $data['NIDN']; ?>"><?php echo $data['NAMA_PEMBINA']; ?></option>
 
-             <?php
-             }
-            ?>
+                <?php
+                }
+                ?>
         </select>
       </div>
       <div class="modal-footer">
@@ -353,5 +393,186 @@
     
     
 } 
+?>
+
+<!-- logic Edit ormawa -->
+<?php if (isset($_POST['edit'])) {
+    $pembinaLama =$_POST['pembinaLama'];
+    $NIDN =$_POST['NIDN'];
+    if ($pembinaLama != $NIDN) {
+        $query = "SELECT * FROM `ormawa` where `NIDN` = '$NIDN' ";
+        $q = mysqli_query($koneksi,$query);
+        if (!$q->num_rows > 0) {
+            $id = $_POST['id'];
+            $NAMA = $_POST['namaOr'];
+            $userK =$_POST['userK'];
+            $namaK =$_POST['namaK'];
+            $passk = password_hash($_POST['passKetua'],PASSWORD_DEFAULT);
+            // query update ormawa
+             $sql = "UPDATE ormawa SET NAMA_ORMAWA = '$NAMA', NIDN = '$NIDN' WHERE ID_ORMAWA = '$id';";
+            //  query update pengurus ormawa
+             $sql .= "UPDATE pengurus_ormawa set USERNAME_KETUA ='$userK' , NAMA_KETUA = '$namaK', PASSWORD_KETUA = '$passk' where ID_ORMAWA = '$id'";
+            $result = mysqli_multi_query($koneksi, $sql);
+            // var_dump(mysqli_insert_id($koneksi));
+            if ($result) {
+                $_POST['namaOr']="";
+                      $_POST['id']="";
+                        $_POST['NIDN'] = "";
+                        ?>
+                        <script>
+                          Swal.fire({
+                          icon: 'success',
+                          title: 'success',
+                          text: 'edit ormawa berhasil',
+                          
+                          })
+                      </script>
+                     
+                    <?php
+            } else {
+                ?>
+                <script>
+                Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'edit ormawa gagal',
+                
+                })
+              </script>
+              <?php
+            }
+        } else {
+            ?>
+            <script>
+            Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Pembina sudah membina ormawa lain',
+            
+            })
+          </script>
+          <?php
+        }
+        
+        
+        
+    
+    } else {
+            $id = $_POST['id'];
+            $NAMA = $_POST['namaOr'];
+            $userK =$_POST['userK'];
+            $namaK =$_POST['namaK'];
+            if (!empty($_POST['passKetua'])) {
+                $passk = password_hash($_POST['passKetua'],PASSWORD_DEFAULT);
+            // query update ormawa
+             $sql = "UPDATE ormawa SET NAMA_ORMAWA = '$NAMA', NIDN = '$NIDN' WHERE ID_ORMAWA = '$id';";
+            //  query update pengurus ormawa
+             $sql .= "UPDATE pengurus_ormawa set USERNAME_KETUA ='$userK' , NAMA_KETUA = '$namaK', PASSWORD_KETUA = '$passk' where ID_ORMAWA = '$id'";
+            $result = mysqli_multi_query($koneksi, $sql);
+            // var_dump(mysqli_insert_id($koneksi));
+            if ($result) {
+                $_POST['namaOr']="";
+                      $_POST['id']="";
+                        $_POST['NIDN'] = "";
+                        ?>
+                        <script>
+                          Swal.fire({
+                          icon: 'success',
+                          title: 'success',
+                          text: 'edit ormawa berhasil',
+                          
+                          })
+                      </script>
+                     
+                    <?php
+            } else {
+                ?>
+                <script>
+                Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'edit ormawa gagal',
+                
+                })
+              </script>
+              <?php
+            }
+            } else {
+            // query update ormawa
+             $sql = "UPDATE ormawa SET NAMA_ORMAWA = '$NAMA', NIDN = '$NIDN' WHERE ID_ORMAWA = '$id';";
+            //  query update pengurus ormawa
+             $sql .= "UPDATE pengurus_ormawa set USERNAME_KETUA ='$userK' , NAMA_KETUA = '$namaK' where ID_ORMAWA = '$id'";
+            $result = mysqli_multi_query($koneksi, $sql);
+            // var_dump(mysqli_insert_id($koneksi));
+            if ($result) {
+                $_POST['namaOr']="";
+                      $_POST['id']="";
+                        $_POST['NIDN'] = "";
+                        ?>
+                        <script>
+                          Swal.fire({
+                          icon: 'success',
+                          title: 'success',
+                          text: 'edit ormawa berhasil',
+                          
+                          })
+                      </script>
+                     
+                    <?php
+            } else {
+                ?>
+                <script>
+                Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'edit ormawa gagal',
+                
+                })
+              </script>
+              <?php
+            }
+            }
+            
+            
+        
+        }
+        
+        
+        
+    } 
+    
+    if (isset($_POST['hapus'])) {
+        $id = $_POST['id'];
+       // query delete ormawa
+       $sql = "DELETE FROM ormawa WHERE ID_ORMAWA='$id';";
+     
+       $result = mysqli_query($koneksi, $sql);
+       // var_dump(mysqli_insert_id($koneksi));
+       if ($result) {
+                   ?>
+                   <script>
+                     Swal.fire({
+                     icon: 'success',
+                     title: 'success',
+                     text: 'Hapus ormawa berhasil',
+                     
+                     })
+                 </script>
+                
+               <?php
+       } else {
+           ?>
+           <script>
+           Swal.fire({
+           icon: 'error',
+           title: 'Oops...',
+           text: 'Hapus ormawa gagal',
+           
+           })
+         </script>
+         <?php
+       }
+    }
+   
 ?>
 <?php include 'Template/EditProfilePass.php' ?>
