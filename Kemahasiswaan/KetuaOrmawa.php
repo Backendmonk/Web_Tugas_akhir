@@ -55,39 +55,48 @@
                                 </div>
                                 <div class="card-body">
                                     <button type="button" class="btn btn-success mb-2" data-toggle="modal"
-                                        data-target="#staticBackdropOrmawa">Tambah Ormawa</button>
+                                        data-target="#staticBackdropOrmawa">Tambah Ketua Ormawa</button>
                                     <div class="table-responsive">
                                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                             <thead>
                                                 <tr>
                                                     <th>Ormawa</th>
-                                                    <th>Nama Pembina</th>
+                                                    <th>Nama ketua Ormawa</th>
+                                                    <th>Username Ketua Ormawa</th>
                                                     <th>Aksi</th>
                                                 </tr>
                                             </thead>
 
                                             <tbody>
                                                 <?php
-                                                $q = mysqli_query($koneksi,"SELECT * FROM `ormawa`");
+                                                $q = mysqli_query($koneksi,"SELECT * FROM `pengurus_ormawa`");
                                             
-
+                                               
                                                 while ($data = mysqli_fetch_array($q)) {
                                                     ?>
                                                 <tr>
-                                                    <td><?php echo $data['NAMA_ORMAWA'];?></td>
                                                     <td><?php 
-                                                                    // manggil nama-nama pembina
-                                                                        $NIDN = $data['NIDN'];
-                                                                        $id = mysqli_query($koneksi,"SELECT NAMA_PEMBINA, NIDN  FROM `pembina` WHERE `NIDN` = '$NIDN' ");
-                                                                        $array = mysqli_fetch_array($id);
-                                                                    echo $array['NAMA_PEMBINA'] ;?>
-                                                    </td>
-
+                                                     $IDK = $data['ID_ORMAWA'];
+                                                     $id = mysqli_query($koneksi,"SELECT NAMA_ORMAWA FROM `ormawa` WHERE `ID_ORMAWA` = '$IDK' ");
+                                                     $DK = mysqli_fetch_array($id);
+                                                    echo $DK['NAMA_ORMAWA'];?></td>
                                                     <td>
-                                                    <div class="row">
+                                                        <?php 
+                                                                            echo $data['NAMA_KETUA'] ;
+                                                                        ?>
+
+                                                    </td>
+                                                    <td>
+                                                        <?php
+                                                                            echo $data['USERNAME_KETUA'] ;
+ 
+                                                                         ?>
+                                                    </td>
+                                                    <td>
+                                                        <div class="row">
                                                             <div class="col-6">
-                                                            <form action="EditOrmawa.php" method="post">
-                                                                <input type="hidden" name="id" value="<?= $data['ID_ORMAWA'] ?>">
+                                                                <form action="EditKetuaOrmawa.php" method="post">
+                                                                <input type="text" hidden name="id" value="<?= $data['USERNAME_KETUA'] ?>">
                                                                 <button type="submit" class="btn btn-warning"
                                                                     name="edit">
                                                                     Edit
@@ -95,13 +104,11 @@
                                                                 </form>
                                                             </div>
                                                             <div class="col-6">
-                                                            <form action="" method="post">
-                                                            <input type="hidden" name="id" value="<?= $data['ID_ORMAWA'] ?>">
-                                                                <button type="submit" class="btn btn-danger"
-                                                                   name="hapus">
+                                                                <button type="button" class="btn btn-danger"
+                                                                    data-toggle="modal"
+                                                                    data-target="#hapus<?= $data['USERNAME_KETUA'] ?>">
                                                                     Delete
                                                                 </button>
-                                                                </form>
                                                             </div>
                                                         </div>
 
@@ -186,22 +193,24 @@
                 </div>
                 <div class="modal-body">
                     <form action="" method="post">
-                        <input class="form-control mb-2" name="id" type="text" placeholder="ID Ormawa" required>
-                        <input class="form-control mb-2" name="namaOr" type="text" placeholder="Nama Ormawa" required>
-                        <select name="NIDN" class="form-select" required>
-                            <option hidden>--- PILIH PEMBINA ---</option>
+                    <select class="form-select mb-2" name="id" required>
+                            <option  hidden>
+                                Pilih Ormawa
+                            </option>
                             <?php
-                $q = mysqli_query($koneksi,"SELECT NIDN,NAMA_PEMBINA FROM `pembina`");
-                                                
-
-                while ($data = mysqli_fetch_array($q)) {
-                    ?>
-                            <option value="<?php echo $data['NIDN']; ?>"><?php echo $data['NAMA_PEMBINA']; ?></option>
-
+                            $q = mysqli_query($koneksi,"SELECT ID_ORMAWA,NAMA_ORMAWA FROM `ormawa`");
+                            while ($data = mysqli_fetch_array($q)) {
+?>
+                            <option value="<?php echo $data['ID_ORMAWA']; ?>">
+                                <?php echo $data['NAMA_ORMAWA']; ?></option>
                             <?php
-                }
-                ?>
+                                                                                                                    }
+                                                                                                                    ?>
                         </select>
+                        <input class="form-control mb-2" name="namaK" type="text" placeholder="Nama Ketua" required>
+                        <input class="form-control mb-2" name="userK" type="text" placeholder="Username Ketua" required>
+                        <input class="form-control mb-2" name="passKetua" type="password" placeholder="password ketua"
+                            required>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -221,24 +230,26 @@
 </html>
 <!-- logic tambah ormawa -->
 <?php if (isset($_POST['submit3'])) {
-    $NIDN =$_POST['NIDN'];
-    $query = "SELECT * FROM `ormawa` where `NIDN` = '$NIDN' ";
-    $q = mysqli_query($koneksi,$query);
-    if (!$q->num_rows > 0) {
         $id = $_POST['id'];
-        $NAMA = $_POST['namaOr'];
-            // query insert ormawa
-         $sql = "INSERT INTO ormawa (NAMA_ORMAWA, NIDN,ID_ORMAWA)
-         VALUES ('$NAMA', '$NIDN','$id');";
-       
-        $result = mysqli_query($koneksi, $sql);
+        $userK =$_POST['userK'];
+        $namaK =$_POST['namaK'];
+        $passk = password_hash($_POST['passKetua'],PASSWORD_DEFAULT);
+        //  query insert pengurus ormawa
+         $sql = "INSERT INTO pengurus_ormawa (USERNAME_KETUA, NAMA_KETUA,ID_ORMAWA,PASSWORD_KETUA)
+         VALUES ('$userK', '$namaK','$id','$passk')";
+        $result = mysqli_multi_query($koneksi, $sql);
+        // var_dump(mysqli_insert_id($koneksi));
         if ($result) {
+            $_POST['namaOr']="";
+                  $_POST['id']="";
+                    $_POST['NIDN'] = "";
                     ?>
 <script>
     Swal.fire({
         icon: 'success',
         title: 'success',
-        text: 'tambah ormawa berhasil',
+        text: 'tambah ketua ormawa berhasil',
+
     })
 </script>
 
@@ -249,14 +260,69 @@
     Swal.fire({
         icon: 'error',
         title: 'Oops...',
-        text: 'tambah ormawa gagal',
+        text: 'tambah ketua ormawa gagal',
 
     })
 </script>
 <?php
         }
-    } else {
-        ?>
+    
+
+    
+    
+    
+    
+} 
+?>
+
+<!-- logic Edit ormawa -->
+<?php if (isset($_POST['edit'])) {
+    $pembinaLama =$_POST['pembinaLama'];
+    $NIDN =$_POST['NIDN'];
+    if ($pembinaLama != $NIDN) {
+        $query = "SELECT * FROM `ormawa` where `NIDN` = '$NIDN' ";
+        $q = mysqli_query($koneksi,$query);
+        if (!$q->num_rows > 0) {
+            $id = $_POST['id'];
+            $NAMA = $_POST['namaOr'];
+            $userK =$_POST['userK'];
+            $namaK =$_POST['namaK'];
+            $passk = password_hash($_POST['passKetua'],PASSWORD_DEFAULT);
+            // query update ormawa
+             $sql = "UPDATE ormawa SET NAMA_ORMAWA = '$NAMA', NIDN = '$NIDN' WHERE ID_ORMAWA = '$id';";
+            //  query update pengurus ormawa
+             $sql .= "UPDATE pengurus_ormawa set USERNAME_KETUA ='$userK' , NAMA_KETUA = '$namaK', PASSWORD_KETUA = '$passk' where ID_ORMAWA = '$id'";
+            $result = mysqli_multi_query($koneksi, $sql);
+            // var_dump(mysqli_insert_id($koneksi));
+            if ($result) {
+                $_POST['namaOr']="";
+                      $_POST['id']="";
+                        $_POST['NIDN'] = "";
+                        ?>
+<script>
+    Swal.fire({
+        icon: 'success',
+        title: 'success',
+        text: 'edit ormawa berhasil',
+
+    })
+</script>
+
+<?php
+            } else {
+                ?>
+<script>
+    Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'edit ormawa gagal',
+
+    })
+</script>
+<?php
+            }
+        } else {
+            ?>
 <script>
     Swal.fire({
         icon: 'error',
@@ -266,14 +332,94 @@
     })
 </script>
 <?php
-    }
+        }
+        
+        
+        
     
-    
-    
-} 
-?>
+    } else {
+            $id = $_POST['id'];
+            $NAMA = $_POST['namaOr'];
+            $userK =$_POST['userK'];
+            $namaK =$_POST['namaK'];
+            if (!empty($_POST['passKetua'])) {
+                $passk = password_hash($_POST['passKetua'],PASSWORD_DEFAULT);
+            // query update ormawa
+             $sql = "UPDATE ormawa SET NAMA_ORMAWA = '$NAMA', NIDN = '$NIDN' WHERE ID_ORMAWA = '$id';";
+            //  query update pengurus ormawa
+             $sql .= "UPDATE pengurus_ormawa set USERNAME_KETUA ='$userK' , NAMA_KETUA = '$namaK', PASSWORD_KETUA = '$passk' where ID_ORMAWA = '$id'";
+            $result = mysqli_multi_query($koneksi, $sql);
+            // var_dump(mysqli_insert_id($koneksi));
+            if ($result) {
+                $_POST['namaOr']="";
+                      $_POST['id']="";
+                        $_POST['NIDN'] = "";
+                        ?>
+<script>
+    Swal.fire({
+        icon: 'success',
+        title: 'success',
+        text: 'edit ormawa berhasil',
 
-<?php 
+    })
+</script>
+
+<?php
+            } else {
+                ?>
+<script>
+    Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'edit ormawa gagal',
+
+    })
+</script>
+<?php
+            }
+            } else {
+            // query update ormawa
+             $sql = "UPDATE ormawa SET NAMA_ORMAWA = '$NAMA', NIDN = '$NIDN' WHERE ID_ORMAWA = '$id';";
+            //  query update pengurus ormawa
+             $sql .= "UPDATE pengurus_ormawa set USERNAME_KETUA ='$userK' , NAMA_KETUA = '$namaK' where ID_ORMAWA = '$id'";
+            $result = mysqli_multi_query($koneksi, $sql);
+            // var_dump(mysqli_insert_id($koneksi));
+            if ($result) {
+                $_POST['namaOr']="";
+                      $_POST['id']="";
+                        $_POST['NIDN'] = "";
+                        ?>
+<script>
+    Swal.fire({
+        icon: 'success',
+        title: 'success',
+        text: 'edit ormawa berhasil',
+
+    })
+</script>
+
+<?php
+            } else {
+                ?>
+<script>
+    Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'edit ormawa gagal',
+
+    })
+</script>
+<?php
+            }
+            }
+            
+            
+        
+        }
+        
+        
+        
+    } 
     
     if (isset($_POST['hapus'])) {
         $id = $_POST['id'];
