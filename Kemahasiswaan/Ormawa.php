@@ -47,11 +47,11 @@
                 <div class="container-fluid">
                     <main class="col overflow-auto h-100">
                         <div class="bg-light border rounded-3 p-3">
-                            <h2>Main</h2>
+                     
                             <!-- DataTales Example -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Data Binaan</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Tambah data</h6>
                                 </div>
                                 <div class="card-body">
                                     <button type="button" class="btn btn-success mb-2" data-toggle="modal"
@@ -186,7 +186,6 @@
                 </div>
                 <div class="modal-body">
                     <form action="" method="post">
-                        <input class="form-control mb-2" name="id" type="text" placeholder="ID Ormawa" required>
                         <input class="form-control mb-2" name="namaOr" type="text" placeholder="Nama Ormawa" required>
                         <select name="NIDN" class="form-select" required>
                             <option hidden>--- PILIH PEMBINA ---</option>
@@ -225,7 +224,7 @@
     $query = "SELECT * FROM `ormawa` where `NIDN` = '$NIDN' ";
     $q = mysqli_query($koneksi,$query);
     if (!$q->num_rows > 0) {
-        $id = $_POST['id'];
+        $id = rand();
         $NAMA = $_POST['namaOr'];
             // query insert ormawa
          $sql = "INSERT INTO ormawa (NAMA_ORMAWA, NIDN,ID_ORMAWA)
@@ -240,8 +239,9 @@
         title: 'success',
         text: 'tambah ormawa berhasil',
     })
+    
 </script>
-
+<script>window.location.href=''</script>
 <?php
         } else {
             ?>
@@ -276,7 +276,7 @@
 <?php 
     
     if (isset($_POST['hapus'])) {
-        $id = $_POST['id'];
+        $id = rand();
        // query delete ormawa
        $sql = "DELETE FROM ormawa WHERE ID_ORMAWA='$id';";
      

@@ -75,13 +75,16 @@
                                                     hidden>
                                            
                                             <div class="col-6">
-                                                <input class="form-control mb-2" name="namaOr" type="text"
+                                            <label for="namaOr" class="form-label">Nama Ormawa</label>
+                                                <input class="form-control mb-2" id="namaOr" name="namaOr" type="text"
                                                     placeholder="Nama Ormawa" value="<?= $datas['NAMA_ORMAWA'] ?>"
                                                     required>
                                             </div>
+                                           
                                                 <input type="text" value="<?=$datas['NIDN'] ?>" name="pembinaLama"
                                                     hidden>
                                             <div class="col-6">
+                                            <label for="namaOr" class="form-label">Nama Pembina</label>
                                                 <select class="form-select" name="NIDN" required>
                                                     <option value="<?=$datas['NIDN'] ?>" hidden>
                                                         <?=$datasP['NAMA_PEMBINA']?>
