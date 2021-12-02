@@ -47,7 +47,7 @@
                 <div class="container-fluid">
                     <main class="col overflow-auto h-100">
                         <div class="bg-light border rounded-3 p-3">
-                            <h2>Edit Ormawa</h2>
+                            <h2>Edit Ketua Ormawa</h2>
                             <!-- DataTales Example -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
@@ -71,18 +71,22 @@
                                     <form action="" method="post">
                                         <div class="row">
                                             <div class="col-6">
+                                            <label for="namaOr" class="form-label">Nama Ormawa</label>
                                                 <input class="form-control mb-2" name="namaOr" type="text"
                                                     placeholder="Nama Ormawa" readonly value="<?= $datasP['NAMA_ORMAWA']  ?>"
                                                     required>
                                             </div>
                                             <div class="col-6">
-                                                <input type="text" class="form-control mb-2" name="namaK" id="" value="<?= $datas['NAMA_KETUA'] ?>" placeholder="nama">
+                                            <label for="namaK" class="form-label">Nama Ketua Ormawa</label>
+                                                <input type="text" class="form-control mb-2" name="namaK" id="namaK" value="<?= $datas['NAMA_KETUA'] ?>" placeholder="nama">
                                             </div>
                                             <div class="col-6">
-                                                <input type="text" class="form-control mb-2" name="user" id="" value="<?= $datas['USERNAME_KETUA'] ?>" placeholder="Username">
+                                            <label for="userr" class="form-label">Username Ketua</label>
+                                                <input type="text" class="form-control mb-2" name="user" id="user" value="<?= $datas['USERNAME_KETUA'] ?>" placeholder="Username">
                                             </div>
                                             <div class="col-6">
-                                                <input type="password" class="form-control mb-2" name="user" id="" >
+                                            <label for="pass" class="form-label">Password</label>
+                                                <input type="password" class="form-control mb-2" name="user" id="pass" >
                                             </div>
                                             <div class="col-6">
                                            
@@ -102,34 +106,42 @@
                                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                             <thead>
                                                 <tr>
-                                                    <th>Ormawa</th>
-                                                    <th>Nama Pembina</th>
-                                                
+                                                <th>Ormawa</th>
+                                                    <th>Nama ketua Ormawa</th>
+                                                    <th>Username Ketua Ormawa</th>
                                                     <th>Aksi</th>
                                                 </tr>
                                             </thead>
 
                                             <tbody>
-                                                <?php
-                                                $q = mysqli_query($koneksi,"SELECT * FROM `ormawa`");
+                                            <?php
+                                                $q = mysqli_query($koneksi,"SELECT * FROM `pengurus_ormawa`");
                                             
-
+                                               
                                                 while ($data = mysqli_fetch_array($q)) {
                                                     ?>
                                                 <tr>
-                                                    <td><?php echo $data['NAMA_ORMAWA'];?></td>
                                                     <td><?php 
-                                                                    // manggil nama-nama pembina
-                                                                        $NIDN = $data['NIDN'];
-                                                                        $id = mysqli_query($koneksi,"SELECT NAMA_PEMBINA, NIDN  FROM `pembina` WHERE `NIDN` = '$NIDN' ");
-                                                                        $array = mysqli_fetch_array($id);
-                                                                    echo $array['NAMA_PEMBINA'] ;?>
+                                                     $IDK = $data['ID_ORMAWA'];
+                                                     $id = mysqli_query($koneksi,"SELECT NAMA_ORMAWA FROM `ormawa` WHERE `ID_ORMAWA` = '$IDK' ");
+                                                     $DK = mysqli_fetch_array($id);
+                                                    echo $DK['NAMA_ORMAWA'];?></td>
+                                                    <td>
+                                                        <?php 
+                                                                            echo $data['NAMA_KETUA'] ;
+                                                                        ?>
+
+                                                    </td>
+                                                    <td>
+                                                        <?php
+                                                                            echo $data['USERNAME_KETUA'] ;
+                                                        ?>
                                                     </td>
                                                     <td>
                                                         <div class="row">
                                                             <div class="col-6">
-                                                            <form action="EditKetuaOrmawa.php" method="post">
-                                                                <input type="hidden" name="id" value="<?= $data['ID_ORMAWA'] ?>">
+                                                                <form action="EditKetuaOrmawa.php" method="post">
+                                                                <input type="text" hidden name="id" value="<?= $data['USERNAME_KETUA'] ?>">
                                                                 <button type="submit" class="btn btn-warning"
                                                                     name="edit">
                                                                     Edit
@@ -137,13 +149,11 @@
                                                                 </form>
                                                             </div>
                                                             <div class="col-6">
-                                                            <form action="" method="post">
-                                                            <input type="hidden" name="id" value="<?= $data['ID_ORMAWA'] ?>">
-                                                                <button type="submit" class="btn btn-danger"
-                                                                   name="hapus">
+                                                                <button type="button" class="btn btn-danger"
+                                                                    data-toggle="modal"
+                                                                    data-target="#hapus<?= $data['USERNAME_KETUA'] ?>">
                                                                     Delete
                                                                 </button>
-                                                                </form>
                                                             </div>
                                                         </div>
 
@@ -227,10 +237,7 @@
 
 <!-- logic Edit ormawa -->
 <?php if (isset($_POST['newEdit'])) {
-    $pembinaLama =$_POST['pembinaLama'];
-    $NIDN =$_POST['NIDN'];
-    if ($pembinaLama != $NIDN) {
-        $query = "SELECT * FROM `ormawa` where `NIDN` = '$NIDN' ";
+        $query = "SELECT * FROM `pengurus_ormawa` where `USERNAME_KETUA` = '' ";
         $q = mysqli_query($koneksi,$query);
         if (!$q->num_rows > 0) {
             $id = $_POST['id'];
@@ -246,7 +253,7 @@
     Swal.fire({
         icon: 'success',
         title: 'success',
-        text: 'edit ormawa berhasil',
+        text: 'edit ketua ormawa berhasil',
 
     })
 </script>
@@ -258,7 +265,7 @@
     Swal.fire({
         icon: 'error',
         title: 'Oops...',
-        text: 'edit ormawa gagal',
+        text: 'edit ketua ormawa gagal',
 
     })
 </script>
@@ -270,7 +277,7 @@
     Swal.fire({
         icon: 'error',
         title: 'Oops...',
-        text: 'Pembina sudah membina ormawa lain',
+        text: 'ketua ormawa tidak ditemukan',
 
     })
 </script>
@@ -280,41 +287,11 @@
         
         
     
-    } else {
-            $id = $_POST['id'];
-            $NAMA = $_POST['namaOr'];
-            // query update ormawa
-             $sql = "UPDATE ormawa SET NAMA_ORMAWA = '$NAMA', NIDN = '$NIDN' WHERE ID_ORMAWA = '$id';";
-            $result = mysqli_query($koneksi, $sql);
-            if ($result) {
-                        ?>
-<script>
-    Swal.fire({
-        icon: 'success',
-        title: 'success',
-        text: 'edit ormawa berhasil',
-
-    })
-</script>
-
-<?php
-            } else {
-                ?>
-<script>
-    Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'edit ormawa gagal',
-
-    })
-</script>
-<?php
-            
-            }
+    
             
             
         
-        }
+        
         
         
         
