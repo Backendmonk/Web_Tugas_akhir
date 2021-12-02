@@ -5,6 +5,8 @@
 
          include "SessionPembina.php";
 
+       
+
 ?>
 <head>
 
@@ -37,7 +39,16 @@
 
             <!-- Main Content -->
             <div id="content">
-                
+                <?php
+                $nidn = $array['NIDN'];
+                         $q = mysqli_query($koneksi,"SELECT ID_ORMAWA FROM `ormawa` WHERE `NIDN` = $nidn");
+
+                         $ar = mysqli_fetch_array($q);
+
+                        
+
+
+            ?>
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                 <main class="col overflow-auto h-100">
@@ -65,7 +76,7 @@
                                     
                                     <tbody>
                                         <?php
-                                                $q = mysqli_query($koneksi,"SELECT * FROM `pengajuan_kegiatan` Where `STATUS` = 'Belum Diterima' ");
+                                                $q = mysqli_query($koneksi,"SELECT * FROM `pengajuan_kegiatan` Where `STATUS` = 'Belum Diterima' AND `ID_ORMAWA` = $ar[ID_ORMAWA] ");
                                                 while ($data = mysqli_fetch_array($q)) {
                                                     ?>
                                                   

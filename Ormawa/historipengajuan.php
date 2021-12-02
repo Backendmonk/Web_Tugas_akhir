@@ -4,7 +4,9 @@
 
         include "SessionPengurus.php";
         include "../inc/koneksi.php";
-    
+
+
+        $ormawa = $array['ID_ORMAWA'];
 
 ?>
 
@@ -53,7 +55,7 @@
                                     
                                     <tbody>
                                         <?php
-                                                $q = mysqli_query($koneksi,"SELECT * FROM `pengajuan_kegiatan` ");
+                                                $q = mysqli_query($koneksi,"SELECT * FROM `pengajuan_kegiatan` where `ID_ORMAWA` = $ormawa ");
                                             
 
                                                 while ($data = mysqli_fetch_array($q)) {
