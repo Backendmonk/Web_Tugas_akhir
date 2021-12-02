@@ -44,7 +44,7 @@
 <hr class="sidebar-divider">
    <!-- Nav Item - Dashboard -->
    <li class="nav-item active">
-    <a class="nav-link" href="Ormawa.php">
+    <a class="nav-link" href="Struktur-Ormawa.php">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Struktur Organisasi</span></a>
 </li>
