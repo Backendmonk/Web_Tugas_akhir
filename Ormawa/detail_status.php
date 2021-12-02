@@ -5,6 +5,7 @@
         include "SessionPengurus.php";
         include "../inc/koneksi.php";
 
+        $id = $_GET['id'];
     
     
      
@@ -54,15 +55,18 @@
                                             
                                         
                                         </tr>
-                                    </thead>
-                                    
+                                    </thead>    
+
+                                  
+
+
                                     <tbody>
                                     
                                                              <tr>
                                                                  
                                                                  <td>
                                                                     <?php
-                                                                        $q = mysqli_query($koneksi," SELECT count(`id_Persetujuan`) as id FROM `persetujuan_wkiii` WHERE id_pengajuan = $id ");
+                                                                        $q = mysqli_query($koneksi," SELECT count(`id_Persetujuan`) as id FROM `persetujuan_wkiii` WHERE id_pengajuan = $id");
                                                                         $count_wk = mysqli_fetch_array($q);
                                                                         
                                                                         echo $count_wk['id'];
@@ -164,14 +168,9 @@
                                                                  <?php
                                                                 
                                                                       
-                                                                        echo $count_km ;
-                                                                        echo $count_pm ;
-                                                                        echo $count_wk; 
-
-                                                                      
                                                                         $hasil = $count_wk + $count_pm + $count_km;
 
-                                                                        echo $hasil;
+                                                                        // echo $hasil;
                                                                          
                                                                      if($hasil == 3 ){
 
