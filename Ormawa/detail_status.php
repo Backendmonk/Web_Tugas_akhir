@@ -5,7 +5,7 @@
         include "SessionPengurus.php";
         include "../inc/koneksi.php";
 
-        $id = $_GET['id'];
+    
     
      
 
@@ -65,6 +65,7 @@
                                                                         $q = mysqli_query($koneksi," SELECT count(`id_Persetujuan`) as id FROM `persetujuan_wkiii` WHERE id_pengajuan = $id ");
                                                                         $count_wk = mysqli_fetch_array($q);
                                                                         
+                                                                        echo $count_wk['id'];
                                                                         
                                                                         $query_cekapp = mysqli_query($koneksi," SELECT * FROM `persetujuan_wkiii` WHERE id_pengajuan = $id ");
 
@@ -74,7 +75,9 @@
 
                                                                         if ($count_wk['id'] < 1) {
                                                                             echo "Menunggu";
-                                                                            $count_wk = 0 ;
+                                                                            $count_wk = 3;
+
+                                                                            
                                                                         }else{
                                                                             echo $arr['approval_status'];
                                                                             if($arr['approval_status']== "Approve"){
@@ -99,13 +102,13 @@
                                                                         $query_cekapp = mysqli_query($koneksi," SELECT * FROM `persetujuan_pembina` WHERE id_pengajuan = $id ");
 
                                                                         $count_p = mysqli_fetch_array($q);
-                                                                        
+                                                                        echo $count_p['id'];
                                                                         
                                                                         $arr  = mysqli_fetch_array($query_cekapp);
 
                                                                         if ($count_p['id'] < 1) {
                                                                             echo "Menunggu";
-                                                                            $count_pm = 0 ;
+                                                                            $count_pm = 3 ;
                                                                         }else{
                                                                             echo $arr['approval_status'];
                                                                             if($arr['approval_status']== "Approve"){
@@ -132,12 +135,12 @@
 
                                                                         $count_km = mysqli_fetch_array($q);
                                                                         
-                                                                        
+                                                                        echo $count_km['id'];
                                                                         $arr  = mysqli_fetch_array($query_cekapp);
 
                                                                         if ($count_km['id'] < 1) {
                                                                             echo "Menunggu";
-                                                                            $count_km = 0 ;
+                                                                            $count_km = 3;
                                                                         }else{
                                                                             echo $arr['approval_status'];
                                                                             if($arr['approval_status']== "Approve"){
@@ -159,26 +162,34 @@
                                                                  <td>
 
                                                                  <?php
+                                                                
                                                                       
-                                                                    
-                                                                       $hasil =  $count_km + $count_pm + $count_wk; 
+                                                                        echo $count_km ;
+                                                                        echo $count_pm ;
+                                                                        echo $count_wk; 
 
-                                                                  
+                                                                      
+                                                                        $hasil = $count_wk + $count_pm + $count_km;
 
-                                                                       
-
-                                                                       if($hasil >= 3 ){
+                                                                        echo $hasil;
+                                                                         
+                                                                     if($hasil == 3 ){
 
                                                                         $q = mysqli_query($koneksi, "UPDATE `pengajuan_kegiatan` SET `STATUS`='Approve' Where `ID_PENGAJUAN` = $id ");
                                                                         echo "Approve";
                                                                       
-                                                                        
-
-
-                                                                       }elseif ($hasil < 3) {
-                                                                        $q = mysqli_query($koneksi, "UPDATE `pengajuan_kegiatan` SET `STATUS`='Tolak' Where `ID_PENGAJUAN` = $id ");
-                                                                        echo "Ditolak";
-                                                                       }
+                                                                
+                                                                        }
+                                                                        elseif ($hasil >= 1 && $hasil < 3) {
+                                                                            $q = mysqli_query($koneksi, "UPDATE `pengajuan_kegiatan` SET `STATUS`='Tolak' Where `ID_PENGAJUAN` = $id ");
+                                                                            echo "DiTolak";
+                                                                        }
+                                                                       
+                                                                    
+                                                                       elseif ($hasil <= 9 && $hasil > 3) {
+                                                                       $q = mysqli_query($koneksi, "UPDATE `pengajuan_kegiatan` SET `STATUS`='Belum Diterima' Where `ID_PENGAJUAN` = $id ");
+                                                                        echo "Belum Diterima ";
+                                                                      }
 
 
                                                                     ?>
