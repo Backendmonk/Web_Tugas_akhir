@@ -85,7 +85,7 @@
                                                 <input type="text" class="form-control mb-2" name="user" id="user" value="<?= $datas['USERNAME_KETUA'] ?>" placeholder="Username">
                                             </div>
                                             <div class="col-6">
-                                            <label for="pass" class="form-label">Password</label>
+                                            <label for="passKetua" class="form-label">Password</label>
                                                 <input type="password" class="form-control mb-2" name="user" id="pass" >
                                             </div>
                                             <div class="col-6">
@@ -129,8 +129,7 @@
                                                     <td>
                                                         <?php 
                                                                             echo $data['NAMA_KETUA'] ;
-                                                                        ?>
-
+                                                        ?>
                                                     </td>
                                                     <td>
                                                         <?php
@@ -237,13 +236,14 @@
 
 <!-- logic Edit ormawa -->
 <?php if (isset($_POST['newEdit'])) {
-        $query = "SELECT * FROM `pengurus_ormawa` where `USERNAME_KETUA` = '' ";
+        $user = $_POST['user'];
+        $query = "SELECT * FROM `pengurus_ormawa` where `USERNAME_KETUA` = '$user'";
         $q = mysqli_query($koneksi,$query);
         if (!$q->num_rows > 0) {
-            $id = $_POST['id'];
-            $NAMA = $_POST['namaOr'];
+            $NAMA = $_POST['namak'];
+            $passk = password_hash($_POST['passKetua'],PASSWORD_DEFAULT);
             // query update ormawa
-             $sql = "UPDATE ormawa SET NAMA_ORMAWA = '$NAMA', NIDN = '$NIDN' WHERE ID_ORMAWA = '$id';";
+             $sql = "UPDATE pengurus_ormawa SET NAMA_KETUA = '$NAMA', USERNAME_KETUA = '$user', PASSWORD_KETUA='$passk' WHERE USERNAME_KETUA = '$user';";
             $result = mysqli_query($koneksi, $sql);
             var_dump($sql);
             if ($result) {

@@ -3,11 +3,11 @@
 <?php
 
       include "../../inc/koneksi.php";
-      session_start();
-      //cek sesi apakah userweb_Pemb (NIDN) sudah masuk dalam session ? kalau sudah header langsung ke index
-		    if (@$_SESSION['userweb_Pemb']!="") {
-			header("Location: ../index.php");
-	}
+  //     session_start();
+  //     //cek sesi apakah userweb_Pemb (NIDN) sudah masuk dalam session ? kalau sudah header langsung ke index
+	// 	    if (@$_SESSION['userweb_Pemb']!="") {
+	// 		header("Location: ../index.php");
+	// }
 ?>
 <html lang="en">
   <head>

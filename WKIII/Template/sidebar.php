@@ -17,7 +17,7 @@
 
    <!-- Nav Item - Dashboard -->
    <li class="nav-item active">
-    <a class="nav-link" href="index.html">
+    <a class="nav-link" href="Approval_pengajuan.php">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Approval Kegiatan</span></a>
 </li>

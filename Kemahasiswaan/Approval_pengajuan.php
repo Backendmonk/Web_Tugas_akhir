@@ -14,7 +14,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Dashboard</title>
+    <title>Approval pengajuan</title>
 
 <?php include '../template/head.php' ?>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -56,10 +56,6 @@
                                             <th>Timeline</th>
                                             <th>RAB</th>
                                             <th>Approval</th>
-
-
-                                            
-                                        
                                         </tr>
                                     </thead>
                                     
