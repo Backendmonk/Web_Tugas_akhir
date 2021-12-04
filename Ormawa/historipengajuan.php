@@ -62,13 +62,7 @@
                                                     ?>
                                                              <tr>
                                                                     <td>
-                                                                    <?php
-                                                                            $cek = mysqli_query($koneksi,"SELECT count(id_Persetujuan) as id FROM `persetujuan_kemahasiswaan` WHERE id_pengajuan  = $data[ID_PENGAJUAN]");
-                                                                            
-                                                                            $cekid = mysqli_fetch_array($cek);
-
-                                                                            echo $cekid['id'];
-                                                                    ?>
+                                                                   
                                                                     <?php echo $data['NAMA_KEGIATAN'];?></td>
                                                                     <td> <button type="button" class="btn btn-primary"><a style="color:white; text-decoration:none;" href= "detail_status.php?id= <?php echo $data['ID_PENGAJUAN']?>">Cek Status</a></button> </td>
                                                                    
