@@ -68,6 +68,12 @@
                                                 $q = mysqli_query($koneksi,"SELECT * FROM `pengajuan_kegiatan` Where `STATUS` = 'Belum Diterima' ");
                                                 while ($data = mysqli_fetch_array($q)) {
                                                     ?>
+                                                     <?php
+                                                    $cek = mysqli_query($koneksi,"SELECT count(id_Persetujuan) as id FROM `persetujuan_pembina` WHERE id_pengajuan  = $data[ID_PENGAJUAN]");
+                                                    
+                                                    $cekid = mysqli_fetch_array($cek);
+
+                                                            ?>
                                                   
                                                              <tr>  
                                                                     <td>  <b><?php echo $data['NAMA_ORMAWA_FK'] ?> </b> - <?php echo $data['NAMA_KEGIATAN'];?></td>
@@ -91,6 +97,10 @@
                                                                     <td>
                                                                         
                                                                     <?php
+                                                                    if ($cekid['id']< 1 ) {
+                                                                        echo "Menunggu Validasi Pembina";
+                                                                    }
+                                                                    else{
                                                                             $cek = mysqli_query($koneksi,"SELECT count(id_Persetujuan) as id, approval_status as stat  FROM `persetujuan_kemahasiswaan` Where  `id_pengajuan` = $data[ID_PENGAJUAN] AND (`approval_status` = 'Approve' OR `approval_status` = 'Tolak') ");
                                                                             
                                                                             $arr = mysqli_fetch_array($cek);
@@ -112,6 +122,7 @@
                                                                             else{
                                                                                 echo $arr['stat'];
                                                                             }
+                                                                        }
                                                                     ?>
                                                                     
                                                                     

@@ -69,7 +69,7 @@
                                                                         $q = mysqli_query($koneksi," SELECT count(`id_Persetujuan`) as id FROM `persetujuan_wkiii` WHERE id_pengajuan = $id");
                                                                         $count_wk = mysqli_fetch_array($q);
                                                                         
-                                                                        echo $count_wk['id'];
+                                                                        
                                                                         
                                                                         $query_cekapp = mysqli_query($koneksi," SELECT * FROM `persetujuan_wkiii` WHERE id_pengajuan = $id ");
 
@@ -106,7 +106,7 @@
                                                                         $query_cekapp = mysqli_query($koneksi," SELECT * FROM `persetujuan_pembina` WHERE id_pengajuan = $id ");
 
                                                                         $count_p = mysqli_fetch_array($q);
-                                                                        echo $count_p['id'];
+                                                                   
                                                                         
                                                                         $arr  = mysqli_fetch_array($query_cekapp);
 
@@ -139,7 +139,7 @@
 
                                                                         $count_km = mysqli_fetch_array($q);
                                                                         
-                                                                        echo $count_km['id'];
+                                                                  
                                                                         $arr  = mysqli_fetch_array($query_cekapp);
 
                                                                         if ($count_km['id'] < 1) {

@@ -69,7 +69,14 @@
                                                 while ($data = mysqli_fetch_array($q)) {
                                                     ?>
                                                   
-                                                             <tr>  
+                                                             <tr>   <?php
+                                                                            $cek = mysqli_query($koneksi,"SELECT count(id_Persetujuan) as id FROM `persetujuan_kemahasiswaan` WHERE id_pengajuan  = $data[ID_PENGAJUAN]");
+                                                                            
+                                                                            $cekid = mysqli_fetch_array($cek);
+
+                                                                          
+                                                                    ?>
+                                                                    
                                                                     <td>  <b><?php echo $data['NAMA_ORMAWA_FK'] ?> </b> - <?php echo $data['NAMA_KEGIATAN'];?></td>
 
                                                                     <td><center><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "../Ormawa/f_kegiatan/".$data['KONSEP_KEGIATAN'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
@@ -91,6 +98,10 @@
                                                                     <td>
                                                                         
                                                                     <?php
+
+                                                                    if ($cekid['id']< 1 ) {
+                                                                        echo "Menunggu Validasi kemahasiswaan";
+                                                                    }else{
                                                                             $cek = mysqli_query($koneksi,"SELECT count(id_Persetujuan) as id, approval_status as stat  FROM `persetujuan_wkiii` Where  `id_pengajuan` = $data[ID_PENGAJUAN] AND (`approval_status` = 'Approve' OR `approval_status` = 'Tolak') ");
                                                                             
                                                                             $arr = mysqli_fetch_array($cek);
@@ -112,6 +123,7 @@
                                                                             else{
                                                                                 echo $arr['stat'];
                                                                             }
+                                                                        }
                                                                     ?>
                                                                     
                                                                     
