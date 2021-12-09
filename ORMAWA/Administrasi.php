@@ -1,5 +1,4 @@
 <?php
-
         include "SessionPengurus.php";
 
 ?>
@@ -69,14 +68,32 @@
                                     {
                                         $idAp =  $dataPro["ID_APPROVAL"];
                                         $dataApPro = mysqli_query($koneksi, "SELECT * FROM approval_proposal WHERE ID_APPROVAL = '$idAp'");
+                                        $data =  mysqli_fetch_row($dataApPro)
+                                        ?>
+                                        <tr>
+                                       
+                                            <th scope="row">1</th>
+                                            <td><?= $ds["NAMA_KEGIATAN"] ?></td>
+                                            <?php if (!empty($data[0])) {
+                                               ?>  <td>Menunggu Diperiksa</td>  <?php
+                                            } else {
+                                                ?>  <td>Menunggu proposal</td>  <?php
+                                            }
+                                              ?>
+                                           <td>Menunggu proposal</td>
+                                            <td> <button type="button" class="btn btn-primary mb-2" data-toggle="modal"
+                                            data-target="#Upload<?=trim($idp ) ?>">Upload Proposal</button></td>
+                                            <td><button type="button" class="btn btn-danger mb-2" >Download Revisi</button></td>
+                                        </tr>
+                                        <?php
                                     }
-                                    
+                                  
                                 } else {
                                    
                                     ?>
                                     <tr>
                                    
-                                        <th scope="row"></th>
+                                        <th scope="row">2</th>
                                         <td><?= $ds["NAMA_KEGIATAN"] ?></td>
                                         <td>Menunggu Proposal</td>
                                         <td>Menunggu Proposal</td>
@@ -189,7 +206,7 @@
                 </div>
                 <div class="modal-body">
                     <form action="Logic/Administrasi.php" method="post"  enctype="multipart/form-data">
-                        <input class="form-control mb-2" name="id" value="<?= $data['ID_PENGAJUAN']?>" type="text" hidden required >
+                        <input class="form-control mb-2" name="id" value="<?= $data['ID_PENGAJUAN']?>" type="text"  >
                         <input class="form-control mb-2" name="proposal" type="file"  required>
                 </div>
                 <div class="modal-footer">
@@ -206,3 +223,36 @@
 
 </html>
 <?php include 'Template/EditProfilePass.php' ?>
+<?php
+
+if (!isset($_SESSION['notif'])) {
+    ?>
+                 
+          <?php
+          unset($_SESSION['notif']);
+  }  else if($_SESSION['notif']==true) {
+    ?>
+     <script>
+                              Swal.fire({
+                              icon: 'success',
+                              title: 'Berhasil',
+                              text: 'upload Berhasil',
+                              
+                              })
+                              </script>
+<?php
+unset($_SESSION['notif']);
+  }else{
+?>
+<script>
+          Swal.fire({
+          icon: 'error',
+          title: 'gagal',
+          text: 'gagal Berhasil',
+          
+          })
+          </script>
+          
+<?php } 
+unset($_SESSION['notif']);
+?>
