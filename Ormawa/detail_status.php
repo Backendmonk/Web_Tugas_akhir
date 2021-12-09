@@ -176,8 +176,8 @@
 
                                                                         $q = mysqli_query($koneksi, "UPDATE `pengajuan_kegiatan` SET `STATUS`='Approve' Where `ID_PENGAJUAN` = $id ");
                                                                         echo "Approve";
-                                                                      
-                                                                
+                                                                        $ida = rand();
+                                                                        mysqli_query($koneksi,"INSERT INTO proposal (ID_PROPOSAL,ID_PENGAJUAN) VALUES ('$ida','$id')");
                                                                         }
                                                                         elseif ($hasil >= 1 && $hasil < 3) {
                                                                             $q = mysqli_query($koneksi, "UPDATE `pengajuan_kegiatan` SET `STATUS`='Tolak' Where `ID_PENGAJUAN` = $id ");

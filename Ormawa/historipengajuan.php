@@ -4,9 +4,7 @@
 
         include "SessionPengurus.php";
         include "../inc/koneksi.php";
-
-
-        $ormawa = $array['ID_ORMAWA'];
+    
 
 ?>
 
@@ -55,15 +53,13 @@
                                     
                                     <tbody>
                                         <?php
-                                                $q = mysqli_query($koneksi,"SELECT * FROM `pengajuan_kegiatan` where `ID_ORMAWA` = $ormawa ");
+                                                $q = mysqli_query($koneksi,"SELECT * FROM `pengajuan_kegiatan` ");
                                             
 
                                                 while ($data = mysqli_fetch_array($q)) {
                                                     ?>
                                                              <tr>
-                                                                    <td>
-                                                                   
-                                                                    <?php echo $data['NAMA_KEGIATAN'];?></td>
+                                                                    <td><?php echo $data['NAMA_KEGIATAN'];?></td>
                                                                     <td> <button type="button" class="btn btn-primary"><a style="color:white; text-decoration:none;" href= "detail_status.php?id= <?php echo $data['ID_PENGAJUAN']?>">Cek Status</a></button> </td>
                                                                    
                                                                 </tr>
