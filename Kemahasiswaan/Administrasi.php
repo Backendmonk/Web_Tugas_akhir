@@ -96,6 +96,7 @@
                                               
                                          
                                             <td> 
+                                               
                                                 <button type="button" class="btn btn-primary mb-2" ><a style="text-decoration:none; Color:white;" href="<?php echo "../ORMAWA/f_proposal/".$data[5] ?>"> <i class = "fa fa-download"></i> </a></button>
                                                 <button type="button" class="btn btn-danger mb-2" data-toggle="modal"
                                                 data-target="#Upload<?=trim($idp ) ?>">upload Revisi</button>
@@ -108,10 +109,12 @@
                                             </td>
                                             
                                         </tr>
+                                                
                                         <?php
                                     }
 
                                 ?>
+
                             <?php }?>
                         </tbody>
                     </table>

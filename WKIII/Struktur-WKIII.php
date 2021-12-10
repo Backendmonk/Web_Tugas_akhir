@@ -12,6 +12,9 @@
     <title>SB Admin 2 - Dashboard</title>
 
 
+    <?php
+            include "../inc/koneksi.php";
+    ?>
 
 </head>
 
@@ -39,27 +42,51 @@
                     <div class="row">
                         <main class="col overflow-auto h-100">
                             <div class="row text-center mb-5">
+                                <?php
+                                    $q = mysqli_query($koneksi,"SELECT * FROM `strukturwkiii`");
+                                    $data = mysqli_fetch_array($q);
+
+                                      
+                                ?>
                                 <div class="col">
-                                    <img class="border border-3 rounded-circle" src="../img/LogoStiki.png" alt="" width="150px">
+                                    <h4>Ketua</h4>
+                                    <img class="border border-3 rounded-circle" src="<?php echo "../img/F_ketua/".$data['gambar_ketua'];  ?>" alt="" width="150px" height="150px">
+
+                                    <h5><?php echo $data['Nama_ketua'] ?></h5>
                                 </div>
                             </div>
                             <div class="row text-center mb-5">
                                 <div class="col">
-                                    <img class="border border-3 rounded-circle" src="../img/LogoStiki.png" alt=""  width="150px">
+                                <h4>Bidang Kemahasiswaan</h4>
+                                <img class="border border-3 rounded-circle" src="<?php echo "../img/F_kemahasiswaan/".$data['gambar_kemahasiswaan'];  ?>" alt="" width="150px" height="150px">
+                                <h5><?php echo $data['nama_bid_kemahasiswaan'] ?></h5>
                                 </div>
+
+
                                 <div class="col">
-                                    <img class="border border-3 rounded-circle" src="../img/LogoStiki.png" alt=""  width="150px">
+                                <h4>Bidang Alumni</h4>
+                                <img class="border border-3 rounded-circle" src="<?php echo "../img/F_alumni/".$data['gambar_alumni'];  ?>" alt="" width="150px" height="150px">
+                                <h5><?php echo $data['nama_bid_alumni'] ?></h5>
                                 </div>
+
                                 <div class="col">
-                                    <img class="border border-3 rounded-circle" src="../img/LogoStiki.png" alt=""  width="150px">
+                                <h4>Bidang Pusat Karir</h4>
+                                <img class="border border-3 rounded-circle" src="<?php echo "../img/F_pusat/".$data['gambar_pusat_karir'];  ?>" alt="" width="150px" height="150px">
+                                <h5><?php echo $data['nama_bid_pusat_karir'] ?></h5>
                                 </div>
                             </div>
+                            
                             <div class="row text-center mb-5 px-5">
                             <div class="col">
-                                    <img class="border border-3 rounded-circle" src="../img/LogoStiki.png" alt=""  width="150px">
+                            <h4>Sekretaris WKIII</h4>
+                            <img class="border border-3 rounded-circle" src="<?php echo "../img/F_sekretaris/".$data['gambar_sekretaris'];  ?>" alt="" width="150px" height="150px">
+                            <h5><?php echo $data['Sekretaris_WKIII'] ?></h5>
                                 </div>
+
                                 <div class="col">
-                                    <img class="border border-3 rounded-circle" src="../img/LogoStiki.png" alt=""  width="150px">
+                                <h4>Bimbingan Konseling</h4>
+                                <img class="border border-3 rounded-circle" src="<?php echo "../img/F_Bimbingan/".$data['gambar_bimbingan_konseling'];  ?>" alt="" width="150px" height="150px">
+                                <h5><?php echo $data['nama_bimbingan_konseling'] ?></h5>
                                 </div>
                             </div>
                             </div>

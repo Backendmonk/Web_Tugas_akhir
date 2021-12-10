@@ -8,7 +8,7 @@
 
  <!-- Nav Item - Dashboard -->
  <li class="nav-item active">
-    <a class="nav-link" href="Home-Pembina.php">
+    <a class="nav-link" href="index.php">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Dashboard</span></a>
 </li>
@@ -47,6 +47,17 @@
         <span>Ormawa</span></a>
 </li>
 
+
+ <!-- Divider -->
+ <hr class="sidebar-divider">
+   <!-- Nav Item - Dashboard -->
+   <li class="nav-item active">
+    <a class="nav-link" href="strukturOrganisasi.php">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>kelola Struktur Organisasi</span></a>
+</li>
+
+p
  
  <!-- Divider -->
  <hr class="sidebar-divider">
