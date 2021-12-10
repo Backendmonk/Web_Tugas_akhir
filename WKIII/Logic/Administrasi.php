@@ -30,7 +30,7 @@ if (isset($_POST['Upload'])) {
 if (isset($_POST['Ap'])) {
     $nidn= $_POST['kema'];
     $idp = $_POST['idp'];
-    $y = mysqli_query($koneksi,"UPDATE approval_proposal set NIDN_KEMAHASISWAAN ='$nidn', APPROVAL_PROPOSAL_KEMAHASISWAAN = 'Approve' where ID_APPROVAL = '$idp'");
+    $y = mysqli_query($koneksi,"UPDATE approval_proposal set NIDN_WKIII='$nidn', APPROVAL_PROPOSAL_WKIII = 'Approve' where ID_APPROVAL = '$idp'");
     session_start();
     if ($y) {
       $_SESSION['notifA'] = true;
@@ -42,7 +42,7 @@ if (isset($_POST['Ap'])) {
 if (isset($_POST['Un'])) {
     $nidn= $_POST['kema'];
     $idp = $_POST['idp'];
-    $y = mysqli_query($koneksi,"UPDATE approval_proposal set NIDN_KEMAHASISWAAN ='$nidn', APPROVAL_PROPOSAL_KEMAHASISWAAN = 'Unapproved' where ID_APPROVAL = '$idp'");
+    $y = mysqli_query($koneksi,"UPDATE approval_proposal set NIDN_WKIII='$nidn', APPROVAL_PROPOSAL_WKIII = 'Unapproved' where ID_APPROVAL = '$idp'");
     session_start();
     if ($y) {
       $_SESSION['notifU'] = true;

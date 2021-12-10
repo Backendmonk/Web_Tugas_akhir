@@ -75,26 +75,28 @@
                                             <td><?= $ds["NAMA_KEGIATAN"] ?></td>
                                             <?php if ( $data[3]=='Approve') {
                                                 ?>  <td>Approve</td>  <?php
-                                                $dataApPro2 = mysqli_query($koneksi, "SELECT * FROM approval_proposal WHERE ID_APPROVAL = '$idAp' and APPROVAL_PROPOSAL_KEMAHASISWAAN = 'Approve '");
-                                                $data2 =  mysqli_fetch_row($dataApPro2);
-                                            } elseif(!empty($data[0])){
-                                                ?>  <td>Menunggu Diperiksa</td>  <?php
+                                            } elseif($data[3]=='Unapproved'){
+                                                ?>  <td>Unapproved</td>  <?php
+                                            }elseif(!empty($data[0])){
+                                                ?>  <td>Menunggu  Diperiksa</td>  <?php
                                             }else{
                                                 ?>  <td>Menunggu proposal</td>  <?php
                                             }
                                               ?>
-                                            <?php if ( $data2[4]=='Approve') {
+                                            <?php if ( $data[4]=='Approve') {
                                                 ?>  <td>Approve</td>  <?php
                                                
-                                            } elseif(!empty($data2[0])){
+                                            } elseif($data[3]=='Approve'){
                                                 ?>  <td>Menunggu Diperiksa</td>  <?php
                                             }else{
                                                 ?>  <td>Menunggu proposal</td>  <?php
                                             }
                                               ?>
-                                           
+                                       
+                                              
+                                         
                                             <td> 
-                                                <button type="button" class="btn btn-primary mb-2" >Download Proposal</button>
+                                                <button type="button" class="btn btn-primary mb-2" ><a style="text-decoration:none; Color:white;" href="<?php echo "../ORMAWA/f_proposal/".$data[5] ?>"> <i class = "fa fa-download"></i> </a></button>
                                                 <button type="button" class="btn btn-danger mb-2" data-toggle="modal"
                                                 data-target="#Upload<?=trim($idp ) ?>">upload Revisi</button>
                                             </td>
@@ -104,6 +106,7 @@
                                                 <button type="button" class="btn btn-danger mb-2" data-toggle="modal"
                                                 data-target="#Un<?=trim($idp ) ?>">Unaprove</button>
                                             </td>
+                                            
                                         </tr>
                                         <?php
                                     }
@@ -210,7 +213,7 @@
                 </div>
                 <div class="modal-body">
                     <form action="Logic/Administrasi.php" method="post"  enctype="multipart/form-data">
-                        <input class="form-control mb-2" name="id" value="<?= $data['ID_PENGAJUAN']?>" hidden type="text"  >
+                    <input type="text" name="idp" value="<?=$data['ID_APPROVAL'] ?>" hidden>
                         <input class="form-control mb-2" name="proposal" type="file"  required>
                 </div>
                 <div class="modal-footer">
@@ -248,8 +251,8 @@
         </div>
     </div>
 
-      <!--Upload proposal Modal -->
-      <div class="modal fade" id="Upload<?= trim($data['ID_PENGAJUAN']) ?>" data-backdrop="static" data-keyboard="false" tabindex="-1"
+      <!--Unapproved proposal Modal -->
+      <div class="modal fade" id="Un<?= trim($data['ID_PENGAJUAN']) ?>" data-backdrop="static" data-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -261,12 +264,13 @@
                 </div>
                 <div class="modal-body">
                     <form action="Logic/Administrasi.php" method="post"  enctype="multipart/form-data">
-                        <input class="form-control mb-2" name="id" value="<?= $data['ID_PENGAJUAN']?>" hidden type="text"  >
-                        <input class="form-control mb-2" name="proposal" type="file"  required>
+                        <input type="text" name="kema" value="<?= $array["NIDN_KEMAHASISWAAN"] ?>" hidden>
+                        <input type="text" name="idp" value="<?=$data['ID_APPROVAL'] ?>" hidden>
+                        Apakah sudah yakin di Unapproved?, nanti tidak bisa diubah lagi loh!!
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" name="Upload" class="btn btn-primary">Simpan</button>
+                    <button type="submit" name="Un" class="btn btn-primary">Simpan</button>
                     </form>
                 </div>
             </div>
@@ -279,7 +283,21 @@
 </html>
 <?php include 'Template/EditProfilePass.php' ?>
 <?php
+if ($_SESSION['eks']==true) {
+   
 
+    ?>
+    <script>
+          Swal.fire({
+          icon: 'error',
+          title: 'Gagal',
+          text: 'Ekstensi Salah',
+          
+          })
+          </script>
+<?php
+unset($_SESSION['eks']);
+}
 if (!isset($_SESSION['notif'])) {
     ?>
                  
@@ -310,4 +328,67 @@ unset($_SESSION['notif']);
           
 <?php } 
 unset($_SESSION['notif']);
+
+
+if (!isset($_SESSION['notifA'])) {
+    ?>
+                 
+          <?php
+          unset($_SESSION['notifA']);
+  }  else if($_SESSION['notifA']==true) {
+    ?>
+     <script>
+                              Swal.fire({
+                              icon: 'success',
+                              title: 'Berhasil',
+                              text: 'Approve Berhasil',
+                              
+                              })
+                              </script>
+<?php
+unset($_SESSION['notifA']);
+  }else{
+?>
+<script>
+          Swal.fire({
+          icon: 'error',
+          title: 'gagal',
+          text: 'Approve gagal',
+          
+          })
+          </script>
+          
+<?php } 
+unset($_SESSION['notifA']);
+
+if (!isset($_SESSION['notifU'])) {
+    ?>
+                 
+          <?php
+          unset($_SESSION['notifU']);
+  }  else if($_SESSION['notifU']==true) {
+    ?>
+     <script>
+                              Swal.fire({
+                              icon: 'success',
+                              title: 'Berhasil',
+                              text: 'Unapproved Berhasil',
+                              
+                              })
+                              </script>
+<?php
+unset($_SESSION['notifU']);
+  }else{
+?>
+<script>
+          Swal.fire({
+          icon: 'error',
+          title: 'gagal',
+          text: 'UnApproved gagal',
+          
+          })
+          </script>
+          
+<?php } 
+unset($_SESSION['notifU']);
 ?>
