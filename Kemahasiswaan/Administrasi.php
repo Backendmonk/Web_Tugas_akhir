@@ -96,6 +96,7 @@
                                               ?>
                                             
                                             <td> 
+                                               
                                                 <button type="button" class="btn btn-primary mb-2" ><a style="text-decoration:none; Color:white;" href="<?php echo "../ORMAWA/f_proposal/".$data[5] ?>"> <i class = "fa fa-download"></i> </a></button>
                                                 <?php if($data[3]=='Unapproved'){?>
                                                      <button type="button" class="btn btn-danger mb-2" data-toggle="modal"
@@ -112,10 +113,12 @@
                                             </td>
                                             
                                         </tr>
+                                                
                                         <?php
                                     }
 
                                 ?>
+
                             <?php }?>
                         </tbody>
                     </table>

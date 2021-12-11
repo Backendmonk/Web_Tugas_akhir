@@ -7,7 +7,7 @@ if (isset($_POST['Upload'])) {
   $ext_kg = pathinfo($filename_kg, PATHINFO_EXTENSION);
   $ekstensi_kg = array('doc','docx','pdf');
  
- // cek proposal format
+ // cek proposal formatz
   if(!in_array($ext_kg,$ekstensi_kg)){
     $_SESSION['eks'] = true;
  }else{

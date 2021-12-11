@@ -47,7 +47,7 @@
                         
                     <main class="col overflow-auto h-100">
             <div class="bg-light border rounded-3 p-3">
-                <h2>Main</h2>
+              
                 <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span class="sr-only">Previous</span>
@@ -77,7 +77,7 @@
                             
                             <div class="carousel-item">
                             <?php
-                                include "Struktur-WKIII.php";
+                                include "../WKIII/Struktur-WKIII.php";
                             ?>
                             </div>
                             

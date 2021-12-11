@@ -8,7 +8,7 @@
 
  <!-- Nav Item - Dashboard -->
  <li class="nav-item active">
-    <a class="nav-link" href="Home-Pembina.php">
+    <a class="nav-link" href="index.php">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Dashboard</span></a>
 </li>
@@ -26,7 +26,7 @@
  <hr class="sidebar-divider">
    <!-- Nav Item - Dashboard -->
    <li class="nav-item active">
-    <a class="nav-link" href="Ormawa.php">
+    <a class="nav-link" href="pembinaormawa.php">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Pembina Ormawa</span></a>
 </li>

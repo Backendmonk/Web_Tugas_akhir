@@ -44,49 +44,20 @@
                     <div class=" text-center  mb-4">
                         <h3 <span class="text-danger">STRUKTUR ORGANISASI</span> <span class=" text-gray-500"> ORMAWA <?php echo $arr['ormawa']; ?></span> </h3>
                     </div>
-
+                        <?php
+                                $q = mysqli_query($koneksi,"SELECT * FROM `pengurus_ormawa`");
+                                $ar = mysqli_fetch_array($q);
+                        ?>
                     <!-- Content Row -->
                     <div class="row">
                         <main class="col overflow-auto h-100">
                             <div class="row text-center mb-5">
                                 <div class="col">
-                                    <img class="border border-3 rounded-circle" src="../img/LogoStiki.png" alt="" width="150px">
+                                    <img class="border border-3 " src="<?php echo "../img/ormawa_struktur/".$ar['GAMBAR_STRUKTUR_ORGANISASI']; ?>" alt="" width="500px">
                                     <br>
-                                    <SPAn><?php echo $array['NAMA_KETUA']; ?></SPAn>
+                                    
                                 </div>
-                            </div>
-                            <div class="row text-center mb-5 mx-5">
-                                <div class="col">
-                                    <img class="border border-3 rounded-circle" src="../img/LogoStiki.png" alt=""  width="150px">
-                                    <br>
-                                    <SPAn><?php echo $array['NAMA_WAKIL']; ?></SPAn>
-                                </div>
-                                <div class="col">
-                                    <img class="border border-3 rounded-circle" src="../img/LogoStiki.png" alt=""  width="150px">
-                                    <br>
-                                    <SPAn><?php echo $array['NAMA_WAKIL2']; ?></SPAn>
-                                </div>
-                            </div>
-                            <div class="row text-center mb-5 px-5">
-                            <div class="col">
-                                    <img class="border border-3 rounded-circle" src="../img/LogoStiki.png" alt=""  width="150px">
-                                    <br>
-                                    <SPAn><?php echo $array['SEKRETARIS1']; ?></SPAn>
-                                </div>
-                                <div class="col">
-                                    <img class="border border-3 rounded-circle" src="../img/LogoStiki.png" alt=""  width="150px">
-                                    <br>
-                                    <SPAn><?php echo $array['SEKRETARIS2']; ?></SPAn>
-                                </div>
-                                <div class="col">
-                                    <img class="border border-3 rounded-circle" src="../img/LogoStiki.png" alt=""  width="150px">
-                                    <br>
-                                    <SPAn><?php echo $array['BENDAHARA1']; ?></SPAn>
-                                </div> <div class="col">
-                                    <img class="border border-3 rounded-circle" src="../img/LogoStiki.png" alt=""  width="150px">
-                                    <br>
-                                    <SPAn><?php echo $array['BENDAHARA2']; ?></SPAn>
-                                </div>
+                            
                             </div>
                             <div class="row">
                                 <div class="col-10"></div>
