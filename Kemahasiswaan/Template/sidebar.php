@@ -21,6 +21,7 @@
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Approval Kegiatan</span></a>
 </li>
+<hr class="sidebar-divider">
    <!-- Nav Item - Dashboard -->
    <li class="nav-item active">
     <a class="nav-link" href="Administrasi.php">
