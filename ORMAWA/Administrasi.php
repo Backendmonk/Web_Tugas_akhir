@@ -59,6 +59,7 @@
                         </thead>
                         <tbody>
                             <?php 
+                            error_reporting(0);
                                 while($ds = mysqli_fetch_assoc($qK)){
                                 $idp = $ds['ID_PENGAJUAN'];
                                 $qPro = mysqli_query($koneksi, "SELECT * FROM proposal WHERE ID_PENGAJUAN = '$idp'");
