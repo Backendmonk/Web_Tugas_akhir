@@ -63,7 +63,7 @@
                 </div>
 
                 <div class=" col-sm-6  text-center" >
-                <a style ="text-decoration:none;" href="http://localhost/web_tugas_akhir/Ormawa/login/login.php">
+                <a style ="text-decoration:none;" href="tracking-Pengajuan.php">
                     <div class="serviceBox border" style="height: 200px; padding:50px" >
                             <i style="font-size: 40px; padding-left:-100px" class="fa fa-rocket" style="width: 80px;"></i>
                             <h3 class="title">Kegiatan ORMAWA</h3>
