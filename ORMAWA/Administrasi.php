@@ -309,8 +309,12 @@
                 <div class="modal-body">
                     <form action="Logic/Administrasi.php" method="post"  enctype="multipart/form-data">
                         <input class="form-control mb-2" name="id" value="<?= $data['ID_PENGAJUAN']?>" hidden type="text"  >
-                        <label for="bukti">Bukti Kegiatan</label>
-                        <input class="form-control mb-2" name="bukti" id="bukti" type="file"  required>
+                        <label for="absen">Absensi Bukti Kegiatan</label>
+                        <input class="form-control mb-2" name="absen" id="absen" type="file"  required>
+                        <label for="dok">Dokumentasi</label>
+                        <input class="form-control mb-2" name="dok" id="dok" type="file"  required>
+                        <label for="sertif">Sertifikat</label>
+                        <input class="form-control mb-2" name="sertif" id="sertif" type="file"  required>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

@@ -105,4 +105,61 @@
  
  }
 
+ //logic LPJ
+ if (isset($_POST['UpBukti'])) {
+    $filename_kg = $_FILES['absen']['name'];
+    $ext_kg = pathinfo($filename_kg, PATHINFO_EXTENSION);
+    $ekstensi_kg = array('doc','docx','pdf');
+
+    $filename_dok = $_FILES['dok']['name'];
+    $ext_dok = pathinfo($filename_dok, PATHINFO_EXTENSION);
+    $ekstensi_dok = array('doc','docx','pdf');
+
+    $filename_ser = $_FILES['sertif']['name'];
+    $ext_ser = pathinfo($filename_ser, PATHINFO_EXTENSION);
+    $ekstensi_ser = array('doc','docx','pdf');
+
+   // cek LPJ format
+   if(!in_array($ext_kg,$ekstensi_kg) && !in_array($ext_dok,$ekstensi_dok) && !in_array($ext_ser,$ekstensi_ser) ){
+    $_SESSION['eks'] = true;
+ }else{
+   $id = rand();
+   $idp = $_POST["id"];
+    // tmp file
+    move_uploaded_file($_FILES['absen']['tmp_name'], '../f_bukti/'.time()."_".$filename_kg);
+    $absen = time()."_".$filename_kg;
+    // tmp file
+    move_uploaded_file($_FILES['dok']['tmp_name'], '../f_bukti/'.time()."_".$filename_dok);
+    $dok = time()."_".$filename_dok;
+    // tmp file
+    move_uploaded_file($_FILES['sertif']['tmp_name'], '../f_bukti/'.time()."_".$filename_ser);
+    $ser = time()."_".$filename_ser;
+
+    $h = mysqli_query($koneksi,"SELECT * FROM proposal WHERE ID_PENGAJUAN = $idp");
+    $cek = mysqli_fetch_row($h);
+    $idlpj = $cek[5];
+    $hs = mysqli_query($koneksi,"SELECT * FROM approval_lpj WHERE ID_APPROVALLPJ = $idlpj");
+    $cek1 = mysqli_fetch_row($hs);
+    if (!empty($cek1[7])) {
+       $idaporve =$cek1[7];
+      $qApPro = mysqli_query($koneksi, "UPDATE bukti_kegiatan set ABSENSI_BK= '$absen', DOKUMENTASI = '$dok', SERTIFIKAT = '$ser' where ID_BUKTIKEGIATAN = '$idaporve'");
+      $qPro =true;
+    } else {
+      $idpropo = rand();
+      $qApPro = mysqli_query($koneksi, "INSERT INTO bukti_kegiatan (SERTIFIKAT,DOKUMENTASI,ABSENSI_BK,ID_BUKTIKEGIATAN)
+      VALUES ('$ser','$dok','$absen','$id')");
+      $qPro = mysqli_query($koneksi, "UPDATE approval_lpj set ID_BK = '$id' where ID_APPROVALLPJ = $idlpj ");
+    }
+    
+    session_start();
+    if ($qApPro AND $qPro) {
+      $_SESSION['notif'] = true;
+    } else {
+      $_SESSION['notif'] = false;
+    }
+  }
+    header("location:../Administrasi.php");
+ 
+ }
+
 ?>
