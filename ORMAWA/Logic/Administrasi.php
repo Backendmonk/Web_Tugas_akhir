@@ -87,8 +87,6 @@
       echo 'asd';
     } else {
       $idpropo = rand();
-      var_dump($proposal);
-      var_dump($id);
       $qApPro = mysqli_query($koneksi, "INSERT INTO approval_lpj (LAPORAN_LPJ,ID_APPROVALLPJ)
       VALUES ('$proposal','$id')");
       $qPro = mysqli_query($koneksi, "UPDATE proposal set ID_LPJ = '$id' where ID_PENGAJUAN = $idp");

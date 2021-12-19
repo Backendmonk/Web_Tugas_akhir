@@ -344,8 +344,13 @@
         </div>
     </div>
 
+    <?php 
+    $ilpj = $data['ID_LPJ'];
+    $qlpj = mysqli_query($koneksi,"SELECT ID_BK FROM approval_lpj where ID_APPROVALLPJ = '$ilpj'");
+    $idbk = mysqli_fetch_row($qlpj);
+    ?>
   <!--Upload Approve LPJ Modal -->
-  <div class="modal fade" id="ApLpj<?= trim($data['ID_LPJ']) ?>" data-backdrop="static" data-keyboard="false" tabindex="-1"
+  <div class="modal fade" id="ApLpj<?= trim($ilpj) ?>" data-backdrop="static" data-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -358,7 +363,9 @@
                 <div class="modal-body">
                     <form action="Logic/Administrasi.php" method="post" >
                         <input type="text" name="kema" value="<?= $array["NIDN_WKIII"] ?>" hidden>
-                        <input type="text" name="idp" value="<?=$data['ID_LPJ'] ?>" hidden>
+                        <input type="text" name="idp" value="<?=$ilpj  ?>" hidden>
+                        <input type="text" name="ibk" value="<?=$data['ID_LPJ'] ?>" hidden>
+                        <input type="text" name="ibk" value="<?= $idbk[0]  ?>" hidden >
                         Apakah sudah yakin di approve?, nanti tidak bisa diubah lagi loh!!
                 </div>
                 <div class="modal-footer">

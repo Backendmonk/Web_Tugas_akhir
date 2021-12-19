@@ -54,8 +54,12 @@ if (isset($_POST['Upload'])) {
 
 if (isset($_POST['Ap'])) {
     $nidn= $_POST['kema'];
-    $idp = $_POST['idp'];
+    $idp = trim($_POST['idp']);
+    $tgl = date('Y-m-d'); 
+    $idl = rand();
+  
     $y = mysqli_query($koneksi,"UPDATE approval_proposal set NIDN_WKIII='$nidn', APPROVAL_PROPOSAL_WKIII = 'Approve' where ID_APPROVAL = '$idp'");
+    // $y = mysqli_query($koneksi,"INSERT INTO laporan (ID_LAPORAN,ID_PENGAJUAN,TANGGAL) VALUES ('$idl','$idp','$tgl')");
     session_start();
     if ($y) {
       $_SESSION['notifA'] = true;
@@ -68,7 +72,11 @@ if (isset($_POST['Ap'])) {
 if (isset($_POST['ApLpj'])) {
   $nidn= $_POST['kema'];
   $idp = $_POST['idp'];
+  $ibk = $_POST['ibk'];
+  $tgl = date('Y-m-d'); 
+  $idl = rand();
   $y = mysqli_query($koneksi,"UPDATE approval_lpj set NIDN_WKIII ='$nidn', APPROVAL_LPJ_WKIII = 'Approve' where ID_APPROVALLPJ = '$idp'");
+  $y = mysqli_query($koneksi,"INSERT INTO lpj (ID_LPJ,ID_APPROVALLPJ,ID_BUKTIKEGIATAN, TGL_PENGAJUANLPJ) VALUES ('$idl','$idp','$ibk','$tgl')");
   session_start();
   if ($y) {
     $_SESSION['notifA'] = true;
