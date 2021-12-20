@@ -72,7 +72,9 @@
                                         $data =  mysqli_fetch_row($dataApPro)
                                         ?>
                                         <tr>
-                                       
+                                        <?php if (isset($data) && $data[4] != 'Approve') { ?>
+                                            # code...
+                                      
                                             <th scope="row">1</th>
                                             <td><?= $ds["NAMA_KEGIATAN"] ?></td>
                                             <?php if ( $data[3]=='Approve') {
@@ -101,6 +103,7 @@
                                             <?php } else{  ?>
                                                 <td> <button type="button" class="btn btn-secondary mb-2" ><a style="text-decoration:none; Color:white;" > <i class = "fa fa-download"></i> </a></button></td>
                                             <?php } ?>
+                                       <?php } ?>
                                         </tr>
                                         <?php
                                     }
@@ -159,10 +162,15 @@
                                         $dlpj= mysqli_fetch_row($qlpj);
                                     ?>
                                     <tr>
+                                        <?php if ($dlpj[4] != 'Approve') { ?>
+                                       
                                         <td><?=$n++?></td>
                                         <td><?=$nmAk?></td>
                                         <?php if ($dlpj) {?>
-                                            <?php if ($dlpj[3]=='Approve') {?>
+                                            <?php if ($dlpj[4]=='Approve') {?>
+                                                <td>Approve</td>
+                                                <td>Approve</td>
+                                            <?php } elseif($dlpj[3]=='Approve') {?>
                                                 <td>Approve</td>
                                                 <td>menunggu diperiksa</td>
                                             <?php  }elseif($dlpj[3]=='Unapproved'){ ?>
@@ -170,7 +178,7 @@
                                                 <td>menunggu LPJ</td>
                                             <?php  } ?>
                                         <?php  }else{?>
-                                        <td>menunngu</td>
+                                        <td>menunngu LPJ</td>
                                         <td>menunggu LPJ</td>
                                         <?php } ?>
                                         <td>
@@ -184,6 +192,7 @@
                                             <?php } else{  ?>
                                                 <td> <button type="button" class="btn btn-secondary mb-2" ><a style="text-decoration:none; Color:white;" > <i class = "fa fa-download"></i> </a></button></td>
                                             <?php } ?>
+                                    <?php } ?>
                                     </tr>
                                 <?php  
                                         }  

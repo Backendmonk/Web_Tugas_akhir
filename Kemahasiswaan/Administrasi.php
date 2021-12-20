@@ -51,10 +51,8 @@
                             <tr>
                                 <th scope="col">no</th>
                                 <th scope="col">Nama Kegiatan</th>
-                                <th scope="col">Approval Kemahasiswaan</th>
-                                <th scope="col">Approval WKIII</th>
+                                <th scope="col">Approval</th>
                                 <th scope="col">Action</th>
-                                <th scope="col">Status</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -68,36 +66,32 @@
                                     while($dataPro = mysqli_fetch_array($qPro))
                                     {
                                         $idAp =  $dataPro["ID_APPROVAL"];
-                                        $dataApPro = mysqli_query($koneksi, "SELECT * FROM approval_proposal WHERE ID_APPROVAL = '$idAp'");
+                                        $dataApPro = mysqli_query($koneksi, "SELECT * FROM approval_proposal WHERE ID_APPROVAL = '$idAp' && APPROVAL_PROPOSAL_KEMAHASISWAAN != 'Approve'");
                                         $data =  mysqli_fetch_row($dataApPro);
                                         $a++;
                                         ?>
                                         <tr>
-                                       
+                                            
+                                       <?php 
+                                       if (isset($data)) {
+                                       ?>
                                             <th scope="row"><?= $a?></th>
                                             <td><?= $ds["NAMA_KEGIATAN"] ?></td>
                                             <?php if ( $data[3]=='Approve') {
                                                 ?>  <td>Approve</td>  <?php
                                             } elseif($data[3]=='Unapproved'){
                                                 ?>  <td>Unapproved</td>  <?php
-                                            }elseif(!empty($data[0])){
+                                            }elseif(!empty($data[5])){
                                                 ?>  <td>Menunggu  Diperiksa</td>  <?php
                                             }else{
                                                 ?>  <td>Menunggu proposal</td>  <?php
                                             }
                                               ?>
-                                            <?php if ( $data[4]=='Approve') {
-                                                ?>  <td>Approve</td>  <?php
-                                               
-                                            } elseif($data[3]=='Approve'){
-                                                ?>  <td>Menunggu Diperiksa</td>  <?php
-                                            }else{
-                                                ?>  <td>Menunggu proposal</td>  <?php
-                                            }
-                                              ?>
+                                           
                                             
                                             <td> 
-                                               
+                                               <?php if (!empty($data[5])) { ?>
+
                                                 <button type="button" class="btn btn-primary mb-2" ><a style="text-decoration:none; Color:white;" href="<?php echo "../ORMAWA/f_proposal/".$data[5] ?>"> <i class = "fa fa-download"></i> </a></button>
                                                 <?php if($data[3]=='Unapproved'){?>
                                                      <button type="button" class="btn btn-danger mb-2" data-toggle="modal"
@@ -105,14 +99,29 @@
                                                <?php }else{ ?>
                                                     <button type="button" class="btn btn-secondary mb-2">upload Revisi</button>
                                                <?php } ?>
-                                            </td>
-                                            <td>
+                                            
                                                 <button type="button" class="btn btn-primary mb-2" data-toggle="modal"
                                                 data-target="#Ap<?=trim($idp ) ?>">Approve</button>
                                                 <button type="button" class="btn btn-danger mb-2" data-toggle="modal"
                                                 data-target="#Un<?=trim($idp ) ?>">Unaprove</button>
-                                            </td>
+                                                <?php }else{ ?>
+                                                    <button type="button" class="btn btn-secondary mb-2" ><a style="text-decoration:none; Color:white;" > <i class = "fa fa-download"></i> </a></button>
+                                                    <button type="button" class="btn btn-secondary mb-2">upload Revisi</button>
+                                    
                                             
+                                                <button type="button" class="btn btn-secondary mb-2">Approve</button>
+                                                <button type="button" class="btn btn-secondary  mb-2">Unaprove</button>
+                                            </td>
+                                         
+
+
+
+                                            <?php } ?>
+
+
+                                            
+                                            <?php } ?>
+
                                         </tr>
                                                 
                                         <?php
@@ -129,10 +138,8 @@
                             <tr>
                                  <th scope="col">no</th>
                                 <th scope="col">Nama Kegiatan</th>
-                                <th scope="col">Approval Kemahasiswaan</th>
-                                <th scope="col">Approval WKIII</th>
+                                <th scope="col">Approval</th>
                                 <th scope="col">Action</th>
-                                <th scope="col">Status</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -140,32 +147,40 @@
                                
                                <?php 
                                $n=1;
-                                    $q = mysqli_query($koneksi,'SELECT  ID_PENGAJUAN,ID_LPJ FROM proposal where ID_LPJ IS NOT NULL');
+                                    $q = mysqli_query($koneksi,'SELECT  ID_PENGAJUAN,ID_LPJ,ID_APPROVAL FROM proposal');
                                     while( $dPe = mysqli_fetch_array($q)){
                                         $idpk = $dPe['ID_PENGAJUAN'];
+                                        $idAP = $dPe['ID_APPROVAL'];
                                         $idLPJ = $dPe['ID_LPJ'];
                                         $qk = mysqli_query($koneksi,"SELECT NAMA_KEGIATAN from pengajuan_kegiatan where ID_PENGAJUAN = $idpk");
                                         $dpk=mysqli_fetch_row($qk);
-                                        $qlpj = mysqli_query($koneksi,"SELECT * from approval_lpj where ID_APPROVALLPJ = $idLPJ");
-                                        $dlpj=mysqli_fetch_row($qlpj);
+                                        $qap=mysqli_query($koneksi,"SELECT APPROVAL_PROPOSAL_WKIII FROM approval_proposal where ID_APPROVAL = '$idAP'");
+                                        $dap = mysqli_fetch_row($qap);
+                                        if ($dap[0] == 'Approve') {
+                                            $qlpj = mysqli_query($koneksi,"SELECT * from approval_lpj where ID_APPROVALLPJ = $idLPJ");
+                                            $dlpj=mysqli_fetch_row($qlpj);
+                                        }
                                     ?>
                                 <tr>
-                                <th scope="row"><?=$n++?></th>
+                                <?php
+                                if ($dap[0] == 'Approve' && $dlpj[3] != 'Approve') { ?>
+                                    <th scope="row"><?=$n++?></th>
                                 <td><?= $dpk[0] ?></td>
-                                <?php if (isset($dlpj[3])) { ?>
+                                
                                      <?php if($dlpj[3]=='Approve'){ ?>
                                         <td>Approve</td>
-                                        <td>Memeriksa</td>
+                                        
                                     <?php   }elseif($dlpj[3]=='Unapproved'){ ?>
                                         <td>Unapprove</td>
-                                        <td>Menunggu laporan</td>
-                               <?php } ?>
+                                       
                                <?php }else{ ?>
-                               <td> Menunggu laporan</td>
-                                    <td>Menunggu laporan</td>
+                               <td> Menunggu LPJ</td>
+                                
                                 <?php } ?>
                                     <td>         <?php if( isset($dlpj[5]) ){?>
-                                                <button type="button" class="btn btn-primary mb-2" ><a style="text-decoration:none; Color:white;" href="<?php echo "../ORMAWA/f_lpj/".$dlpj[5] ?>"> <i class = "fa fa-download"></i> </a></button>
+                                                <button type="button" class="btn btn-primary mb-2" data-toggle="modal"
+                                                data-target="#file<?=trim($idLPJ ) ?>" ><a style="text-decoration:none; Color:white;"> <i class = "fa fa-download"></i> </a></button>
+                                               
                                                 <?php }else{ ?>
                                                     <button type="button" class="btn btn-secondary mb-2" ><a style="text-decoration:none; Color:white;"> <i class = "fa fa-download"></i> </a></button>
                                                     <?php } ?>
@@ -175,15 +190,24 @@
                                                <?php }else{ ?>
                                                     <button type="button" class="btn btn-secondary mb-2">upload Revisi</button>
                                                <?php } ?>
-                                            </td>
-                                            <td>
+                                               <?php if( isset($dlpj[5]) ){?>
+                                             
                                                 <button type="button" class="btn btn-primary mb-2" data-toggle="modal"
                                                 data-target="#ApLpj<?=trim($idLPJ ) ?>">Approve</button>
                                                 <button type="button" class="btn btn-danger mb-2" data-toggle="modal"
                                                 data-target="#UnLpj<?=trim($idLPJ ) ?>">Unaprove</button>
+                                              
+                                               
+                                                    <?php }else{ ?>
+                                               
+                                                    <button type="button" class="btn btn-secondary mb-2" >Approve</button>
+                                                    <button type="button" class="btn btn-secondary mb-2" >Unaprove</button>
+                                                   
+                                                    <?php } ?>
                                             </td>
-
-
+                                         
+                              <?php  } ?>
+                               
                                 </tr>
 
 
@@ -312,7 +336,7 @@
                     <form action="Logic/Administrasi.php" method="post" >
                         <input type="text" name="kema" value="<?= $array["NIDN_KEMAHASISWAAN"] ?>" hidden>
                         <input type="text" name="idp" value="<?=$data['ID_APPROVAL'] ?>" hidden>
-                        Apakah sudah yakin di approve?, nanti tidak bisa diubah lagi loh!!
+                        Apakah sudah yakin di approve?
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -338,7 +362,7 @@
                     <form action="Logic/Administrasi.php" method="post" >
                         <input type="text" name="kema" value="<?= $array["NIDN_KEMAHASISWAAN"] ?>" hidden>
                         <input type="text" name="idp" value="<?=$data['ID_LPJ'] ?>" hidden>
-                        Apakah sudah yakin di approve?, nanti tidak bisa diubah lagi loh!!
+                        Apakah sudah yakin di approve?
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -364,7 +388,7 @@
                     <form action="Logic/Administrasi.php" method="post"  enctype="multipart/form-data">
                         <input type="text" name="kema" value="<?= $array["NIDN_KEMAHASISWAAN"] ?>" hidden>
                         <input type="text" name="idp" value="<?=$data['ID_APPROVAL'] ?>" hidden>
-                        Apakah sudah yakin di Unapproved?, nanti tidak bisa diubah lagi loh!!
+                        Apakah sudah yakin di Unapproved?
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -390,12 +414,47 @@
                     <form action="Logic/Administrasi.php" method="post"  enctype="multipart/form-data">
                         <input type="text" name="kema" value="<?= $array["NIDN_KEMAHASISWAAN"] ?>" hidden>
                         <input type="text" name="idp" value="<?=$data['ID_LPJ'] ?>" hidden>
-                        Apakah sudah yakin di Unapproved?, nanti tidak bisa diubah lagi loh!!
+                        Apakah sudah yakin di Unapproved?
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="submit" name="UnLpj" class="btn btn-primary">Simpan</button>
                     </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+      <!--bukti kegiatan Modal -->
+      <?php
+        $idlpj = trim($data['ID_LPJ']);
+        $qlpj = mysqli_query($koneksi,"SELECT LAPORAN_LPJ,ID_BK FROM approval_lpj where ID_APPROVALLPJ = '$idlpj'");
+        $dlpj = mysqli_fetch_row($qlpj);
+        $idbk = $dlpj[1];
+        $qbk= mysqli_query($koneksi,"SELECT ABSENSI_BK,DOKUMENTASI,SERTIFIKAT FROM bukti_kegiatan where ID_BUKTIKEGIATAN = '$idbk'");
+        $dbk = mysqli_fetch_row($qbk);
+      ?>
+      <div class="modal fade" id="file<?= $idlpj ?>" data-backdrop="static" data-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">LPJ dan Bukti Kegiatan</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                        <div class="row">
+                        <label for="#lpj">LPJ</label>
+                        <button type="button" id="lpj" class="btn btn-primary mb-2" ><a style="text-decoration:none; Color:white;" href="<?php echo "../ORMAWA/f_lpj/".$dlpj[0] ?>"> <i class = "fa fa-download"></i> </a></button>
+                        <label for="#abk">Absensi BK</label>
+                        <button type="button" id="abk" class="btn btn-primary mb-2" ><a style="text-decoration:none; Color:white;" href="<?php echo "../ORMAWA/f_bukti/".$dbk[0] ?>" > <i class = "fa fa-download"></i> </a></button>
+                        <label for="#dok">Dokumentasi</label>
+                        <button type="button" id="dok" class="btn btn-primary mb-2" ><a style="text-decoration:none; Color:white;" href="<?php echo "../ORMAWA/f_bukti/".$dbk[1] ?>" > <i class = "fa fa-download"></i> </a></button>
+                        <label for="#sertifikat">Sertifikat</label>
+                        <button type="button" id="sertifikat" class="btn btn-primary mb-2" ><a style="text-decoration:none; Color:white;" href="<?php echo "../ORMAWA/f_bukti/".$dbk[2] ?>" > <i class = "fa fa-download"></i> </a></button>
+                        </div>
                 </div>
             </div>
         </div>

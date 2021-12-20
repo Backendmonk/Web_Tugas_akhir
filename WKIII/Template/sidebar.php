@@ -38,14 +38,7 @@
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Administrasi</span></a>
 </li>
- <!-- Divider -->
- <hr class="sidebar-divider">
-   <!-- Nav Item - Dashboard -->
-   <li class="nav-item active">
-    <a class="nav-link" href="Ormawa.php">
-        <i class="fas fa-fw fa-tachometer-alt"></i>
-        <span>Ormawa</span></a>
-</li>
+ 
 
 
  <!-- Divider -->
@@ -57,7 +50,7 @@
         <span>kelola Struktur Organisasi</span></a>
 </li>
 
-p
+
  
  <!-- Divider -->
  <hr class="sidebar-divider">
