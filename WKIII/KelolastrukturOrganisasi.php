@@ -195,21 +195,21 @@
             $ran_Num_kt = rand();
             $filename_kt= $_FILES['ketua_gm']['name'];
             $ext_kt = pathinfo($filename_kt, PATHINFO_EXTENSION);
-            $ekstensi_kt = array('jpeg','jpg','png');
+            $ekstensi_kt = array('jpeg','jpg');
            
 
             $nama_kemahasiswaan = $_POST['nama_kemahasiswaan'];
             $ran_Num_gm = rand();
             $filename_gm= $_FILES['kemahasiswaan_gm']['name'];
             $ext_gm = pathinfo($filename_gm, PATHINFO_EXTENSION);
-            $ekstensi_gm = array('jpeg','jpg','png');
+            $ekstensi_gm = array('jpeg','jpg');
 
          
             $nama_alumni  = $_POST['nama_alumni'];
             $ran_Num_am = rand();
             $filename_am= $_FILES['alumni_gm']['name'];
             $ext_am = pathinfo($filename_am, PATHINFO_EXTENSION);
-            $ekstensi_am = array('jpeg','jpg','png');
+            $ekstensi_am = array('jpeg','jpg');
 
             
          
@@ -217,7 +217,7 @@
             $ran_Num_ps = rand();
             $filename_ps= $_FILES['pusat_gm']['name'];
             $ext_ps = pathinfo($filename_ps, PATHINFO_EXTENSION);
-            $ekstensi_ps = array('jpeg','jpg','png');
+            $ekstensi_ps = array('jpeg','jpg');
             
             
            
@@ -225,14 +225,14 @@
             $ran_Num_sk = rand();
             $filename_sk= $_FILES['sekretaris_gm']['name'];
             $ext_sk = pathinfo($filename_sk, PATHINFO_EXTENSION);
-            $ekstensi_sk = array('jpeg','jpg','png');
+            $ekstensi_sk = array('jpeg','jpg');
 
            
             $nama_Bimbingan  = $_POST['nama_Bimbingan'];
             $ran_Num_bg = rand();
             $filename_bg= $_FILES['Bimbingan_gm']['name'];
             $ext_bg = pathinfo($filename_bg, PATHINFO_EXTENSION);
-            $ekstensi_bg = array('jpeg','jpg','png');
+            $ekstensi_bg = array('jpeg','jpg');
 
             if(!in_array($ext_kt,$ekstensi_kt)){
                 ?>
@@ -240,7 +240,7 @@
                       Swal.fire({
                       icon: 'error',
                       title: 'Gagal',
-                      text: 'Ekstensi Salah',
+                      text: 'Ekstensi Harus JPG Atau JPEG',
                       
                       })
                       </script>
@@ -252,7 +252,7 @@
                       Swal.fire({
                       icon: 'error',
                       title: 'Gagal',
-                      text: 'Ekstensi Salah',
+                      text: 'Ekstensi Harus JPG Atau JPEG',
                       
                       })
                       </script>
@@ -264,7 +264,7 @@
                   Swal.fire({
                   icon: 'error',
                   title: 'Gagal',
-                  text: 'Ekstensi Salah',
+                  text: 'Ekstensi Harus JPG Atau JPEG',
                   
                   })
                   </script>
@@ -276,7 +276,7 @@
               Swal.fire({
               icon: 'error',
               title: 'Gagal',
-              text: 'Ekstensi Salah',
+              text: 'Ekstensi Harus JPG Atau JPEG',
               
               })
               </script>
@@ -288,7 +288,7 @@
           Swal.fire({
           icon: 'error',
           title: 'Gagal',
-          text: 'Ekstensi Salah',
+          text: 'Ekstensi Harus JPG Atau JPEG',
           
           })
           </script>
@@ -300,7 +300,7 @@ elseif (!in_array($ext_bg,$ekstensi_bg)) {
           Swal.fire({
           icon: 'error',
           title: 'Gagal',
-          text: 'Ekstensi Salah',
+          text: 'Ekstensi Harus JPG Atau JPEG',
           
           })
           </script>

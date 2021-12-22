@@ -272,7 +272,7 @@
                 Swal.fire({
                 icon: 'error',
                 title: 'gagal',
-                text: 'Edit Berhasil',
+                text: 'Edit Gagal',
                 
                 })
                 </script>

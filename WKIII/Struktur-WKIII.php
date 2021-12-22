@@ -61,8 +61,7 @@
                                 <img class="border border-3 rounded-circle" src="<?php echo "../img/F_kemahasiswaan/".$data['gambar_kemahasiswaan'];  ?>" alt="" width="150px" height="150px">
                                 <h5><?php echo $data['nama_bid_kemahasiswaan'] ?></h5>
                                 </div>
-
-
+      
                                 <div class="col">
                                 <h4>Bidang Alumni</h4>
                                 <img class="border border-3 rounded-circle" src="<?php echo "../img/F_alumni/".$data['gambar_alumni'];  ?>" alt="" width="150px" height="150px">
