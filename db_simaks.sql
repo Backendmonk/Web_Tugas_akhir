@@ -1,35 +1,25 @@
--- phpMyAdmin SQL Dump
--- version 5.1.0
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Generation Time: Nov 30, 2021 at 03:37 PM
--- Server version: 10.4.18-MariaDB
--- PHP Version: 7.4.16
+/*
+SQLyog Ultimate v13.1.1 (64 bit)
+MySQL - 10.4.17-MariaDB : Database - db_simaks
+*********************************************************************
+*/
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
+/*!40101 SET NAMES utf8 */;
 
+/*!40101 SET SQL_MODE=''*/;
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`db_simaks` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
 
---
--- Database: `db_simaks`
---
-CREATE DATABASE IF NOT EXISTS `db_simaks` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `db_simaks`;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `approval_lpj`
---
+/*Table structure for table `approval_lpj` */
 
 DROP TABLE IF EXISTS `approval_lpj`;
+
 CREATE TABLE `approval_lpj` (
   `ID_APPROVALLPJ` varchar(100) NOT NULL,
   `NIDN_WKIII` varchar(100) DEFAULT NULL,
@@ -37,23 +27,27 @@ CREATE TABLE `approval_lpj` (
   `APPROVAL_LPJ_KEMAHASISWAAN` varchar(100) DEFAULT NULL,
   `APPROVAL_LPJ_WKIII` varchar(100) DEFAULT NULL,
   `LAPORAN_LPJ` mediumtext DEFAULT NULL,
-  `REVISI_LPJ` mediumtext DEFAULT NULL
+  `REVISI_LPJ` mediumtext DEFAULT NULL,
+  `ID_BK` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`ID_APPROVALLPJ`),
+  KEY `WKIII_MENGECEK_LPJ_FK` (`NIDN_WKIII`),
+  KEY `KEMAHASISWAAN_MENGECEKLPJ_FK` (`NIDN_KEMAHASISWAAN`),
+  KEY `FK_BK` (`ID_BK`),
+  CONSTRAINT `FK_BK` FOREIGN KEY (`ID_BK`) REFERENCES `bukti_kegiatan` (`ID_BUKTIKEGIATAN`),
+  CONSTRAINT `FK_KEMAHASISWAAN_MENGECEKLPJ` FOREIGN KEY (`NIDN_KEMAHASISWAAN`) REFERENCES `kemahasiswaan` (`NIDN_KEMAHASISWAAN`),
+  CONSTRAINT `FK_WKIII_MENGECEK_LPJ` FOREIGN KEY (`NIDN_WKIII`) REFERENCES `wkiii` (`NIDN_WKIII`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `approval_lpj`
---
+/*Data for the table `approval_lpj` */
 
-INSERT INTO `approval_lpj` (`ID_APPROVALLPJ`, `NIDN_WKIII`, `NIDN_KEMAHASISWAAN`, `APPROVAL_LPJ_KEMAHASISWAAN`, `APPROVAL_LPJ_WKIII`, `LAPORAN_LPJ`, `REVISI_LPJ`) VALUES
-('0002', '234', '123', 'test', 'test', 'test', 'test');
+insert  into `approval_lpj`(`ID_APPROVALLPJ`,`NIDN_WKIII`,`NIDN_KEMAHASISWAAN`,`APPROVAL_LPJ_KEMAHASISWAAN`,`APPROVAL_LPJ_WKIII`,`LAPORAN_LPJ`,`REVISI_LPJ`,`ID_BK`) values 
+('1047944703','202020','10101010','Unapproved',NULL,'1639197193_18101028-IPutuMellanaAriArtawan-HCI-Rangkum model dialog.docx','1639203626_18101028-IPutuMellanaAriArtawan-Interpersonal_Skill-Pertemuan_12.docx','1588414891'),
+('1857137277','202020','10101010','Approve','Approve','1639197193_18101028-IPutuMellanaAriArtawan-HCI-Rangkum model dialog.docx',NULL,'1186903940');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `approval_proposal`
---
+/*Table structure for table `approval_proposal` */
 
 DROP TABLE IF EXISTS `approval_proposal`;
+
 CREATE TABLE `approval_proposal` (
   `ID_APPROVAL` varchar(100) NOT NULL,
   `NIDN_WKIII` varchar(100) DEFAULT NULL,
@@ -61,23 +55,28 @@ CREATE TABLE `approval_proposal` (
   `APPROVAL_PROPOSAL_KEMAHASISWAAN` varchar(100) DEFAULT NULL,
   `APPROVAL_PROPOSAL_WKIII` varchar(100) DEFAULT NULL,
   `LAPORAN_PROPOSAL` mediumtext DEFAULT NULL,
-  `REVISI` mediumtext DEFAULT NULL
+  `REVISI` mediumtext DEFAULT NULL,
+  PRIMARY KEY (`ID_APPROVAL`),
+  KEY `WKIII_MENGECAKPROPOSAL_FK` (`NIDN_WKIII`),
+  KEY `KEMAHASISWAAN_MENGECEK_PROPOSAL_FK` (`NIDN_KEMAHASISWAAN`),
+  CONSTRAINT `FK_KEMAHASISWAAN_MENGECEK_PROPOSAL` FOREIGN KEY (`NIDN_KEMAHASISWAAN`) REFERENCES `kemahasiswaan` (`NIDN_KEMAHASISWAAN`),
+  CONSTRAINT `FK_WKIII_MENGECAKPROPOSAL` FOREIGN KEY (`NIDN_WKIII`) REFERENCES `wkiii` (`NIDN_WKIII`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `approval_proposal`
---
+/*Data for the table `approval_proposal` */
 
-INSERT INTO `approval_proposal` (`ID_APPROVAL`, `NIDN_WKIII`, `NIDN_KEMAHASISWAAN`, `APPROVAL_PROPOSAL_KEMAHASISWAAN`, `APPROVAL_PROPOSAL_WKIII`, `LAPORAN_PROPOSAL`, `REVISI`) VALUES
-('21231', '234', '123', 'test', 'test', 'test', 'test');
+insert  into `approval_proposal`(`ID_APPROVAL`,`NIDN_WKIII`,`NIDN_KEMAHASISWAAN`,`APPROVAL_PROPOSAL_KEMAHASISWAAN`,`APPROVAL_PROPOSAL_WKIII`,`LAPORAN_PROPOSAL`,`REVISI`) values 
+('1012122540','202020','10101010','Approve','Approve','1639077593_18101028-IPutuMellanaAriArtawan-ParBud-UAS.docx','1639099391_18101028-IPutuMellanaAriArtawan-Interpersonal_Skill-Proaktif1.docx'),
+('1124969242','202020','10101010','Approve','Approve','1639077593_18101028-IPutuMellanaAriArtawan-ParBud-UAS.docx','1639132431_18101028-IPutuMellanaAriArtawan-HCI_AC-Tugas GUI.pdf'),
+('1465410095','202020','10101010','Approve','Approve','1639076321_Untitled.pdf',NULL),
+('23258801','202020','10101010','Approve','Approve','1639078392_18101028-IPutuMellanaAriArtawan-Interpersonal_Skill-Proaktif1.docx',NULL),
+('283425815','202020','10101010','unap',NULL,'1639074109_Untitled.pdf',NULL),
+('387373573','202020','10101010','unap',NULL,'1639074212_Untitled.pdf',NULL);
 
--- --------------------------------------------------------
-
---
--- Table structure for table `bukti_kegiatan`
---
+/*Table structure for table `bukti_kegiatan` */
 
 DROP TABLE IF EXISTS `bukti_kegiatan`;
+
 CREATE TABLE `bukti_kegiatan` (
   `ID_BUKTIKEGIATAN` varchar(100) NOT NULL,
   `ID_PROPOSAL` varchar(100) DEFAULT NULL,
@@ -86,121 +85,119 @@ CREATE TABLE `bukti_kegiatan` (
   `DOKUMENTASI` mediumtext DEFAULT NULL,
   `DOKUMENTASI2` mediumtext DEFAULT NULL,
   `DOKUMENTASI3` mediumtext DEFAULT NULL,
-  `SERTIFIKAT` mediumtext DEFAULT NULL
+  `SERTIFIKAT` mediumtext DEFAULT NULL,
+  PRIMARY KEY (`ID_BUKTIKEGIATAN`),
+  KEY `TERDAPAT_FK` (`ID_PROPOSAL`),
+  CONSTRAINT `FK_Terdapat_ID_Proposal` FOREIGN KEY (`ID_PROPOSAL`) REFERENCES `proposal` (`ID_PROPOSAL`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `bukti_kegiatan`
---
+/*Data for the table `bukti_kegiatan` */
 
-INSERT INTO `bukti_kegiatan` (`ID_BUKTIKEGIATAN`, `ID_PROPOSAL`, `BERITA_ACARA`, `ABSENSI_BK`, `DOKUMENTASI`, `DOKUMENTASI2`, `DOKUMENTASI3`, `SERTIFIKAT`) VALUES
-('99', '212', '2021-11-26', 'asdasdasdasdas', 'dasasd', 'sadasd', 'asdasd', 'asdasd');
+insert  into `bukti_kegiatan`(`ID_BUKTIKEGIATAN`,`ID_PROPOSAL`,`BERITA_ACARA`,`ABSENSI_BK`,`DOKUMENTASI`,`DOKUMENTASI2`,`DOKUMENTASI3`,`SERTIFIKAT`) values 
+('1186903940',NULL,NULL,'1639887184_Sertifikasi.pdf','1639887184_Sertifikasi.pdf',NULL,NULL,'1639887184_Sertifikasi.pdf'),
+('1588414891',NULL,NULL,'1639220419_18101028-IPutuMellanaAriArtawan-HCI_AC-Tugas_8_Golden_rulesdocx.pdf','1639220419_18101028-IPutuMellanaAriArtawan-Interpersonal_Skill-Proaktif1.pdf',NULL,NULL,'1639220419_18101028-IPutuMellanaAriArtawan-Interpersonal_Skill-Proaktif1.pdf');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `kemahasiswaan`
---
+/*Table structure for table `kemahasiswaan` */
 
 DROP TABLE IF EXISTS `kemahasiswaan`;
+
 CREATE TABLE `kemahasiswaan` (
   `NIDN_KEMAHASISWAAN` varchar(100) NOT NULL,
   `NAMA_KEMAHASISWAAN` varchar(100) DEFAULT NULL,
   `JABATAN_KEMAHASISWAAN` varchar(100) DEFAULT NULL,
-  `PASSWORD_KEMAHASISWAAN` varchar(100) DEFAULT NULL
+  `PASSWORD_KEMAHASISWAAN` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`NIDN_KEMAHASISWAAN`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `kemahasiswaan`
---
+/*Data for the table `kemahasiswaan` */
 
-INSERT INTO `kemahasiswaan` (`NIDN_KEMAHASISWAAN`, `NAMA_KEMAHASISWAAN`, `JABATAN_KEMAHASISWAAN`, `PASSWORD_KEMAHASISWAAN`) VALUES
-('123', 'arya', 'ketua', '$2y$10$a.DSeF6PKlWRtotLbWZ0gu/1Z9V38gOfV8N1ZqhXswyfHf8rWvrem');
+insert  into `kemahasiswaan`(`NIDN_KEMAHASISWAAN`,`NAMA_KEMAHASISWAAN`,`JABATAN_KEMAHASISWAAN`,`PASSWORD_KEMAHASISWAAN`) values 
+('10101010','mamang','ketua','$2y$10$GIMuWTIVta/oaKk29y0sX.eIJHS2TRNJhOzggG6rCJcGr.gjE8p02');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `laporan`
---
+/*Table structure for table `laporan` */
 
 DROP TABLE IF EXISTS `laporan`;
+
 CREATE TABLE `laporan` (
-  `ID_LAPORAN` int(11) NOT NULL,
+  `ID_LAPORAN` varchar(100) NOT NULL,
   `ID_PENGAJUAN` varchar(100) DEFAULT NULL,
-  `TANGGAL` date DEFAULT NULL
+  `TANGGAL` date DEFAULT NULL,
+  PRIMARY KEY (`ID_LAPORAN`),
+  KEY `MENGHASILKAN_FK` (`ID_PENGAJUAN`),
+  CONSTRAINT `FK_Memerluakan_Pengajuan` FOREIGN KEY (`ID_PENGAJUAN`) REFERENCES `pengajuan_kegiatan` (`ID_PENGAJUAN`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- --------------------------------------------------------
+/*Data for the table `laporan` */
 
---
--- Table structure for table `lpj`
---
+/*Table structure for table `lpj` */
 
 DROP TABLE IF EXISTS `lpj`;
+
 CREATE TABLE `lpj` (
   `ID_LPJ` varchar(100) NOT NULL,
   `ID_APPROVALLPJ` varchar(100) DEFAULT NULL,
   `ID_BUKTIKEGIATAN` varchar(100) DEFAULT NULL,
   `TGL_PENGAJUANLPJ` date DEFAULT NULL,
-  `LPJ` mediumtext DEFAULT NULL
+  `LPJ` mediumtext DEFAULT NULL,
+  PRIMARY KEY (`ID_LPJ`),
+  KEY `MENGELUARKAN_FK` (`ID_BUKTIKEGIATAN`),
+  KEY `MENGHASILKANLPJ_FK` (`ID_APPROVALLPJ`),
+  CONSTRAINT `FK_memerlukan _bukti_kegiatan` FOREIGN KEY (`ID_BUKTIKEGIATAN`) REFERENCES `bukti_kegiatan` (`ID_BUKTIKEGIATAN`),
+  CONSTRAINT `FK_menghasilkan_LPJ` FOREIGN KEY (`ID_APPROVALLPJ`) REFERENCES `approval_lpj` (`ID_APPROVALLPJ`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `lpj`
---
+/*Data for the table `lpj` */
 
-INSERT INTO `lpj` (`ID_LPJ`, `ID_APPROVALLPJ`, `ID_BUKTIKEGIATAN`, `TGL_PENGAJUANLPJ`, `LPJ`) VALUES
-('21312312', '0002', '99', '2021-11-24', 'eqweqwewq');
+insert  into `lpj`(`ID_LPJ`,`ID_APPROVALLPJ`,`ID_BUKTIKEGIATAN`,`TGL_PENGAJUANLPJ`,`LPJ`) values 
+('875718304','1857137277','1186903940','2021-12-19',NULL);
 
--- --------------------------------------------------------
-
---
--- Table structure for table `ormawa`
---
+/*Table structure for table `ormawa` */
 
 DROP TABLE IF EXISTS `ormawa`;
+
 CREATE TABLE `ormawa` (
   `ID_ORMAWA` varchar(100) NOT NULL,
   `NIDN` int(11) DEFAULT NULL,
-  `NAMA_ORMAWA` varchar(100) DEFAULT NULL
+  `NAMA_ORMAWA` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`ID_ORMAWA`),
+  KEY `MEMBINA_FK` (`NIDN`),
+  CONSTRAINT `FK_NIDN_pembina` FOREIGN KEY (`NIDN`) REFERENCES `pembina` (`NIDN`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `ormawa`
---
+/*Data for the table `ormawa` */
 
-INSERT INTO `ormawa` (`ID_ORMAWA`, `NIDN`, `NAMA_ORMAWA`) VALUES
-('001', 234, 'E-Sport STIKI');
+insert  into `ormawa`(`ID_ORMAWA`,`NIDN`,`NAMA_ORMAWA`) values 
+('1493474770',202020,'shinbun'),
+('1753732088',18101028,'rare'),
+('653546756',10101010,'rujih'),
+('87764831',1,'robotika');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `pembina`
---
+/*Table structure for table `pembina` */
 
 DROP TABLE IF EXISTS `pembina`;
+
 CREATE TABLE `pembina` (
   `NIDN` int(11) NOT NULL,
   `NAMA_PEMBINA` varchar(100) DEFAULT NULL,
   `PASSOWRD_PEMBINA` varchar(100) DEFAULT NULL,
   `ALAMAT_PEMBINA` varchar(100) DEFAULT NULL,
-  `NO_TELP_PEMBINA` varchar(100) DEFAULT NULL
+  `NO_TELP_PEMBINA` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`NIDN`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `pembina`
---
+/*Data for the table `pembina` */
 
-INSERT INTO `pembina` (`NIDN`, `NAMA_PEMBINA`, `PASSOWRD_PEMBINA`, `ALAMAT_PEMBINA`, `NO_TELP_PEMBINA`) VALUES
-(234, 'Gede', '$2y$10$a.DSeF6PKlWRtotLbWZ0gu/1Z9V38gOfV8N1ZqhXswyfHf8rWvrem', 'Dawas', '02518484864867');
+insert  into `pembina`(`NIDN`,`NAMA_PEMBINA`,`PASSOWRD_PEMBINA`,`ALAMAT_PEMBINA`,`NO_TELP_PEMBINA`) values 
+(1,'rudiono','$2y$10$eR87bKQ8mx.2ZmC/5bBjjeHAhzu9DNMqToe4EczkP.O4g.srK7Vjy','pluto','0997878'),
+(202020,'arie','$2y$10$P1oh5dR8rCbluZghdOAFoOoqnemIFLsNhqGjk3t0SvsckSyFUJMkm','namek','04525215'),
+(10101010,'rosa','$2y$10$MWItlnW0oVlD2HrYnFK/OuDAMvrH4nMBblmEX2hwwmygW16lbx/WG','darat','0525121'),
+(18101028,'rika','$2y$10$i39pD8OB0deMuMBx/Okp9Os/biYYBWCRZsiocm2EsHhavBwJ0bS7W','bumi','087678678'),
+(20202021,'rikodo','$2y$10$B7ldilVbpq6T0QdQtCgY4eabseUDgeC2eRiMKGSeVjYNIrz6N9T3a','angkasa','08812442');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `pengajuan_kegiatan`
---
+/*Table structure for table `pengajuan_kegiatan` */
 
 DROP TABLE IF EXISTS `pengajuan_kegiatan`;
+
 CREATE TABLE `pengajuan_kegiatan` (
   `ID_PENGAJUAN` varchar(100) NOT NULL,
   `ID_ORMAWA` varchar(100) DEFAULT NULL,
@@ -219,26 +216,24 @@ CREATE TABLE `pengajuan_kegiatan` (
   `KETUA_PANITIA` varchar(100) DEFAULT NULL,
   `CONTAC_PERSON` varchar(100) DEFAULT NULL,
   `KATEGORI_KEGIATAN` varchar(100) DEFAULT NULL,
-  `STATUS` varchar(100) DEFAULT NULL
+  `STATUS` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`ID_PENGAJUAN`),
+  KEY `MENGAJUKAN_FK` (`ID_ORMAWA`),
+  CONSTRAINT `FK_ID_ORMAWA` FOREIGN KEY (`ID_ORMAWA`) REFERENCES `ormawa` (`ID_ORMAWA`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `pengajuan_kegiatan`
---
+/*Data for the table `pengajuan_kegiatan` */
 
-INSERT INTO `pengajuan_kegiatan` (`ID_PENGAJUAN`, `ID_ORMAWA`, `NAMA_ORMAWA_FK`, `NAMA_KEGIATAN`, `KONSEP_KEGIATAN`, `SUB_KEGIATAN`, `PJ_KEGIATAN`, `LATAR_BELAKANG`, `TUJUAN_KEGIATAN`, `TGL_KEGIATAN`, `TEMPAT_KEGIATAN`, `SK_KEPANITIAAN`, `TIMELINE_KEGIATAN`, `RAB`, `KETUA_PANITIA`, `CONTAC_PERSON`, `KATEGORI_KEGIATAN`, `STATUS`) VALUES
-(' 109 ', '001', 'E-Sport STIKI', 'Section-10', '1571087786_1 (1).doc', '2014887571_1 (2).docx', 'wqweq', '340213952_1 (2).docx', '116403418_1 (3).docx', '2021-12-02', 'saxzczxcxz', '187158400_1 (4).docx', '1278786969_1 (5).docx', '1075533404_1 (6).docx', 'Wayan', '434564545', 'sdfsddfs', 'Belum Diterima'),
-(' 397 ', '001', 'E-Sport STIKI', 'Section 4', '1972079667_Kuis Pertemuan 3 - Kewirausahaan.docx', '2047393714_Kuis Pertemuan 6.docx', 'Entah', '1983245168_Kuis Pertemuan 6.docx', '206474805_Kuis Pertemuan 5.docx', '2021-11-29', 'Entah', '233653704_Nama.docx', '1025213298_Ujian Tengah Semester _ I Wayan Arya Pratama Putra _ 18101020.docx', '731706130_Tugas Pertemuan 6.docx', 'nyoman', '099234234', 'Entah', 'Belum Diterima'),
-(' 90 ', '001', 'E-Sport STIKI', 'Section 2', 'Section 2_BodyHealthy.docx', 'Section 2_Doc1.docx', 'sadsad', 'Section 2_Doc1.docx', 'Section 2_Doc2.docx', '0000-00-00', '', 'Section 2_Pertemuan 4 Hasil Dan Pembahasan.docx', 'Section 2_Rev_Template Laporan MK Seminar_191021 (1) (1).docx', 'Section 2_Soal Mid test (F,FA).doc', 'Made', '008978', 'qweqwe', 'Belum Diterima'),
-('112', '001', 'sad', 'asda', 'sad', 'asd', 'asd', 'sad', 'asd', '2021-11-02', 'asd', 'asd', 'asd', 'asd', 'asd', 'asd', 'asd', 'asd');
+insert  into `pengajuan_kegiatan`(`ID_PENGAJUAN`,`ID_ORMAWA`,`NAMA_ORMAWA_FK`,`NAMA_KEGIATAN`,`KONSEP_KEGIATAN`,`SUB_KEGIATAN`,`PJ_KEGIATAN`,`LATAR_BELAKANG`,`TUJUAN_KEGIATAN`,`TGL_KEGIATAN`,`TEMPAT_KEGIATAN`,`SK_KEPANITIAAN`,`TIMELINE_KEGIATAN`,`RAB`,`KETUA_PANITIA`,`CONTAC_PERSON`,`KATEGORI_KEGIATAN`,`STATUS`) values 
+(' 611 ','87764831','robotika','sumo','408735357_Task Meeting 3.docx','284789562_Task Meeting 3.docx','arwan','1689966438_Task Meeting 3.docx','1822979152_Task Meeting 3.docx','2021-06-01','lipo mall','976828388_Task Meeting 3.docx','1803421307_Task Meeting 3.docx','77666209_Task Meeting 3.docx','rikodo','0882421421424','kompetesi','Approve'),
+(' 782 ','87764831','robotika','Line follower','1598036686_Task Meeting 3.docx','2152204_Task Meeting 3.docx','arwan','113270015_Task Meeting 3.docx','1687050300_Task Meeting 3.docx','2021-05-01','lipo mall','1255386758_Task Meeting 3.docx','452848719_Task Meeting 3.docx','1287706581_Task Meeting 3.docx','rikodo','08824214214','kompetesi','Approve'),
+('777','87764831','robotika','Robotech','fsaf','sfasf',NULL,NULL,NULL,'2021-07-01','sdsaf','sfafsf','sfsfasf','sfasf','sfaf','fsfa','fsf','Approve'),
+('888','87764831','BADMINTO','Badminton cup',NULL,NULL,NULL,NULL,NULL,'2021-05-01',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Approve');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `pengurus_ormawa`
---
+/*Table structure for table `pengurus_ormawa` */
 
 DROP TABLE IF EXISTS `pengurus_ormawa`;
+
 CREATE TABLE `pengurus_ormawa` (
   `USERNAME_KETUA` varchar(100) NOT NULL,
   `ID_ORMAWA` varchar(100) DEFAULT NULL,
@@ -254,308 +249,157 @@ CREATE TABLE `pengurus_ormawa` (
   `AD_ART` mediumtext DEFAULT NULL,
   `MASA_JABATAN` date DEFAULT NULL,
   `TAHUN_DILANTIK` date DEFAULT NULL,
-  `GAMBAR_STRUKTUR_ORGANISASI` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL
+  `GAMBAR_STRUKTUR_ORGANISASI` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
+  PRIMARY KEY (`USERNAME_KETUA`),
+  KEY `MEMILIKI_FK` (`ID_ORMAWA`),
+  CONSTRAINT `FK_ID_ORMAWA_Pengurus` FOREIGN KEY (`ID_ORMAWA`) REFERENCES `ormawa` (`ID_ORMAWA`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `pengurus_ormawa`
---
+/*Data for the table `pengurus_ormawa` */
 
-INSERT INTO `pengurus_ormawa` (`USERNAME_KETUA`, `ID_ORMAWA`, `PASSWORD_KETUA`, `NAMA_KETUA`, `NAMA_WAKIL`, `NAMA_WAKIL2`, `SEKRETARIS1`, `SEKRETARIS2`, `BENDAHARA1`, `BENDAHARA2`, `RENJA`, `AD_ART`, `MASA_JABATAN`, `TAHUN_DILANTIK`, `GAMBAR_STRUKTUR_ORGANISASI`) VALUES
-('admin', '001', '$2y$10$a.DSeF6PKlWRtotLbWZ0gu/1Z9V38gOfV8N1ZqhXswyfHf8rWvrem', 'Wayan', 'Made', 'ketut', 'putu', 'nyoman', 'komang', 'sultan', 'fdsdfs', 'sdfsdfsdfs', '2021-11-08', '2022-11-08', 'fsdfsdfds');
+insert  into `pengurus_ormawa`(`USERNAME_KETUA`,`ID_ORMAWA`,`PASSWORD_KETUA`,`NAMA_KETUA`,`NAMA_WAKIL`,`NAMA_WAKIL2`,`SEKRETARIS1`,`SEKRETARIS2`,`BENDAHARA1`,`BENDAHARA2`,`RENJA`,`AD_ART`,`MASA_JABATAN`,`TAHUN_DILANTIK`,`GAMBAR_STRUKTUR_ORGANISASI`) values 
+('bagas','1493474770','$2y$10$vGDokZrmvVMabt5/gqH3o.qQvIsGmqHocEbNmyB1iDXFeYlP2CHry','bagas',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+('riko','87764831','$2y$10$MPjlTqFpssOOJCU/JNgyruoW7Q9Z2MCpB4wimkQtUAh6ZgQJggE6W','rikodo',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 
--- --------------------------------------------------------
-
---
--- Table structure for table `persetujuan_kemahasiswaan`
---
+/*Table structure for table `persetujuan_kemahasiswaan` */
 
 DROP TABLE IF EXISTS `persetujuan_kemahasiswaan`;
+
 CREATE TABLE `persetujuan_kemahasiswaan` (
   `id_Persetujuan` varchar(100) NOT NULL,
   `id_pengajuan` varchar(100) NOT NULL,
   `NIDN_kemahsiswaan` varchar(100) NOT NULL,
-  `approval_status` enum('Approve','Tolak','','') NOT NULL
+  `approval_status` enum('Approve','Tolak','','') NOT NULL,
+  PRIMARY KEY (`id_Persetujuan`),
+  KEY `pengajuan_fk` (`id_pengajuan`),
+  KEY `nidn_kemahasiswaan_fk` (`NIDN_kemahsiswaan`),
+  CONSTRAINT `nidn_kemahasiswaan_fk` FOREIGN KEY (`NIDN_kemahsiswaan`) REFERENCES `kemahasiswaan` (`NIDN_KEMAHASISWAAN`),
+  CONSTRAINT `pengajuan_fk` FOREIGN KEY (`id_pengajuan`) REFERENCES `pengajuan_kegiatan` (`ID_PENGAJUAN`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `persetujuan_kemahasiswaan`
---
+/*Data for the table `persetujuan_kemahasiswaan` */
 
-INSERT INTO `persetujuan_kemahasiswaan` (`id_Persetujuan`, `id_pengajuan`, `NIDN_kemahsiswaan`, `approval_status`) VALUES
-('1031315368', ' 109', '123', 'Approve'),
-('178732249', ' 397', '123', 'Tolak'),
-('513379155', ' 90', '123', 'Approve');
+insert  into `persetujuan_kemahasiswaan`(`id_Persetujuan`,`id_pengajuan`,`NIDN_kemahsiswaan`,`approval_status`) values 
+('2023888528',' 611','10101010','Approve'),
+('23213123','777','10101010','Approve');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `persetujuan_pembina`
---
+/*Table structure for table `persetujuan_pembina` */
 
 DROP TABLE IF EXISTS `persetujuan_pembina`;
+
 CREATE TABLE `persetujuan_pembina` (
   `id_Persetujuan` varchar(100) NOT NULL,
   `id_pengajuan` varchar(100) NOT NULL,
   `NIDN_pembina` int(11) NOT NULL,
-  `approval_status` enum('Approve','Tolak','','') NOT NULL
+  `approval_status` enum('Approve','Tolak','','') NOT NULL,
+  PRIMARY KEY (`id_Persetujuan`),
+  KEY `pengajuan_pembina_fk` (`id_pengajuan`),
+  KEY `NIDN_PEMBINA_FK_` (`NIDN_pembina`),
+  CONSTRAINT `NIDN_PEMBINA_FK_` FOREIGN KEY (`NIDN_pembina`) REFERENCES `pembina` (`NIDN`),
+  CONSTRAINT `pengajuan_pembina_fk` FOREIGN KEY (`id_pengajuan`) REFERENCES `pengajuan_kegiatan` (`ID_PENGAJUAN`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- --------------------------------------------------------
+/*Data for the table `persetujuan_pembina` */
 
---
--- Table structure for table `persetujuan_wkiii`
---
+insert  into `persetujuan_pembina`(`id_Persetujuan`,`id_pengajuan`,`NIDN_pembina`,`approval_status`) values 
+('1448671901',' 611',1,'Approve'),
+('65757','777',202020,'Approve');
+
+/*Table structure for table `persetujuan_wkiii` */
 
 DROP TABLE IF EXISTS `persetujuan_wkiii`;
+
 CREATE TABLE `persetujuan_wkiii` (
   `id_Persetujuan` varchar(100) NOT NULL,
   `id_pengajuan` varchar(100) NOT NULL,
   `NIDN_WKIII` varchar(100) NOT NULL,
-  `approval_status` enum('Approve','Tolak','','') NOT NULL
+  `approval_status` enum('Approve','Tolak','','') NOT NULL,
+  PRIMARY KEY (`id_Persetujuan`),
+  KEY `pengajuan_fk_WKIII` (`id_pengajuan`),
+  KEY `NIDN_WKIII_FK` (`NIDN_WKIII`),
+  CONSTRAINT `NIDN_WKIII_FK` FOREIGN KEY (`NIDN_WKIII`) REFERENCES `wkiii` (`NIDN_WKIII`),
+  CONSTRAINT `pengajuan_fk_WKIII` FOREIGN KEY (`id_pengajuan`) REFERENCES `pengajuan_kegiatan` (`ID_PENGAJUAN`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- --------------------------------------------------------
+/*Data for the table `persetujuan_wkiii` */
 
---
--- Table structure for table `proposal`
---
+insert  into `persetujuan_wkiii`(`id_Persetujuan`,`id_pengajuan`,`NIDN_WKIII`,`approval_status`) values 
+('1207416269',' 611','202020','Approve'),
+('21323','777','202020','Approve');
+
+/*Table structure for table `proposal` */
 
 DROP TABLE IF EXISTS `proposal`;
+
 CREATE TABLE `proposal` (
   `ID_PROPOSAL` varchar(100) NOT NULL,
   `ID_APPROVAL` varchar(100) DEFAULT NULL,
   `ID_PENGAJUAN` varchar(100) DEFAULT NULL,
   `TANNGGAL_PENGAJUANPROPOSAL` date DEFAULT NULL,
-  `ABSENSI_PROPOSAL` mediumtext DEFAULT NULL
+  `ABSENSI_PROPOSAL` mediumtext DEFAULT NULL,
+  `ID_LPJ` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`ID_PROPOSAL`),
+  KEY `MENGHASILKAN_PROPOSAL_FK` (`ID_APPROVAL`),
+  KEY `MEMERLUKAN_FK` (`ID_PENGAJUAN`),
+  KEY `fk_lpj` (`ID_LPJ`),
+  CONSTRAINT `FK_ID_APPROVAL_Proposal` FOREIGN KEY (`ID_APPROVAL`) REFERENCES `approval_proposal` (`ID_APPROVAL`),
+  CONSTRAINT `FK_ID_PENGAJUAN_PROPOSAL` FOREIGN KEY (`ID_PENGAJUAN`) REFERENCES `pengajuan_kegiatan` (`ID_PENGAJUAN`),
+  CONSTRAINT `fk_lpj` FOREIGN KEY (`ID_LPJ`) REFERENCES `approval_lpj` (`ID_APPROVALLPJ`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `proposal`
---
+/*Data for the table `proposal` */
 
-INSERT INTO `proposal` (`ID_PROPOSAL`, `ID_APPROVAL`, `ID_PENGAJUAN`, `TANNGGAL_PENGAJUANPROPOSAL`, `ABSENSI_PROPOSAL`) VALUES
-('212', '21231', '112', '2021-11-18', 'wewe');
+insert  into `proposal`(`ID_PROPOSAL`,`ID_APPROVAL`,`ID_PENGAJUAN`,`TANNGGAL_PENGAJUANPROPOSAL`,`ABSENSI_PROPOSAL`,`ID_LPJ`) values 
+('1327682772','1012122540',' 611 ','2021-12-09',NULL,'1047944703'),
+('21341231','283425815',NULL,'2021-12-09',NULL,NULL),
+('383662818','1124969242','777','2021-12-09',NULL,NULL),
+('724843558','23258801','888','2021-12-09',NULL,'1857137277'),
+('885958765','1465410095',' 782 ','2021-12-09',NULL,NULL);
 
--- --------------------------------------------------------
+/*Table structure for table `strukturwkiii` */
 
---
--- Table structure for table `wkiii`
---
+DROP TABLE IF EXISTS `strukturwkiii`;
+
+CREATE TABLE `strukturwkiii` (
+  `id_struktur` int(10) NOT NULL,
+  `Nama_ketua` varchar(100) NOT NULL,
+  `gambar_ketua` text NOT NULL,
+  `nama_bid_kemahasiswaan` varchar(100) NOT NULL,
+  `gambar_kemahasiswaan` text NOT NULL,
+  `nama_bid_alumni` varchar(100) NOT NULL,
+  `gambar_alumni` text NOT NULL,
+  `nama_bid_pusat_karir` varchar(100) NOT NULL,
+  `gambar_pusat_karir` text NOT NULL,
+  `Sekretaris_WKIII` varchar(100) NOT NULL,
+  `gambar_sekretaris` text NOT NULL,
+  `nama_bimbingan_konseling` varchar(100) NOT NULL,
+  `gambar_bimbingan_konseling` varchar(100) NOT NULL,
+  PRIMARY KEY (`id_struktur`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+/*Data for the table `strukturwkiii` */
+
+insert  into `strukturwkiii`(`id_struktur`,`Nama_ketua`,`gambar_ketua`,`nama_bid_kemahasiswaan`,`gambar_kemahasiswaan`,`nama_bid_alumni`,`gambar_alumni`,`nama_bid_pusat_karir`,`gambar_pusat_karir`,`Sekretaris_WKIII`,`gambar_sekretaris`,`nama_bimbingan_konseling`,`gambar_bimbingan_konseling`) values 
+(1545704652,'ketut','1254480412_pexels-photo-736716.jpeg','Elie',' 1000469715_8-business-woman-girl-png-image.png ','    Sastra','836130666_22392372_0.png','  Lin','960611232_nico-devil-may-cry-5-1w.jpg','Melly',' 1674145974_trish-dmc5-face.jpg ',' Han','  1560616167_alpha-wolf-earl-contehmorgan.jpg');
+
+/*Table structure for table `wkiii` */
 
 DROP TABLE IF EXISTS `wkiii`;
+
 CREATE TABLE `wkiii` (
   `NIDN_WKIII` varchar(100) NOT NULL,
   `NAMA_WKIII` varchar(100) DEFAULT NULL,
   `JABATAN_WKIII` varchar(100) DEFAULT NULL,
-  `PASSWORD_WKIII` varchar(100) DEFAULT NULL
+  `PASSWORD_WKIII` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`NIDN_WKIII`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `wkiii`
---
+/*Data for the table `wkiii` */
 
-INSERT INTO `wkiii` (`NIDN_WKIII`, `NAMA_WKIII`, `JABATAN_WKIII`, `PASSWORD_WKIII`) VALUES
-('234', 'ketut', 'Ketua', '$2y$10$6v4zlzN5/eI2W8SjW0XdBuRJ1mMYElA5ICyRJbbQPao9OUN4EqYXm'),
-('667', 'Dewa', 'ketua', '$2y$10$a.DSeF6PKlWRtotLbWZ0gu/1Z9V38gOfV8N1ZqhXswyfHf8rWvrem');
+insert  into `wkiii`(`NIDN_WKIII`,`NAMA_WKIII`,`JABATAN_WKIII`,`PASSWORD_WKIII`) values 
+('202020','mamang','dadySguar','$2y$10$cWpWldR6a/zB.sARu5Bu9.2XnsG9pZccCXDnLXcGyR5vuP6pBxA8i');
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `approval_lpj`
---
-ALTER TABLE `approval_lpj`
-  ADD PRIMARY KEY (`ID_APPROVALLPJ`),
-  ADD KEY `WKIII_MENGECEK_LPJ_FK` (`NIDN_WKIII`),
-  ADD KEY `KEMAHASISWAAN_MENGECEKLPJ_FK` (`NIDN_KEMAHASISWAAN`);
-
---
--- Indexes for table `approval_proposal`
---
-ALTER TABLE `approval_proposal`
-  ADD PRIMARY KEY (`ID_APPROVAL`),
-  ADD KEY `WKIII_MENGECAKPROPOSAL_FK` (`NIDN_WKIII`),
-  ADD KEY `KEMAHASISWAAN_MENGECEK_PROPOSAL_FK` (`NIDN_KEMAHASISWAAN`);
-
---
--- Indexes for table `bukti_kegiatan`
---
-ALTER TABLE `bukti_kegiatan`
-  ADD PRIMARY KEY (`ID_BUKTIKEGIATAN`),
-  ADD KEY `TERDAPAT_FK` (`ID_PROPOSAL`);
-
---
--- Indexes for table `kemahasiswaan`
---
-ALTER TABLE `kemahasiswaan`
-  ADD PRIMARY KEY (`NIDN_KEMAHASISWAAN`);
-
---
--- Indexes for table `laporan`
---
-ALTER TABLE `laporan`
-  ADD PRIMARY KEY (`ID_LAPORAN`),
-  ADD KEY `MENGHASILKAN_FK` (`ID_PENGAJUAN`);
-
---
--- Indexes for table `lpj`
---
-ALTER TABLE `lpj`
-  ADD PRIMARY KEY (`ID_LPJ`),
-  ADD KEY `MENGELUARKAN_FK` (`ID_BUKTIKEGIATAN`),
-  ADD KEY `MENGHASILKANLPJ_FK` (`ID_APPROVALLPJ`);
-
---
--- Indexes for table `ormawa`
---
-ALTER TABLE `ormawa`
-  ADD PRIMARY KEY (`ID_ORMAWA`),
-  ADD KEY `MEMBINA_FK` (`NIDN`);
-
---
--- Indexes for table `pembina`
---
-ALTER TABLE `pembina`
-  ADD PRIMARY KEY (`NIDN`);
-
---
--- Indexes for table `pengajuan_kegiatan`
---
-ALTER TABLE `pengajuan_kegiatan`
-  ADD PRIMARY KEY (`ID_PENGAJUAN`),
-  ADD KEY `MENGAJUKAN_FK` (`ID_ORMAWA`);
-
---
--- Indexes for table `pengurus_ormawa`
---
-ALTER TABLE `pengurus_ormawa`
-  ADD PRIMARY KEY (`USERNAME_KETUA`),
-  ADD KEY `MEMILIKI_FK` (`ID_ORMAWA`);
-
---
--- Indexes for table `persetujuan_kemahasiswaan`
---
-ALTER TABLE `persetujuan_kemahasiswaan`
-  ADD PRIMARY KEY (`id_Persetujuan`),
-  ADD KEY `pengajuan_fk` (`id_pengajuan`),
-  ADD KEY `nidn_kemahasiswaan_fk` (`NIDN_kemahsiswaan`);
-
---
--- Indexes for table `persetujuan_pembina`
---
-ALTER TABLE `persetujuan_pembina`
-  ADD PRIMARY KEY (`id_Persetujuan`),
-  ADD KEY `pengajuan_pembina_fk` (`id_pengajuan`),
-  ADD KEY `NIDN_PEMBINA_FK_` (`NIDN_pembina`);
-
---
--- Indexes for table `persetujuan_wkiii`
---
-ALTER TABLE `persetujuan_wkiii`
-  ADD PRIMARY KEY (`id_Persetujuan`),
-  ADD KEY `pengajuan_fk_WKIII` (`id_pengajuan`),
-  ADD KEY `NIDN_WKIII_FK` (`NIDN_WKIII`);
-
---
--- Indexes for table `proposal`
---
-ALTER TABLE `proposal`
-  ADD PRIMARY KEY (`ID_PROPOSAL`),
-  ADD KEY `MENGHASILKAN_PROPOSAL_FK` (`ID_APPROVAL`),
-  ADD KEY `MEMERLUKAN_FK` (`ID_PENGAJUAN`);
-
---
--- Indexes for table `wkiii`
---
-ALTER TABLE `wkiii`
-  ADD PRIMARY KEY (`NIDN_WKIII`);
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `approval_lpj`
---
-ALTER TABLE `approval_lpj`
-  ADD CONSTRAINT `FK_KEMAHASISWAAN_MENGECEKLPJ` FOREIGN KEY (`NIDN_KEMAHASISWAAN`) REFERENCES `kemahasiswaan` (`NIDN_KEMAHASISWAAN`),
-  ADD CONSTRAINT `FK_WKIII_MENGECEK_LPJ` FOREIGN KEY (`NIDN_WKIII`) REFERENCES `wkiii` (`NIDN_WKIII`);
-
---
--- Constraints for table `approval_proposal`
---
-ALTER TABLE `approval_proposal`
-  ADD CONSTRAINT `FK_KEMAHASISWAAN_MENGECEK_PROPOSAL` FOREIGN KEY (`NIDN_KEMAHASISWAAN`) REFERENCES `kemahasiswaan` (`NIDN_KEMAHASISWAAN`),
-  ADD CONSTRAINT `FK_WKIII_MENGECAKPROPOSAL` FOREIGN KEY (`NIDN_WKIII`) REFERENCES `wkiii` (`NIDN_WKIII`);
-
---
--- Constraints for table `bukti_kegiatan`
---
-ALTER TABLE `bukti_kegiatan`
-  ADD CONSTRAINT `FK_Terdapat_ID_Proposal` FOREIGN KEY (`ID_PROPOSAL`) REFERENCES `proposal` (`ID_PROPOSAL`);
-
---
--- Constraints for table `laporan`
---
-ALTER TABLE `laporan`
-  ADD CONSTRAINT `FK_Memerluakan_Pengajuan` FOREIGN KEY (`ID_PENGAJUAN`) REFERENCES `pengajuan_kegiatan` (`ID_PENGAJUAN`);
-
---
--- Constraints for table `lpj`
---
-ALTER TABLE `lpj`
-  ADD CONSTRAINT `FK_memerlukan _bukti_kegiatan` FOREIGN KEY (`ID_BUKTIKEGIATAN`) REFERENCES `bukti_kegiatan` (`ID_BUKTIKEGIATAN`),
-  ADD CONSTRAINT `FK_menghasilkan_LPJ` FOREIGN KEY (`ID_APPROVALLPJ`) REFERENCES `approval_lpj` (`ID_APPROVALLPJ`);
-
---
--- Constraints for table `ormawa`
---
-ALTER TABLE `ormawa`
-  ADD CONSTRAINT `FK_NIDN_pembina` FOREIGN KEY (`NIDN`) REFERENCES `pembina` (`NIDN`);
-
---
--- Constraints for table `pengajuan_kegiatan`
---
-ALTER TABLE `pengajuan_kegiatan`
-  ADD CONSTRAINT `FK_ID_ORMAWA` FOREIGN KEY (`ID_ORMAWA`) REFERENCES `ormawa` (`ID_ORMAWA`);
-
---
--- Constraints for table `pengurus_ormawa`
---
-ALTER TABLE `pengurus_ormawa`
-  ADD CONSTRAINT `FK_ID_ORMAWA_Pengurus` FOREIGN KEY (`ID_ORMAWA`) REFERENCES `ormawa` (`ID_ORMAWA`);
-
---
--- Constraints for table `persetujuan_kemahasiswaan`
---
-ALTER TABLE `persetujuan_kemahasiswaan`
-  ADD CONSTRAINT `nidn_kemahasiswaan_fk` FOREIGN KEY (`NIDN_kemahsiswaan`) REFERENCES `kemahasiswaan` (`NIDN_KEMAHASISWAAN`),
-  ADD CONSTRAINT `pengajuan_fk` FOREIGN KEY (`id_pengajuan`) REFERENCES `pengajuan_kegiatan` (`ID_PENGAJUAN`);
-
---
--- Constraints for table `persetujuan_pembina`
---
-ALTER TABLE `persetujuan_pembina`
-  ADD CONSTRAINT `NIDN_PEMBINA_FK_` FOREIGN KEY (`NIDN_pembina`) REFERENCES `pembina` (`NIDN`),
-  ADD CONSTRAINT `pengajuan_pembina_fk` FOREIGN KEY (`id_pengajuan`) REFERENCES `pengajuan_kegiatan` (`ID_PENGAJUAN`);
-
---
--- Constraints for table `persetujuan_wkiii`
---
-ALTER TABLE `persetujuan_wkiii`
-  ADD CONSTRAINT `NIDN_WKIII_FK` FOREIGN KEY (`NIDN_WKIII`) REFERENCES `wkiii` (`NIDN_WKIII`),
-  ADD CONSTRAINT `pengajuan_fk_WKIII` FOREIGN KEY (`id_pengajuan`) REFERENCES `pengajuan_kegiatan` (`ID_PENGAJUAN`);
-
---
--- Constraints for table `proposal`
---
-ALTER TABLE `proposal`
-  ADD CONSTRAINT `FK_ID_APPROVAL_Proposal` FOREIGN KEY (`ID_APPROVAL`) REFERENCES `approval_proposal` (`ID_APPROVAL`),
-  ADD CONSTRAINT `FK_ID_PENGAJUAN_PROPOSAL` FOREIGN KEY (`ID_PENGAJUAN`) REFERENCES `pengajuan_kegiatan` (`ID_PENGAJUAN`);
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
