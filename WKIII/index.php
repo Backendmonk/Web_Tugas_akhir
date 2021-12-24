@@ -15,6 +15,7 @@
     <meta name="author" content="">
 
     <title>WKIII</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <?php include '../template/head.php' ?>
 
@@ -38,9 +39,20 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+                        <button class="btn btn-primary" id="button" value="csv">Export</button>
+
+                <a href="javascript:void(0)" id="dlbtn" style="display: none;">
+                  <button class="btn btn-primary" type="button" id="mine">Export</button>
+                </a>
+
+                <script type="text/javascript" src="main.js"></script>
                     </div>
+                    
+
+                
+
+
+
 
                     <!-- Content Row -->
                     <div class="row">
