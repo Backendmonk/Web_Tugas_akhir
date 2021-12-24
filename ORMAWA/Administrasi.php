@@ -50,6 +50,7 @@
                             <tr>
                                 <th scope="col">No</th>
                                 <th scope="col">Nama Kegiatan</th>
+                                <th scope="col">Approval Pembina</th>
                                 <th scope="col">Approval Kemahasiswaan</th>
                                 <th scope="col">Approval WKIII</th>
                                 <th scope="col">Action</th>
@@ -77,9 +78,9 @@
                                             $no++; ?>
                                             <th scope="row"><?= $no ?></th>
                                             <td><?= $ds["NAMA_KEGIATAN"] ?></td>
-                                            <?php if ( $data[3]=='Approve') {
+                                            <?php if ( $data[8]=='Approve') {
                                                 ?>  <td>Approve</td>  <?php
-                                            } elseif($data[3]=='Unapproved'){
+                                            } elseif($data[8]=='Unapproved'){
                                                 ?>  <td>Unapproved</td>  <?php
                                             }elseif(!empty($data[0])){
                                                 ?>  <td>Menunggu  Diperiksa</td>  <?php
@@ -87,8 +88,18 @@
                                                 ?>  <td>Menunggu proposal</td>  <?php
                                             }
                                               ?>
-                                            <?php if ( $data[4]=='Approve') {
+                                            <?php if ( $data[3]=='Approve') {
                                                 ?>  <td>Approve</td>  <?php
+                                            } elseif($data[3]=='Unapproved'){
+                                                ?>  <td>Unapproved</td>  <?php
+                                            }elseif($data[8]=='Approve'){
+                                                ?>  <td>Menunggu  Diperiksa</td>  <?php
+                                            }else{
+                                                ?>  <td>Menunggu proposal</td>  <?php
+                                            }
+                                              ?>
+                                            <?php if ( $data[4]=='Unapproved') {
+                                                ?>  <td>Unapproved</td>  <?php
                                                
                                             } elseif($data[3]=='Approve'){
                                                 ?>  <td>Menunggu Diperiksa</td>  <?php
@@ -98,7 +109,7 @@
                                               ?>
                                             <td> <button type="button" class="btn btn-primary mb-2" data-toggle="modal"
                                             data-target="#Upload<?=trim($idp ) ?>">Upload Proposal</button></td>
-                                            <?php if($data[3]=='Unapprove' || $data[4]=='Unapprove' ){ ?>
+                                            <?php if($data[3]=='Unapprove' || $data[4]=='Unapprove' || $data[8]=='Unapprove'){ ?>
                                             <td> <button type="button" class="btn btn-danger mb-2" ><a style="text-decoration:none; Color:white;" href="<?php echo "f_revisi/".$data[6] ?>"> <i class = "fa fa-download"></i> </a></button></td>
                                             <?php } else{  ?>
                                                 <td> <button type="button" class="btn btn-secondary mb-2" ><a style="text-decoration:none; Color:white;" > <i class = "fa fa-download"></i> </a></button></td>
@@ -135,6 +146,7 @@
                             <tr>
                                 <th scope="col">No</th>
                                 <th scope="col">Nama Kegiatan</th>
+                                <th scope="col">Approval Pembina</th>
                                 <th scope="col">Approval Kemahasiswaan</th>
                                 <th scope="col">Approval WKIII</th>
                                 <th scope="col">Action</th>
@@ -167,6 +179,16 @@
                                         <td><?=$n++?></td>
                                         <td><?=$nmAk?></td>
                                         <?php if ($dlpj) {?>
+                                            <?php if ($dlpj[9]=='Approve') {
+                                                ?>  <td>Approve</td>  <?php
+                                            } elseif($dlpj[9]=='Unapproved'){
+                                                ?>  <td>Unapproved</td>  <?php
+                                            }elseif(!empty($dlpj[5])){
+                                                ?>  <td>Menunggu  Diperiksa</td>  <?php
+                                            }else{
+                                                ?>  <td>Menunggu LPJ</td>  <?php
+                                            }
+                                              ?>
                                             <?php if ($dlpj[4]=='Approve') {?>
                                                 <td>Approve</td>
                                                 <td>Approve</td>
@@ -176,18 +198,25 @@
                                             <?php  }elseif($dlpj[3]=='Unapproved'){ ?>
                                                 <td>Unapprove</td>
                                                 <td>menunggu LPJ</td>
-                                            <?php  } ?>
+                                            <?php  }elseif($dlpj[9]=='Approve'){ ?>
+                                                <td>menunggu diperiksa</td>
+                                                <td>menunggu LPJ</td>
+                                            <?php  }else{ ?>
+                                        <td>menunngu LPJ</td>
+                                        <td>menunggu LPJ</td>
+                                        <?php } ?>
                                         <?php  }else{?>
+                                        <td>menunngu LPJ</td>
                                         <td>menunngu LPJ</td>
                                         <td>menunggu LPJ</td>
                                         <?php } ?>
                                         <td>
                                             <button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#UpLPJ<?=trim($idAk ) ?>">Upload LPJ
                                             </button>
-                                            <button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#UpBukti<?=trim($idAk ) ?>">Upload Bukti Kegiatan
+                                            <button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#UpBukti<?=trim($idAk ) ?>">Upload BK
                                             </button>
                                         </td>
-                                        <?php if( isset($dlpj[6]) && $dlpj[3]=='Unapproved' || isset($dlpj[6]) && $dlpj[4]=='Unapproved' ){ ?>
+                                        <?php if( isset($dlpj[6]) && $dlpj[3]=='Unapproved' || isset($dlpj[6]) && $dlpj[4]=='Unapproved' | isset($dlpj[6]) && $dlpj[9]=='Unapproved'){ ?>
                                             <td> <button type="button" class="btn btn-danger mb-2" ><a style="text-decoration:none; Color:white;" href="<?php echo "f_revisi_lpj/".$dlpj[6] ?>"> <i class = "fa fa-download"></i> </a></button></td>
                                             <?php } else{  ?>
                                                 <td> <button type="button" class="btn btn-secondary mb-2" ><a style="text-decoration:none; Color:white;" > <i class = "fa fa-download"></i> </a></button></td>

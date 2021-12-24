@@ -67,18 +67,19 @@
                                         $idAp =  $dataPro["ID_APPROVAL"];
                                         $dataApPro = mysqli_query($koneksi, "SELECT * FROM approval_proposal WHERE ID_APPROVAL = '$idAp' ");
                                         $data =  mysqli_fetch_row($dataApPro);
-                                        $a++;
+                                        
                                         ?>
                                         <tr>
                                             
                                        <?php 
-                                       if (isset($data) && $data[3] != 'Approve') {
+                                       if (isset($data) && $data[8] != 'Approve') {
+                                        $a++;
                                        ?>
                                             <th scope="row"><?= $a?></th>
                                             <td><?= $ds["NAMA_KEGIATAN"] ?></td>
-                                            <?php if ( $data[3]=='Approve') {
+                                            <?php if ( $data[8]=='Approve') {
                                                 ?>  <td>Approve</td>  <?php
-                                            } elseif($data[3]=='Unapproved'){
+                                            } elseif($data[8]=='Unapproved'){
                                                 ?>  <td>Unapproved</td>  <?php
                                             }elseif(!empty($data[5])){
                                                 ?>  <td>Menunggu  Diperiksa</td>  <?php
@@ -92,7 +93,7 @@
                                                <?php if (!empty($data[5])) { ?>
 
                                                 <button type="button" class="btn btn-primary mb-2" ><a style="text-decoration:none; Color:white;" href="<?php echo "../ORMAWA/f_proposal/".$data[5] ?>"> <i class = "fa fa-download"></i> </a></button>
-                                                <?php if($data[3]=='Unapproved'){?>
+                                                <?php if($data[8]=='Unapproved'){?>
                                                      <button type="button" class="btn btn-danger mb-2" data-toggle="modal"
                                                      data-target="#Upload<?=trim($idp ) ?>">upload Revisi</button>
                                                <?php }else{ ?>
@@ -162,34 +163,34 @@
                                     ?>
                                 <tr>
                                 <?php
-                                if ($dap[0] == 'Approve' && $dlpj[3] != 'Approve') { ?>
+                                if ($dap[0] == 'Approve' && $dlpj[9] != 'Approve') { ?>
                                     <th scope="row"><?=$n++?></th>
                                 <td><?= $dpk[0] ?></td>
                                 
-                                     <?php if($dlpj[3]=='Approve'){ ?>
+                                     <?php if($dlpj[9]=='Approve'){ ?>
                                         <td>Approve</td>
                                         
-                                    <?php   }elseif($dlpj[3]=='Unapproved'){ ?>
+                                    <?php   }elseif($dlpj[9]=='Unapproved'){ ?>
                                         <td>Unapprove</td>
                                        
                                <?php }else{ ?>
                                <td> Menunggu LPJ</td>
                                 
                                 <?php } ?>
-                                    <td>         <?php if( isset($dlpj[5]) ){?>
+                                    <td>         <?php if( isset($dlpj[5]) &&  isset($dlpj[7])  ){?>
                                                 <button type="button" class="btn btn-primary mb-2" data-toggle="modal"
                                                 data-target="#file<?=trim($idLPJ ) ?>" ><a style="text-decoration:none; Color:white;"> <i class = "fa fa-download"></i> </a></button>
                                                
                                                 <?php }else{ ?>
                                                     <button type="button" class="btn btn-secondary mb-2" ><a style="text-decoration:none; Color:white;"> <i class = "fa fa-download"></i> </a></button>
                                                     <?php } ?>
-                                                <?php if( isset($dlpj) && $dlpj[3]=='Unapproved'){?>
+                                                <?php if( isset($dlpj) && $dlpj[9]=='Unapproved'){?>
                                                      <button type="button" class="btn btn-danger mb-2" data-toggle="modal"
                                                      data-target="#UpLpj<?=trim($idLPJ ) ?>">upload Revisi</button>
                                                <?php }else{ ?>
                                                     <button type="button" class="btn btn-secondary mb-2">upload Revisi</button>
                                                <?php } ?>
-                                               <?php if( isset($dlpj[5]) ){?>
+                                               <?php if( isset($dlpj[5])  &&  isset($dlpj[7]) ){?>
                                              
                                                 <button type="button" class="btn btn-primary mb-2" data-toggle="modal"
                                                 data-target="#ApLpj<?=trim($idLPJ ) ?>">Approve</button>

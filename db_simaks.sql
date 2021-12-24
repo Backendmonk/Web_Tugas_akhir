@@ -29,20 +29,26 @@ CREATE TABLE `approval_lpj` (
   `LAPORAN_LPJ` mediumtext DEFAULT NULL,
   `REVISI_LPJ` mediumtext DEFAULT NULL,
   `ID_BK` varchar(100) DEFAULT NULL,
+  `NIDN` int(100) DEFAULT NULL,
+  `ALP` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`ID_APPROVALLPJ`),
   KEY `WKIII_MENGECEK_LPJ_FK` (`NIDN_WKIII`),
   KEY `KEMAHASISWAAN_MENGECEKLPJ_FK` (`NIDN_KEMAHASISWAAN`),
   KEY `FK_BK` (`ID_BK`),
+  KEY `FK_P` (`NIDN`),
   CONSTRAINT `FK_BK` FOREIGN KEY (`ID_BK`) REFERENCES `bukti_kegiatan` (`ID_BUKTIKEGIATAN`),
   CONSTRAINT `FK_KEMAHASISWAAN_MENGECEKLPJ` FOREIGN KEY (`NIDN_KEMAHASISWAAN`) REFERENCES `kemahasiswaan` (`NIDN_KEMAHASISWAAN`),
+  CONSTRAINT `FK_P` FOREIGN KEY (`NIDN`) REFERENCES `pembina` (`NIDN`),
   CONSTRAINT `FK_WKIII_MENGECEK_LPJ` FOREIGN KEY (`NIDN_WKIII`) REFERENCES `wkiii` (`NIDN_WKIII`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `approval_lpj` */
 
-insert  into `approval_lpj`(`ID_APPROVALLPJ`,`NIDN_WKIII`,`NIDN_KEMAHASISWAAN`,`APPROVAL_LPJ_KEMAHASISWAAN`,`APPROVAL_LPJ_WKIII`,`LAPORAN_LPJ`,`REVISI_LPJ`,`ID_BK`) values 
-('1047944703','202020','10101010','Unapproved',NULL,'1639197193_18101028-IPutuMellanaAriArtawan-HCI-Rangkum model dialog.docx','1639203626_18101028-IPutuMellanaAriArtawan-Interpersonal_Skill-Pertemuan_12.docx','1588414891'),
-('1857137277','202020','10101010','Approve','Approve','1639197193_18101028-IPutuMellanaAriArtawan-HCI-Rangkum model dialog.docx',NULL,'1186903940');
+insert  into `approval_lpj`(`ID_APPROVALLPJ`,`NIDN_WKIII`,`NIDN_KEMAHASISWAAN`,`APPROVAL_LPJ_KEMAHASISWAAN`,`APPROVAL_LPJ_WKIII`,`LAPORAN_LPJ`,`REVISI_LPJ`,`ID_BK`,`NIDN`,`ALP`) values 
+('1047944703','202020','10101010','Approve','Approve','1639197193_18101028-IPutuMellanaAriArtawan-HCI-Rangkum model dialog.docx','1639203626_18101028-IPutuMellanaAriArtawan-Interpersonal_Skill-Pertemuan_12.docx','1588414891',1,'Unapproved'),
+('1857137277','202020','10101010','Approve','Approve','1639197193_18101028-IPutuMellanaAriArtawan-HCI-Rangkum model dialog.docx',NULL,'1186903940',NULL,NULL),
+('309887079','202020','10101010','Approve',NULL,'1640341494_26-2020-Implementasi-Deep-Learning-webinar3.pdf',NULL,'1786073396',1,'Approve'),
+('709843028',NULL,NULL,NULL,NULL,'1640342879_397-Article Text-846-2-10-20200415.pdf',NULL,'2110468124',NULL,NULL);
 
 /*Table structure for table `approval_proposal` */
 
@@ -56,22 +62,25 @@ CREATE TABLE `approval_proposal` (
   `APPROVAL_PROPOSAL_WKIII` varchar(100) DEFAULT NULL,
   `LAPORAN_PROPOSAL` mediumtext DEFAULT NULL,
   `REVISI` mediumtext DEFAULT NULL,
+  `NIDN` int(100) DEFAULT NULL,
+  `APP` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`ID_APPROVAL`),
   KEY `WKIII_MENGECAKPROPOSAL_FK` (`NIDN_WKIII`),
   KEY `KEMAHASISWAAN_MENGECEK_PROPOSAL_FK` (`NIDN_KEMAHASISWAAN`),
+  KEY `FK_PEMBINA` (`NIDN`),
   CONSTRAINT `FK_KEMAHASISWAAN_MENGECEK_PROPOSAL` FOREIGN KEY (`NIDN_KEMAHASISWAAN`) REFERENCES `kemahasiswaan` (`NIDN_KEMAHASISWAAN`),
+  CONSTRAINT `FK_PEMBINA` FOREIGN KEY (`NIDN`) REFERENCES `pembina` (`NIDN`),
   CONSTRAINT `FK_WKIII_MENGECAKPROPOSAL` FOREIGN KEY (`NIDN_WKIII`) REFERENCES `wkiii` (`NIDN_WKIII`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `approval_proposal` */
 
-insert  into `approval_proposal`(`ID_APPROVAL`,`NIDN_WKIII`,`NIDN_KEMAHASISWAAN`,`APPROVAL_PROPOSAL_KEMAHASISWAAN`,`APPROVAL_PROPOSAL_WKIII`,`LAPORAN_PROPOSAL`,`REVISI`) values 
-('1012122540','202020','10101010','Approve','Approve','1639077593_18101028-IPutuMellanaAriArtawan-ParBud-UAS.docx','1639099391_18101028-IPutuMellanaAriArtawan-Interpersonal_Skill-Proaktif1.docx'),
-('1124969242','202020','10101010','Approve','Approve','1639077593_18101028-IPutuMellanaAriArtawan-ParBud-UAS.docx','1639132431_18101028-IPutuMellanaAriArtawan-HCI_AC-Tugas GUI.pdf'),
-('1465410095','202020','10101010','Approve','Approve','1639076321_Untitled.pdf',NULL),
-('23258801','202020','10101010','Approve','Approve','1639078392_18101028-IPutuMellanaAriArtawan-Interpersonal_Skill-Proaktif1.docx',NULL),
-('283425815','202020','10101010','unap',NULL,'1639074109_Untitled.pdf',NULL),
-('387373573','202020','10101010','unap',NULL,'1639074212_Untitled.pdf',NULL);
+insert  into `approval_proposal`(`ID_APPROVAL`,`NIDN_WKIII`,`NIDN_KEMAHASISWAAN`,`APPROVAL_PROPOSAL_KEMAHASISWAAN`,`APPROVAL_PROPOSAL_WKIII`,`LAPORAN_PROPOSAL`,`REVISI`,`NIDN`,`APP`) values 
+('1012122540','202020','10101010',NULL,'Approve','1639077593_18101028-IPutuMellanaAriArtawan-ParBud-UAS.docx','1640339114_327-Article Text-596-1-10-20160611 (1).pdf',1,'Approve'),
+('1124969242','202020','10101010','Approve','Approve','1639077593_18101028-IPutuMellanaAriArtawan-ParBud-UAS.docx','1639132431_18101028-IPutuMellanaAriArtawan-HCI_AC-Tugas GUI.pdf',1,'Approve'),
+('1465410095','202020','10101010','Approve','Approve','1639077593_18101028-IPutuMellanaAriArtawan-ParBud-UAS.docx',NULL,1,'Approve'),
+('23258801','202020','10101010','Approve','Approve','1639078392_18101028-IPutuMellanaAriArtawan-Interpersonal_Skill-Proaktif1.docx',NULL,NULL,NULL),
+('283425815','202020','10101010',NULL,NULL,'1639074109_Untitled.pdf',NULL,NULL,NULL);
 
 /*Table structure for table `bukti_kegiatan` */
 
@@ -95,7 +104,30 @@ CREATE TABLE `bukti_kegiatan` (
 
 insert  into `bukti_kegiatan`(`ID_BUKTIKEGIATAN`,`ID_PROPOSAL`,`BERITA_ACARA`,`ABSENSI_BK`,`DOKUMENTASI`,`DOKUMENTASI2`,`DOKUMENTASI3`,`SERTIFIKAT`) values 
 ('1186903940',NULL,NULL,'1639887184_Sertifikasi.pdf','1639887184_Sertifikasi.pdf',NULL,NULL,'1639887184_Sertifikasi.pdf'),
-('1588414891',NULL,NULL,'1639220419_18101028-IPutuMellanaAriArtawan-HCI_AC-Tugas_8_Golden_rulesdocx.pdf','1639220419_18101028-IPutuMellanaAriArtawan-Interpersonal_Skill-Proaktif1.pdf',NULL,NULL,'1639220419_18101028-IPutuMellanaAriArtawan-Interpersonal_Skill-Proaktif1.pdf');
+('1588414891',NULL,NULL,'1639220419_18101028-IPutuMellanaAriArtawan-HCI_AC-Tugas_8_Golden_rulesdocx.pdf','1639220419_18101028-IPutuMellanaAriArtawan-Interpersonal_Skill-Proaktif1.pdf',NULL,NULL,'1639220419_18101028-IPutuMellanaAriArtawan-Interpersonal_Skill-Proaktif1.pdf'),
+('1786073396',NULL,NULL,'1640342632_12. Prosiding Ryan Hernawan-OK.pdf','1640342632_14976-19507-2-PB (2).pdf',NULL,NULL,'1640342632_26-2020-Implementasi-Deep-Learning-webinar3.pdf'),
+('2110468124',NULL,NULL,'1640342963_1lW8X2bgFrz2eqLZnv5kyY5U9kAEj0KXnwYe5S2t.docx','1640342963_397-Article Text-846-2-10-20200415.pdf',NULL,NULL,'1640342963_14976-19507-2-PB (1).pdf');
+
+/*Table structure for table `cetak` */
+
+DROP TABLE IF EXISTS `cetak`;
+
+CREATE TABLE `cetak` (
+  `id_cetak` int(10) NOT NULL,
+  `NAMA_KEGIATAN` varchar(100) NOT NULL,
+  `TANGGAL_KEGIATAN` varchar(100) NOT NULL,
+  `TEMPAT_KEGIATAN` varchar(100) NOT NULL,
+  `PENYELENGGARA` varchar(100) NOT NULL,
+  `ABSENSI` varchar(100) NOT NULL,
+  `BERITA_ACARA KEGIATAN` varchar(100) NOT NULL,
+  `LPJ` varchar(100) NOT NULL,
+  PRIMARY KEY (`id_cetak`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+/*Data for the table `cetak` */
+
+insert  into `cetak`(`id_cetak`,`NAMA_KEGIATAN`,`TANGGAL_KEGIATAN`,`TEMPAT_KEGIATAN`,`PENYELENGGARA`,`ABSENSI`,`BERITA_ACARA KEGIATAN`,`LPJ`) values 
+(1,'Esport','01 januari 2021','Stiki','E-Sport','Ada','Ada','Ada');
 
 /*Table structure for table `kemahasiswaan` */
 
@@ -149,6 +181,8 @@ CREATE TABLE `lpj` (
 /*Data for the table `lpj` */
 
 insert  into `lpj`(`ID_LPJ`,`ID_APPROVALLPJ`,`ID_BUKTIKEGIATAN`,`TGL_PENGAJUANLPJ`,`LPJ`) values 
+('1924144729','1047944703','1588414891','2021-12-24',NULL),
+('413376370','309887079','1786073396','2021-12-24',NULL),
 ('875718304','1857137277','1186903940','2021-12-19',NULL);
 
 /*Table structure for table `ormawa` */
@@ -225,8 +259,10 @@ CREATE TABLE `pengajuan_kegiatan` (
 /*Data for the table `pengajuan_kegiatan` */
 
 insert  into `pengajuan_kegiatan`(`ID_PENGAJUAN`,`ID_ORMAWA`,`NAMA_ORMAWA_FK`,`NAMA_KEGIATAN`,`KONSEP_KEGIATAN`,`SUB_KEGIATAN`,`PJ_KEGIATAN`,`LATAR_BELAKANG`,`TUJUAN_KEGIATAN`,`TGL_KEGIATAN`,`TEMPAT_KEGIATAN`,`SK_KEPANITIAAN`,`TIMELINE_KEGIATAN`,`RAB`,`KETUA_PANITIA`,`CONTAC_PERSON`,`KATEGORI_KEGIATAN`,`STATUS`) values 
+('',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2021-12-23',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 (' 611 ','87764831','robotika','sumo','408735357_Task Meeting 3.docx','284789562_Task Meeting 3.docx','arwan','1689966438_Task Meeting 3.docx','1822979152_Task Meeting 3.docx','2021-06-01','lipo mall','976828388_Task Meeting 3.docx','1803421307_Task Meeting 3.docx','77666209_Task Meeting 3.docx','rikodo','0882421421424','kompetesi','Approve'),
 (' 782 ','87764831','robotika','Line follower','1598036686_Task Meeting 3.docx','2152204_Task Meeting 3.docx','arwan','113270015_Task Meeting 3.docx','1687050300_Task Meeting 3.docx','2021-05-01','lipo mall','1255386758_Task Meeting 3.docx','452848719_Task Meeting 3.docx','1287706581_Task Meeting 3.docx','rikodo','08824214214','kompetesi','Approve'),
+('333','1753732088','UMA','WWA',NULL,NULL,NULL,NULL,NULL,'2021-12-24',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 ('777','87764831','robotika','Robotech','fsaf','sfasf',NULL,NULL,NULL,'2021-07-01','sdsaf','sfafsf','sfsfasf','sfasf','sfaf','fsfa','fsf','Approve'),
 ('888','87764831','BADMINTO','Badminton cup',NULL,NULL,NULL,NULL,NULL,'2021-05-01',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Approve');
 
@@ -351,10 +387,10 @@ CREATE TABLE `proposal` (
 
 insert  into `proposal`(`ID_PROPOSAL`,`ID_APPROVAL`,`ID_PENGAJUAN`,`TANNGGAL_PENGAJUANPROPOSAL`,`ABSENSI_PROPOSAL`,`ID_LPJ`) values 
 ('1327682772','1012122540',' 611 ','2021-12-09',NULL,'1047944703'),
-('21341231','283425815',NULL,'2021-12-09',NULL,NULL),
-('383662818','1124969242','777','2021-12-09',NULL,NULL),
+('21341231','283425815','333','2021-12-09',NULL,NULL),
+('383662818','1124969242','777','2021-12-09',NULL,'309887079'),
 ('724843558','23258801','888','2021-12-09',NULL,'1857137277'),
-('885958765','1465410095',' 782 ','2021-12-09',NULL,NULL);
+('885958765','1465410095',' 782 ','2021-12-09',NULL,'709843028');
 
 /*Table structure for table `strukturwkiii` */
 

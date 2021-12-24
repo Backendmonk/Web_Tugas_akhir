@@ -73,7 +73,7 @@
                                         <tr>
                                             
                                        <?php 
-                                       if (isset($data) && $data[3] != 'Approve') {
+                                       if (isset($data) && $data[3] != 'Approve' && $data[8] == 'Approve') {
                                         $a++;
                                        ?>
                                             <th scope="row"><?= $a?></th>
@@ -164,7 +164,7 @@
                                     ?>
                                 <tr>
                                 <?php
-                                if ($dap[0] == 'Approve' && $dlpj[3] != 'Approve') { ?>
+                                if ($dap[0] == 'Approve' && $dlpj[9] == 'Approve' && $dlpj[3] != 'Approve') { ?>
                                     <th scope="row"><?=$n++?></th>
                                 <td><?= $dpk[0] ?></td>
                                 

@@ -49,11 +49,10 @@
                         <h3>Pengajuan Proposal</h3>
                         <thead>
                             <tr>
-                                <th scope="col">#</th>
+                                <th scope="col">no</th>
                                 <th scope="col">Nama Kegiatan</th>
                                 <th scope="col">Approval</th>
                                 <th scope="col">Action</th>
-                                <th scope="col">Status</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -77,8 +76,8 @@
                                        ?>
                                             <th scope="row"><?= $a?></th>
                                             <td><?= $ds["NAMA_KEGIATAN"] ?></td>
-                                            <?php if ( $data[4]=='Approve') {
-                                                ?>  <td>Approve</td>  <?php
+                                            <?php if ( $data[4]=='Unapproved') {
+                                                ?>  <td>Unapproved</td>  <?php
                                                
                                             } elseif($data[3]=='Approve'){
                                                 ?>  <td>Menunggu Diperiksa</td>  <?php
@@ -89,10 +88,12 @@
                                              <?php if ($data[3]=='Approve') { ?>
                                             <td> 
                                                 <button type="button" class="btn btn-primary mb-2" ><a style="text-decoration:none; Color:white;" href="<?php echo "../ORMAWA/f_proposal/".$data[5] ?>"> <i class = "fa fa-download"></i> </a></button>
-                                                <button type="button" class="btn btn-danger mb-2" data-toggle="modal"
-                                                data-target="#Upload<?=trim($idp ) ?>">upload Revisi</button>
-                                            </td>
-                                            <td>
+                                                <?php if( isset($data) && $data[4]=='Unapproved'){?>
+                                                     <button type="button" class="btn btn-danger mb-2" data-toggle="modal"
+                                                     data-target="#Upload<?=trim($idp ) ?>">upload Revisi</button>
+                                               <?php }else{ ?>
+                                                    <button type="button" class="btn btn-secondary mb-2">upload Revisi</button>
+                                               <?php } ?>
                                                 <button type="button" class="btn btn-primary mb-2" data-toggle="modal"
                                                 data-target="#Ap<?=trim($idp ) ?>">Approve</button>
                                                 <button type="button" class="btn btn-danger mb-2" data-toggle="modal"
@@ -103,8 +104,6 @@
                                                 <button type="button" class="btn btn-secondary mb-2" ><a style="text-decoration:none; Color:white;" > <i class = "fa fa-download"></i> </a></button>
                                                 <button type="button" class="btn btn-secondary mb-2" data-toggle="modal"
                                                 data-target="#Upload<?=trim($idp ) ?>">upload Revisi</button>
-                                            </td>
-                                            <td>
                                                 <button type="button" class="btn btn-secondary mb-2" data-toggle="modal"
                                                 data-target="#Ap<?=trim($idp ) ?>">Approve</button>
                                                 <button type="button" class="btn btn-secondary mb-2" data-toggle="modal"
@@ -128,7 +127,7 @@
                                 <th scope="col">Nama Kegiatan</th>
                                 <th scope="col">Approval</th>
                                 <th scope="col">Action</th>
-                                <th scope="col">Status</th>
+                              
                             </tr>
                         </thead>
                         <tbody>
@@ -158,7 +157,7 @@
                                             <?php if ( $dlpj[4]=='Approve') {
                                                 ?>  <td>Approve</td>  <?php
                                             } elseif($dlpj[4]=='Unapproved'){
-                                                ?>  <td>Unproved</td>  <?php
+                                                ?>  <td>Unapproved</td>  <?php
                                             } elseif($dlpj[3]=='Approve'){
                                                 ?>  <td>Menunggu Diperiksa</td>  <?php
                                             }else{
@@ -178,8 +177,7 @@
                                                <?php }else{ ?>
                                                     <button type="button" class="btn btn-secondary mb-2">upload Revisi</button>
                                                <?php } ?>
-                                            </td>
-                                            <td>
+                                            
                                             <?php if( isset($dlpj[3]) && $dlpj[3]=='Approve' ){?>
                                                 <button type="button" class="btn btn-primary mb-2" data-toggle="modal"
                                                 data-target="#ApLpj<?=trim($idLPJ ) ?>">Approve</button>
