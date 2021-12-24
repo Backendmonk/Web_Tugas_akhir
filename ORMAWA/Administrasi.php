@@ -1,6 +1,5 @@
 <?php
         include "SessionPengurus.php";
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -65,17 +64,18 @@
                                 $qPro = mysqli_query($koneksi, "SELECT * FROM proposal WHERE ID_PENGAJUAN = '$idp'");
                                 $jmlPro = mysqli_num_rows($qPro);
                                 if ($jmlPro > 0 ) {
+                                    $no = 0;
                                     while($dataPro = mysqli_fetch_array($qPro))
                                     {
                                         $idAp =  $dataPro["ID_APPROVAL"];
                                         $dataApPro = mysqli_query($koneksi, "SELECT * FROM approval_proposal WHERE ID_APPROVAL = '$idAp'");
-                                        $data =  mysqli_fetch_row($dataApPro)
+                                        $data =  mysqli_fetch_row($dataApPro);
+                                        
                                         ?>
                                         <tr>
-                                        <?php if (isset($data) && $data[4] != 'Approve') { ?>
-                                            # code...
-                                      
-                                            <th scope="row">1</th>
+                                        <?php if (isset($data) && $data[4] != 'Approve') { 
+                                            $no++; ?>
+                                            <th scope="row"><?= $no ?></th>
                                             <td><?= $ds["NAMA_KEGIATAN"] ?></td>
                                             <?php if ( $data[3]=='Approve') {
                                                 ?>  <td>Approve</td>  <?php
@@ -98,7 +98,7 @@
                                               ?>
                                             <td> <button type="button" class="btn btn-primary mb-2" data-toggle="modal"
                                             data-target="#Upload<?=trim($idp ) ?>">Upload Proposal</button></td>
-                                            <?php if($data[3]=='Unapprove'){ ?>
+                                            <?php if($data[3]=='Unapprove' || $data[4]=='Unapprove' ){ ?>
                                             <td> <button type="button" class="btn btn-danger mb-2" ><a style="text-decoration:none; Color:white;" href="<?php echo "f_revisi/".$data[6] ?>"> <i class = "fa fa-download"></i> </a></button></td>
                                             <?php } else{  ?>
                                                 <td> <button type="button" class="btn btn-secondary mb-2" ><a style="text-decoration:none; Color:white;" > <i class = "fa fa-download"></i> </a></button></td>
@@ -187,7 +187,7 @@
                                             <button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#UpBukti<?=trim($idAk ) ?>">Upload Bukti Kegiatan
                                             </button>
                                         </td>
-                                        <?php if( isset($dlpj[3]) && $dlpj[3]=='Unapproved' ){ ?>
+                                        <?php if( isset($dlpj[6]) && $dlpj[3]=='Unapproved' || isset($dlpj[6]) && $dlpj[4]=='Unapproved' ){ ?>
                                             <td> <button type="button" class="btn btn-danger mb-2" ><a style="text-decoration:none; Color:white;" href="<?php echo "f_revisi_lpj/".$dlpj[6] ?>"> <i class = "fa fa-download"></i> </a></button></td>
                                             <?php } else{  ?>
                                                 <td> <button type="button" class="btn btn-secondary mb-2" ><a style="text-decoration:none; Color:white;" > <i class = "fa fa-download"></i> </a></button></td>
@@ -203,7 +203,7 @@
 
                                 <?php
                             } else {
-                                # code...
+                            
                             }
                             
                             ?>

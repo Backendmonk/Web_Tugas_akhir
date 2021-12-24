@@ -1,6 +1,5 @@
 <?php
         include "SessionKemahasiswaan.php";
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -66,14 +65,16 @@
                                     while($dataPro = mysqli_fetch_array($qPro))
                                     {
                                         $idAp =  $dataPro["ID_APPROVAL"];
-                                        $dataApPro = mysqli_query($koneksi, "SELECT * FROM approval_proposal WHERE ID_APPROVAL = '$idAp' && APPROVAL_PROPOSAL_KEMAHASISWAAN != 'Approve'");
+                                        $dataApPro = mysqli_query($koneksi, "SELECT * FROM approval_proposal WHERE ID_APPROVAL = '$idAp' ");
                                         $data =  mysqli_fetch_row($dataApPro);
-                                        $a++;
+                                        
+                                        
                                         ?>
                                         <tr>
                                             
                                        <?php 
-                                       if (isset($data)) {
+                                       if (isset($data) && $data[3] != 'Approve') {
+                                        $a++;
                                        ?>
                                             <th scope="row"><?= $a?></th>
                                             <td><?= $ds["NAMA_KEGIATAN"] ?></td>
@@ -466,6 +467,8 @@
 </html>
 <?php include 'Template/EditProfilePass.php' ?>
 <?php
+    
+
 if (!isset($_SESSION['eks'])) {
 
 
