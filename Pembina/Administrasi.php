@@ -333,7 +333,7 @@
                 </div>
                 <div class="modal-body">
                     <form action="Logic/Administrasi.php" method="post" >
-                        <input type="text" name="kema" value="<?= $array["NIDN_KEMAHASISWAAN"] ?>" hidden>
+                        <input type="text" name="kema" value="<?= $array["NIDN"] ?>" hidden>
                         <input type="text" name="idp" value="<?=$data['ID_APPROVAL'] ?>" hidden>
                         Apakah sudah yakin di approve?
                 </div>
@@ -359,7 +359,7 @@
                 </div>
                 <div class="modal-body">
                     <form action="Logic/Administrasi.php" method="post" >
-                        <input type="text" name="kema" value="<?= $array["NIDN_KEMAHASISWAAN"] ?>" hidden>
+                        <input type="text" name="kema" value="<?= $array["NIDN"] ?>" hidden>
                         <input type="text" name="idp" value="<?=$data['ID_LPJ'] ?>" hidden>
                         Apakah sudah yakin di approve?
                 </div>
@@ -385,7 +385,7 @@
                 </div>
                 <div class="modal-body">
                     <form action="Logic/Administrasi.php" method="post"  enctype="multipart/form-data">
-                        <input type="text" name="kema" value="<?= $array["NIDN_KEMAHASISWAAN"] ?>" hidden>
+                        <input type="text" name="kema" value="<?= $array["NIDN"] ?>" hidden>
                         <input type="text" name="idp" value="<?=$data['ID_APPROVAL'] ?>" hidden>
                         Apakah sudah yakin di Unapproved?
                 </div>
@@ -411,7 +411,7 @@
                 </div>
                 <div class="modal-body">
                     <form action="Logic/Administrasi.php" method="post"  enctype="multipart/form-data">
-                        <input type="text" name="kema" value="<?= $array["NIDN_KEMAHASISWAAN"] ?>" hidden>
+                        <input type="text" name="kema" value="<?= $array["NIDN"] ?>" hidden>
                         <input type="text" name="idp" value="<?=$data['ID_LPJ'] ?>" hidden>
                         Apakah sudah yakin di Unapproved?
                 </div>
