@@ -135,6 +135,7 @@
                         <?php 
                                 $idOr= $array['ID_ORMAWA'];
                                 $qK = mysqli_query($koneksi,"SELECT   NAMA_KEGIATAN, ID_PENGAJUAN, STATUS FROM pengajuan_kegiatan WHERE STATUS = 'Approve' and ID_ORMAWA = '$idOr' ");
+                            
                                 
                                 $jumlah = mysqli_num_rows($qK);
                                 if ($jumlah > 0 ){

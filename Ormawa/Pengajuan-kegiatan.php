@@ -260,7 +260,7 @@
         $pj = $_POST['pj'];
         $status = 'Belum Diterima';
         $nama_ormawa = $_POST['nama_ormawa'];
-        
+        $date = date('Y-m-d H:i:s');
         //get ormawa id
 
         $getid = mysqli_query($koneksi,"SELECT ID_ORMAWA as idormawa FROM `ormawa` Where NAMA_ORMAWA ='$nama_ormawa' ");
@@ -378,7 +378,7 @@
        
 
           //insert query
-          $ins = mysqli_query($koneksi,"INSERT INTO `pengajuan_kegiatan`(`ID_PENGAJUAN`, `ID_ORMAWA`, `NAMA_ORMAWA_FK`, `NAMA_KEGIATAN`, `KONSEP_KEGIATAN`, `SUB_KEGIATAN`, `PJ_KEGIATAN`, `LATAR_BELAKANG`, `TUJUAN_KEGIATAN`, `TGL_KEGIATAN`, `TEMPAT_KEGIATAN`, `SK_KEPANITIAAN`, `TIMELINE_KEGIATAN`, `RAB`, `KETUA_PANITIA`, `CONTAC_PERSON`, `KATEGORI_KEGIATAN`, `STATUS`) VALUES ('$id','$id_ormawa','$nama_ormawa','$nama','$konsep','$sub_kegiatan','$pj','$latar_belakang','$tujuan','$tanggal','$tempat','$sk','$timeline','$rab','$ketua','$contac','$kategori','$status')");
+          $ins = mysqli_query($koneksi,"INSERT INTO `pengajuan_kegiatan`(`ID_PENGAJUAN`, `ID_ORMAWA`, `NAMA_ORMAWA_FK`, `NAMA_KEGIATAN`, `KONSEP_KEGIATAN`, `SUB_KEGIATAN`, `PJ_KEGIATAN`, `LATAR_BELAKANG`, `TUJUAN_KEGIATAN`, `TGL_KEGIATAN`, `TEMPAT_KEGIATAN`, `SK_KEPANITIAAN`, `TIMELINE_KEGIATAN`, `RAB`, `KETUA_PANITIA`, `CONTAC_PERSON`, `KATEGORI_KEGIATAN`, `STATUS`,`Date`) VALUES ('$id','$id_ormawa','$nama_ormawa','$nama','$konsep','$sub_kegiatan','$pj','$latar_belakang','$tujuan','$tanggal','$tempat','$sk','$timeline','$rab','$ketua','$contac','$kategori','$status','$date')");
 
           ?>
 						<script>

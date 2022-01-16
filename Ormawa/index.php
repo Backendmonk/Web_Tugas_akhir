@@ -39,24 +39,77 @@
                         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
                         
                     </div>
+                    <div class="row">
+
+
+
 
                     <!-- Content Row -->
                     <div class="row">
-                    <main class="col overflow-auto h-100">
-            <div class="bg-light border rounded-3 p-3">
-               
+                    
+<div class="col-xl-3 col-md-6 mb-4">
+    <div class="card border-left-primary shadow h-100 py-2">
+        <div class="card-body">
+            <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                <center> <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                    <?php
+
+                    $coutn = mysqli_query($koneksi,"SELECT  COUNT(lpj.ID_LPJ) as lpj FROM `lpj` INNER JOIN `approval_lpj` on `lpj`.`ID_APPROVALLPJ` = `approval_lpj`.`ID_APPROVALLPJ` WHERE `approval_lpj`.`ORMAWA` = $array[ID_ORMAWA]");
+                    $arr = mysqli_fetch_array($coutn);
+
+                    ?>
+                        Jumlah Acara</div>
+                 <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $arr['lpj']; ?></div></center>
+                </div>
                 
-                            <?php
-                                include "../WKIII/Struktur-WKIII.php";
-                            ?>
-                         
-                       
-                        </div>
-
-
-                        </div>                
             </div>
-        </main>
+        </div>
+    </div>
+</div>
+
+<!-- Earnings (Monthly) Card Example -->
+<div class="col-xl-3 col-md-6 mb-4">
+    <div class="card border-left-success shadow h-100 py-2">
+        <div class="card-body">
+            <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                    <?php
+
+                        $query = mysqli_query($koneksi,"SELECT COUNT(*) as jumlah FROM `status_lpj` WHERE `ORMAWA` = '$array[ID_ORMAWA]' AND `STATUS` = 'Belum Terkumpul' ");
+                        
+                        $arr = mysqli_fetch_array($query);
+                    ?>
+                    <center><div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                     <a style="text-decoration:none; color:green;" href="lpj_belum.php">LPJ Belum Terkumpul</a> </div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $arr['jumlah']; ?></div></center>
+                </div>
+               
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Earnings (Monthly) Card Example -->
+<div class="col-xl-3 col-md-6 mb-4">
+    <div class="card border-left-success shadow h-100 py-2">
+        <div class="card-body">
+            <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                    <center><div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                        Earnings (Annual)</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div></center>
+                </div>
+               
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</div>
+
                     </div>
 
                     <!-- Content Row -->
