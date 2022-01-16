@@ -37,7 +37,7 @@
    <li class="nav-item active">
     <a class="nav-link" href="Administrasi.php">
         <i class="fas fa-fw fa-tachometer-alt"></i>
-        <span>Administrasi</span></a>
+        <span>Kegiatan</span></a>
 </li>
 
 <!-- Divider -->

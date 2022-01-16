@@ -34,7 +34,7 @@ include "../SessionPengurus.php";
        $data = mysqli_fetch_array($h);
        $idaporve = $data["ID_APPROVAL"];
        
-      $qApPro = mysqli_query($koneksi, "UPDATE approval_proposal set LAPORAN_PROPOSAL = '$proposal' where ID_APPROVAL = '$idaporve'");
+      $qApPro = mysqli_query($koneksi, "UPDATE approval_proposal set APPROVAL_PROPOSAL_KEMAHASISWAAN= NULL, LAPORAN_PROPOSAL = '$proposal' where ID_APPROVAL = '$idaporve'");
       $qPro = mysqli_query($koneksi, "UPDATE proposal set TANNGGAL_PENGAJUANPROPOSAL = '$tgl' where ID_APPROVAL = '$idaporve'");
   
     } else {
@@ -95,7 +95,6 @@ include "../SessionPengurus.php";
      
       $qApPro = mysqli_query($koneksi, "UPDATE approval_lpj set LAPORAN_LPJ = '$proposal', ORMAWA = '$nama', Kegiatan = '$nama_kegiatan' where ID_APPROVALLPJ = '$idaporve'");
       $qPro =true;
-      echo 'asd';
     } else {
 
       echo $nama;

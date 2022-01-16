@@ -12,7 +12,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Administrasi</title>
+    <title>Kegiatan</title>
 
     <?php include '../template/head.php' ?>
 
@@ -73,7 +73,7 @@
                                         <tr>
                                             
                                        <?php 
-                                       if (isset($data) && $data[3] != 'Approve' && $data[8] == 'Approve') {
+                                       if (isset($data) && $data[3] != 'Approve' ) {
                                         $a++;
                                        ?>
                                             <th scope="row"><?= $a?></th>
@@ -96,9 +96,9 @@
                                                 <button type="button" class="btn btn-primary mb-2" ><a style="text-decoration:none; Color:white;" href="<?php echo "../ORMAWA/f_proposal/".$data[5] ?>"> <i class = "fa fa-download"></i> </a></button>
                                                 <?php if($data[3]=='Unapproved'){?>
                                                      <button type="button" class="btn btn-danger mb-2" data-toggle="modal"
-                                                     data-target="#Upload<?=trim($idp ) ?>">upload Revisi</button>
+                                                     data-target="#Upload<?=trim($idp ) ?>"> Revisi</button>
                                                <?php }else{ ?>
-                                                    <button type="button" class="btn btn-secondary mb-2">upload Revisi</button>
+                                                    <button type="button" class="btn btn-secondary mb-2"> Revisi</button>
                                                <?php } ?>
                                             
                                                 <button type="button" class="btn btn-primary mb-2" data-toggle="modal"
@@ -107,7 +107,7 @@
                                                 data-target="#Un<?=trim($idp ) ?>">Unaprove</button>
                                                 <?php }else{ ?>
                                                     <button type="button" class="btn btn-secondary mb-2" ><a style="text-decoration:none; Color:white;" > <i class = "fa fa-download"></i> </a></button>
-                                                    <button type="button" class="btn btn-secondary mb-2">upload Revisi</button>
+                                                    <button type="button" class="btn btn-secondary mb-2">Revisi</button>
                                     
                                             
                                                 <button type="button" class="btn btn-secondary mb-2">Approve</button>
@@ -155,7 +155,7 @@
                                         $idLPJ = $dPe['ID_LPJ'];
                                         $qk = mysqli_query($koneksi,"SELECT NAMA_KEGIATAN from pengajuan_kegiatan where ID_PENGAJUAN = $idpk");
                                         $dpk=mysqli_fetch_row($qk);
-                                        $qap=mysqli_query($koneksi,"SELECT APPROVAL_PROPOSAL_WKIII FROM approval_proposal where ID_APPROVAL = '$idAP'");
+                                        $qap=mysqli_query($koneksi,"SELECT APPROVAL_PROPOSAL_KEMAHASISWAAN FROM approval_proposal where ID_APPROVAL = '$idAP'");
                                         $dap = mysqli_fetch_row($qap);
                                         if ($dap[0] == 'Approve') {
                                             $qlpj = mysqli_query($koneksi,"SELECT * from approval_lpj where ID_APPROVALLPJ = $idLPJ");
@@ -164,7 +164,7 @@
                                     ?>
                                 <tr>
                                 <?php
-                                if ($dap[0] == 'Approve' && $dlpj[9] == 'Approve' && $dlpj[3] != 'Approve') { ?>
+                                if (!empty($idLPJ) && $dlpj[3] != 'Approve') { ?>
                                     <th scope="row"><?=$n++?></th>
                                 <td><?= $dpk[0] ?></td>
                                 
@@ -174,9 +174,11 @@
                                     <?php   }elseif($dlpj[3]=='Unapproved'){ ?>
                                         <td>Unapprove</td>
                                        
-                               <?php }else{ ?>
-                               <td> Menunggu LPJ</td>
-                                
+                               <?php }elseif(!empty($dlpj[5])){ ?>
+                                    
+                                    <td> Menunggu diperiksa</td>
+                                <?php }else{ ?>
+                                    <td> Menunggu LPJ</td>
                                 <?php } ?>
                                     <td>         <?php if( isset($dlpj[5]) ){?>
                                                 <button type="button" class="btn btn-primary mb-2" data-toggle="modal"
@@ -187,9 +189,9 @@
                                                     <?php } ?>
                                                 <?php if( isset($dlpj) && $dlpj[3]=='Unapproved'){?>
                                                      <button type="button" class="btn btn-danger mb-2" data-toggle="modal"
-                                                     data-target="#UpLpj<?=trim($idLPJ ) ?>">upload Revisi</button>
+                                                     data-target="#UpLpj<?=trim($idLPJ ) ?>">Revisi</button>
                                                <?php }else{ ?>
-                                                    <button type="button" class="btn btn-secondary mb-2">upload Revisi</button>
+                                                    <button type="button" class="btn btn-secondary mb-2">Revisi</button>
                                                <?php } ?>
                                                <?php if( isset($dlpj[5]) ){?>
                                              
@@ -278,15 +280,17 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Upload Revisi</h5>
+                    <h5 class="modal-title" id="staticBackdropLabel">Revisi</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="Logic/Administrasi.php" method="post"  enctype="multipart/form-data">
+                    <form action="Logic/Administrasi.php" method="post"  >
+                    <input type="text" name="kema" value="<?= $array["NIDN_KEMAHASISWAAN"] ?>" hidden>
                     <input type="text" name="idp" value="<?=$data['ID_APPROVAL'] ?>" hidden>
-                        <input class="form-control mb-2" name="proposal" type="file"  required>
+                    <label  for="revisi">Note Revisi</label>
+                    <textarea class="form-control mb-2"name="proposal" id="revisi" cols="10" rows="3" required></textarea>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -310,8 +314,10 @@
                 </div>
                 <div class="modal-body">
                     <form action="Logic/Administrasi.php" method="post"  enctype="multipart/form-data">
+                    <input type="text" name="kema" value="<?= $array["NIDN_KEMAHASISWAAN"] ?>" hidden>
                     <input type="text" name="idp" value="<?=$data['ID_LPJ'] ?>" hidden>
-                        <input class="form-control mb-2" name="proposal" type="file"  required>
+                    <label  for="revisi">Note Revisi</label>
+                    <textarea class="form-control mb-2"name="proposal" id="revisi" cols="10" rows="3" required></textarea>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -508,7 +514,7 @@ unset($_SESSION['notif']);
           Swal.fire({
           icon: 'error',
           title: 'gagal',
-          text: 'gagal Berhasil',
+          text: 'note revisi gagal',
           
           })
           </script>
