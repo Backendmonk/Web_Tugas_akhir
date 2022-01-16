@@ -2,6 +2,8 @@
  
  include "../../inc/koneksi.php";
 
+include "../SessionPengurus.php";
+
  if (isset($_POST['Upload'])) {
     $filename_kg = $_FILES['proposal']['name'];
     $ext_kg = pathinfo($filename_kg, PATHINFO_EXTENSION);
@@ -78,17 +80,28 @@
     // tmp file
     move_uploaded_file($_FILES['proposal']['tmp_name'], '../f_lpj/'.time()."_".$filename_kg);
     $proposal = time()."_".$filename_kg;
+
+     $idOr= $array['ID_ORMAWA'];
+                                $qK = mysqli_query($koneksi,"SELECT  ID_PENGAJUAN FROM pengajuan_kegiatan WHERE STATUS = 'Approve' and ID_ORMAWA = '$idOr' ORDER BY Date DESC");
+                                $kegiatan = mysqli_fetch_array($qK);
+                                
+    $nama_kegiatan = $kegiatan['ID_PENGAJUAN'];                       
+    $nama = $array['ID_ORMAWA'];
     $h = mysqli_query($koneksi,"SELECT * FROM proposal WHERE ID_PENGAJUAN = $idp");
     $cek = mysqli_fetch_row($h);
     if (!empty($cek[5])) {
        $idaporve =$cek[5];
-      $qApPro = mysqli_query($koneksi, "UPDATE approval_lpj set LAPORAN_LPJ = '$proposal' where ID_APPROVALLPJ = '$idaporve'");
+
+     
+      $qApPro = mysqli_query($koneksi, "UPDATE approval_lpj set LAPORAN_LPJ = '$proposal', ORMAWA = '$nama', Kegiatan = '$nama_kegiatan' where ID_APPROVALLPJ = '$idaporve'");
       $qPro =true;
       echo 'asd';
     } else {
+
+      echo $nama;
       $idpropo = rand();
-      $qApPro = mysqli_query($koneksi, "INSERT INTO approval_lpj (LAPORAN_LPJ,ID_APPROVALLPJ)
-      VALUES ('$proposal','$id')");
+      $qApPro = mysqli_query($koneksi, "INSERT INTO approval_lpj (LAPORAN_LPJ,ID_APPROVALLPJ,ORMAWA,Kegiatan)
+      VALUES ('$proposal','$id','$nama','$nama_kegiatan')");
       $qPro = mysqli_query($koneksi, "UPDATE proposal set ID_LPJ = '$id' where ID_PENGAJUAN = $idp");
       echo 'asdwew';
     }

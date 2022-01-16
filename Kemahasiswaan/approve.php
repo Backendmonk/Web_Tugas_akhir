@@ -195,10 +195,16 @@
     $random = rand();
     
     $pengajuan = $id;
+    $selecetOrmawa = mysqli_query($koneksi,"SELECT ID_ORMAWA as ormawa FROM `pengajuan_kegiatan` WHERE `ID_PENGAJUAN` = $pengajuan");
+    $arr_pe = mysqli_fetch_array ($selecetOrmawa);
+    $ormawa = $arr_pe['ormawa'];
     $value = "Approve";
+    $status = "Belum Terkumpul";
 
 
     $q = mysqli_query($koneksi,"INSERT INTO `persetujuan_kemahasiswaan`(`id_Persetujuan`, `id_pengajuan`, `NIDN_kemahsiswaan`, `approval_status`) VALUES ('$random','$pengajuan','$nidn','$value')");
+
+    $addto = mysqli_query($koneksi,"INSERT INTO `status_lpj` (`KEGIATAN`, `ORMAWA`, `STATUS`) VALUES('$pengajuan','$ormawa','$status')");
 
 
             ?>
