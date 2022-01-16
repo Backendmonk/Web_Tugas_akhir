@@ -3,52 +3,34 @@ include '../../inc/koneksi.php';
 
 if (isset($_POST['Upload'])) {
   session_start();
-  $filename_kg = $_FILES['proposal']['name'];
-  $ext_kg = pathinfo($filename_kg, PATHINFO_EXTENSION);
-  $ekstensi_kg = array('doc','docx','pdf');
- 
- // cek proposal formatz
-  if(!in_array($ext_kg,$ekstensi_kg)){
-    $_SESSION['eks'] = true;
- }else{
+  $nidn= $_POST['kema'];
+  $proposal= $_POST['proposal'];
+  $tgl = date('Y-m-d'); 
   $idp = $_POST['idp'];
-   // tmp file
-   move_uploaded_file($_FILES['proposal']['tmp_name'], '../../ORMAWA/f_revisi/'.time()."_".$filename_kg);
-   $proposal = time()."_".$filename_kg;
-   $h = mysqli_query($koneksi,"UPDATE approval_proposal set REVISI ='$proposal' where ID_APPROVAL = '$idp'");
-
+  $h = mysqli_query($koneksi,"UPDATE approval_proposal set REVISI ='$proposal', tgl = '$tgl', NIDN_KEMAHASISWAAN='$nidn' where ID_APPROVAL = '$idp'");
    if ($h) {
      $_SESSION['notif'] = true;
    } else {
      $_SESSION['notif'] = false;
    }
- }
+ 
  header("location:../Administrasi.php");
   }
 
 if (isset($_POST['UpLpj'])) {
 
   session_start();
-  $filename_kg = $_FILES['proposal']['name'];
-  $ext_kg = pathinfo($filename_kg, PATHINFO_EXTENSION);
-  $ekstensi_kg = array('doc','docx','pdf');
- 
- // cek proposal format
-  if(!in_array($ext_kg,$ekstensi_kg)){
-    $_SESSION['eks'] = true;
- }else{
+  $nidn= $_POST['kema'];
+  $proposal= $_POST['proposal'];
+  $tgl = date('Y-m-d'); 
   $idp = $_POST['idp'];
-   // tmp file
-   move_uploaded_file($_FILES['proposal']['tmp_name'], '../../ORMAWA/f_revisi_lpj/'.time()."_".$filename_kg);
-   $proposal = time()."_".$filename_kg;
-   $h = mysqli_query($koneksi,"UPDATE approval_lpj set REVISI_LPJ ='$proposal' where ID_APPROVALLPJ = '$idp'");
+   $h = mysqli_query($koneksi,"UPDATE approval_lpj set REVISI_LPJ ='$proposal', tgl = '$tgl', NIDN_KEMAHASISWAAN='$nidn' where ID_APPROVALLPJ = '$idp'");
 
    if ($h) {
      $_SESSION['notif'] = true;
    } else {
      $_SESSION['notif'] = false;
    }
- }
  header("location:../Administrasi.php");
   }
 

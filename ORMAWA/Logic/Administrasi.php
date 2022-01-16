@@ -32,7 +32,7 @@
        $data = mysqli_fetch_array($h);
        $idaporve = $data["ID_APPROVAL"];
        
-      $qApPro = mysqli_query($koneksi, "UPDATE approval_proposal set LAPORAN_PROPOSAL = '$proposal' where ID_APPROVAL = '$idaporve'");
+      $qApPro = mysqli_query($koneksi, "UPDATE approval_proposal set APPROVAL_PROPOSAL_KEMAHASISWAAN= NULL, LAPORAN_PROPOSAL = '$proposal' where ID_APPROVAL = '$idaporve'");
       $qPro = mysqli_query($koneksi, "UPDATE proposal set TANNGGAL_PENGAJUANPROPOSAL = '$tgl' where ID_APPROVAL = '$idaporve'");
   
     } else {
@@ -82,7 +82,7 @@
     $cek = mysqli_fetch_row($h);
     if (!empty($cek[5])) {
        $idaporve =$cek[5];
-      $qApPro = mysqli_query($koneksi, "UPDATE approval_lpj set LAPORAN_LPJ = '$proposal' where ID_APPROVALLPJ = '$idaporve'");
+      $qApPro = mysqli_query($koneksi, "UPDATE approval_lpj set APPROVAL_LPJ_KEMAHASISWAAN = NULL, LAPORAN_LPJ = '$proposal' where ID_APPROVALLPJ = '$idaporve'");
       $qPro =true;
       echo 'asd';
     } else {
