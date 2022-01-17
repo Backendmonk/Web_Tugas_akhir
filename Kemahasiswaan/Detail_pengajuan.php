@@ -232,7 +232,7 @@
 
 
                            <tr>
-                               <td> <button type="submit" name="fapprove" class="btn btn-primary"> Approve</button> <button type="submit" name="funapprove" class="btn btn-warning"></td>
+                               <td> <button type="submit" name="fapprove" class="btn btn-primary"> Approve</button> <button type="submit" name="funapprove" class="btn btn-warning">Tolak</button></td>
                                
                             </tr>
 
@@ -351,12 +351,32 @@ require 'Template/EditProfilePass.php';
 									Swal.fire({
 									icon: 'success',
 									title: 'Berhasil',
-									text: 'Pengajuan Berhasil',
+									text: 'Approve',
 									
 									})
 									</script>
 				<?php
               
+
+            }
+
+            if(isset($_POST['funapprove'])){
+                $komentar = $_POST['komentar'];
+                $nidn = $arr_km['NIDN_KEMAHASISWAAN'];
+                $nama_km = $arr_km['NAMA_KEMAHASISWAAN'];
+                $status = "Tolak";
+
+                $update = mysqli_query($koneksi,"UPDATE `approval_kegiatan` SET `id_kemahasiswaan`='$nidn',`nama_kemahasiswaan`='$nama_km',`catatan`='$komentar',`status`='$status' WHERE `id_pengajuan` = $id");
+                    ?>
+                    <script>
+									Swal.fire({
+									icon: 'success',
+									title: 'Berhasil',
+									text: 'Tolak',
+									
+									})
+									</script>
+				<?php
 
             }
 ?>

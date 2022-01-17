@@ -25,7 +25,7 @@
 <hr class="sidebar-divider">
   <!-- Nav Item - Dashboard -->
   <li class="nav-item active">
-    <a class="nav-link" href="Approval_pengajuan.php">
+    <a class="nav-link" href="Approval_Surat_Kegiatan.php">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Approval Surat Kegiatan</span></a>
 </li>

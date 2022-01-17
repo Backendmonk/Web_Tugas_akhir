@@ -135,8 +135,11 @@
       if(isset($_POST['ajukan'])){
 
         $id= $arr['id_ormawa'];
+        $nama_ormawa = $arr['ormawa'];
 
         $nama_kegiatan = $_POST['nama_kegiatan'];
+
+        $id_random = rand();
        
 
         // Pengajuan
@@ -166,7 +169,10 @@
         
 
     
-        $query = mysqli_query($koneksi, "INSERT INTO `surat_pernyataan_kegiatan`(`id_ormawa`, `nama_kegiatan`, `surat_pernyataan`) VALUES ('$id','$nama_kegiatan','$pengajuan')");
+        $query = mysqli_query($koneksi, "INSERT INTO `surat_pernyataan_kegiatan`(`id`,`id_ormawa`, `nama_kegiatan`, `surat_pernyataan`) VALUES ('$id_random','$id','$nama_kegiatan','$pengajuan')");
+
+
+        $qinsert = mysqli_query($koneksi,"INSERT INTO `approval_pernyataan_kegiatan`(`id_pernyatan`, `nama_ormawa`, `nama_kegiatan`,`status`) VALUES ('$id_random','$nama_ormawa','$nama_kegiatan','Pending')");
           ?>
 						<script>
 									Swal.fire({
