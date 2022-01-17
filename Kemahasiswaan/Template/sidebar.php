@@ -22,6 +22,7 @@
         <span>Approval Kegiatan</span></a>
 </li>
 
+<hr class="sidebar-divider">
   <!-- Nav Item - Dashboard -->
   <li class="nav-item active">
     <a class="nav-link" href="Approval_pengajuan.php">
@@ -29,9 +30,10 @@
         <span>Approval Surat Kegiatan</span></a>
 </li>
 
+<hr class="sidebar-divider">
   <!-- Nav Item - Dashboard -->
   <li class="nav-item active">
-    <a class="nav-link" href="Approval_pengajuan.php">
+    <a class="nav-link" href="appLPJ.php">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Approval LPJ</span></a>
 </li>
