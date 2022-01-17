@@ -50,26 +50,40 @@
                     <div class="row">
                     <main class="col overflow-auto h-100">
             <div class="bg-light border rounded-3 p-3">
-            <div class="col-xl-3 col-md-6 mb-4">
-    <div class="card border-left-primary shadow h-100 py-2">
+        
+<div class="col-xl-3 col-md-6 mb-4">
+    <div class="card border-left-success shadow h-100 py-2">
         <div class="card-body">
             <div class="row no-gutters align-items-center">
                 <div class="col mr-2">
-                <center> <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                    <?php
-
-                    // $coutn = mysqli_query($koneksi,"SELECT  COUNT(lpj.ID_LPJ) as lpj FROM `lpj` INNER JOIN `approval_lpj` on `lpj`.`ID_APPROVALLPJ` = `approval_lpj`.`ID_APPROVALLPJ` WHERE `approval_lpj`.`ORMAWA` = $array[ID_ORMAWA]");
-                    // $arr = mysqli_fetch_array($coutn);
-
-                    ?>
-                      <a style="text-decoration:none; color:light-blue;" href="pengajuan_kegiatan_ormawa.php">  Pengajuan Kegiatan</a></div>
-                 <div class="h5 mb-0 font-weight-bold text-gray-800"><?php error_reporting(0); echo $arr['lpj']; ?></div></center>
+                   
+                    <center><div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                     <a style="text-decoration:none; color:green;" href="pengajuan_kegiatan_ormawa.php">Pengajuan Kegiatan</a> </div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800"></div></center>
                 </div>
-                
+               
             </div>
         </div>
     </div>
 </div>
+
+        
+<div class="col-xl-3 col-md-6 mb-4">
+    <div class="card border-left-success shadow h-100 py-2">
+        <div class="card-body">
+            <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                   
+                    <center><div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                     <a style="text-decoration:none; color:green;" href="surat_pengajuan.php">Pelaporan Kegiatan</a> </div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800"></div></center>
+                </div>
+               
+            </div>
+        </div>
+    </div>
+</div>
+
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
