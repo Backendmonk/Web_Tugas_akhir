@@ -17,9 +17,9 @@
 
    <!-- Nav Item - Dashboard -->
    <li class="nav-item active">
-    <a class="nav-link" href="Pengajuan-kegiatan.php">
+    <a class="nav-link" href="Kegiatan_Ormawa.php">
         <i class="fas fa-fw fa-tachometer-alt"></i>
-        <span>Pengajuan Kegiatan</span></a>
+        <span>Kegiatan</span></a>
 </li>
 
  <!-- Divider -->

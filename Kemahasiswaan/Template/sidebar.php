@@ -17,10 +17,26 @@
 
    <!-- Nav Item - Dashboard -->
    <li class="nav-item active">
-    <a class="nav-link" href="Approval_pengajuan.php">
+    <a class="nav-link" href="Approval_kegiatan_mahasiswa.php">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Approval Kegiatan</span></a>
 </li>
+
+  <!-- Nav Item - Dashboard -->
+  <li class="nav-item active">
+    <a class="nav-link" href="Approval_pengajuan.php">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Approval Surat Kegiatan</span></a>
+</li>
+
+  <!-- Nav Item - Dashboard -->
+  <li class="nav-item active">
+    <a class="nav-link" href="Approval_pengajuan.php">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Approval LPJ</span></a>
+</li>
+
+
 <hr class="sidebar-divider">
    <!-- Nav Item - Dashboard -->
    <li class="nav-item active">
