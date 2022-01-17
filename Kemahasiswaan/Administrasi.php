@@ -38,9 +38,10 @@
                         <main class="col overflow-auto h-100">
                             <?php 
                             
-                            $qK = mysqli_query($koneksi,"SELECT  NAMA_KEGIATAN, ID_PENGAJUAN, STATUS FROM pengajuan_kegiatan WHERE STATUS = 'Approve' ");
+                            $qK = mysqli_query($koneksi,"SELECT  NAMA_KEGIATAN, ID_PENGAJUAN, STATUS, NAMA_ORMAWA_FK FROM pengajuan_kegiatan WHERE STATUS = 'Approve' ");
                             
                             $jumlah = mysqli_num_rows($qK);
+                            $dpo = mysqli_fetch_row($qK);
                             
                             if ($jumlah > 0) {
                                 ?>
@@ -50,6 +51,7 @@
                             <tr>
                                 <th scope="col">no</th>
                                 <th scope="col">Nama Kegiatan</th>
+                                <th scope="col">Ormawa</th>
                                 <th scope="col">Approval</th>
                                 <th scope="col">Action</th>
                             </tr>
@@ -67,8 +69,6 @@
                                         $idAp =  $dataPro["ID_APPROVAL"];
                                         $dataApPro = mysqli_query($koneksi, "SELECT * FROM approval_proposal WHERE ID_APPROVAL = '$idAp' ");
                                         $data =  mysqli_fetch_row($dataApPro);
-                                        
-                                        
                                         ?>
                                         <tr>
                                             
@@ -78,6 +78,7 @@
                                        ?>
                                             <th scope="row"><?= $a?></th>
                                             <td><?= $ds["NAMA_KEGIATAN"] ?></td>
+                                            <td><?= $dpo[3] ?></td>
                                             <?php if ( $data[3]=='Approve') {
                                                 ?>  <td>Approve</td>  <?php
                                             } elseif($data[3]=='Unapproved'){
@@ -93,7 +94,7 @@
                                             <td> 
                                                <?php if (!empty($data[5])) { ?>
 
-                                                <button type="button" class="btn btn-primary mb-2" ><a style="text-decoration:none; Color:white;" href="<?php echo "../ORMAWA/f_proposal/".$data[5] ?>"> <i class = "fa fa-download"></i> </a></button>
+                                                <button type="button" class="btn btn-primary mb-2" ><a style="text-decoration:none; Color:white;"> Lihat Detail</button>
                                                 <?php if($data[3]=='Unapproved'){?>
                                                      <button type="button" class="btn btn-danger mb-2" data-toggle="modal"
                                                      data-target="#Upload<?=trim($idp ) ?>"> Revisi</button>
