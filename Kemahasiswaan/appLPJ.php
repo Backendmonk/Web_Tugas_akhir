@@ -75,7 +75,7 @@
                              <?php   } else {?>
                                 <td> </td>
                               <?php  } ?>
-                                <td><button>Lihat Detail</button></td>
+                              <td><button type="button" class="btn btn-primary"><a style="color:white; text-decoration:none;" href= "detailLPJ.php?id= <?php echo  $idlpj?>">Lihat Lebih Detail</a></button></td>
                                 <?php if (!empty($dALpj)) {
                                     $idkema = $dALpj[2];
                                     $qk = mysqli_query($koneksi, "SELECT NAMA_KEMAHASISWAAN FROM kemahasiswaan where NIDN_KEMAHASISWAAN = '$idkema' ");

@@ -58,8 +58,7 @@
                                             <select name="idk" class="form-control mb-2" >
                                                 <option value="" hidden> pilih kegiatan</option>
                                                 <?php 
-                                                   $tgl = date('Y-m-d'); 
-                                                    $dtk = mysqli_query($koneksi, "SELECT id, nama_kegiatan from pengajuan_kegiatan_mhs where Tanggal < '$tgl' ");
+                                                    $dtk = mysqli_query($koneksi, "SELECT id, nama_kegiatan from surat_pernyataan_kegiatan");
                                                     while ($adtk = mysqli_fetch_array($dtk)) {
                                                 ?>
                                                 <option value="<?= $adtk['id'] ?>"><?= $adtk['nama_kegiatan'] ?></option>
@@ -85,7 +84,6 @@
                             <tr>
                                 <th scope="col">No</th>
                                 <th scope="col">Nama Kegiatan</th>
-                                <th scope="col">Ormawa</th>
                                 <th scope="col">Approval</th>
                                 <th scope="col">Action</th>
                                 <th scope="col">Catatan</th>
@@ -94,9 +92,45 @@
                             </tr>
                         </thead>
                         <tbody>
+                        <?php
+                                $no=0;
+                                $qlpj = mysqli_query($koneksi, "SELECT * FROM surat_pernyataan_kegiatan");
+                                while ($dlpj = mysqli_fetch_array($qlpj)) {
+                                    $no++;
+                                    $idlpj = $dlpj['id'];
+                                $qALpj = mysqli_query($koneksi,"SELECT * FROM appbk where idbk = '$idlpj'");
+                                $dALpj = mysqli_fetch_row($qALpj);
+                            ?>
                             <tr>
-                                <td>1</td>
-                            </tr>           
+                                <td><?= $no ?></td>
+                                <td><?= $dlpj['nama_kegiatan'] ?></td>
+                                <?php if (!empty($dALpj)) { 
+                                    if ($dALpj[3]==true) {
+                                        $sts = 'Approved';
+                                    } else {
+                                        $sts = 'Unapproved';
+                                    }
+                                    ?>
+                                    <td><?= $sts ?></td>
+                             <?php   } else {?>
+                                <td> </td>
+                              <?php  } ?>
+                                <td><button>Lihat Detail</button></td>
+                                <?php if (!empty($dALpj)) {
+                                    $idkema = $dALpj[2];
+                                    $qk = mysqli_query($koneksi, "SELECT NAMA_KEMAHASISWAAN FROM kemahasiswaan where NIDN_KEMAHASISWAAN = '$idkema' ");
+                                    $dk = mysqli_fetch_row($qk);
+                                    $nmk = $dk[0];
+                                    ?>
+                                    <td><?= $dALpj[4] ?></td>
+                                    <td><?= $nmk ?></td>
+                             <?php   } else {?>
+                                <td> </td>
+                                <td> </td>
+                              <?php  } ?>
+                              <td></td>
+                            </tr> 
+                            <?php } ?>                  
                         </tbody>
                     </table>
                         </main>

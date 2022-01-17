@@ -6,7 +6,7 @@
         include "SessionKemahasiswaan.php";
         $id = $_GET['id'];
 
-        $q = mysqli_query($koneksi,"SELECT * FROM `pengajuan_kegiatan_mhs` where `id` = $id ");
+        $q = mysqli_query($koneksi,"SELECT * FROM `pengajuan_lpj` where `id` = $id ");
 
         $arr = mysqli_fetch_array($q);
 
@@ -83,147 +83,124 @@
                                     <td>:</td>
                                     <td><?php echo $arr['nama_ormawa'];?></td>
                                 </tr>
-                                <tr>
-                                    <th>Tema Kegiatan</th>
-                                    <td>:</td>
-                                    <td><?php echo $arr['tema_kegiatan'];?></td>
-                                </tr>
 
                                 <tr>
                                     <th>Pendahuluan</th>
                                     <td>:</td>
-                                    <td><textarea class="form-control" rows="4" cols="50"> <?php echo $arr['konsep_kegiatan'];?></textarea></td>
+                                    <td><textarea class="form-control" rows="4" cols="50"> <?php echo $arr['pendahuluan'];?></textarea></td>
                                 </tr>
 
                                 
                                 <tr>
-                                    <th>kepanitiaan</th>
+                                    <th>Pencapaian</th>
                                     <td>:</td>
-                                    <td><textarea class="form-control" rows="4" cols="50"> <?php echo $arr['sub_kegiatan'];?></textarea></td>
+                                    <td><textarea class="form-control" rows="4" cols="50"> <?php echo $arr['pencapaian'];?></textarea></td>
                                 </tr>
 
                                 <tr>
-                                    <th>kepanitiaan</th>
+                                    <th>Penutup</th>
                                     <td>:</td>
-                                    <td><textarea class="form-control" rows="4" cols="50"> <?php echo $arr['pj_kegiatan'];?></textarea></td>
+                                    <td><textarea class="form-control" rows="4" cols="50"> <?php echo $arr['penutup'];?></textarea></td>
                                 </tr>
 
                                 <tr>
-                                    <th>latar Belakang</th>
+                                    <th>Pelaksanaan Kegiatan</th>
                                     <td>:</td>
-                                    <td><textarea class="form-control" rows="4" cols="50"> <?php echo $arr['latar_belakang'];?><textarea></td>
+                                    <td><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "../Ormawa/lpj/".$arr['sk_kepanitiaan'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
                                 </tr>
 
                                 <tr>
-                                    <th>Tujuan Kegiatan</th>
+                                    <th>Kepanitiaan</th>
                                     <td>:</td>
-                                    <td><textarea class="form-control" rows="4" cols="50"> <?php echo $arr['tujuan_kegiatan'];?></textarea></td>
+                                    <td><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "../Ormawa/lpj/".$arr['sk_kepanitiaan'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
                                 </tr>
 
                                 <tr>
-                                    <th>Hasil Dan Harapan</th>
+                                    <th>Peserta</th>
                                     <td>:</td>
-                                    <td><textarea class="form-control" rows="4" cols="50"> <?php echo $arr['hasil_harapan'];?></textarea></td>
+                                    <td><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "../Ormawa/lpj/".$arr['sk_kepanitiaan'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
                                 </tr>
                                 <tr>
 
-                                    <th>Target Pemasaran</th>
+                                    <th>RAB Pemasukan</th>
                                     <td>:</td>
-                                    <td><textarea class="form-control" rows="4" cols="50"> <?php echo $arr['targer_pemasaran'];?></textarea></td>
+                                    <td><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "../Ormawa/lpj/".$arr['sk_kepanitiaan'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
                                 </tr>
 
                                 <tr>
-                                    <th>Tanggal</th>
+                                    <th>RAB Pengeluaran</th>
                                     <td>:</td>
-                                    <td><?php echo $arr['Tanggal']; ?></td>
-
-                                </tr>
-
-                                
-                                <tr>
-                                    <th>Waktu</th>
-                                    <td>:</td>
-                                    <td><?php echo $arr['Waktu']; ?></td>
-
-                                </tr>
-
-                                <tr>
-                                    <th>Tempat</th>
-                                    <td>:</td>
-                                    <td><?php echo $arr['Tempat']; ?></td>
-
-                                </tr>
-
-                                <tr>
-                                    <th>Sk Kepanitiaan</th>
-                                    <td>:</td>
-                                    <td><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "../Ormawa/k_SK_kegiatan/".$arr['sk_kepanitiaan'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
+                                    <td><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "../Ormawa/lpj/".$arr['sk_kepanitiaan'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
 
                                 </tr>
 
                                 
                                 <tr>
-                                    <th>Jadwal</th>
+                                    <th>Realisasi Anggaran</th>
                                     <td>:</td>
-                                    <td><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "../Ormawa/k_jadwal/".$arr['jadwal_kegiatan'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
+                                    <td><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "../Ormawa/lpj/".$arr['sk_kepanitiaan'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
 
                                 </tr>
 
                                 <tr>
-                                    <th>RAB</th>
+                                    <th>Bukti Pembayarant</th>
                                     <td>:</td>
-                                    <td><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "../Ormawa/k_jadwal/".$arr['jadwal_kegiatan'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
-
-                                </tr>
-
-
-                                <tr>
-                                    <th>Profile Pengisi Acara</th>
-                                    <td>:</td>
-                                    <td><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "../Ormawa/k_profile/".$arr['profile_pengisi_acara'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
-
+                                    <td><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "../Ormawa/lpj/".$arr['sk_kepanitiaan'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
                                 </tr>
 
                                 <tr>
-                                    <th>Desain Poster</th>
+                                    <th>Berita Acara</th>
                                     <td>:</td>
-                                    <td><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "../Ormawa/k_poster/".$arr['desain_poster_sertifikat'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
-
-                                </tr>
-
-
-                                
-                                <tr>
-                                    <th>Ketua Panitia</th>
-                                    <td>:</td>
-                                    <td><?php echo $arr['ketua_panitia']; ?></td>
-
-                                </tr>
-
-                                <tr>
-                                    <th>Contac</th>
-                                    <td>:</td>
-                                    <td><?php echo $arr['contac_person']; ?></td>
+                                    <td><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "../Ormawa/lpj/".$arr['sk_kepanitiaan'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
 
                                 </tr>
 
                                 
                                 <tr>
-                                    <th>Proposal</th>
+                                    <th>Absensi</th>
                                     <td>:</td>
-                                    <td><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "../Ormawa/k_proposal/".$arr['softcopy_proposal'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
+                                    <td><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "../Ormawa/lpj/".$arr['jadwal_kegiatan'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
+
+                                </tr>
+
+                                <tr>
+                                    <th>Notulensi Rapat/Seminar</th>
+                                    <td>:</td>
+                                    <td><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "../Ormawa/lpj/".$arr['jadwal_kegiatan'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
 
                                 </tr>
 
 
+                                <tr>
+                                    <th>Rekap Penilaian Peserta</th>
+                                    <td>:</td>
+                                    <td><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "../Ormawa/lpj/".$arr['profile_pengisi_acara'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
+
+                                </tr>
+
+                                <tr>
+                                    <th>Desain Sertifikat</th>
+                                    <td>:</td>
+                                    <td><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "../Ormawa/lpjk_poster/".$arr['desain_poster_sertifikat'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
+
+                                </tr>
+
+                                <tr>
+                                    <th>Dokumentasi Kegiatan</th>
+                                    <td>:</td>
+                                    <td><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "../Ormawa/lpjk_poster/".$arr['desain_poster_sertifikat'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
+
+                                </tr>
+
+                                <tr>
+                                    <th>Softcopy LPJ</th>
+                                    <td>:</td>
+                                    <td><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "../Ormawa/lpjk_poster/".$arr['desain_poster_sertifikat'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
+
+                                </tr>
 
 
-
-
-
-
-                         
-
+                             
                           <tr>
 
                            <td ><p style="font-size:10px;">Catatan Optional</p>

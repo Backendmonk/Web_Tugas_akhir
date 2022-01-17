@@ -96,7 +96,7 @@
     <input type="file" class="form-control" id="inputPassword4" name= "rabout">
   </div>
   <div class="col-md-6">
-    <label for="inputPassword4" class="form-label">Realisasi Pengeluaran</label>
+    <label for="inputPassword4" class="form-label">Realisasi Anggaran</label>
     <input type="file" class="form-control" id="inputPassword4" name="rp">
   </div>
   <div class="col-md-6">
