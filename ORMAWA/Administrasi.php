@@ -434,7 +434,7 @@ unset($_SESSION['notif']);
           Swal.fire({
           icon: 'error',
           title: 'gagal',
-          text: 'gagal Berhasil',
+          text: 'gagal ',
           
           })
           </script>
