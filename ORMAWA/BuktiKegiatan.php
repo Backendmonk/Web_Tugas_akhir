@@ -49,7 +49,7 @@
                         </div>
                         </nav>
                                 <table class="table table-bordered">
-                                <button type="button" class="btn btn-primary ml-2 mt-2">Format Bukti Kegiatan</button>
+                                <button type="button" class="btn btn-primary ml-2 mt-2"><a style="text-decoration:none; Color:white;" href="../Format-Format/FORMATSKKepengurusan,SuratPernyataanKegiatan,danBeritaAcara.doc">Format Bukti Kegiatan</a></button>
                                 <form action="Logic/BuktiKegiatan.php" method="post"  enctype="multipart/form-data">
                                         <div class="row">
                                             <div class="col-12">

@@ -64,7 +64,68 @@
                     <!-- Content Row -->
 
                     <div class="row">
+                    <div class="col-xl-3 col-md-6 mb-4">
+    <div class="card border-left-primary shadow h-100 py-2">
+        <div class="card-body">
+            <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                <center> <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                    <?php
 
+                    $coutn = mysqli_query($koneksi,"SELECT  COUNT(lpj.ID_LPJ) as lpj FROM `lpj` INNER JOIN `approval_lpj` on `lpj`.`ID_APPROVALLPJ` = `approval_lpj`.`ID_APPROVALLPJ` WHERE `approval_lpj`.`ORMAWA` = $array[ID_ORMAWA]");
+                    $arr = mysqli_fetch_array($coutn);
+
+                    ?>
+                        Jumlah Acara</div>
+                 <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $arr['lpj']; ?></div></center>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Earnings (Monthly) Card Example -->
+<div class="col-xl-3 col-md-6 mb-4">
+    <div class="card border-left-success shadow h-100 py-2">
+        <div class="card-body">
+            <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                    <?php
+
+                        $query = mysqli_query($koneksi,"SELECT  * FROM  pengajuan_kegiatan_mhs WHERE id_ormawa = '$array[ID_ORMAWA]'"); 
+                        $dpkm = mysqli_num_rows($query);
+                        $queryl = mysqli_query($koneksi,"SELECT  * FROM  pengajuan_lpj WHERE id_ormawa = '$array[ID_ORMAWA]'"); 
+                        $dlpj = mysqli_num_rows($queryl);
+
+                        $total =   $dpkm - $dlpj;
+                    ?>
+                    <center><div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                     <a style="text-decoration:none; color:green;" href="lpj_belum.php">LPJ Belum Terkumpul</a> </div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?=$total ?></div></center>
+                </div>
+               
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Earnings (Monthly) Card Example -->
+<div class="col-xl-3 col-md-6 mb-4">
+    <div class="card border-left-success shadow h-100 py-2">
+        <div class="card-body">
+            <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                    <center><div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                        Acara sedang berlangsung</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">3</div></center>
+                </div>
+               
+            </div>
+        </div>
+    </div>
+</div>
                       
                     </div>
 
