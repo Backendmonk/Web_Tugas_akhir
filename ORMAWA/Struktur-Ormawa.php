@@ -62,6 +62,8 @@
                        ?>
                     </div>
                     <a class="btn btn-primary col-2" href="TambahStrukturOrmawa.php" role="button">Edit</a>
+                    <a class="btn btn-primary col-2" href="f_renja/<?= $array['RENJA'] ?>" role="button">Renja</a>
+                    <a class="btn btn-primary col-2" href="f_ad_art/<?= $array['AD_ART'] ?>" role="button">AD ART</a>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
