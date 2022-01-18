@@ -5,6 +5,13 @@
 
         include "SessionPengurus.php";
 
+        error_reporting(0);
+
+        $cek_namaormawa = mysqli_query($koneksi,"SELECT * FROM `ormawa` WHERE `ID_ORMAWA` = $array[ID_ORMAWA]");
+        $aray_nama = mysqli_fetch_array($cek_namaormawa);
+
+        $nama = $aray_nama['NAMA_ORMAWA'];
+
 ?>
 
     <meta charset="utf-8">
@@ -82,7 +89,8 @@
                                     <tbody>
                                   
                                         <?php
-                                                $q = mysqli_query($koneksi,"  SELECT * FROM `approval_kegiatan` WHERE `status` = 'Pending'");
+                                        error_reporting(0);
+                                                $q = mysqli_query($koneksi,"  SELECT * FROM `approval_kegiatan` WHERE `nama_ormawa` = '$nama' AND `status` = 'Pending'");
                                          
 
                                                 while ($data = mysqli_fetch_array($q)) {
@@ -144,7 +152,8 @@
                                     <tbody>
                                   
                                         <?php
-                                                $q = mysqli_query($koneksi,"  SELECT * FROM `approval_pernyataan_kegiatan` WHERE `status` = 'Pending' or `status` = 'Tidak'");
+                                        error_reporting(0);
+                                                $q = mysqli_query($koneksi,"  SELECT * FROM `approval_pernyataan_kegiatan` WHERE  `nama_ormawa` = '$nama' AND `status` = 'Pending' or `status` = 'Tidak'");
                                          
 
                                                 while ($data = mysqli_fetch_array($q)) {
