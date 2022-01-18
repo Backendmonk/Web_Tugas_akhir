@@ -83,7 +83,20 @@
 
                                 </tr>
 
-                                
+                                <?php 
+                                    $idlpj = $arr['id'];
+                                    $sql = "SELECT * from approval_pernyataan_kegiatan where 
+                                    id_pernyatan = '$idlpj'";
+                                    $qcek = mysqli_query($koneksi, $sql);
+                                    $cek = mysqli_fetch_row($qcek);
+                                    if ($cek[7]=='Tidak') {?>
+                           <tr>
+                               <td>
+                               <button type="button" class="btn btn-primary"><a style="color:white; text-decoration:none;" href= "editPernyataan.php?id= <?php echo  $idlpj?>">Revisi</a></button>
+                                            </td>
+                            </tr>
+                            <?php }?>
+
                                 
 
                           

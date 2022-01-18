@@ -185,7 +185,7 @@
                                     <tbody>
                                   
                                         <?php
-                                                $q = mysqli_query($koneksi,"  SELECT * FROM `approval_pernyataan_kegiatan` WHERE `status` = 'Pending'");
+                                                $q = mysqli_query($koneksi,"  SELECT * FROM `approval_pernyataan_kegiatan` WHERE `status` = 'Pending' or `status` = 'Tidak'");
                                          
 
                                                 while ($data = mysqli_fetch_array($q)) {
@@ -200,7 +200,7 @@
 
                                                                     <td><?php echo $data['status'];?></td>
 
-                                                                    <td><button type="button" class="btn btn-primary"><a style="color:white; text-decoration:none;" href= "Detail_pengajuan.php?id= <?php echo $data['id_pernyatan']?>">Lihat Lebih Detail</a></button></td>
+                                                                    <td><button type="button" class="btn btn-primary"><a style="color:white; text-decoration:none;" href= "detail_pernyataan.php?id= <?php echo $data['id_pernyatan']?>">Lihat Lebih Detail</a></button></td>
                                                                     
                                                                    
                                                                 </tr>

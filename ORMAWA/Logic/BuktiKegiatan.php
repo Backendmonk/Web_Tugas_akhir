@@ -48,7 +48,6 @@ include '../../inc/koneksi.php';
          move_uploaded_file($_FILES['bk']['tmp_name'], '../f_bukti/'.time().'_'.$filename_bk);
          $bk = time().'_'.$filename_bk;
          $sqlLPJ = "UPDATE bukti_kegiatan_mahasiswa set bukti = '$bk' where id = '$id'";
-         var_dump($sqlLPJ);
          mysqli_query($koneksi,"UPDATE appbk SET 
          approve = NULL WHERE idbk = '$id'");
          // insert query
