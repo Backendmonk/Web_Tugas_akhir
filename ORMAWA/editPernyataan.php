@@ -138,7 +138,7 @@
 
       if(isset($_POST['ajukan'])){
 
-        $id= $arr['id_ormawa'];
+
         $nama_ormawa = $arr['ormawa'];
 
         $nama_kegiatan = $_POST['nama_kegiatan'];
@@ -175,7 +175,7 @@
         $query = mysqli_query($koneksi, $sqlLPJ);
             $sqlAp = "UPDATE approval_pernyataan_kegiatan SET nama_kegiatan = '$nama_kegiatan',
             status = 'Pending' WHERE id_pernyatan = '$id'";
-
+var_dump($sqlAp);
         mysqli_query($koneksi,$sqlAp);
 
           ?>

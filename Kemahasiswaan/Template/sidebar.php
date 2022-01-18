@@ -69,16 +69,24 @@
  <hr class="sidebar-divider">
    <!-- Nav Item - Dashboard -->
    <li class="nav-item active">
-    <a class="nav-link" href="Ormawa.php">
+    <a class="nav-link" href="ViewOrmawa.php">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Ormawa</span></a>
+</li>
+ <!-- Divider -->
+ <hr class="sidebar-divider">
+   <!-- Nav Item - Dashboard -->
+   <li class="nav-item active">
+    <a class="nav-link" href="Ormawa.php">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>kelola Ormawa</span></a>
 </li>
  <hr class="sidebar-divider">
    <!-- Nav Item - Dashboard -->
    <li class="nav-item active">
     <a class="nav-link" href="KetuaOrmawa.php">
         <i class="fas fa-fw fa-tachometer-alt"></i>
-        <span>Ketua Ormawa</span></a>
+        <span>kelola Ketua Ormawa</span></a>
 </li>
 
  <!-- Divider -->

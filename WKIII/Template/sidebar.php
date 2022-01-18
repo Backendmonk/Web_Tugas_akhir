@@ -38,9 +38,9 @@
  <hr class="sidebar-divider">
    <!-- Nav Item - Dashboard -->
    <li class="nav-item active">
-    <a class="nav-link" href="strukturOrganisasi.php">
+    <a class="nav-link" href="ViewOrmawa.php">
         <i class="fas fa-fw fa-tachometer-alt"></i>
-        <span>kelola Struktur Organisasi</span></a>
+        <span>Ormawa</span></a>
 </li>
 
 

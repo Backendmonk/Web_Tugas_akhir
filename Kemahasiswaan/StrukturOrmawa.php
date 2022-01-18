@@ -3,7 +3,8 @@
 <head>
     <?php
 
-        include "SessionPembina.php";
+        include "SessionKemahasiswaan.php";
+        $id = trim( $_GET['id']);
 
 ?>
 
@@ -53,12 +54,11 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Data Binaan</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Table Ormawa</h6>
                             <?php
-                                                $q = mysqli_query($koneksi,"SELECT * FROM `ormawa` Where `NIDN` = '$array[NIDN]' ");
-                                            
-                                                    $data= mysqli_fetch_row($q);
-                                                
+                                                $sql = "SELECT * FROM ormawa Where ID_ORMAWA = '$id' ";
+                                                $qor = mysqli_query($koneksi,$sql);
+                                                $data = mysqli_fetch_row($qor);
                                                     ?>
                                                              <tr>
                                                                     <td><?php echo $data[2];?></td>
@@ -66,8 +66,8 @@
                                                                 </tr>
                             <br>
                                                 <?php
-                                                $ido = $data[0];
-                                                $qpo = mysqli_query($koneksi,"SELECT * FROM pengurus_ormawa where ID_ORMAWA = '$ido'");
+                                                $sqlpo = "SELECT * FROM pengurus_ormawa where ID_ORMAWA = '$id' ";
+                                                $qpo = mysqli_query($koneksi,$sqlpo);
                                                 $dpo = mysqli_fetch_row($qpo);
                                         ?>
                                         <a class="btn btn-primary col-2" href="../ormawa/f_renja/<?= $dpo[10] ?>" role="button">Renja</a>

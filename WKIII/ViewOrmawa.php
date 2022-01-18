@@ -3,7 +3,7 @@
 <head>
     <?php
 
-        include "SessionPembina.php";
+        include "SessionWKIII.php";
 
 ?>
 
@@ -53,26 +53,8 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Data Binaan</h6>
-                            <?php
-                                                $q = mysqli_query($koneksi,"SELECT * FROM `ormawa` Where `NIDN` = '$array[NIDN]' ");
-                                            
-                                                    $data= mysqli_fetch_row($q);
-                                                
-                                                    ?>
-                                                             <tr>
-                                                                    <td><?php echo $data[2];?></td>
-                                                                   
-                                                                </tr>
-                            <br>
-                                                <?php
-                                                $ido = $data[0];
-                                                $qpo = mysqli_query($koneksi,"SELECT * FROM pengurus_ormawa where ID_ORMAWA = '$ido'");
-                                                $dpo = mysqli_fetch_row($qpo);
-                                        ?>
-                                        <a class="btn btn-primary col-2" href="../ormawa/f_renja/<?= $dpo[10] ?>" role="button">Renja</a>
-                    <a class="btn btn-primary col-2" href="../ormawa/f_ad_art/<?= $dpo[11] ?>" role="button">AD ART</a>
-                     
+                            <h6 class="m-0 font-weight-bold text-primary">Table Ormawa</h6>
+                                              
                         </div>
                         
                         <div class="card-body">
@@ -80,39 +62,37 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Jabatan</th>
                                             <th>Nama</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                            <td>NAMA KETUA</td>
-                                            <td><?= $dpo[3] ?></td>
-                                        </tr>
+                                    <?php
+                                                $qpo = mysqli_query($koneksi,"SELECT ID_ORMAWA, NAMA_ORMAWA FROM ormawa");
+                                                while ($dpo = mysqli_fetch_array($qpo)) {
+                                                   
+
+                                        ?>
                                         <tr>
-                                            <td>NAMA WAKIL</td>
-                                            <td><?= $dpo[4] ?></td>
+                                            <td>
+                                                <?= $dpo['NAMA_ORMAWA'] ?>
+                                            </td>
+                                                <?php 
+                                               $idpo= $dpo['ID_ORMAWA'];
+                                                    $qpen = mysqli_query($koneksi,"SELECT * from pengurus_ormawa where ID_ORMAWA = '$idpo' ");
+                                                    $dpen = mysqli_fetch_row($qpen);
+                                                    if (!empty($dpen[4])) {
+                                                ?>
+                                            <td>
+                                                <button type="button" class="btn btn-primary"><a style="color:white; text-decoration:none;" href= "StrukturOrmawa.php?id= <?php echo$dpo['ID_ORMAWA']?>">Lihat Lebih Detail</a></button>
+                                            </td>
+                                            <?php  } else { ?>
+                                                <td>
+                                                <button type="button" class="btn btn-secondary"><a style="color:white; text-decoration:none;">Lihat Lebih Detail</a></button>
+                                            </td>
+                                            <?php } ?>
                                         </tr>
-                                        <tr>
-                                            <td>NAMA WAKIL 2</td>
-                                            <td><?= $dpo[5] ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td>SEKRETARIS 1</td>
-                                            <td><?= $dpo[6] ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td>SEKRETARIS 2</td>
-                                            <td><?= $dpo[7] ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td>BENDAHARA 1</td>
-                                            <td><?= $dpo[8] ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td>BENDAHARA 2</td>
-                                            <td><?= $dpo[9] ?></td>
-                                        </tr>
+                                        <?php } ?>
                                     </tbody>
                                 </table>
                             </div>

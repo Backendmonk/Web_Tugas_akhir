@@ -56,14 +56,13 @@
                 <div class="col mr-2">
                 <center> <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                     <?php
-                    error_reporting(0);
 
-                    $coutn = mysqli_query($koneksi,"SELECT  COUNT(lpj.ID_LPJ) as lpj FROM `lpj` INNER JOIN `approval_lpj` on `lpj`.`ID_APPROVALLPJ` = `approval_lpj`.`ID_APPROVALLPJ` WHERE `approval_lpj`.`ORMAWA` = $array[ID_ORMAWA]");
-                    $arr = mysqli_fetch_array($coutn);
+                        $qalp = mysqli_query($koneksi,"SELECT id from applpj where approve = 1 ");
+                        $dalp = mysqli_num_rows($qalp);
 
                     ?>
                         Jumlah Acara</div>
-                 <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $arr['lpj']; ?></div></center>
+                 <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo  $dalp ?></div></center>
                 </div>
                 
             </div>
@@ -78,7 +77,6 @@
             <div class="row no-gutters align-items-center">
                 <div class="col mr-2">
                     <?php
-                            error_reporting(0);
 
                         $query = mysqli_query($koneksi,"SELECT  * FROM  pengajuan_kegiatan_mhs WHERE id_ormawa = '$array[ID_ORMAWA]'"); 
                         $dpkm = mysqli_num_rows($query);
@@ -106,7 +104,12 @@
                 <div class="col mr-2">
                     <center><div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                         Acara sedang berlangsung</div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800">3</div></center>
+                        <?php 
+                            $qak = mysqli_query($koneksi,"SELECT id from approval_kegiatan where status = 'Approve' ");
+                            $dak = mysqli_num_rows($qak);
+                            $total = $dak - $dlpj
+                        ?>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $total ?></div></center>
                 </div>
                
             </div>
@@ -159,6 +162,15 @@
 
 
 
+<?php
+
+$qpengumuman = mysqli_query($koneksi,"SELECT * FROM `pengumuman`");
+
+while ($data = mysqli_fetch_array($qpengumuman)) {
+
+    echo "$data[pengumuman]<br>";
+}
+?>
 
 
 <!-- pengumuman -->
@@ -167,7 +179,6 @@
 Swal.fire(
     'PENGUMUMAN',
     <?php
-    error_reporting(0);
     $qpengumuman = mysqli_query($koneksi,"SELECT * FROM `pengumuman`");
 
         ?>

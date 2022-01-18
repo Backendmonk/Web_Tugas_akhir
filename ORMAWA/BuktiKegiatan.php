@@ -94,11 +94,11 @@
                         <tbody>
                         <?php
                                 $no=0;
-                                $qlpj = mysqli_query($koneksi, "SELECT * FROM surat_pernyataan_kegiatan");
+                                $qlpj = mysqli_query($koneksi, "SELECT * FROM approval_pernyataan_kegiatan where status = 'Approve'");
                                 while ($dlpj = mysqli_fetch_array($qlpj)) {
                                     $no++;
                                     $idlpj = $dlpj['id'];
-                                $qALpj = mysqli_query($koneksi,"SELECT * FROM appbk where idbk = '$idlpj'");
+                                $qALpj = mysqli_query($koneksi,"SELECT * FROM appbk where idbk = '$idlpj' ");
                                 $dALpj = mysqli_fetch_row($qALpj);
                             ?>
                             <tr>
@@ -133,7 +133,11 @@
                                 <td> </td>
                                 <td> </td>
                               <?php  } ?>
+                              <?php if (!empty($st)) {?>
                               <td><?= $st  ?></td>
+                             <?php   }else{ ?>
+                                <td></td>
+                             <?php   } ?>
                             </tr> 
                             <?php } ?>                  
                         </tbody>
