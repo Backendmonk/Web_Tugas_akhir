@@ -95,8 +95,6 @@
                             <h6 class="m-0 font-weight-bold text-primary">Kegiatan Sesuai Renja  <a href="menuggu_approval.php" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                                 class="fas fa-book fa-sm text-white-50"></i> Menunggu Approval</a> 
                             
-                                <a href="surat_pengajuan.php" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-book fa-sm text-white-50"></i> Revisi</a>
                                 
                             </h6>
 
@@ -164,10 +162,6 @@
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">Kegiatan Tidak Sesuai Renja <a href="menuggu_approval.php" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                                 class="fas fa-book fa-sm text-white-50"></i> Menunggu Approval</a> 
-                            
-                                <a href="surat_pengajuan.php" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-book fa-sm text-white-50"></i> Revisi</a>
-                                
                             </h6>
 
                                  </h6>
@@ -193,7 +187,7 @@
                                         <?php
                                       
                                         
-                                                $q = mysqli_query($koneksi,"  SELECT * FROM `approval_pernyataan_kegiatan` WHERE `nama_ormawa` = '$nama' AND `status` = 'Approve' OR `status` ='Tolak' ");
+                                                $q = mysqli_query($koneksi,"  SELECT * FROM `approval_pernyataan_kegiatan` WHERE `nama_ormawa` = '$nama' AND `status` = 'Approve' OR `status` ='Tidak' ");
                                          
 
                                                 while ($data = mysqli_fetch_array($q)) {
