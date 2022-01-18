@@ -125,7 +125,7 @@
                                     <tbody>
                                   
                                         <?php
-                                                $q = mysqli_query($koneksi,"  SELECT * FROM `approval_kegiatan` WHERE `nama_ormawa` = '$nama' AND `status` = 'Approve' OR `status` ='Tidak'  ");
+                                                $q = mysqli_query($koneksi,"  SELECT * FROM `approval_kegiatan` WHERE `nama_ormawa` = '$nama' AND `status` = 'Approve' OR `status` ='Tolak'  ");
                                          
 
                                                 while ($data = mysqli_fetch_array($q)) {
