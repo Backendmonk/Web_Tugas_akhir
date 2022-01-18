@@ -150,7 +150,7 @@
                                     <tbody>
                                   
                                         <?php
-                                                $q = mysqli_query($koneksi,"  SELECT * FROM `approval_pernyataan_kegiatan` WHERE `status` = 'Approve' OR `status` ='Tolak' ");
+                                                $q = mysqli_query($koneksi,"  SELECT * FROM `approval_pernyataan_kegiatan` WHERE `status` = 'Approve' OR `status` ='Tidak' ");
                                          
 
                                                 while ($data = mysqli_fetch_array($q)) {
