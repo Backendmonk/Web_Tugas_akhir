@@ -156,7 +156,6 @@
 $ido = $array['ID_ORMAWA'];
 $qp = mysqli_query($koneksi,"SELECT id, nama_kegiatan, Tanggal FROM pengajuan_kegiatan_mhs where id_ormawa ='$ido'  ORDER BY Tanggal DESC LIMIT 1");
 $dp = mysqli_fetch_row($qp);
-
 $dnow=date_create(date("Y-m-d"));
 $dcek=date_create($dp[2]);
 $cek= $dcek < date_sub($dnow,date_interval_create_from_date_string("14 days"));

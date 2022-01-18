@@ -3,7 +3,11 @@
 <?php
 
         include "SessionPengurus.php";
+        $id = $_GET['id'];
 
+        $q = mysqli_query($koneksi,"SELECT * FROM `surat_pernyataan_kegiatan` where `id` = $id ");
+
+        $arrp = mysqli_fetch_array($q); 
 ?>
 <head>
 
@@ -62,14 +66,14 @@
   </div>
   <div class="col-md-6">
     <label for="inputEmail4" class="form-label">Nama Kegiatan</label>
-    <input type="text" class="form-control" id="inputEmail4" name = "nama_kegiatan">
+    <input type="text" value="<?= $arrp['nama_kegiatan'] ?>" class="form-control" id="inputEmail4" name = "nama_kegiatan">
   </div>
   
   
   <div class="col-md-6">
     <label for="inputPassword4" class="form-label">Surat Pengajuan</label>
     
-    <input type="file" class="form-control" name="pengajuan">
+    <input type="file" value="<?= $arrp['surat_pernyataan'] ?>" class="form-control" name="pengajuan">
 
   </div>
 
@@ -166,14 +170,14 @@
 
         move_uploaded_file($_FILES['pengajuan']['tmp_name'], 'k_surat_pengajuan/'.$ran_Num_pengajuan.'_'.$filename_pengajuan);
         $pengajuan = $ran_Num_pengajuan.'_'.$filename_pengajuan;
-        
-          $sql = "INSERT INTO `surat_pernyataan_kegiatan`(`id`,`id_ormawa`, `nama_kegiatan`, `surat_pernyataan`) VALUES ('$id_random','$id','$nama_kegiatan','$pengajuan')";
+          $sqlLPJ = "UPDATE surat_pernyataan_kegiatan set nama_kegiatan = '$nama_kegiatan', surat_pernyataan = '$pengajuan' where id = '$id'";
 
-    
-        $query = mysqli_query($koneksi, $sql);
+        $query = mysqli_query($koneksi, $sqlLPJ);
+            $sqlAp = "UPDATE approval_pernyataan_kegiatan SET nama_kegiatan = '$nama_kegiatan',
+            status = 'Pending' WHERE id_pernyatan = '$id'";
 
+        mysqli_query($koneksi,$sqlAp);
 
-        $qinsert = mysqli_query($koneksi,"INSERT INTO `approval_pernyataan_kegiatan`(`id_pernyatan`, `nama_ormawa`, `nama_kegiatan`,`status`) VALUES ('$id_random','$nama_ormawa','$nama_kegiatan','Pending')");
           ?>
 						<script>
 									Swal.fire({
@@ -185,7 +189,6 @@
 									</script>
 				<?php
         
-       
         
 
                 }

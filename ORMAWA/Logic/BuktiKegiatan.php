@@ -2,7 +2,7 @@
 include '../../inc/koneksi.php';
       if(isset($_POST['ajukan'])){
         $idk = $_POST['idk'];
-        $qdk = mysqli_query($koneksi,"SELECT nama_kegiatan FROM pengajuan_kegiatan_mhs WHERE id = '$idk'");
+        $qdk = mysqli_query($koneksi,"SELECT nama_kegiatan from pengajuan_kegiatan_mhs where id = '$idk'");
         $ddk = mysqli_fetch_row($qdk); 
         $nk = $ddk[0];
          // Bukti Kegiatan
@@ -47,7 +47,7 @@ include '../../inc/koneksi.php';
          // ttpp file
          move_uploaded_file($_FILES['bk']['tmp_name'], '../f_bukti/'.time().'_'.$filename_bk);
          $bk = time().'_'.$filename_bk;
-         $sqlLPJ = "UPDATE bukti_kegiatan_mahasiswa set bukti = '$bk' WHERE id = '$id'";
+         $sqlLPJ = "UPDATE bukti_kegiatan_mahasiswa set bukti = '$bk' where id = '$id'";
          var_dump($sqlLPJ);
          mysqli_query($koneksi,"UPDATE appbk SET 
          approve = NULL WHERE idbk = '$id'");
