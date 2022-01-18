@@ -229,7 +229,7 @@ require 'Template/EditProfilePass.php';
                 $komentar = $_POST['komentar'];
                 $nidn = $arr_km['NIDN_KEMAHASISWAAN'];
                 $nama_km = $arr_km['NAMA_KEMAHASISWAAN'];
-                $status = "Tolak";
+                $status = "Tidak";
 
                 $update = mysqli_query($koneksi,"UPDATE `approval_pernyataan_kegiatan` SET `id_kemahasiswaan`='$nidn',`nama_kemahasiswaan`='$nama_km',`catatan`='$komentar',`status`='$status' WHERE `id_pernyatan` = $id");
                     ?>
