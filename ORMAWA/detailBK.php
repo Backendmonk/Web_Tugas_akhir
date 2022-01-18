@@ -6,7 +6,7 @@
         include "SessionPengurus.php";
         $id = $_GET['id'];
 
-        $q = mysqli_query($koneksi,"SELECT * FROM `bukti_kegiatan_mahasiswa` where `id` = $id ");
+        $q = mysqli_query($koneksi,"SELECT * FROM `bukti_kegiatan_mahasiswa` WHERE `id` = $id ");
 
         $arr = mysqli_fetch_array($q);
 
