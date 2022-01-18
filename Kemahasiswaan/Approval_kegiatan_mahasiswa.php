@@ -82,6 +82,7 @@
                                     <tbody>
                                   
                                         <?php
+                                        error_reporting (0);
                                                 $q = mysqli_query($koneksi,"  SELECT * FROM `approval_kegiatan` WHERE `status` = 'Pending'");
                                          
 

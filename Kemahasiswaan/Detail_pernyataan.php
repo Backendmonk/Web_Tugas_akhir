@@ -97,7 +97,7 @@
 
 
                            <tr>
-                               <td> <button type="submit" name="fapprove" class="btn btn-primary"> Approve</button> <button type="submit" name="funapprove" class="btn btn-warning"> Tolak</button>  <button type="submit" name="fref" class="btn btn-secondary">Revisi</button></td>
+                               <td> <button type="submit" name="fapprove" class="btn btn-primary"> Approve</button> <button type="submit" name="funapprove" class="btn btn-warning"> Tolak</button> </td>
                                
                             </tr>
 
