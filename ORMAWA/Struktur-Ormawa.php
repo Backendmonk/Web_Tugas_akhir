@@ -34,35 +34,84 @@
                 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                            <?php
-
-            $dataormawa = mysqli_query($koneksi,"SELECT ormawa.NAMA_ORMAWA as ormawa FROM `pengurus_ormawa` INNER JOIN `ormawa` ON pengurus_ormawa.ID_ORMAWA = ormawa.ID_ORMAWA WHERE pengurus_ormawa.USERNAME_KETUA = '$array[USERNAME_KETUA]' ");
-            $arr = mysqli_fetch_array($dataormawa);
-
-            ?>
-                    <!-- Page Heading -->
-                    <div class=" text-center  mb-4">
-                        <h3 <span class="text-danger">STRUKTUR ORGANISASI</span> <span class=" text-gray-500"> ORMAWA <?php echo $arr['ormawa']; ?></span> </h3>
-                    </div>
-                        <?php
-                                $q = mysqli_query($koneksi,"SELECT * FROM `pengurus_ormawa`");
-                                $ar = mysqli_fetch_array($q);
-                        ?>
                     <!-- Content Row -->
                     <div class="row">
                         <main class="col overflow-auto h-100">
-                            <div class="row text-center mb-5">
-                                <div class="col">
-                                    <img class="border border-3 " src="<?php echo "../img/ormawa_struktur/".$ar['GAMBAR_STRUKTUR_ORGANISASI']; ?>" alt="" width="500px">
-                                    <br>
-                                    
-                                </div>
                             
-                            </div>
                             <div class="row">
-                                <div class="col-10"></div>
-                                <a class="btn btn-primary col-2" href="TambahStrukturOrmawa.php" role="button">Edit</a>
+
+                            <?php 
+                                $ido = $array['ID_ORMAWA'];
+                                $qo = mysqli_query($koneksi,"SELECT NAMA_ORMAWA FROM ormawa where ID_ORMAWA = '$ido'");
+                                $do = mysqli_fetch_row($qo);
+                            ?>
                                 
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                             <!-- Page Heading -->
+                    <div class=" text-center  mb-4">
+                        <h3 <span class="text-danger">STRUKTUR ORGANISASI</span> <span class=" text-gray-500"> ORMAWA <?php echo $do[0] ?></span> </h3>
+                       <?php 
+                            $idOR = $array['ID_ORMAWA'];
+                            $idkema = mysqli_query($koneksi,"SELECT NIDN from ormawa where ID_ORMAWA = $idOR");
+                            $didk = mysqli_fetch_row($idkema);
+                            $idk = $didk[0];
+                            $qnabim = mysqli_query($koneksi, "SELECT NAMA_PEMBINA FROM pembina where NIDN = '$idk'");
+                            $dnambem = mysqli_fetch_row($qnabim);
+                       ?>
+                    </div>
+                    <a class="btn btn-primary col-2" href="TambahStrukturOrmawa.php" role="button">Edit</a>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Jabatan</th>
+                                            <th>Nama</th>
+                                        </tr>
+                                    </thead>
+                                    
+                                    <tbody>
+                                        <tr>
+                                            <td>Dosen Pembina</td>
+                                            <td><?=  $dnambem[0] ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td>NAMA KETUA</td>
+                                            <td><?=  $array['NAMA_KETUA'] ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td>NAMA WAKIL</td>
+                                            <td><?=  $array['NAMA_WAKIL'] ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td>NAMA WAKIL 2</td>
+                                            <td><?=  $array['NAMA_WAKIL2'] ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td>SEKRETARIS 1</td>
+                                            <td><?=  $array['SEKRETARIS1'] ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td>SEKRETARIS 2</td>
+                                            <td><?=  $array['SEKRETARIS2'] ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td>BENDAHARA 1</td>
+                                            <td><?=  $array['BENDAHARA1'] ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td>BENDAHARA 2</td>
+                                            <td><?=  $array['BENDAHARA2'] ?></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
                                 
                             </div>
                         </div>
