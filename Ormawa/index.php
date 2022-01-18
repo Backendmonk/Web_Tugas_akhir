@@ -5,6 +5,8 @@
         include "SessionPengurus.php";
 
 ?>
+
+
 <head>
 
     <meta charset="utf-8">
@@ -182,4 +184,45 @@ if ($cek) {
     <?php
     }
 }
+
+?>
+
+<?php
+
+$qpengumuman = mysqli_query($koneksi,"SELECT * FROM `pengumuman`");
+
+while ($data = mysqli_fetch_array($qpengumuman)) {
+
+    echo "$data[pengumuman]<br>";
+}
+?>
+
+
+<!-- pengumuman -->
+<script>
+
+Swal.fire(
+    'PENGUMUMAN',
+    <?php
+    $qpengumuman = mysqli_query($koneksi,"SELECT * FROM `pengumuman`");
+
+        ?>
+            '<?php 
+                echo"<table class= table > <tr><td> Pengumuman </td>   <td> Tanggal </td> </tr> <table>";
+                while ($data = mysqli_fetch_array($qpengumuman)) {
+
+                        echo "<table class = table ><tr><td><textarea  class= form-control id=exampleFormControlTextarea1 rows=3 > $data[pengumuman]</textarea></td><td> $data[tgl]</td></tr></table>";
+                    }
+            ?>',
+    
+
+  
+  'info'
+)
+</script>
+
+<?php
+
+
+
 ?>
