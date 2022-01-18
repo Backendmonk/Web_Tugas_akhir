@@ -13,13 +13,13 @@
         <span>Dashboard</span></a>
 </li>
  <!-- Divider -->
- <hr class="sidebar-divider">
+ <!-- <hr class="sidebar-divider"> -->
 
    <!-- Nav Item - Dashboard -->
-   <li class="nav-item active">
+   <!-- <li class="nav-item active">
     <a class="nav-link" href="Approval_pengajuan.php">
         <i class="fas fa-fw fa-tachometer-alt"></i>
-        <span>Approval Kegiatan</span></a>
+        <span>Approval Kegiatan</span></a> -->
 </li>
  <!-- Divider -->
  <hr class="sidebar-divider">
@@ -31,13 +31,13 @@
 </li>
 
  <!-- Divider -->
- <hr class="sidebar-divider">
+ <!-- <hr class="sidebar-divider"> -->
    <!-- Nav Item - Dashboard -->
-   <li class="nav-item active">
+   <!-- <li class="nav-item active">
     <a class="nav-link" href="Administrasi.php">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Administrasi</span></a>
-</li>
+</li> -->
 
  <!-- Divider -->
  <hr class="sidebar-divider">
