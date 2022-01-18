@@ -108,7 +108,7 @@
                                 <tr>
                                     <th>latar Belakang</th>
                                     <td>:</td>
-                                    <td><textarea class="form-control" rows="4" cols="50"> <?php echo $arr['latar_belakang'];?><textarea></td>
+                                    <td><textarea class="form-control" rows="4" cols="50"> <?php echo $arr['latar_belakang'];?></textarea></td>
                                 </tr>
 
                                 <tr>
@@ -211,6 +211,19 @@
                                     <td><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "../Ormawa/k_proposal/".$arr['softcopy_proposal'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
 
                                 </tr>
+                                <?php 
+                                    $idlpj = $arr['id'];
+                                    $sql = "SELECT * from approval_kegiatan where 
+                                    id_pengajuan = '$idlpj'";
+                                    $qcek = mysqli_query($koneksi, $sql);
+                                    $cek = mysqli_fetch_row($qcek);
+                                    if ($cek[7]=='Tolak') {?>
+                           <tr>
+                               <td>
+                               <button type="button" class="btn btn-primary"><a style="color:white; text-decoration:none;" href= "editPengajuan.php?id= <?php echo  $idlpj?>">Revisi</a></button>
+                                            </td>
+                            </tr>
+                            <?php }?>
 
 
 

@@ -152,14 +152,17 @@
 
 <?php 
 $ido = $array['ID_ORMAWA'];
-$qp = mysqli_query($koneksi,"SELECT ID_PENGAJUAN, NAMA_KEGIATAN, TGL_KEGIATAN FROM PENGAJUAN_KEGIATAN where ID_ORMAWA ='$ido'  ORDER BY TGL_KEGIATAN DESC LIMIT 1");
+$qp = mysqli_query($koneksi,"SELECT id, nama_kegiatan, Tanggal FROM pengajuan_kegiatan_mhs where id_ormawa ='$ido'  ORDER BY Tanggal DESC LIMIT 1");
 $dp = mysqli_fetch_row($qp);
+
 $dnow=date_create(date("Y-m-d"));
 $dcek=date_create($dp[2]);
-$cek= $dcek < date_sub($dnow,date_interval_create_from_date_string("90 days"));
+$cek= $dcek < date_sub($dnow,date_interval_create_from_date_string("14 days"));
+
 if ($cek) {
-    $qpro = mysqli_query($koneksi,"SELECT ID_LPJ FROM proposal WHERE ID_PENGAJUAN = '$dp[0]'");
+    $qpro = mysqli_query($koneksi,"SELECT id FROM pengajuan_lpj WHERE id_pengajuan = '$dp[0]'");
     $dpro = mysqli_fetch_row($qpro);
+    
     if (!isset($dpro[0])) {
         ?>
         <script>
@@ -173,7 +176,7 @@ if ($cek) {
             confirmButtonText: 'Kumpul LPJ'
             }).then((result) => {
             if (result.isConfirmed) {
-                window.location.href='Administrasi.php';
+                window.location.href='pelaporan_kegiatan.php';
             }
             })
         </script>
