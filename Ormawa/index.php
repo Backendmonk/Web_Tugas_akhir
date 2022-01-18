@@ -158,7 +158,6 @@ $dp = mysqli_fetch_row($qp);
 $dnow=date_create(date("Y-m-d"));
 $dcek=date_create($dp[2]);
 $cek= $dcek < date_sub($dnow,date_interval_create_from_date_string("14 days"));
-
 if ($cek) {
     $qpro = mysqli_query($koneksi,"SELECT id FROM pengajuan_lpj WHERE id_pengajuan = '$dp[0]'");
     $dpro = mysqli_fetch_row($qpro);

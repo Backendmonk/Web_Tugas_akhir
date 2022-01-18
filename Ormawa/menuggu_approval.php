@@ -150,6 +150,73 @@
                             </div>
                         </div>
                     </div>
+                    
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Kegiatan  <a href="surat_pengajuan.php" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                                class="fas fa-book fa-sm text-white-50"></i> Menunggu Approval</a> 
+                            
+                                <a href="surat_pengajuan.php" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                                class="fas fa-book fa-sm text-white-50"></i> Revisi</a>
+                                
+                            </h6>
+
+                                 </h6>
+                           
+
+                            
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Kegiatan</th>
+                                           
+                                            <th>Ormawa</th>
+                                            <th>Kemahasiswaan</th>
+                                            <th>Status</th>
+                                            <th>Detail</th>
+                                        
+                                        </tr>
+                                    </thead>
+                                    
+                                    <tbody>
+                                  
+                                        <?php
+                                                $q = mysqli_query($koneksi,"  SELECT * FROM `approval_kegiatan` WHERE `status` = 'Pending'");
+                                         
+
+                                                while ($data = mysqli_fetch_array($q)) {
+                                                    ?>
+                                                             <tr>
+                                                                    <td><?php echo $data['kegiatan'];?></td>
+
+                                                                    <td><?php echo $data['nama_ormawa'];?></td>
+
+                                                                    <td><?php echo $data['nama_kemahasiswaan'];?></td>
+
+
+                                                                    <td><?php echo $data['status'];?></td>
+
+                                                                    <td><button type="button" class="btn btn-primary"><a style="color:white; text-decoration:none;" href= "Detail_pengajuan.php?id= <?php echo $data['id_pengajuan']?>">Lihat Lebih Detail</a></button></td>
+                                                                    
+                                                                   
+                                                                </tr>
+
+                                                <?php
+                                                }
+
+                                        ?>
+                                       
+                                       
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
                 <!-- /.container-fluid -->
