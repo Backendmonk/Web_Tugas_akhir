@@ -78,13 +78,16 @@
                 <div class="col mr-2">
                     <?php
 
-                        $query = mysqli_query($koneksi,"SELECT COUNT(*) as jumlah FROM `status_lpj` WHERE `ORMAWA` = '$array[ID_ORMAWA]' AND `STATUS` = 'Belum Terkumpul' ");
-                        
-                        $arr = mysqli_fetch_array($query);
+                        $query = mysqli_query($koneksi,"SELECT  * FROM  pengajuan_kegiatan_mhs WHERE id_ormawa = '$array[ID_ORMAWA]'"); 
+                        $dpkm = mysqli_num_rows($query);
+                        $queryl = mysqli_query($koneksi,"SELECT  * FROM  pengajuan_lpj WHERE id_ormawa = '$array[ID_ORMAWA]'"); 
+                        $dlpj = mysqli_num_rows($queryl);
+
+                        $total =   $dpkm - $dlpj;
                     ?>
                     <center><div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                      <a style="text-decoration:none; color:green;" href="lpj_belum.php">LPJ Belum Terkumpul</a> </div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $arr['jumlah']; ?></div></center>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?=$total ?></div></center>
                 </div>
                
             </div>
@@ -100,8 +103,8 @@
             <div class="row no-gutters align-items-center">
                 <div class="col mr-2">
                     <center><div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                        Earnings (Annual)</div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div></center>
+                        Acara sedang berlangsung</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">3</div></center>
                 </div>
                
             </div>
@@ -152,39 +155,7 @@
 
 <?php include 'Template/EditProfilePass.php' ?>
 
-<?php 
-$ido = $array['ID_ORMAWA'];
-$qp = mysqli_query($koneksi,"SELECT id, nama_kegiatan, Tanggal FROM pengajuan_kegiatan_mhs where id_ormawa ='$ido'  ORDER BY Tanggal DESC LIMIT 1");
-$dp = mysqli_fetch_row($qp);
-$dnow=date_create(date("Y-m-d"));
-$dcek=date_create($dp[2]);
-$cek= $dcek < date_sub($dnow,date_interval_create_from_date_string("14 days"));
-if ($cek) {
-    $qpro = mysqli_query($koneksi,"SELECT id FROM pengajuan_lpj WHERE id_pengajuan = '$dp[0]'");
-    $dpro = mysqli_fetch_row($qpro);
-    
-    if (!isset($dpro[0])) {
-        ?>
-        <script>
-        Swal.fire({
-            title: 'Apakah mau kumpul lpj ?',
-            text: "LPJ dan Bukti Kegiatan terakhir belum dikumpul!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Kumpul LPJ'
-            }).then((result) => {
-            if (result.isConfirmed) {
-                window.location.href='pelaporan_kegiatan.php';
-            }
-            })
-        </script>
-    <?php
-    }
-}
 
-?>
 
 <?php
 

@@ -15,6 +15,7 @@
     <meta name="author" content="">
 
     <title>SB Admin 2 - Dashboard</title>
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <?php include '../template/head.php' ?>
 
@@ -50,6 +51,8 @@
 
                     <!-- Content Row -->
                     <div class="row">
+
+                    
                         
                     <main class="col overflow-auto h-100">
             <div class="bg-light border rounded-3 p-3">

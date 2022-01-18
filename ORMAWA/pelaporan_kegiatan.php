@@ -50,7 +50,7 @@
                         </nav>
                                 <table class="table table-bordered">
                                 <button type="button" class="btn btn-primary mt-2"><a style="text-decoration:none; Color:white;" href="pengajuanLPJ.php">Ajukan LPJ</a></button>
-                                <button type="button" class="btn btn-primary ml-2 mt-2">Format LPJ</button>
+                                <button type="button" class="btn btn-primary ml-2 mt-2"><a style="text-decoration:none; Color:white;" href="../Format-Format/FormatLPJKegiatan.docx">Format LPJ</a></button>
                         <h3>Pengajuan LPJ</h3>
                         <thead>
                             <tr>
