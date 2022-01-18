@@ -65,6 +65,7 @@
                                                 while ($data = mysqli_fetch_array($q)) {
                                                     ?>
                                                      <?php
+                                                     error_reporting (0);
                                                     $cek = mysqli_query($koneksi,"SELECT count(id_Persetujuan) as id FROM `persetujuan_pembina` WHERE id_pengajuan  = $data[ID_PENGAJUAN]");
                                                     
                                                     $cekid = mysqli_fetch_array($cek);
@@ -93,6 +94,7 @@
                                                                     <td>
                                                                         
                                                                     <?php
+                                                                    error_reporting (0);
                                                                     if ($cekid['id']< 1 ) {
                                                                         echo "Menunggu Validasi Pembina";
                                                                     }

@@ -1,12 +1,15 @@
-
 <!DOCTYPE html>
 <html lang="en">
-<?php
+<head>
+    <?php
 
-         include "SessionWKIII.php";
+            include "SessionWKIII.php";
+
+        
 
 ?>
-<meta charset="utf-8">
+
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -49,14 +52,12 @@
                     <div class="row">
                     <main class="col overflow-auto h-100">
             <div class="bg-light border rounded-3 p-3">
+        
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Kegiatan Sesuai Renja  <a href="menuggu_approval.php" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-book fa-sm text-white-50"></i> Menunggu Approval</a> 
-                            
-                              
+                            <h6 class="m-0 font-weight-bold text-primary">Kegiatan  Sesuai Renja
                                 
                             </h6>
 
@@ -83,7 +84,7 @@
                                     <tbody>
                                   
                                         <?php
-                                                $q = mysqli_query($koneksi,"  SELECT * FROM `approval_kegiatan` WHERE `status` = 'Approve' OR `status` ='Tolak' ");
+                                                $q = mysqli_query($koneksi,"  SELECT * FROM `approval_kegiatan` WHERE `status` = 'Pending'");
                                          
 
                                                 while ($data = mysqli_fetch_array($q)) {
@@ -116,17 +117,10 @@
                         </div>
                     </div>
 
-                    <!-- renja end-->
-
-
-                     <!-- DataTales Example -->
-                     <div class="card shadow mb-4">
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Kegiatan Tidak Sesuai Renja <a href="menuggu_approval.php" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-book fa-sm text-white-50"></i> Menunggu Approval</a> 
-                            
-                               
-                                
+                            <h6 class="m-0 font-weight-bold text-primary">Kegiatan Tidak Sesuai Renja 
                             </h6>
 
                                  </h6>
@@ -140,6 +134,8 @@
                                     <thead>
                                         <tr>
                                             <th>Kegiatan</th>
+                                           
+                                            <th>Ormawa</th>
                                             <th>Kemahasiswaan</th>
                                             <th>Status</th>
                                             <th>Detail</th>
@@ -150,7 +146,7 @@
                                     <tbody>
                                   
                                         <?php
-                                                $q = mysqli_query($koneksi,"  SELECT * FROM `approval_pernyataan_kegiatan` WHERE `status` = 'Approve' OR `status` ='Tolak' ");
+                                                $q = mysqli_query($koneksi,"  SELECT * FROM `approval_pernyataan_kegiatan`  WHERE `status` = 'Pending' ");
                                          
 
                                                 while ($data = mysqli_fetch_array($q)) {
@@ -158,7 +154,7 @@
                                                              <tr>
                                                                     <td><?php echo $data['nama_kegiatan'];?></td>
 
-                                                                    
+                                                                    <td><?php echo $data['nama_ormawa'];?></td>
 
                                                                     <td><?php echo $data['nama_kemahasiswaan'];?></td>
 
@@ -254,7 +250,7 @@
 
     <!-- Page level custom scripts -->
     <script src="../js/demo/datatables-demo.js"></script>
- 
+
 </body>
 
 </html>
