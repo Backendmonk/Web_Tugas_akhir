@@ -5,6 +5,8 @@
 
         include "SessionPengurus.php";
 
+
+        
         $cek_namaormawa = mysqli_query($koneksi,"SELECT * FROM `ormawa` WHERE `ID_ORMAWA` = $array[ID_ORMAWA]");
         $aray_nama = mysqli_fetch_array($cek_namaormawa);
 
@@ -123,7 +125,7 @@
                                     <tbody>
                                   
                                         <?php
-                                                $q = mysqli_query($koneksi,"  SELECT * FROM `approval_kegiatan` WHERE `nama_ormawa` = '$nama' AND `status` = 'Approve' OR `status` ='Tolak'  ");
+                                                $q = mysqli_query($koneksi,"  SELECT * FROM `approval_kegiatan` WHERE `nama_ormawa` = '$nama' AND `status` = 'Approve' OR `status` ='Tidak'  ");
                                          
 
                                                 while ($data = mysqli_fetch_array($q)) {
