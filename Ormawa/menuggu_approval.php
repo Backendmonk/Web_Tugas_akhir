@@ -51,47 +51,11 @@
                     <main class="col overflow-auto h-100">
             <div class="bg-light border rounded-3 p-3">
         
-<div class="col-xl-3 col-md-6 mb-4">
-    <div class="card border-left-success shadow h-100 py-2">
-        <div class="card-body">
-            <div class="row no-gutters align-items-center">
-                <div class="col mr-2">
-                   
-                    <center><div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                     <a style="text-decoration:none; color:green;" href="pengajuan_kegiatan_ormawa.php">Pengajuan Kegiatan</a> </div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800"></div></center>
-                </div>
-               
-            </div>
-        </div>
-    </div>
-</div>
-
-        
-<div class="col-xl-3 col-md-6 mb-4">
-    <div class="card border-left-success shadow h-100 py-2">
-        <div class="card-body">
-            <div class="row no-gutters align-items-center">
-                <div class="col mr-2">
-                   
-                    <center><div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                     <a style="text-decoration:none; color:green;" href="surat_pengajuan.php">Pelaporan Kegiatan</a> </div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800"></div></center>
-                </div>
-               
-            </div>
-        </div>
-    </div>
-</div>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Kegiatan  <a href="surat_pengajuan.php" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-book fa-sm text-white-50"></i> Menunggu Approval</a> 
-                            
-                                <a href="surat_pengajuan.php" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-book fa-sm text-white-50"></i> Revisi</a>
+                            <h6 class="m-0 font-weight-bold text-primary">Kegiatan  Sesuai Renja
                                 
                             </h6>
 
@@ -154,12 +118,7 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Kegiatan  <a href="surat_pengajuan.php" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-book fa-sm text-white-50"></i> Menunggu Approval</a> 
-                            
-                                <a href="surat_pengajuan.php" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-book fa-sm text-white-50"></i> Revisi</a>
-                                
+                            <h6 class="m-0 font-weight-bold text-primary">Kegiatan Tidak Sesuai Renja 
                             </h6>
 
                                  </h6>

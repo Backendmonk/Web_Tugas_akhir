@@ -13,23 +13,23 @@
         <span>Dashboard</span></a>
 </li>
  <!-- Divider -->
- <hr class="sidebar-divider">
+ <!-- <hr class="sidebar-divider">
 
-   <!-- Nav Item - Dashboard -->
+ Nav Item - Dashboard
    <li class="nav-item active">
     <a class="nav-link" href="Pelaporan_kegiatan.php">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Kegiatan Ormawa</span></a>
-</li>
+</li>  -->
 
- <!-- Divider -->
+ <!-- Divider
  <hr class="sidebar-divider">
-   <!-- Nav Item - Dashboard -->
+  
    <li class="nav-item active">
     <a class="nav-link" href="pembinaormawa.php">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Pembina Ormawa</span></a>
-</li>
+</li> -->
 
  <!-- Divider -->
  <hr class="sidebar-divider">
@@ -37,7 +37,7 @@
    <li class="nav-item active">
     <a class="nav-link" href="Kegiatan_Ormawa.php">
         <i class="fas fa-fw fa-tachometer-alt"></i>
-        <span>Kegiatan</span></a>
+        <span>Kegiatan Ormawa</span></a>
 </li>
 
 <!-- Divider -->

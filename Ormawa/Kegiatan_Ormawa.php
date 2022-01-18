@@ -75,7 +75,7 @@
                 <div class="col mr-2">
                    
                     <center><div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                     <a style="text-decoration:none; color:green;" href="surat_pengajuan.php">Pelaporan Kegiatan</a> </div>
+                     <a style="text-decoration:none; color:green;" href="pelaporan_kegiatan.php">Pelaporan Kegiatan</a> </div>
                     <div class="h5 mb-0 font-weight-bold text-gray-800"></div></center>
                 </div>
                

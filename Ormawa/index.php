@@ -56,6 +56,7 @@
                 <div class="col mr-2">
                 <center> <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                     <?php
+                    error_reporting(0);
 
                     $coutn = mysqli_query($koneksi,"SELECT  COUNT(lpj.ID_LPJ) as lpj FROM `lpj` INNER JOIN `approval_lpj` on `lpj`.`ID_APPROVALLPJ` = `approval_lpj`.`ID_APPROVALLPJ` WHERE `approval_lpj`.`ORMAWA` = $array[ID_ORMAWA]");
                     $arr = mysqli_fetch_array($coutn);
@@ -77,6 +78,7 @@
             <div class="row no-gutters align-items-center">
                 <div class="col mr-2">
                     <?php
+                            error_reporting(0);
 
                         $query = mysqli_query($koneksi,"SELECT  * FROM  pengajuan_kegiatan_mhs WHERE id_ormawa = '$array[ID_ORMAWA]'"); 
                         $dpkm = mysqli_num_rows($query);
@@ -157,15 +159,6 @@
 
 
 
-<?php
-
-$qpengumuman = mysqli_query($koneksi,"SELECT * FROM `pengumuman`");
-
-while ($data = mysqli_fetch_array($qpengumuman)) {
-
-    echo "$data[pengumuman]<br>";
-}
-?>
 
 
 <!-- pengumuman -->
@@ -174,6 +167,7 @@ while ($data = mysqli_fetch_array($qpengumuman)) {
 Swal.fire(
     'PENGUMUMAN',
     <?php
+    error_reporting(0);
     $qpengumuman = mysqli_query($koneksi,"SELECT * FROM `pengumuman`");
 
         ?>
