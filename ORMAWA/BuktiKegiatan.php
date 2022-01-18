@@ -107,15 +107,20 @@
                                 <?php if (!empty($dALpj)) { 
                                     if ($dALpj[3]==true) {
                                         $sts = 'Approved';
+                                        $st = 'complete';
+                                    } elseif($dALpj[3]==NULL) {
+                                        $sts = 'Diperiksa';
+                                        $st = 'ongoing';
                                     } else {
                                         $sts = 'Unapproved';
+                                        $st = 'ongoing';
                                     }
                                     ?>
                                     <td><?= $sts ?></td>
                              <?php   } else {?>
                                 <td> </td>
                               <?php  } ?>
-                                <td><button>Lihat Detail</button></td>
+                                <td><button type="button" class="btn btn-primary"><a style="color:white; text-decoration:none;" href= "detailBK.php?id= <?php echo  $idlpj?>">Lihat Lebih Detail</a></button></td>
                                 <?php if (!empty($dALpj)) {
                                     $idkema = $dALpj[2];
                                     $qk = mysqli_query($koneksi, "SELECT NAMA_KEMAHASISWAAN FROM kemahasiswaan where NIDN_KEMAHASISWAAN = '$idkema' ");
@@ -128,7 +133,7 @@
                                 <td> </td>
                                 <td> </td>
                               <?php  } ?>
-                              <td></td>
+                              <td><?= $st  ?></td>
                             </tr> 
                             <?php } ?>                  
                         </tbody>

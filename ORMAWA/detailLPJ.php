@@ -3,17 +3,12 @@
 <head>
     <?php
 
-        include "SessionKemahasiswaan.php";
+        include "SessionPengurus.php";
         $id = $_GET['id'];
 
         $q = mysqli_query($koneksi,"SELECT * FROM `pengajuan_lpj` where `id` = $id ");
 
         $arr = mysqli_fetch_array($q);
-
-
-        $cekkemahasiswaan = mysqli_query($koneksi,"SELECT * FROM `kemahasiswaan` WHERE `NIDN_KEMAHASISWAAN` = $array[NIDN_KEMAHASISWAAN]");
-
-        $arr_km = mysqli_fetch_array($cekkemahasiswaan);
 
 ?>
 
@@ -203,22 +198,17 @@
                              
                         
 
-
+                                <?php 
+                                    $idlpj = $arr['id'];
+                                    $qcek = mysqli_query($koneksi, "SELECT approve from applpj where idlpj = '$idlpj' AND approve = '0'");
+                                    $cek = mysqli_num_rows($qcek);
+                                    if ($cek) {?>
                            <tr>
                                <td>
-                                   <button type="button" class="btn btn-primary mb-2" data-toggle="modal"
-                                                data-target="#ApLpj<?= trim($arr['id']) ?>">Approve</button>
-                                                <button type="button" class="btn btn-danger mb-2" data-toggle="modal"
-                                                data-target="#UnLpj<?= trim($arr['id']) ?>">Unaprove</button>
+                               <button type="button" class="btn btn-primary"><a style="color:white; text-decoration:none;" href= "editLPJ.php?id= <?php echo  $idlpj?>">Revisi</a></button>
                                             </td>
-                               
                             </tr>
-
-                        
-
-
-                            
-                  
+                            <?php }?>
                            </table>
                            
                            </form>
@@ -268,62 +258,6 @@
     <!-- summon Modal-->
    <?php include 'Template/modal.php' ?>
 
-     <!--Upload Approve LPJ Modal -->
-     <div class="modal fade" id="ApLpj<?= trim($arr['id']) ?>" data-backdrop="static" data-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Approve LPJ</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form action="Logic/appLPJ.php" method="post" >
-                        <input type="text" name="kema" value="<?= $array["NIDN_KEMAHASISWAAN"] ?>" hidden>
-                        <input type="text" name="idp" value="<?= trim($arr['id']) ?>" hidden>
-                        Apakah sudah yakin di approve?
-                        <p style="font-size:10px;">Catatan Optional</p>
-                           <textarea class="form-control" name="komentar" rows="4" cols="50"> </textarea>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" name="ApLpj" class="btn btn-primary">Simpan</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-     <!--Unapproved lPJ Modal -->
-     <div class="modal fade" id="UnLpj<?= trim($arr['id']) ?>" data-backdrop="static" data-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Unprove lpj</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form action="Logic/appLPJ.php" method="post" >
-                        <input type="text" name="kema" value="<?= $array["NIDN_KEMAHASISWAAN"] ?>" hidden>
-                        <input type="text" name="idp" value="<?= trim($arr['id']) ?>" hidden>
-                        Apakah sudah yakin di Unapproved?
-                        <p style="font-size:10px;">Catatan Optional</p>
-                           <textarea class="form-control" name="komentar" rows="4" cols="50"> </textarea>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" name="UnLpj" class="btn btn-primary">Simpan</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Bootstrap core JavaScript-->
     <script src="../vendor/jquery/jquery.min.js"></script>
     <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -368,31 +302,6 @@
 
 <?php
 require 'Template/EditProfilePass.php';
-
-
-
-
-            if(isset($_POST['fapprove'])){
-
-                $komentar = $_POST['komentar'];
-                $nidn = $arr_km['NIDN_KEMAHASISWAAN'];
-                $nama_km = $arr_km['NAMA_KEMAHASISWAAN'];
-                $status = "Approve";
-
-                $update = mysqli_query($koneksi,"UPDATE `approval_kegiatan` SET `id_kemahasiswaan`='$nidn',`nama_kemahasiswaan`='$nama_km',`catatan`='$komentar',`status`='$status' WHERE `id_pengajuan` = $id");
-                    ?>
-                    <script>
-									Swal.fire({
-									icon: 'success',
-									title: 'Berhasil',
-									text: 'Pengajuan Berhasil',
-									
-									})
-									</script>
-				<?php
-              
-
-            }
 ?>
 
 

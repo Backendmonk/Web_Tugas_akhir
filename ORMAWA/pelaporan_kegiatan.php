@@ -81,15 +81,21 @@
                                 <?php if (!empty($dALpj)) { 
                                     if ($dALpj[3]==true) {
                                         $sts = 'Approved';
-                                    } else {
+                                        $st = 'complete';
+                                    } elseif($dALpj[3]==null) {
+                                        $st = 'ongoing';
+                                        $sts = 'Diperiksa';
+                                    }else{
+                                        $st = 'ongoing';
                                         $sts = 'Unapproved';
                                     }
                                     ?>
                                     <td><?= $sts ?></td>
+                                    
                              <?php   } else {?>
                                 <td> </td>
                               <?php  } ?>
-                                <td><button>Lihat Detail</button></td>
+                                <td><button type="button" class="btn btn-primary"><a style="color:white; text-decoration:none;" href= "detailLPJ.php?id= <?php echo  $idlpj?>">Lihat Lebih Detail</a></button></td>
                                 <?php if (!empty($dALpj)) {
                                     $idkema = $dALpj[2];
                                     $qk = mysqli_query($koneksi, "SELECT NAMA_KEMAHASISWAAN FROM kemahasiswaan where NIDN_KEMAHASISWAAN = '$idkema' ");
@@ -102,7 +108,7 @@
                                 <td> </td>
                                 <td> </td>
                               <?php  } ?>
-                              <td></td>
+                              <td><?= $st ?></td>
                             </tr> 
                             <?php } ?>         
                         </tbody>
@@ -182,4 +188,338 @@ unset($_SESSION['notif']);
           
 <?php } 
 unset($_SESSION['notif']);
+
+
+
+if (!isset($_SESSION['pk'])) {
+    ?>
+                 
+          <?php
+          unset($_SESSION['pk']);
+  }  else if($_SESSION['pk']==true) {
+    ?>
+     <script>
+                              Swal.fire({
+                              icon: 'error',
+                              title: 'gagal',
+                              text: 'ekstensi Pelaksana Kegiatan salah',
+                              
+                              })
+                              </script>
+<?php
+unset($_SESSION['pk']);
+                            }else{
+
+                            }
+
+if (!isset($_SESSION['kepan'])) {
+    ?>
+                    
+    <?php
+    unset($_SESSION['kepan']);
+}  else if($_SESSION['kepan']==true) {
+        ?>
+        <script>
+        Swal.fire({
+        icon: 'error',
+        title: 'gagal',
+        text: 'ekstensi kepanitiaan salah',
+        })
+        </script>
+        <?php
+unset($_SESSION['kepan']);
+                            }else {
+                                
+                            }
+
+if (!isset($_SESSION['kepan'])) {
+    ?>
+                    
+    <?php
+    unset($_SESSION['kepan']);
+}  else if($_SESSION['kepan']==true) {
+        ?>
+        <script>
+        Swal.fire({
+        icon: 'error',
+        title: 'gagal',
+        text: 'ekstensi kepanitiaan salah',
+        })
+        </script>
+        <?php
+unset($_SESSION['kepan']);
+                            }else {
+                                
+                            }
+
+
+if (!isset($_SESSION['peser'])) {
+?>
+                
+<?php
+unset($_SESSION['peser']);
+}  else if($_SESSION['peser']==true) {
+    ?>
+    <script>
+    Swal.fire({
+    icon: 'error',
+    title: 'gagal',
+    text: 'ekstensi peserta salah',
+    })
+    </script>
+    <?php
+unset($_SESSION['peser']);
+}else {
+
+}
+
+if (!isset($_SESSION['rabin'])) {
+?>
+                
+<?php
+unset($_SESSION['rabin']);
+}  else if($_SESSION['rabin']==true) {
+    ?>
+    <script>
+    Swal.fire({
+    icon: 'error',
+    title: 'gagal',
+    text: 'ekstensi RAB Pemasukan salah',
+    })
+    </script>
+    <?php
+unset($_SESSION['rabin']);
+}else {
+
+}
+
+if (!isset($_SESSION['rabout'])) {
+?>
+                
+<?php
+unset($_SESSION['rabout']);
+}  else if($_SESSION['rabout']==true) {
+    ?>
+    <script>
+    Swal.fire({
+    icon: 'error',
+    title: 'gagal',
+    text: 'ekstensi RAB Pengeluaran salah',
+    })
+    </script>
+    <?php
+unset($_SESSION['rabout']);
+}else {
+
+}
+
+if (!isset($_SESSION['rp'])) {
+?>
+                
+<?php
+unset($_SESSION['rp']);
+}  else if($_SESSION['rp']==true) {
+    ?>
+    <script>
+    Swal.fire({
+    icon: 'error',
+    title: 'gagal',
+    text: 'ekstensi Realisasi Anggaran salah',
+    })
+    </script>
+    <?php
+unset($_SESSION['rp']);
+}else {
+
+}
+
+
+
+if (!isset($_SESSION['bp'])) {
+?>
+                
+<?php
+unset($_SESSION['bp']);
+}  else if($_SESSION['bp']==true) {
+    ?>
+    <script>
+    Swal.fire({
+    icon: 'error',
+    title: 'gagal',
+    text: 'ekstensi Bukti Pembayaran salah',
+    })
+    </script>
+    <?php
+unset($_SESSION['bp']);
+}else {
+
+}
+
+if (!isset($_SESSION['ba'])) {
+?>
+                
+<?php
+unset($_SESSION['ba']);
+}  else if($_SESSION['ba']==true) {
+    ?>
+    <script>
+    Swal.fire({
+    icon: 'error',
+    title: 'gagal',
+    text: 'ekstensi Berita Acara salah',
+    })
+    </script>
+    <?php
+unset($_SESSION['ba']);
+}else {
+
+}
+if (!isset($_SESSION['absen'])) {
+?>
+                
+<?php
+unset($_SESSION['absen']);
+}  else if($_SESSION['absen']==true) {
+    ?>
+    <script>
+    Swal.fire({
+    icon: 'error',
+    title: 'gagal',
+    text: 'ekstensi absensi salah',
+    })
+    </script>
+    <?php
+unset($_SESSION['absen']);
+}else {
+
+}
+
+if (!isset($_SESSION['nr'])) {
+?>
+                
+<?php
+unset($_SESSION['nr']);
+}  else if($_SESSION['nr']==true) {
+    ?>
+    <script>
+    Swal.fire({
+    icon: 'error',
+    title: 'gagal',
+    text: 'ekstensi Notulensi Rapat salah',
+    })
+    </script>
+    <?php
+unset($_SESSION['nr']);
+}else {
+
+}
+
+if (!isset($_SESSION['rpp'])) {
+?>
+                
+<?php
+unset($_SESSION['rpp']);
+}  else if($_SESSION['rpp']==true) {
+    ?>
+    <script>
+    Swal.fire({
+    icon: 'error',
+    title: 'gagal',
+    text: 'ekstensi Rangkap Penilaian Peserta salah',
+    })
+    </script>
+    <?php
+unset($_SESSION['rpp']);
+}else {
+
+}
+
+if (!isset($_SESSION['ds'])) {
+?>
+                
+<?php
+unset($_SESSION['ds']);
+}  else if($_SESSION['ds']==true) {
+    ?>
+    <script>
+    Swal.fire({
+    icon: 'error',
+    title: 'gagal',
+    text: 'ekstensi Desian Sertifikat salah',
+    })
+    </script>
+    <?php
+unset($_SESSION['ds']);
+}else {
+
+}
+
+if (!isset($_SESSION['dk'])) {
+?>
+                
+<?php
+unset($_SESSION['dk']);
+}  else if($_SESSION['dk']==true) {
+    ?>
+    <script>
+    Swal.fire({
+    icon: 'error',
+    title: 'gagal',
+    text: 'ekstensi Dokumentasi Kegiatan salah',
+    })
+    </script>
+    <?php
+unset($_SESSION['dk']);
+}else {
+
+}
+
+if (!isset($_SESSION['slpj'])) {
+?>
+                
+<?php
+unset($_SESSION['slpj']);
+}  else if($_SESSION['slpj']==true) {
+    ?>
+    <script>
+    Swal.fire({
+    icon: 'error',
+    title: 'gagal',
+    text: 'ekstensi Softcopy LPJ salah',
+    })
+    </script>
+    <?php
+unset($_SESSION['slpj']);
+}else {
+
+}
+
+if (!isset($_SESSION['ulpj'])) {
+?>
+                
+<?php
+unset($_SESSION['ulpj']);
+}  else if($_SESSION['ulpj']==true) {
+    ?>
+    <script>
+    Swal.fire({
+    icon: 'success',
+    title: 'berhasil',
+    text: 'Berhasil Upload',
+    })
+    </script>
+    <?php
+unset($_SESSION['ulpj']);
+}else {
+?>
+<script>
+Swal.fire({
+icon: 'error',
+title: 'gagal',
+text: 'gagal upload',
+})
+</script>
+<?php
+unset($_SESSION['ulpj']);
+}
 ?>

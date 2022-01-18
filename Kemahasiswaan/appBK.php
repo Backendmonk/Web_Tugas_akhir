@@ -37,12 +37,11 @@
                     <div class="row">
                         <main class="col overflow-auto h-100">
                                 <table class="table table-bordered">
-                        <h3>Approval LPJ</h3>
+                        <h3>Approval Bukti Kegiatan</h3>
                         <thead>
                             <tr>
                                 <th scope="col">No</th>
                                 <th scope="col">Nama Kegiatan</th>
-                                <th scope="col">Ormawa</th>
                                 <th scope="col">Approval</th>
                                 <th scope="col">Action</th>
                                 <th scope="col">Catatan</th>
@@ -53,20 +52,19 @@
                         <tbody>
                             <?php
                                 $no=1;
-                                $qlpj = mysqli_query($koneksi, "SELECT * FROM pengajuan_lpj");
+                                $qlpj = mysqli_query($koneksi, "SELECT * FROM bukti_kegiatan_mahasiswa");
                                 while ($dlpj = mysqli_fetch_array($qlpj)) {
                                     
                                     $idlpj = $dlpj['id'];
-                                $qALpj = mysqli_query($koneksi,"SELECT * FROM applpj where idlpj = '$idlpj'");
+                                    $sql = "SELECT * FROM appbk where idbk = '$idlpj'";
+                                $qALpj = mysqli_query($koneksi,$sql);
                                 $dALpj = mysqli_fetch_row($qALpj);
                             ?>
-                            <?php  if ($dALpj[3]!=true) {  ?>
-                               
-                          
+                            <?php  if (!empty($dALpj) && $dALpj[3]!=true) {  ?>
+
                             <tr>
                                 <td><?= $no++ ?></td>
                                 <td><?= $dlpj['nama_kegiatan'] ?></td>
-                                <td><?= $dlpj['nama_ormawa'] ?></td>
                                 <?php if (!empty($dALpj)) { 
                                     if ($dALpj[3]==true) {
                                         $sts = 'Approved';
@@ -78,7 +76,7 @@
                              <?php   } else {?>
                                 <td> </td>
                               <?php  } ?>
-                              <td><button type="button" class="btn btn-primary"><a style="color:white; text-decoration:none;" href= "detailLPJ.php?id= <?php echo  $idlpj?>">Lihat Lebih Detail</a></button></td>
+                              <td><button type="button" class="btn btn-primary"><a style="color:white; text-decoration:none;" href= "detailBK.php?id= <?php echo  $idlpj?>">Lihat Lebih Detail</a></button></td>
                                 <?php if (!empty($dALpj)) {
                                     $idkema = $dALpj[2];
                                     $qk = mysqli_query($koneksi, "SELECT NAMA_KEMAHASISWAAN FROM kemahasiswaan where NIDN_KEMAHASISWAAN = '$idkema' ");
