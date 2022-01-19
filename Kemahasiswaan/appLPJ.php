@@ -52,6 +52,7 @@
                         </thead>
                         <tbody>
                             <?php
+                            error_reporting(0);
                                 $no=1;
                                 $qlpj = mysqli_query($koneksi, "SELECT * FROM pengajuan_lpj");
                                 while ($dlpj = mysqli_fetch_array($qlpj)) {
