@@ -59,12 +59,14 @@
                                     $sql = "SELECT * FROM appbk where idbk = '$idlpj'";
                                 $qALpj = mysqli_query($koneksi,$sql);
                                 $dALpj = mysqli_fetch_row($qALpj);
+                                
+
                             ?>
+                            <tr>
+                               
                             <?php  if (!empty($dALpj) && $dALpj[3]!=true) {  ?>
 
-                            <tr>
-                                <td><?= $no++ ?></td>
-                                <td><?= $dlpj['nama_kegiatan'] ?></td>
+                            
                                 <?php if (!empty($dALpj)) { 
                                     if ($dALpj[3]==true) {
                                         $sts = 'Approved';
@@ -72,6 +74,8 @@
                                         $sts = 'Unapproved';
                                     }
                                     ?>
+                                     <td><?= $no++ ?></td>
+                                <td><?= $dlpj['nama_kegiatan'] ?></td>
                                     <td><?= $sts ?></td>
                              <?php   } else {?>
                                 <td> </td>
@@ -91,8 +95,20 @@
                               <?php  } ?>
                               <td>ongoing</td>
                             </tr> 
-                            <?php } ?>         
-                            <?php } ?>         
+                            <?php }elseif(empty($dALpj) ){ ?>   
+                                <tr>
+                                <td><?= $no++ ?></td>
+                                <td><?= $dlpj['nama_kegiatan']?></td>
+                                    <td></td>
+                                    <td><button type="button" class="btn btn-primary"><a style="color:white; text-decoration:none;" href= "detailBK.php?id= <?php echo  $idlpj?>">Lihat Lebih Detail</a></button></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>ongoing</td>
+                                </tr>
+                                <?php }?>
+                            <?php 
+                                }
+                            ?>         
                         </tbody>
                     </table>
                         </main>

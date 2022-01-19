@@ -132,13 +132,12 @@
 
 
 
-
 <?php 
     require 'Template/EditProfilePass.php';
 
       if(isset($_POST['ajukan'])){
 
-
+    
         $nama_ormawa = $arr['ormawa'];
 
         $nama_kegiatan = $_POST['nama_kegiatan'];
@@ -170,13 +169,15 @@
 
         move_uploaded_file($_FILES['pengajuan']['tmp_name'], 'k_surat_pengajuan/'.$ran_Num_pengajuan.'_'.$filename_pengajuan);
         $pengajuan = $ran_Num_pengajuan.'_'.$filename_pengajuan;
-          $sqlLPJ = "UPDATE surat_pernyataan_kegiatan set nama_kegiatan = '$nama_kegiatan', surat_pernyataan = '$pengajuan' where id = '$id'";
 
-        $query = mysqli_query($koneksi, $sqlLPJ);
-            $sqlAp = "UPDATE approval_pernyataan_kegiatan SET nama_kegiatan = '$nama_kegiatan',
-            status = 'Pending' WHERE id_pernyatan = '$id'";
-var_dump($sqlAp);
-        mysqli_query($koneksi,$sqlAp);
+       $sqlLPJ = mysqli_query($koneksi,"UPDATE `surat_pernyataan_kegiatan` SET `nama_kegiatan` = '$nama_kegiatan', surat_pernyataan = '$pengajuan' WHERE `id` = '$id'");
+
+       $query = mysqli_query($koneksi, "UPDATE `approval_pernyataan_kegiatan` SET `nama_kegiatan` = '$nama_kegiatan',`status` = 'Pending' WHERE `id_pernyatan` = '$id'");
+
+        var_dump($nama_kegiatan,$pengajuan,$id);
+         
+
+    
 
           ?>
 						<script>

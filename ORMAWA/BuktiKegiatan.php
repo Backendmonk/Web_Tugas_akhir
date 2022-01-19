@@ -58,10 +58,10 @@
                                             <select name="idk" class="form-control mb-2" >
                                                 <option value="" hidden> pilih kegiatan</option>
                                                 <?php 
-                                                    $dtk = mysqli_query($koneksi, "SELECT id, nama_kegiatan from surat_pernyataan_kegiatan");
+                                                    $dtk = mysqli_query($koneksi, "SELECT id_pernyatan, nama_kegiatan from approval_pernyataan_kegiatan where status = 'Approve' ");
                                                     while ($adtk = mysqli_fetch_array($dtk)) {
                                                 ?>
-                                                <option value="<?= $adtk['id'] ?>"><?= $adtk['nama_kegiatan'] ?></option>
+                                                <option value="<?= $adtk['id_pernyatan'] ?>"><?= $adtk['nama_kegiatan'] ?></option>
                                                 <?php }?>
                                             </select>
                                             </div>
@@ -93,17 +93,22 @@
                         </thead>
                         <tbody>
                         <?php
-                                $no=0;
-                                $qlpj = mysqli_query($koneksi, "SELECT * FROM approval_pernyataan_kegiatan where status = 'Approve'");
-                                while ($dlpj = mysqli_fetch_array($qlpj)) {
-                                    $no++;
-                                    $idlpj = $dlpj['id'];
-                                $qALpj = mysqli_query($koneksi,"SELECT * FROM appbk where idbk = '$idlpj' ");
+                                $no=1;
+                                $qapk = mysqli_query($koneksi, "SELECT * FROM approval_pernyataan_kegiatan where status = 'Approve'");
+                                while ($dapk = mysqli_fetch_array($qapk)) {
+                                    $idp = $dapk['id_pernyatan'];
+                                $sqlbk = "SELECT * FROM bukti_kegiatan_mahasiswa where id_kegiatan = '$idp'";
+                                $qbk = mysqli_query($koneksi,$sqlbk );
+                                $dbk = mysqli_fetch_row($qbk);
+                                if (!empty($dbk)) {
+                                $idbk =  $dbk[0];
+                                $qALpj = mysqli_query($koneksi,"SELECT * FROM appbk where idbk = '$idbk' ");
                                 $dALpj = mysqli_fetch_row($qALpj);
+                                
                             ?>
                             <tr>
-                                <td><?= $no ?></td>
-                                <td><?= $dlpj['nama_kegiatan'] ?></td>
+                                <td><?= $no++ ?></td>
+                                <td><?= $dbk[2] ?></td>
                                 <?php if (!empty($dALpj)) { 
                                     if ($dALpj[3]==true) {
                                         $sts = 'Approved';
@@ -117,10 +122,12 @@
                                     }
                                     ?>
                                     <td><?= $sts ?></td>
-                             <?php   } else {?>
+                             <?php   } else { 
+                                  $st = 'ongoing';
+                                 ?>
                                 <td> </td>
                               <?php  } ?>
-                                <td><button type="button" class="btn btn-primary"><a style="color:white; text-decoration:none;" href= "detailBK.php?id= <?php echo  $idlpj?>">Lihat Lebih Detail</a></button></td>
+                                <td><button type="button" class="btn btn-primary"><a style="color:white; text-decoration:none;" href= "detailBK.php?id= <?php echo  $idbk?>">Lihat Lebih Detail</a></button></td>
                                 <?php if (!empty($dALpj)) {
                                     $idkema = $dALpj[2];
                                     $qk = mysqli_query($koneksi, "SELECT NAMA_KEMAHASISWAAN FROM kemahasiswaan where NIDN_KEMAHASISWAAN = '$idkema' ");
@@ -139,7 +146,8 @@
                                 <td></td>
                              <?php   } ?>
                             </tr> 
-                            <?php } ?>                  
+                            <?php } 
+                            }?>                  
                         </tbody>
                     </table>
                         </main>

@@ -15,7 +15,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Pengurus Ormawa</title>
+    <title>Pembina</title>
 
 <?php include '../template/head.php' ?>
 
@@ -77,8 +77,9 @@
             <div class="row no-gutters align-items-center">
                 <div class="col mr-2">
                     <?php
-
-                        $query = mysqli_query($koneksi,"SELECT  * FROM  pengajuan_kegiatan_mhs WHERE id_ormawa = '$array[ID_ORMAWA]'"); 
+                        $qor = mysqli_query($koneksi,"SELECT * FROM ormawa where NIDN = '$array[NIDN]' ");
+                        $dor = mysqli_fetch_row($qor);
+                        $query = mysqli_query($koneksi,"SELECT  * FROM  pengajuan_kegiatan_mhs WHERE id_ormawa = '$dor[0]'"); 
                         $dpkm = mysqli_num_rows($query);
                         $queryl = mysqli_query($koneksi,"SELECT  * FROM  pengajuan_lpj WHERE id_ormawa = '$array[ID_ORMAWA]'"); 
                         $dlpj = mysqli_num_rows($queryl);
@@ -162,42 +163,3 @@
 
 
 
-<?php
-
-$qpengumuman = mysqli_query($koneksi,"SELECT * FROM `pengumuman`");
-
-while ($data = mysqli_fetch_array($qpengumuman)) {
-
-    echo "$data[pengumuman]<br>";
-}
-?>
-
-
-<!-- pengumuman -->
-<script>
-
-Swal.fire(
-    'PENGUMUMAN',
-    <?php
-    $qpengumuman = mysqli_query($koneksi,"SELECT * FROM `pengumuman`");
-
-        ?>
-            '<?php 
-                echo"<table class= table > <tr><td> Pengumuman </td>   <td> Tanggal </td> </tr> <table>";
-                while ($data = mysqli_fetch_array($qpengumuman)) {
-
-                        echo "<table class = table ><tr><td><textarea  class= form-control id=exampleFormControlTextarea1 rows=3 > $data[pengumuman]</textarea></td><td> $data[tgl]</td></tr></table>";
-                    }
-            ?>',
-    
-
-  
-  'info'
-)
-</script>
-
-<?php
-
-
-
-?>

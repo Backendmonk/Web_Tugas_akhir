@@ -84,7 +84,7 @@
                                     $sql = "SELECT * from appbk where idbk = '$idlpj'";
                                     $qcek = mysqli_query($koneksi, $sql);
                                     $cek = mysqli_fetch_row($qcek);
-                                    if ($cek[3]==false) {?>
+                                    if (!empty($cek) && $cek[3]==false) {?>
                            <tr>
                                <td>
                                <button type="button" class="btn btn-primary"><a style="color:white; text-decoration:none;" href= "editBK.php?id= <?php echo  $idlpj?>">Revisi</a></button>

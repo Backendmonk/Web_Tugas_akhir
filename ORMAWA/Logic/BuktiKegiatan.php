@@ -2,7 +2,7 @@
 include '../../inc/koneksi.php';
       if(isset($_POST['ajukan'])){
         $idk = $_POST['idk'];
-        $qdk = mysqli_query($koneksi,"SELECT nama_kegiatan from pengajuan_kegiatan_mhs where id = '$idk'");
+        $qdk = mysqli_query($koneksi,"SELECT nama_kegiatan from approval_pernyataan_kegiatan where id_pernyatan = '$idk'");
         $ddk = mysqli_fetch_row($qdk); 
         $nk = $ddk[0];
          // Bukti Kegiatan
@@ -19,9 +19,17 @@ include '../../inc/koneksi.php';
          // ttpp file
          move_uploaded_file($_FILES['bk']['tmp_name'], '../f_bukti/'.time().'_'.$filename_bk);
          $bk = time().'_'.$filename_bk;
+          $qbkm = mysqli_query($koneksi, "SELECT id from bukti_kegiatan_mahasiswa where 
+          id_kegiatan = '$idk' ");
+          $cek = mysqli_num_rows($qbkm);
+          if ($cek) {
+            $sql = "UPDATE bukti_kegiatan_mahasiswa set bukti = '$bk' where id_kegiatan = '$idk'";
+          }else {
+            $sql = "INSERT INTO `bukti_kegiatan_mahasiswa`(  `id_kegiatan`, `nama_kegiatan`, `bukti`) VALUES ('$idk','$nk','$bk')";
+          }
           //insert query
-          $ins = mysqli_query($koneksi,"INSERT INTO `bukti_kegiatan_mahasiswa`(  `id_kegiatan`, `nama_kegiatan`, `bukti`) VALUES ('$idk','$nk','$bk')");
-
+          $ins = mysqli_query($koneksi,$sql);
+            
           if ($ins) {
             $_SESSION['ulpj'] = true;
           }else {

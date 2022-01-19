@@ -188,7 +188,7 @@
                                 <tr>
                                     <th>Dokumentasi Kegiatan</th>
                                     <td>:</td>
-                                    <td><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "../Ormawa/lpj/".$arr['dokumentasi'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
+                                    <td><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "../Ormawa/f_lpj/".$arr['dokumentasi'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
 
                                 </tr>
 

@@ -97,7 +97,7 @@
 
 
                            <tr>
-                               <td> <button type="submit" name="fapprove" class="btn btn-primary"> Approve</button> <button type="submit" name="funapprove" class="btn btn-warning"> Tolak</button>  <button type="submit" name="fref" class="btn btn-secondary">Revisi</button></td>
+                               <td> <button type="submit" name="fapprove" class="btn btn-primary"> Approve</button> <button type="submit" name="funapprove" class="btn btn-warning"> Tolak</button> </td>
                                
                             </tr>
 
@@ -229,7 +229,7 @@ require 'Template/EditProfilePass.php';
                 $komentar = $_POST['komentar'];
                 $nidn = $arr_km['NIDN_KEMAHASISWAAN'];
                 $nama_km = $arr_km['NAMA_KEMAHASISWAAN'];
-                $status = "Tolak";
+                $status = "Tidak";
 
                 $update = mysqli_query($koneksi,"UPDATE `approval_pernyataan_kegiatan` SET `id_kemahasiswaan`='$nidn',`nama_kemahasiswaan`='$nama_km',`catatan`='$komentar',`status`='$status' WHERE `id_pernyatan` = $id");
                     ?>
