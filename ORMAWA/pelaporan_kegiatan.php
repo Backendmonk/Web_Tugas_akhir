@@ -92,7 +92,10 @@
                                     ?>
                                     <td><?= $sts ?></td>
                                     
-                             <?php   } else {?>
+                             <?php   } else {
+                                 $st = 'ongoing';
+                                 
+                                 ?>
                                 <td> </td>
                               <?php  } ?>
                                 <td><button type="button" class="btn btn-primary"><a style="color:white; text-decoration:none;" href= "detailLPJ.php?id= <?php echo  $idlpj?>">Lihat Lebih Detail</a></button></td>

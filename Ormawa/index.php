@@ -163,23 +163,21 @@
 <?php include 'Template/EditProfilePass.php' ?>
 
 
--<?php
-
-$qpengumuman = mysqli_query($koneksi,"SELECT * FROM `pengumuman`");
-
-while ($data = mysqli_fetch_array($qpengumuman)) {
-
-    echo "$data[pengumuman]<br>";
-}
-?>
 
 
 <!-- pengumuman -->
-@ -174,6 +167,7 @@ while ($data = mysqli_fetch_array($qpengumuman)) {
-Swal.fire(
-    'PENGUMUMAN',
-    <?php
-    error_reporting(0);
-    $qpengumuman = mysqli_query($koneksi,"SELECT * FROM `pengumuman`");
+<script>
 
+Swal.fire(
+  'Pengumuman',
+
+        <?php
+
+        $qpengumuman = mysqli_query($koneksi,"SELECT * FROM `pengumuman`");
+        
         ?>
+
+     '<?php  echo "<table class=table> <tr><td> Pengumuman </td>   <td> Tanggal </td> </tr> </table>"; while($data = mysqli_fetch_array($qpengumuman)){echo "<table class=table> <tr><td><textarea class=form-control row = 3> $data[pengumuman]</textarea></td><td> $data[tgl]</td></tr>  </table> ";} ?>',
+  'info'
+)
+    </script>
