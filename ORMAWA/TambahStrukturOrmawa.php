@@ -104,18 +104,36 @@
     <input type="file" class="form-control"  name="ad_art" id="ad" value = "<?php echo $array['AD_ART']; ?>">
   </div>
   <div class="col-md-6">
-    <label for="masajab" class="form-label">Masa Jabatan</label>
-    <input type="date" class="form-control" name="masaJab" id="masajab" value = "<?php echo $array['MASA_JABATAN']; ?>">
+    <label for="masaJab" class="form-label">Masa Jabatan</label>
+    <select name="masaJab" class="form-control mb-2" >
+        <option value="" hidden> pilih tahun </option>
+        <?php 
+           for ($i=2008; $i < date("Y") ; $i++) { 
+        ?>
+        <option value="<?= $i ?>"><?= $i ?></option>
+        <?php }?>
+    </select>
   </div>
   <div class="col-md-6">
     <label for="thnDlt" class="form-label">Tahun Dilantik</label>
-    <input type="date" class="form-control" name="thnDlt" id="thnDlt" value = "<?php echo $array['TAHUN_DILANTIK']; ?>">
+    <select name="thnDlt" class="form-control mb-2" >
+        <option value="" hidden> pilih tahun </option>
+        <?php 
+           for ($i=2008; $i < date("Y") ; $i++) { 
+        ?>
+        <option value="<?= $i ?>"><?= $i ?></option>
+        <?php }?>
+    </select>
   </div>
-
   <div class="col-md-6">
     <label for="ad" class="form-label">Gambar Struktur Organisasi</label>
     <input type="file" class="form-control"  name="gambar" id="ad" value = "<?php echo $array['GAMBAR_STRUKTUR_ORGANISASI']; ?>">
   </div>
+  <div class="col-md-6">
+    <label for="email" class="form-label">Email</label>
+    <input type="email" class="form-control"  name="email" id="email" value = "<?php echo $array['email']; ?>">
+  </div>
+
 
   <div class="col-12">
       <br>
@@ -186,6 +204,7 @@
         $ben2 = $_POST['ben2'];
         $masaJab = $_POST['masaJab'];
         $thnDlt = $_POST['thnDlt'];
+        $email = $_POST['email'];
        // renja
         $ran_Num_kg = $_POST['namaOr'];
         $filename_kg = $_FILES['renja']['name'];
@@ -251,8 +270,8 @@
          move_uploaded_file($_FILES['gambar']['tmp_name'], '../img/ormawa_struktur/'.$ran_Num_gm.'_'.$filename_gm);
          $gambar = $ran_Num_gm.'_'.$filename_gm;
 
-        $sql = "UPDATE pengurus_ormawa SET NAMA_WAKIL = '$namaWk', NAMA_WAKIL2 = '$namaWk2', SEKRETARIS1 = '$sekre1', SEKRETARIS2 = '$sekre2',BENDAHARA1='$ben1',BENDAHARA2='$ben2', RENJA = '$renja', AD_ART = '$ad_art', MASA_JABATAN ='$masaJab', TAHUN_DILANTIK='$thnDlt', GAMBAR_STRUKTUR_ORGANISASI = '$gambar'  WHERE ID_ORMAWA='$id' AND USERNAME_KETUA = '$username' ";
-        //var_dump($sql);
+        $sql = "UPDATE pengurus_ormawa SET NAMA_WAKIL = '$namaWk', NAMA_WAKIL2 = '$namaWk2', SEKRETARIS1 = '$sekre1', SEKRETARIS2 = '$sekre2',BENDAHARA1='$ben1',BENDAHARA2='$ben2', RENJA = '$renja', AD_ART = '$ad_art', MASA_JABATAN ='$masaJab', TAHUN_DILANTIK='$thnDlt', GAMBAR_STRUKTUR_ORGANISASI = '$gambar', email = '$email'  WHERE ID_ORMAWA='$id' AND USERNAME_KETUA = '$username' ";
+        // var_dump($sql);
           //update query
           $query = mysqli_query($koneksi,$sql);
         if ($query) {
