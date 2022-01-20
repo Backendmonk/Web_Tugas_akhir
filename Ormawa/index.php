@@ -15,7 +15,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Pembina</title>
+    <title>Dashboard</title>
 
 <?php include '../template/head.php' ?>
 
@@ -106,7 +106,8 @@
                     <center><div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                         Acara sedang berlangsung</div>
                         <?php 
-                            $qak = mysqli_query($koneksi,"SELECT id from approval_kegiatan where status = 'Approve' ");
+                        $namaOr = $array['ID_ORMAWA'];
+                            $qak = mysqli_query($koneksi,"SELECT id from approval_kegiatan where status = 'Approve' AND nama_ormawa = '$namaOr' ");
                             $dak = mysqli_num_rows($qak);
                             $total = $dak - $dlpj
                         ?>
@@ -162,4 +163,23 @@
 <?php include 'Template/EditProfilePass.php' ?>
 
 
+-<?php
 
+$qpengumuman = mysqli_query($koneksi,"SELECT * FROM `pengumuman`");
+
+while ($data = mysqli_fetch_array($qpengumuman)) {
+
+    echo "$data[pengumuman]<br>";
+}
+?>
+
+
+<!-- pengumuman -->
+@ -174,6 +167,7 @@ while ($data = mysqli_fetch_array($qpengumuman)) {
+Swal.fire(
+    'PENGUMUMAN',
+    <?php
+    error_reporting(0);
+    $qpengumuman = mysqli_query($koneksi,"SELECT * FROM `pengumuman`");
+
+        ?>
