@@ -110,7 +110,7 @@
         <?php 
            for ($i=2008; $i < date("Y") ; $i++) { 
         ?>
-        <option value="<?= $i ?>"><?= $i ?></option>
+        <option value="<?= $i ?>-<?= $i+1 ?>"><?= $i ?>-<?= $i+1 ?></option>
         <?php }?>
     </select>
   </div>

@@ -1,0 +1,54 @@
+/*
+SQLyog Ultimate v13.1.1 (64 bit)
+MySQL - 10.4.17-MariaDB : Database - db_simaks
+*********************************************************************
+*/
+
+/*!40101 SET NAMES utf8 */;
+
+/*!40101 SET SQL_MODE=''*/;
+
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`db_simaks` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
+
+USE `db_simaks`;
+
+/*Table structure for table `pengurus_ormawa` */
+
+DROP TABLE IF EXISTS `pengurus_ormawa`;
+
+CREATE TABLE `pengurus_ormawa` (
+  `USERNAME_KETUA` varchar(100) NOT NULL,
+  `ID_ORMAWA` varchar(100) DEFAULT NULL,
+  `PASSWORD_KETUA` varchar(100) DEFAULT NULL,
+  `NAMA_KETUA` varchar(100) DEFAULT NULL,
+  `NAMA_WAKIL` varchar(100) DEFAULT NULL,
+  `NAMA_WAKIL2` varchar(100) DEFAULT NULL,
+  `SEKRETARIS1` varchar(100) DEFAULT NULL,
+  `SEKRETARIS2` varchar(100) DEFAULT NULL,
+  `BENDAHARA1` varchar(100) DEFAULT NULL,
+  `BENDAHARA2` varchar(100) DEFAULT NULL,
+  `RENJA` mediumtext DEFAULT NULL,
+  `AD_ART` mediumtext DEFAULT NULL,
+  `MASA_JABATAN` varchar(100) DEFAULT NULL,
+  `TAHUN_DILANTIK` varchar(100) DEFAULT NULL,
+  `GAMBAR_STRUKTUR_ORGANISASI` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`USERNAME_KETUA`),
+  KEY `MEMILIKI_FK` (`ID_ORMAWA`),
+  CONSTRAINT `FK_ID_ORMAWA_Pengurus` FOREIGN KEY (`ID_ORMAWA`) REFERENCES `ormawa` (`ID_ORMAWA`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+/*Data for the table `pengurus_ormawa` */
+
+insert  into `pengurus_ormawa`(`USERNAME_KETUA`,`ID_ORMAWA`,`PASSWORD_KETUA`,`NAMA_KETUA`,`NAMA_WAKIL`,`NAMA_WAKIL2`,`SEKRETARIS1`,`SEKRETARIS2`,`BENDAHARA1`,`BENDAHARA2`,`RENJA`,`AD_ART`,`MASA_JABATAN`,`TAHUN_DILANTIK`,`GAMBAR_STRUKTUR_ORGANISASI`,`email`) values 
+('bagas','1493474770','$2y$10$vGDokZrmvVMabt5/gqH3o.qQvIsGmqHocEbNmyB1iDXFeYlP2CHry','bagas',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+('riko','87764831','$2y$10$MPjlTqFpssOOJCU/JNgyruoW7Q9Z2MCpB4wimkQtUAh6ZgQJggE6W','rikodo','roni','angel','dayu','roy','puspa','ayu','robotika_INDONESIA.pdf','robotika_INDONESIA.pdf','2010','2011','robotika_Picture1-removebg-preview.png','alphawanx@gmail.com');
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;

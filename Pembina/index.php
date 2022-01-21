@@ -50,14 +50,21 @@
                                     <div class="col mr-2">
                                     <center> <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                         <?php
+                                            $total = 0;
                                             $qor = mysqli_query($koneksi,"SELECT * FROM ormawa where NIDN = '$array[NIDN]' ");
                                             $dor = mysqli_fetch_row($qor);
-                                            $qalp = mysqli_query($koneksi,"SELECT id from applpj where approve = 1 ");
-                                            $dalp = mysqli_num_rows($qalp);
+                                            $plpj = mysqli_query($koneksi, "SELECT id from pengajuan_lpj where ID_ORMAWA = '$dor[0]'  ");
+                                            while ($dplpj = mysqli_fetch_array($plpj)) {
+                                                $qalp = mysqli_query($koneksi,"SELECT id, approve  from applpj where approve = 1 and idlpj = '$dplpj[id]' ");
+                                                $dalp =  mysqli_fetch_row($qalp);
+                                                if (isset($dalp)) {
+                                                    $total++;
+                                                }
+                                            }
                     
                                         ?>
                                             Jumlah Acara</div>
-                                     <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo  $dalp ?></div></center>
+                                     <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo  $total ?></div></center>
                                     </div>
                                     
                                 </div>
@@ -98,27 +105,32 @@
                                     <div class="col mr-2">
                                         <?php
                                         
-                                            $qp = mysqli_query($koneksi,"SELECT id, nama_kegiatan, Tanggal FROM pengajuan_kegiatan_mhs where id_ormawa ='$dor[2]'  ORDER BY Tanggal DESC LIMIT 1")
+                                            $qp = mysqli_query($koneksi,"SELECT id, nama_kegiatan, Tanggal FROM pengajuan_kegiatan_mhs where id_ormawa ='$dor[0]'  ORDER BY Tanggal DESC ")
                                             ;
                                             $ngaret = 0;
-                                            while ($dp = mysqli_fetch_row($qp)) {
+                                            while ($dp = mysqli_fetch_array($qp)) {
                                                 $dnow=date_create(date("Y-m-d"));
                                                 $dcek=date_create($dp[2]);
                                                 $cek= $dcek < date_sub($dnow,date_interval_create_from_date_string("14 days"));
                                                 if ($cek) {
-                                                    $qpro = mysqli_query($koneksi,"SELECT id FROM pengajuan_lpj WHERE id_pengajuan = '$dp[0]'");
-                                                    $dpro = mysqli_fetch_row($qpro);
-                                                    if (isset($dpro[0])) {
-                                                       $ngaret++;
+                                                    $ak = mysqli_query($koneksi,"SELECT id_pengajuan  FROM approval_kegiatan WHERE status = 'Approve' AND id_pengajuan = '$dp[0]'  ");
+                                                    $dak = mysqli_fetch_row($ak);
+                                                    if (isset($dak)) {
+                                                        $qpro = mysqli_query($koneksi,"SELECT id FROM pengajuan_lpj WHERE id_pengajuan = '$dak[0]'");
+                                                        $dpro = mysqli_fetch_row($qpro);
+                                                        if (!isset($dpro)) {
+                                                        $ngaret++;
                                                     }
+                                                    }
+                                                    
                                                 }
                                             }
                                             
-                                            $total =   $dak - $ngaret;
+                                            
                                         ?>
                                         <center><div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                          <a style="text-decoration:none; color:green;" href="lpj_belum.php">LPJ Belum Terkumpul</a> </div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?=$total ?></div></center>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $ngaret ?></div></center>
                                     </div>
                                    
                                 </div>
