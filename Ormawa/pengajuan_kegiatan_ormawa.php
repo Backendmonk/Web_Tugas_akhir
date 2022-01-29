@@ -315,6 +315,7 @@
         $tanggal =$_POST['tanggal'];
         $waktu = $_POST['waktu'];
         $tempat = $_POST['tempat'];
+        $tahun = $array['MASA_JABATAN'];
 
         $id_random = rand();
 
@@ -485,7 +486,7 @@
         $proposal = $ran_Num_proposal.'_'.$filename_proposal;
 
         
-        $query = mysqli_query($koneksi, "INSERT INTO `pengajuan_kegiatan_mhs`(`id`,`id_ormawa`, `nama_ormawa`, `nama_kegiatan`, `tema_kegiatan`, `konsep_kegiatan`, `sub_kegiatan`, `pj_kegiatan`, `latar_belakang`, `tujuan_kegiatan`, `hasil_harapan`, `targer_pemasaran`, `Tanggal`, `Waktu`, `Tempat`, `sk_kepanitiaan`, `jadwal_kegiatan`, `rab`, `profile_pengisi_acara`, `desain_poster_sertifikat`, `ketua_panitia`, `contac_person`, `softcopy_proposal`) VALUES ('$id_random','$id','$nama_ormawa','$nama_kegiatan','$tema_kegiatan','$konsep','$sub_kegiatan','$pj','$latar_belakang','$tujuan','$hasil','$target','$tanggal','$waktu','$tempat','$sk','$jadwal','$rab','$profile','$poster','$ketua','$contac','$proposal')");
+        $query = mysqli_query($koneksi, "INSERT INTO `pengajuan_kegiatan_mhs`(`id`,`id_ormawa`, `nama_ormawa`, `nama_kegiatan`, `tema_kegiatan`, `konsep_kegiatan`, `sub_kegiatan`, `pj_kegiatan`, `latar_belakang`, `tujuan_kegiatan`, `hasil_harapan`, `targer_pemasaran`, `Tanggal`, `Waktu`, `Tempat`, `sk_kepanitiaan`, `jadwal_kegiatan`, `rab`, `profile_pengisi_acara`, `desain_poster_sertifikat`, `ketua_panitia`, `contac_person`, `softcopy_proposal`,`TAHUN_BERLANGSUNG`) VALUES ('$id_random','$id','$nama_ormawa','$nama_kegiatan','$tema_kegiatan','$konsep','$sub_kegiatan','$pj','$latar_belakang','$tujuan','$hasil','$target','$tanggal','$waktu','$tempat','$sk','$jadwal','$rab','$profile','$poster','$ketua','$contac','$proposal','$tahun')");
 
 
     
