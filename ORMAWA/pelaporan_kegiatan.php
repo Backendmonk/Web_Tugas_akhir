@@ -69,6 +69,8 @@
                                 $no=0;
                                 $qlpj = mysqli_query($koneksi, "SELECT * FROM pengajuan_lpj");
                                 while ($dlpj = mysqli_fetch_array($qlpj)) {
+                                    if ($dlpj['id_ormawa'] == $array['ID_ORMAWA']) {
+                                    
                                     $no++;
                                     $idlpj = $dlpj['id'];
                                 $qALpj = mysqli_query($koneksi,"SELECT * FROM applpj where idlpj = '$idlpj'");
@@ -113,7 +115,10 @@
                               <?php  } ?>
                               <td><?= $st ?></td>
                             </tr> 
-                            <?php } ?>         
+                            <?php } 
+                                
+                            }
+                            ?>         
                         </tbody>
                     </table>
                         </main>

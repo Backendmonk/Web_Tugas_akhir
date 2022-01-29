@@ -126,10 +126,6 @@
     </select>
   </div>
   <div class="col-md-6">
-    <label for="ad" class="form-label">Gambar Struktur Organisasi</label>
-    <input type="file" class="form-control"  name="gambar" id="ad" value = "<?php echo $array['GAMBAR_STRUKTUR_ORGANISASI']; ?>">
-  </div>
-  <div class="col-md-6">
     <label for="email" class="form-label">Email</label>
     <input type="email" class="form-control"  name="email" id="email" value = "<?php echo $array['email']; ?>">
   </div>
