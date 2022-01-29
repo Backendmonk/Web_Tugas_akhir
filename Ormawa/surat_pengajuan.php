@@ -140,6 +140,7 @@
         $nama_kegiatan = $_POST['nama_kegiatan'];
 
         $id_random = rand();
+        $tahun = $array['MASA_JABATAN'];
        
 
         // Pengajuan
@@ -167,7 +168,7 @@
         move_uploaded_file($_FILES['pengajuan']['tmp_name'], 'k_surat_pengajuan/'.$ran_Num_pengajuan.'_'.$filename_pengajuan);
         $pengajuan = $ran_Num_pengajuan.'_'.$filename_pengajuan;
         
-          $sql = "INSERT INTO `surat_pernyataan_kegiatan`(`id`,`id_ormawa`, `nama_kegiatan`, `surat_pernyataan`) VALUES ('$id_random','$id','$nama_kegiatan','$pengajuan')";
+          $sql = "INSERT INTO `surat_pernyataan_kegiatan`(`id`,`id_ormawa`, `nama_kegiatan`, `surat_pernyataan`,`TAHUN_BERLANGSUNG`) VALUES ('$id_random','$id','$nama_kegiatan','$pengajuan','$tahun')";
 
     
         $query = mysqli_query($koneksi, $sql);
