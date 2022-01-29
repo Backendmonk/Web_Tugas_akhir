@@ -19,18 +19,18 @@
        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
          aria-controls="collapseTwo">
          <i class="fas fa-fw fa-tachometer-alt"></i>
-         <span>Approval Sesuai Renja</span>
+         <span>Approval</span>
        </a>
        <div id="collapseTwo" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="">
          <div class="bg-white py-2 collapse-inner rounded">
 
            <a class="collapse-item" href="Approval_kegiatan_mahasiswa.php">
 
-             <span>Approval Kegiatan</span></a>
+             <span>pengajuan Kegiatan</span></a>
 
            <a class="collapse-item" href="appLPJ.php">
 
-             <span>Approval LPJ</span></a>
+             <span>pelaporan kegiatan</span></a>
 
          </div>
        </div>

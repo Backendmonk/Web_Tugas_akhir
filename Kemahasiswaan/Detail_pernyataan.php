@@ -82,7 +82,7 @@
                                 <tr>
                                     <th>Surat Pernyataan</th>
                                     <td>:</td>
-                                    <td><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "../Ormawa/k_surat_pengajuan/".$arr['surat_pernyataan'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
+                                    <td><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "lihatPdfOrmawa.php?id=k_surat_pengajuan/".$arr['surat_pernyataan'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
 
                                 </tr>
 

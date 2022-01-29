@@ -15,6 +15,9 @@
     <title>Kegiatan Ormawa</title>
 
     <?php include '../template/head.php' ?>
+    <!-- Custom styles for this template -->
+ <link href="../css/sb-admin-2.min.css" rel="stylesheet">
+<link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 </head>
 
@@ -36,15 +39,20 @@
                     <!-- Content Row -->
                     <div class="row">
                         <main class="col overflow-auto h-100">
-                                <table class="table table-bordered">
-                                <h6 class="m-0 font-weight-bold text-primary"> <a style="color :black;text-decoration:none;" href="appLPJ.php"> Approval LPJ
+                        <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary"> <a style="color :black;text-decoration:none;" href="appLPJ.php"> Approval LPJ
                                     </a>
                                 |
 
                                 <a style="color: black;text-decoration:none;" href="appBK.php">  Approval Bukti Kegiatan </a>
                             </h6>
                          <br>
-                            
+                    </div>
+                         <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                
                         <thead>
                             <tr>
                                 <th scope="col">No</th>
@@ -105,6 +113,9 @@
                             <?php } ?>         
                         </tbody>
                     </table>
+                    </div>
+                    </div>
+                    </div>
                         </main>
                     </div>
 
@@ -130,20 +141,49 @@
     </div>
     <!-- End of Page Wrapper -->
 
-
-    <!-- Footer -->
-    <?php include '../template/footer.php' ?>
-    <!-- End of Footer -->
+<!-- Footer -->
+<?php include '../template/footer.php' ?>
+            <!-- End of Footer -->
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
-    <!-- summon modal untuk allpage -->
-    <?php include 'Template/modal.php' ?>
 
+    <!-- summon Modal-->
+   <?php include 'Template/modal.php' ?>
 
-    <?php include '../template/footInc.php';
-    ?>
+    <!-- Bootstrap core JavaScript-->
+    <script src="../vendor/jquery/jquery.min.js"></script>
+    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="../js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="../vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="../js/demo/chart-area-demo.js"></script>
+    <script src="../js/demo/chart-pie-demo.js"></script>
+    <!-- Bootstrap core JavaScript-->
+    <script src="../vendor/jquery/jquery.min.js"></script>
+    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="../js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="../vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="../js/demo/datatables-demo.js"></script>
 
 </body>
 

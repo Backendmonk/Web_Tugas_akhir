@@ -155,7 +155,7 @@
                                 <tr>
                                     <th>Sk Kepanitiaan</th>
                                     <td>:</td>
-                                    <td><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "../Ormawa/k_SK_kegiatan/".$arr['sk_kepanitiaan'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
+                                    <td><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "lihatPdf.php?id=k_SK_kegiatan/".$arr['sk_kepanitiaan'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
 
                                 </tr>
 
@@ -163,14 +163,14 @@
                                 <tr>
                                     <th>Jadwal</th>
                                     <td>:</td>
-                                    <td><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "../Ormawa/k_jadwal/".$arr['jadwal_kegiatan'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
+                                    <td><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "lihatPdf.php?id=k_jadwal/".$arr['jadwal_kegiatan'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
 
                                 </tr>
 
                                 <tr>
                                     <th>RAB</th>
                                     <td>:</td>
-                                    <td><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "../Ormawa/k_jadwal/".$arr['jadwal_kegiatan'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
+                                    <td><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "lihatPdf.php?id=k_jadwal/".$arr['jadwal_kegiatan'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
 
                                 </tr>
 
@@ -178,14 +178,14 @@
                                 <tr>
                                     <th>Profile Pengisi Acara</th>
                                     <td>:</td>
-                                    <td><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "../Ormawa/k_profile/".$arr['profile_pengisi_acara'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
+                                    <td><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "lihatPdf.php?id=k_profile/".$arr['profile_pengisi_acara'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
 
                                 </tr>
 
                                 <tr>
                                     <th>Desain Poster</th>
                                     <td>:</td>
-                                    <td><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "../Ormawa/k_poster/".$arr['desain_poster_sertifikat'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
+                                    <td><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "lihatPdf.php?id=k_poster/".$arr['desain_poster_sertifikat'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
 
                                 </tr>
 
@@ -209,7 +209,7 @@
                                 <tr>
                                     <th>Proposal</th>
                                     <td>:</td>
-                                    <td><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "../Ormawa/k_proposal/".$arr['softcopy_proposal'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
+                                    <td><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "lihatPdf.php?id=k_proposal/".$arr['softcopy_proposal'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
 
                                 </tr>
                                 <?php 

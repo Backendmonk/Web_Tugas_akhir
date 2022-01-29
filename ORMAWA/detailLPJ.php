@@ -101,31 +101,31 @@
                                 <tr>
                                     <th>Pelaksanaan Kegiatan</th>
                                     <td>:</td>
-                                    <td><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "../Ormawa/lpj/".$arr['pelaksanaan_kegaitan'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
+                                    <td><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "lihatPdf.php?id=lpj/".$arr['pelaksanaan_kegaitan'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
                                 </tr>
 
                                 <tr>
                                     <th>Kepanitiaan</th>
                                     <td>:</td>
-                                    <td><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "../Ormawa/lpj/".$arr['kepanitiaan'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
+                                    <td><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "lihatPdf.php?id=lpj/".$arr['kepanitiaan'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
                                 </tr>
 
                                 <tr>
                                     <th>Peserta</th>
                                     <td>:</td>
-                                    <td><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "../Ormawa/lpj/".$arr['peserta'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
+                                    <td><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "lihatPdf.php?id=lpj/".$arr['peserta'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
                                 </tr>
                                 <tr>
 
                                     <th>RAB Pemasukan</th>
                                     <td>:</td>
-                                    <td><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "../Ormawa/lpj/".$arr['rab_masukan'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
+                                    <td><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "lihatPdf.php?id=lpj/".$arr['rab_masukan'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
                                 </tr>
 
                                 <tr>
                                     <th>RAB Pengeluaran</th>
                                     <td>:</td>
-                                    <td><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "../Ormawa/lpj/".$arr['rab_pengeluaran'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
+                                    <td><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "lihatPdf.php?id=lpj/".$arr['rab_pengeluaran'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
 
                                 </tr>
 
@@ -133,20 +133,20 @@
                                 <tr>
                                     <th>Realisasi Anggaran</th>
                                     <td>:</td>
-                                    <td><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "../Ormawa/lpj/".$arr['realisasi_anggaran'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
+                                    <td><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "lihatPdf.php?id=lpj/".$arr['realisasi_anggaran'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
 
                                 </tr>
 
                                 <tr>
                                     <th>Bukti Pembayarant</th>
                                     <td>:</td>
-                                    <td><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "../Ormawa/lpj/".$arr['bukti_pembayaran'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
+                                    <td><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "lihatPdf.php?id=lpj/".$arr['bukti_pembayaran'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
                                 </tr>
 
                                 <tr>
                                     <th>Berita Acara</th>
                                     <td>:</td>
-                                    <td><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "../Ormawa/lpj/".$arr['berita_acara'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
+                                    <td><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "lihatPdf.php?id=lpj/".$arr['berita_acara'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
 
                                 </tr>
 
@@ -154,14 +154,14 @@
                                 <tr>
                                     <th>Absensi</th>
                                     <td>:</td>
-                                    <td><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "../Ormawa/lpj/".$arr['absensi'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
+                                    <td><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "lihatPdf.php?id=lpj/".$arr['absensi'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
 
                                 </tr>
 
                                 <tr>
                                     <th>Notulensi Rapat/Seminar</th>
                                     <td>:</td>
-                                    <td><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "../Ormawa/lpj/".$arr['rapat'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
+                                    <td><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "lihatPdf.php?id=lpj/".$arr['rapat'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
 
                                 </tr>
 
@@ -169,28 +169,28 @@
                                 <tr>
                                     <th>Rekap Penilaian Peserta</th>
                                     <td>:</td>
-                                    <td><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "../Ormawa/lpj/".$arr['nilai_peserta'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
+                                    <td><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "lihatPdf.php?id=lpj/".$arr['nilai_peserta'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
 
                                 </tr>
 
                                 <tr>
                                     <th>Desain Sertifikat</th>
                                     <td>:</td>
-                                    <td><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "../Ormawa/lpj/".$arr['desain_sertifikat'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
+                                    <td><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "lihatPdf.php?id=lpj/".$arr['desain_sertifikat'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
 
                                 </tr>
 
                                 <tr>
                                     <th>Dokumentasi Kegiatan</th>
                                     <td>:</td>
-                                    <td><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "../Ormawa/lpj/".$arr['dokumentasi'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
+                                    <td><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "lihatPdf.php?id=lpj/".$arr['dokumentasi'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
 
                                 </tr>
 
                                 <tr>
                                     <th>Softcopy LPJ</th>
                                     <td>:</td>
-                                    <td><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "../Ormawa/lpj/".$arr['LPJ'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
+                                    <td><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "lihatPdf.php?id=lpj/".$arr['LPJ'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
 
                                 </tr>
 

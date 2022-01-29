@@ -71,9 +71,8 @@
                                                 $dpo = mysqli_fetch_row($qpo);
                                         ?>
                     <p><?= $dpo[15] ?></p>
-                    <embed type="application/pdf" src="../ormawa/f_renja/<?= $dpo[10] ?>" width="600" height="400"></embed>
-                    <a class="btn btn-primary col-2" href="../ormawa/f_renja/<?= $dpo[10] ?>" role="button">Renja</a>
-                    <a class="btn btn-primary col-2" href="../ormawa/f_ad_art/<?= $dpo[11] ?>" role="button">AD ART</a>
+                    <a class="btn btn-primary col-2" href="lihatPdfOrmawa.php?id=f_renja/<?= $dpo[10] ?>" role="button">Renja</a>
+                    <a class="btn btn-primary col-2" href="lihatPdfOrmawa.php?id=f_ad_art/<?= $dpo[11] ?>" role="button">AD ART</a>
                      
                         </div>
                         
