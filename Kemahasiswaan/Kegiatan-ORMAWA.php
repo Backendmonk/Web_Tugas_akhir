@@ -76,6 +76,7 @@
                                             <th>Kemahasiswaan</th>
                                             <th>Status</th>
                                             <th>Catatan</th>
+                                            <th>Tahun Kepengurusan</th>
                                             <th>Detail</th>
                                         
                                         </tr>
@@ -84,7 +85,7 @@
                                     <tbody>
                                   
                                         <?php
-                                                $q = mysqli_query($koneksi,"  SELECT * FROM `approval_kegiatan` ");
+                                                $q = mysqli_query($koneksi,"  SELECT * FROM `approval_kegiatan` INNER JOIN `pengajuan_kegiatan_mhs` ON approval_kegiatan.id_pengajuan = pengajuan_kegiatan_mhs.id ");
                                          
 
                                                 while ($data = mysqli_fetch_array($q)) {
@@ -100,6 +101,7 @@
                                                                     <td><?php echo $data['status'];?></td>
 
                                                                     <td><?php echo $data['catatan'];?></td>
+                                                                    <td><?php echo $data['TAHUN_BERLANGSUNG'];?></td>
 
                                                                     <td><button type="button" class="btn btn-primary"><a style="color:white; text-decoration:none;" href= "Detail_pengajuan_tracking.php?id= <?php echo $data['id_pengajuan']?>">Lihat Lebih Detail</a></button></td>
                                                                     
@@ -145,6 +147,7 @@
                                             <th>Kemahasiswaan</th>
                                             <th>Status</th>
                                             <th>Catatan</th>
+                                            <th>Tahun Kepengurusan</th>
                                             <th>Detail</th>
                                         
                                         </tr>
@@ -153,7 +156,7 @@
                                     <tbody>
                                   
                                         <?php
-                                                $q = mysqli_query($koneksi,"  SELECT * FROM `approval_pernyataan_kegiatan`");
+                                                $q = mysqli_query($koneksi,"  SELECT * FROM `approval_pernyataan_kegiatan` INNER JOIN surat_pernyataan_kegiatan on approval_pernyataan_kegiatan.id_pernyatan = surat_pernyataan_kegiatan.id");
                                          
 
                                                 while ($data = mysqli_fetch_array($q)) {
@@ -169,6 +172,7 @@
                                                                     <td><?php echo $data['status'];?></td>
 
                                                                     <td><?php echo $data['catatan'];?></td>
+                                                                    <td><?php echo $data['TAHUN_BERLANGSUNG'];?></td>
 
                                                                     <td><button type="button" class="btn btn-primary"><a style="color:white; text-decoration:none;" href= "detail_pernyataan_tracking.php?id= <?php echo $data['id_pernyatan']?>">Lihat Lebih Detail</a></button></td>
                                                                     
