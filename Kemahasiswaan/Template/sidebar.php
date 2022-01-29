@@ -37,7 +37,7 @@
      </li>
 
      <!-- Divider -->
-     <hr class="sidebar-divider">
+     <!-- <hr class="sidebar-divider">
 
      <li class="nav-item active">
        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo2" aria-expanded="true"
@@ -57,7 +57,7 @@
              <span>Approval Bukti Kegiatan</span></a>
          </div>
        </div>
-     </li>
+     </li> -->
 
      <!-- <hr class="sidebar-divider"> -->
      <!-- Nav Item - Dashboard -->

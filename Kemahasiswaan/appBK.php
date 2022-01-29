@@ -37,7 +37,13 @@
                     <div class="row">
                         <main class="col overflow-auto h-100">
                                 <table class="table table-bordered">
-                        <h3>Approval Bukti Kegiatan</h3>
+                                <h6 class="m-0 font-weight-bold text-primary"> <a style="color :black;text-decoration:none;" href="appLPJ.php"> Approval LPJ
+                                    </a>
+                                |
+
+                                <a style="color: black;text-decoration:none;" href="appBK.php">  Approval Bukti Kegiatan </a>
+                            </h6>
+                         <br>
                         <thead>
                             <tr>
                                 <th scope="col">No</th>

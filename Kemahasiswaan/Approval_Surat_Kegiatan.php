@@ -56,10 +56,13 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Kegiatan  
+                        <h6 class="m-0 font-weight-bold text-primary"> <a style="text-decoration:none;" href="Approval_kegiatan_mahasiswa.php"> Kegiatan Sesuai Renja
+                                    </a>
+                                |
 
-                                
+                                <a style="text-decoration:none;" href="Approval_Surat_Kegiatan.php">  Kegiatan Tidak Sesuai Renja </a>
                             </h6>
+                            
 
                              
                            
