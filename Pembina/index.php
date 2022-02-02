@@ -53,7 +53,7 @@
                                         <?php
                                             $qor = mysqli_query($koneksi,"SELECT * FROM ormawa where NIDN = '$array[NIDN]' ");
                                             $dor = mysqli_fetch_row($qor);
-                                            $qakb = mysqli_query($koneksi,"SELECT id from approval_kegiatan where nama_ormawa = '$dor[2]'  ");
+                                            $qakb = mysqli_query($koneksi,"SELECT id from approval_kegiatan where nama_ormawa = '$dor[2]' and status <> 'Approve' ");
                                             $dakb = mysqli_num_rows($qakb);
                                         ?>
                                             Kegiatan yang Sedang Diajukan</div>
