@@ -49,7 +49,7 @@
                                     <div class="col mr-2">
                                     <center> <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                         <?php
-                                           $qakb = mysqli_query($koneksi,"SELECT id from approval_kegiatan");
+                                           $qakb = mysqli_query($koneksi,"SELECT id from approval_kegiatan where status <> 'Approve'");
                                            $dakb = mysqli_num_rows($qakb);
                                         ?>
                                             Kegiatan yang Sedang Diajukan</div>
