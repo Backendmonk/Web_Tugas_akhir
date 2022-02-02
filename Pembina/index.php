@@ -40,8 +40,9 @@
                       
                     </div>
 
-           <!-- Content Row -->
-           <div class="row">
+       
+      <!-- Content Row -->
+      <div class="row">
                     
                     <div class="col-xl-3 col-md-6 mb-4">
                         <div class="card border-left-primary shadow h-100 py-2">
@@ -50,21 +51,13 @@
                                     <div class="col mr-2">
                                     <center> <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                         <?php
-                                            $total = 0;
                                             $qor = mysqli_query($koneksi,"SELECT * FROM ormawa where NIDN = '$array[NIDN]' ");
                                             $dor = mysqli_fetch_row($qor);
-                                            $plpj = mysqli_query($koneksi, "SELECT id from pengajuan_lpj where ID_ORMAWA = '$dor[0]'  ");
-                                            while ($dplpj = mysqli_fetch_array($plpj)) {
-                                                $qalp = mysqli_query($koneksi,"SELECT id, approve  from applpj where approve = 1 and idlpj = '$dplpj[id]' ");
-                                                $dalp =  mysqli_fetch_row($qalp);
-                                                if (isset($dalp)) {
-                                                    $total++;
-                                                }
-                                            }
-                    
+                                            $qakb = mysqli_query($koneksi,"SELECT id from approval_kegiatan where nama_ormawa = '$dor[2]'  ");
+                                            $dakb = mysqli_num_rows($qakb);
                                         ?>
-                                            Jumlah Acara</div>
-                                     <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo  $total ?></div></center>
+                                            Kegiatan yang Sedang Diajukan</div>
+                                     <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $dakb  ?></div></center>
                                     </div>
                                     
                                 </div>
@@ -81,17 +74,55 @@
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
                                         <center><div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                            Acara sedang berlangsung</div>
+                                        Kegiatan yang Sudah Disetujui</div>
                                             <?php 
-                                                $qak = mysqli_query($koneksi,"SELECT id from approval_kegiatan where status = 'Approve' AND nama_ormawa = '$dor[2]' ");
+                                                $qak = mysqli_query($koneksi,"SELECT id from approval_kegiatan where status = 'Approve' and nama_ormawa = '$dor[2]' ");
                                                 $dak = mysqli_num_rows($qak);
-                                                $queryl = mysqli_query($koneksi,"SELECT  * FROM  pengajuan_lpj WHERE nama_ormawa = '$dor[2]'"); 
-                                                $dlpj = mysqli_num_rows($queryl);    
-                                                $total = $dak - $dlpj
+                                                
+                                                
                                             ?>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $total ?></div></center>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $dak ?></div></center>
                                     </div>
                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-primary shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                    <center> <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                        <?php
+                                          
+                                          $qp = mysqli_query($koneksi,"SELECT id, nama_kegiatan, Tanggal FROM pengajuan_kegiatan_mhs where id_ormawa ='$dor[0]'  ORDER BY Tanggal DESC ")
+                                          ;
+                                          $ngaret = 0;
+                                          while ($dp = mysqli_fetch_array($qp)) {
+                                              $dnow=date_create(date("Y-m-d"));
+                                              $dcek=date_create($dp[2]);
+                                              $cek= $dcek < date_sub($dnow,date_interval_create_from_date_string("14 days"));
+                                              if ($cek) {
+                                                  $ak = mysqli_query($koneksi,"SELECT id_pengajuan  FROM approval_kegiatan WHERE status = 'Approve' AND id_pengajuan = '$dp[0]'  ");
+                                                  $dak = mysqli_fetch_row($ak);
+                                                  if (isset($dak)) {
+                                                      $qpro = mysqli_query($koneksi,"SELECT id FROM pengajuan_lpj WHERE id_pengajuan = '$dak[0]'");
+                                                      $dpro = mysqli_fetch_row($qpro);
+                                                      if (!isset($dpro)) {
+                                                      $ngaret++;
+                                                  }
+                                                  }
+                                                  
+                                              }
+                                          }
+                                          
+                                        ?>
+                                            Pelaporan yang Belum Terkumpul</div>
+                                     <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo  $ngaret ?></div></center>
+                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -105,31 +136,20 @@
                                     <div class="col mr-2">
                                         <?php
                                         
-                                            $qp = mysqli_query($koneksi,"SELECT id, nama_kegiatan, Tanggal FROM pengajuan_kegiatan_mhs where id_ormawa ='$dor[0]'  ORDER BY Tanggal DESC ")
-                                            ;
-                                            $ngaret = 0;
-                                            while ($dp = mysqli_fetch_array($qp)) {
-                                                $dnow=date_create(date("Y-m-d"));
-                                                $dcek=date_create($dp[2]);
-                                                $cek= $dcek < date_sub($dnow,date_interval_create_from_date_string("14 days"));
-                                                if ($cek) {
-                                                    $ak = mysqli_query($koneksi,"SELECT id_pengajuan  FROM approval_kegiatan WHERE status = 'Approve' AND id_pengajuan = '$dp[0]'  ");
-                                                    $dak = mysqli_fetch_row($ak);
-                                                    if (isset($dak)) {
-                                                        $qpro = mysqli_query($koneksi,"SELECT id FROM pengajuan_lpj WHERE id_pengajuan = '$dak[0]'");
-                                                        $dpro = mysqli_fetch_row($qpro);
-                                                        if (!isset($dpro)) {
-                                                        $ngaret++;
-                                                    }
-                                                    }
-                                                    
-                                                }
+                                        $total = 0;
+                                        $plpj = mysqli_query($koneksi, "SELECT id from pengajuan_lpj where ID_ORMAWA = '$dor[0]'  ");
+                                        while ($dplpj = mysqli_fetch_array($plpj)) {
+                                            $qalp = mysqli_query($koneksi,"SELECT id, approve  from applpj where approve = 1 and idlpj = '$dplpj[id]' ");
+                                            $dalp =  mysqli_fetch_row($qalp);
+                                            if (isset($dalp)) {
+                                                $total++;
                                             }
-                                            
+                                        }
+                                           
                                             
                                         ?>
                                         <center><div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                         <a style="text-decoration:none; color:green;" href="lpj_belum.php">LPJ Belum Terkumpul</a> </div>
+                                         <a style="text-decoration:none; color:green;" href="lpj_belum.php">Kegiatan yang Sudah Selesai</a> </div>
                                         <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $ngaret ?></div></center>
                                     </div>
                                    
@@ -138,8 +158,9 @@
                         </div>
                     </div>
                     
-                    </div>
+                   
 
+                    </div>
         </main>
                     </div>
 
