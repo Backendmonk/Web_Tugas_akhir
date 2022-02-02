@@ -137,7 +137,8 @@
                     </div>
                     
                     </div>
-
+                    <embed type="application/pdf" src="../ORMAWA/f_bukti/1642564492_harris_biases.pdf" width="1220" height="1080"></embed>
+                  
         </main>
                     </div>
 

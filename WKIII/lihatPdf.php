@@ -26,7 +26,7 @@ include "SessionWKIII.php";
 
 <body id="page-top">
 
-<embed type="application/pdf" src="<?= $id ?>" width="1920" height="1080"></embed>
+<embed type="application/pdf" src="../ORMAWA/<?= $id ?>" width="1920" height="1080"></embed>
 
 </body>
 

@@ -25,7 +25,7 @@ include "SessionPengurus.php";
 
 <body id="page-top">
 
-<embed type="application/pdf" src="<?= $id ?>" width="1920" height="1080"></embed>
+<embed type="application/pdf" src="f_lpj/2131163493_harris_biases.pdf" width="1920" height="1080"></embed>
 
 </body>
 

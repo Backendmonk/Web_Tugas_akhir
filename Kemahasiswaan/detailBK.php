@@ -76,7 +76,7 @@
                                 <tr>
                                     <th>Bukti Kegiatan</th>
                                     <td>:</td>
-                                    <td><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "lihatPdfOrmawa.php?id=lpj/".$arr['bukti'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
+                                    <td><button type="button" class="btn btn-primary"> <a style="text-decoration:none; Color:white;" href="<?php echo "lihatPdfOrmawa.php?id=f_bukti/".$arr['bukti'] ?>"> <i class = "fa fa-download"></i> </a> </button></td>
                                 </tr>
                                
                            <tr>
