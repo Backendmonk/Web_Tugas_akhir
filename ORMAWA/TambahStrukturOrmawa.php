@@ -212,13 +212,7 @@
         $filename_sb = $_FILES['ad_art']['name'];
         $ext_sb = pathinfo($filename_sb, PATHINFO_EXTENSION);
         $ekstensi_sb = array('doc','docx','pdf');
-
-        //
-        $ran_Num_gm = $_POST['namaOr'];
-        $filename_gm = $_FILES['gambar']['name'];
-        $ext_gm = pathinfo($filename_gm, PATHINFO_EXTENSION);
-        $ekstensi_gm = array('png','jpeg','jpg');
-        
+       
         if(!in_array($ext_kg,$ekstensi_kg)){
               ?>
               <script>
@@ -243,30 +237,12 @@
                     </script>
           <?php
         }
-        elseif (!in_array($ext_gm,$ekstensi_gm)) {
-          ?>
-          <script>
-                Swal.fire({
-                icon: 'error',
-                title: 'Gagal',
-                text: 'Ekstensi Salah',
-                
-                })
-                </script>
-      <?php
-    }
+       
         else{
         // tmp file
-         move_uploaded_file($_FILES['renja']['tmp_name'], 'f_renja/'.$ran_Num_kg.'_'.$filename_kg);
-         $renja = $ran_Num_kg.'_'.$filename_kg;
+       
 
-         move_uploaded_file($_FILES['ad_art']['tmp_name'], 'f_ad_art/'.$ran_Num_sb.'_'.$filename_sb);
-         $ad_art = $ran_Num_sb.'_'.$filename_sb;
-
-         move_uploaded_file($_FILES['gambar']['tmp_name'], '../img/ormawa_struktur/'.$ran_Num_gm.'_'.$filename_gm);
-         $gambar = $ran_Num_gm.'_'.$filename_gm;
-
-        $sql = "UPDATE pengurus_ormawa SET NAMA_WAKIL = '$namaWk', NAMA_WAKIL2 = '$namaWk2', SEKRETARIS1 = '$sekre1', SEKRETARIS2 = '$sekre2',BENDAHARA1='$ben1',BENDAHARA2='$ben2', RENJA = '$renja', AD_ART = '$ad_art', MASA_JABATAN ='$masaJab', TAHUN_DILANTIK='$thnDlt', GAMBAR_STRUKTUR_ORGANISASI = '$gambar', email = '$email'  WHERE ID_ORMAWA='$id' AND USERNAME_KETUA = '$username' ";
+        $sql = "UPDATE pengurus_ormawa SET NAMA_WAKIL = '$namaWk', NAMA_WAKIL2 = '$namaWk2', SEKRETARIS1 = '$sekre1', SEKRETARIS2 = '$sekre2',BENDAHARA1='$ben1',BENDAHARA2='$ben2', RENJA = '$renja', AD_ART = '$ad_art', MASA_JABATAN ='$masaJab', TAHUN_DILANTIK='$thnDlt', email = '$email'  WHERE ID_ORMAWA='$id' AND USERNAME_KETUA = '$username' ";
         // var_dump($sql);
           //update query
           $query = mysqli_query($koneksi,$sql);

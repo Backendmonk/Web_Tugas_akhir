@@ -77,6 +77,7 @@
                                             <th>Status</th>
                                             <th>Catatan</th>
                                             <th>Tahun Kepengurusan</th>
+                                            <th> LPJ </th>
                                             <th>Detail</th>
                                         
                                         </tr>
@@ -85,7 +86,7 @@
                                     <tbody>
                                   
                                         <?php
-                                                $q = mysqli_query($koneksi,"  SELECT * FROM `approval_kegiatan` INNER JOIN `pengajuan_kegiatan_mhs` ON approval_kegiatan.id_pengajuan = pengajuan_kegiatan_mhs.id ");
+                                                $q = mysqli_query($koneksi,"  SELECT * FROM `applpj` inner join pengajuan_lpj on   applpj.idlpj = pengajuan_lpj.id  inner JOIN pengajuan_kegiatan_mhs  on pengajuan_lpj.id_pengajuan = pengajuan_kegiatan_mhs.id inner join approval_kegiatan on approval_kegiatan.id_pengajuan = pengajuan_kegiatan_mhs.id ");
                                          
 
                                                 while ($data = mysqli_fetch_array($q)) {
@@ -102,6 +103,15 @@
 
                                                                     <td><?php echo $data['catatan'];?></td>
                                                                     <td><?php echo $data['TAHUN_BERLANGSUNG'];?></td>
+                                                                    <td><?php 
+                                                                        if($data['approve']== 1){
+                                                                            $approve = "approve";
+                                                                        }elseif($data['approve']==0){
+                                                                            $approve = "Tolak";
+                                                                        }else{
+                                                                            $approve = "Menunggu";
+                                                                        }
+                                                                    echo $approve;?></td>
 
                                                                     <td><button type="button" class="btn btn-primary"><a style="color:white; text-decoration:none;" href= "Detail_pengajuan_tracking.php?id= <?php echo $data['id_pengajuan']?>">Lihat Lebih Detail</a></button></td>
                                                                     
