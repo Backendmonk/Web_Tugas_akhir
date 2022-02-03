@@ -111,7 +111,7 @@
                                 <tr>
                                     <th>latar Belakang</th>
                                     <td>:</td>
-                                    <td><textarea  readonly  class="form-control" rows="4" cols="50"> <?php echo $arr['latar_belakang'];?><textarea></td>
+                                    <td><textarea  readonly  class="form-control" rows="4" cols="50"> <?php echo $arr['latar_belakang'];?></textarea></td>
                                 </tr>
 
                                 <tr>

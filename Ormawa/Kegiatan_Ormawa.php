@@ -90,9 +90,10 @@
                                     </thead>
                                     
                                     <tbody>
-                                  
+
                                         <?php
-                                                $q = mysqli_query($koneksi," SELECT * FROM `applpj` inner join pengajuan_lpj on   applpj.idlpj = pengajuan_lpj.id  inner JOIN pengajuan_kegiatan_mhs  on pengajuan_lpj.id_pengajuan = pengajuan_kegiatan_mhs.id inner join approval_kegiatan on approval_kegiatan.id_pengajuan = pengajuan_kegiatan_mhs.id WHERE approval_kegiatan.nama_ormawa = '$nama' AND pengajuan_kegiatan_mhs.TAHUN_BERLANGSUNG = '$tahun' ");
+                                     
+                                                $q = mysqli_query($koneksi," SELECT * FROM `applpj` right join pengajuan_lpj on   applpj.idlpj = pengajuan_lpj.id  right JOIN pengajuan_kegiatan_mhs  on pengajuan_lpj.id_pengajuan = pengajuan_kegiatan_mhs.id right join approval_kegiatan on approval_kegiatan.id_pengajuan = pengajuan_kegiatan_mhs.id WHERE approval_kegiatan.nama_ormawa = '$nama' AND pengajuan_kegiatan_mhs.TAHUN_BERLANGSUNG = '$tahun' ");
                                          
 
                                                 while ($data = mysqli_fetch_array($q)) {
@@ -110,12 +111,14 @@
                                                                     <td><?php echo $data['catatan'];?></td>
                                                                     <td><?php echo $data['TAHUN_BERLANGSUNG'];?></td>
                                                                     <td><?php 
-                                                                        if($data['approve']== 1){
+                                                                  
+                                                                        if($data['approve']=='1'){
                                                                             $approve = "approve";
-                                                                        }elseif($data['approve']==0){
+                                                                        }elseif($data['approve']== '0' ){
                                                                             $approve = "Tolak";
-                                                                        }else{
-                                                                            $approve = "Menunggu";
+                                                                        }elseif(is_null($data['approve'])){
+                                                                          
+                                                                                $approve ="Menunggu";
                                                                         }
                                                                     echo $approve;?></td>
 
