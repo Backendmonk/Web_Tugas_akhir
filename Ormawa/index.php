@@ -41,7 +41,7 @@
                         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
                         
                     </div>
-                    <div class="row">
+                    
 
 
 
@@ -163,7 +163,11 @@
                         </div>
                     </div>
                     
-                    
+                    <h5>Kontak Kemahasiswaan Yang Bisa dihubungi</h5>
+                    <span>Bu Asti: +62 831-1451-7429</span>
+                    <span>Pak Andika: +62 896-8541-0790 </span>
+                    <span>Email kemahasiswaan: kemahasiswaan@stiki-indonesia.ac.id</span>
+                    <div class="row">
                    
 
                     </div>
