@@ -45,6 +45,7 @@
       <div class="row">
                     
                     <div class="col-xl-3 col-md-6 mb-4">
+                        <a href="kegiatanDiajukan.php">
                         <div class="card border-left-primary shadow h-100 py-2">
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
@@ -66,12 +67,14 @@
                                 </div>
                             </div>
                         </div>
+                        </a>
                     </div>
                     
                   
                     
                     <!-- Earnings (Monthly) Card Example -->
                     <div class="col-xl-3 col-md-6 mb-4">
+                        <a href="kegiatanDisetujui.php">
                         <div class="card border-left-success shadow h-100 py-2">
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
@@ -107,9 +110,11 @@
                                 </div>
                             </div>
                         </div>
+                        </a>
                     </div>
 
                     <div class="col-xl-3 col-md-6 mb-4">
+                        <a href="PelaporanBelumTerkumpul.php">
                         <div class="card border-left-primary shadow h-100 py-2">
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
@@ -149,18 +154,16 @@
                                               $idspk = $dspk[0];
                                               $qapk = mysqli_query($koneksi, "SELECT id from approval_pernyataan_kegiatan where status = 'Approve' and id_pernyatan = '$idspk' ");
                                               $dapk = mysqli_fetch_row($qapk);
-                                              if (empty($dapk)) {
-                                                $ngaret++;
-                                              }else {
+                                              if (!empty($dapk)) {
                                                 $qbk = mysqli_query($koneksi, "SELECT id from bukti_kegiatan_mahasiswa where id_kegiatan = '$idspk' ");
                                                 $dbk = mysqli_fetch_row($qbk);
                                                 
                                                 if (!isset($dbk)) {
                                                     $ngaret++;
                                                 }else {
-                                                    $qabk = mysqli_query($koneksi, "SELECT id from appbk where idbk = '$dbk[0]' and approve <> true ");
+                                                    $qabk = mysqli_query($koneksi, "SELECT id, approve from appbk where idbk = '$dbk[0]' ");
                                                     $dabk = mysqli_fetch_row($qabk);
-                                                    if (isset($dabk)) {
+                                                    if (isset($dabk) && $dabk[1] != true) {
                                                         $ngaret++;
                                                     }
                                                 }
@@ -175,10 +178,12 @@
                                 </div>
                             </div>
                         </div>
+                        </a>
                     </div>
 
                       <!-- Earnings (Monthly) Card Example -->
                       <div class="col-xl-3 col-md-6 mb-4">
+                          <a href="kegiatanSelesai.php">
                         <div class="card border-left-success shadow h-100 py-2">
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
@@ -211,13 +216,14 @@
                                             
                                         ?>
                                         <center><div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                         <a style="text-decoration:none; color:green;" href="lpj_belum.php">Kegiatan yang Sudah Selesai</a> </div>
+                                         Kegiatan yang Sudah Selesai</div>
                                         <div class="h5 mb-0 font-weight-bold text-gray-800"><?=  $total ?></div></center>
                                     </div>
                                    
                                 </div>
                             </div>
                         </div>
+                        </a>
                     </div>
                     
                    
