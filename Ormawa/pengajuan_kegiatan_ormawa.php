@@ -289,7 +289,20 @@
 </body>
 
 </html>
+<?php 
+    error_reporting(0);
+$ido = $array['ID_ORMAWA'];
+$qplpj = mysqli_query($koneksi, "SELECT id from pengajuan_lpj where id_ormawa = '$ido' ORDER BY id DESC" );
+$dplpj = mysqli_fetch_row($qplpj);
+$idlpj = $dplpj[0];
+$qalpj = mysqli_query($koneksi, "SELECT approve from applpj where idlpj = '$idlpj' " );
+$dalpj = mysqli_fetch_row($qalpj);
+if ($dalpj[0] != true  ) {
+       
+    }
 
+
+?>
 </body>
 </html>
 

@@ -50,7 +50,7 @@
                                     <div class="col mr-2">
                                     <center> <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                         <?php
-                                           $qakb = mysqli_query($koneksi,"SELECT id from approval_kegiatan where status <> 'Approve'");
+                                            $qakb = mysqli_query($koneksi,"SELECT id from approval_kegiatan where status <> 'Approve'");
                                            $dakb = mysqli_num_rows($qakb);
                                         ?>
                                             Kegiatan yang Sedang Diajukan</div>
@@ -73,11 +73,29 @@
                                         <center><div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                         Kegiatan yang Sudah Disetujui</div>
                                             <?php 
-                                                $qak = mysqli_query($koneksi,"SELECT id from approval_kegiatan where status = 'Approve'  ");
-                                                $dak = mysqli_num_rows($qak);
-                                                
+                                                $total = 0;
+                                                $qak = mysqli_query($koneksi,"SELECT 
+                                                id_pengajuan from approval_kegiatan where status = 'Approve' ");
+                                                while ($dak = mysqli_fetch_array($qak)) {
+                                                    $idlpj = $dak[0];
+                                                    $qlpj = mysqli_query($koneksi,"SELECT id_pengajuan from pengajuan_lpj where id_pengajuan = '$idlpj' ");
+                                                    $cek = mysqli_fetch_row($qlpj);
+                                                    if (empty($cek)) {
+                                                        $total++;
+                                                    }
+                                                }
+                                                $qak = mysqli_query($koneksi,"SELECT 
+                                                id_pernyatan from approval_pernyataan_kegiatan where status = 'Approve' ");
+                                                while ($dap = mysqli_fetch_array($qak)) {
+                                                    $idbk = $dap[0];
+                                                    $qbk = mysqli_query($koneksi,"SELECT id_kegiatan from bukti_kegiatan_mahasiswa where id_kegiatan = '$idbk' ");
+                                                    $cek = mysqli_fetch_row($qbk);
+                                                    if (empty($cek)) {
+                                                        $total++;
+                                                    }
+                                                }
                                             ?>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $dak ?></div></center>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $total ?></div></center>
                                     </div>
                                    
                                 </div>
