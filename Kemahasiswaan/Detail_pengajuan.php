@@ -344,9 +344,17 @@ require 'Template/EditProfilePass.php';
                 $nidn = $arr_km['NIDN_KEMAHASISWAAN'];
                 $nama_km = $arr_km['NAMA_KEMAHASISWAAN'];
                 $status = "Approve";
-
+                $kegiatan = $arr['nama_kegiatan'];
+                $tanggal = $arr['Tanggal'];
+                $tempat = $arr['Tempat'];
+              
+                $selenggara = $arr['nama_ormawa'];
+                var_dump($kegiatan,$tanggal,$tempat,$selenggara);
+                
                 $update = mysqli_query($koneksi,"UPDATE `approval_kegiatan` SET `id_kemahasiswaan`='$nidn',`nama_kemahasiswaan`='$nama_km',`catatan`='$komentar',`status`='$status' WHERE `id_pengajuan` = $id");
-                    ?>
+
+                $laporan = mysqli_query($koneksi,"INSERT INTO `pelaporan` (`Nama_Kegiatan`, `Tanggal_Kegiatan`, `Tempat_Kegiatan`, `Penyelenggara`, `Absensi`, `Berita_Acara`, `LPJ`) VALUES ('$kegiatan', '$tanggal', '$tempat', '$selenggara', NULL, NULL, NULL);");
+                ?>
                     <script>
 									Swal.fire({
 									icon: 'success',

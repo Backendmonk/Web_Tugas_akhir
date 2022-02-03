@@ -11,10 +11,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+ 
 
     <title>Dashboard</title>
    
 <?php include '../template/head.php' ?>
+<link href="../css/sb-admin-2.min.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Custom styles for this page -->
+<link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 </head>
 
@@ -166,8 +171,94 @@
             
                     </div>
 
-                </div>
+   
                 <!-- /.container-fluid -->
+                <div class="card-body">
+                            <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        
+                                        <tr>
+                                            <th>Nama Kegiatan</th>
+                                            <th>Tanggal Kegiatan</th>
+                                            <th>Tempat Kegiatan</th>
+                                            <th>Peyelenggara</th>
+                                            <th>Absensi</th>
+                                            <th>Berita Kegiatan</th>
+                                            <th> LPJ </th>                                      
+                                        </tr>
+                                        
+                                    </thead>
+                                    
+                                    
+                                    <tbody>
+                                  
+                                        <?php
+                                                $q = mysqli_query($koneksi,"SELECT * FROM `applpj` inner join pengajuan_lpj on   applpj.idlpj = pengajuan_lpj.id  inner JOIN pengajuan_kegiatan_mhs  on pengajuan_lpj.id_pengajuan = pengajuan_kegiatan_mhs.id inner join approval_kegiatan on approval_kegiatan.id_pengajuan = pengajuan_kegiatan_mhs.id WHERE applpj.approve = 1 ");
+                                         
+
+                                                while ($data = mysqli_fetch_array($q)) {
+                                                    ?>
+                                                             <tr>
+                                                                    <td><?php echo $data['kegiatan'];?></td>
+
+                                                                    <td><?php echo $data['Tanggal'];?></td>
+
+                                                                    <td><?php echo $data['Tempat'];?></td>
+
+
+                                                                    <td><?php echo $data['nama_ormawa'];?></td>
+
+                                                                    <td><?php $cek = mysqli_num_rows($q);
+                                                                            if (!$cek < 1) {
+                                                                                Echo "Ada";
+                                                                            }
+                                                                            else{
+                                                                                echo "Tidak";
+                                                                            }
+                                                                    
+                                                                    
+                                                                    ?></td>
+                                                                    <td><?php $cek = mysqli_num_rows($q);
+                                                                            if (!$cek < 1) {
+                                                                                Echo "Ada";
+                                                                            }
+                                                                            else{
+                                                                                echo "Tidak";
+                                                                            }
+                                                                    
+                                                                    
+                                                                    ?></td>
+                                                                    <td><?php 
+                                                                        if($data['approve']== 1){
+                                                                            $approve = "approve";
+                                                                        }elseif($data['approve']==0){
+                                                                            $approve = "Tolak";
+                                                                        }else{
+                                                                            $approve = "Menunggu";
+                                                                        }
+                                                                    echo $approve;?></td>
+
+                                                                  
+                                                                    
+                                                                   
+                                                                </tr>
+
+                                                <?php
+                                                }
+
+                                        ?>
+                                       
+                                       
+                                    </tbody>
+                                </table>
+                              
+
+                                <p><a href="genratepdf.php" target="_blank">Cetak Laporan</a></p>
+                            </div>
+                        </div>
+                    </div>
+
 
             </div>
             <!-- End of Main Content -->
@@ -195,5 +286,37 @@
 </body>
 
 </html>
+<!-- Bootstrap core JavaScript-->
+<script src="../vendor/jquery/jquery.min.js"></script>
+    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="../js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="../vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="../js/demo/chart-area-demo.js"></script>
+    <script src="../js/demo/chart-pie-demo.js"></script>
+    <!-- Bootstrap core JavaScript-->
+    <script src="../vendor/jquery/jquery.min.js"></script>
+    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="../js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="../vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="../js/demo/datatables-demo.js"></script>
 <?php include 'Template/EditProfilePass.php' ?>
 
