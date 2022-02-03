@@ -119,6 +119,34 @@
 <script src="../js/demo/chart-area-demo.js"></script>
 <script src="../js/demo/chart-pie-demo.js"></script>
 
+<?php 
+    error_reporting(0);
+    $qor = mysqli_query($koneksi,"SELECT * FROM ormawa where ID_ORMAWA = '$array[ID_ORMAWA]' ");
+    $dor = mysqli_fetch_row($qor);
+$qapk = mysqli_query($koneksi, "SELECT id_pernyatan from approval_pernyataan_kegiatan where nama_ormawa = '$dor[2]' and status = 'Approve' ORDER BY id DESC");
+$dapk = mysqli_fetch_row($qapk);
+$idk = $dapk[0];
+$pbk = mysqli_query($koneksi, "SELECT id from bukti_kegiatan_mahasiswa where id_kegiatan = '$idk'  ");
+$dpbk = mysqli_fetch_array($pbk);
+if (isset($dpbk)) {
+    $qalp = mysqli_query($koneksi,"SELECT id, approve  from appbk where  idbk = '$dpbk[id]' ");
+    $dalp =  mysqli_fetch_row($qalp);
+    var_dump($dalp);
+    if (!isset($dalp) || $dalp[1] != true ) {
+      session_start();
+      $_SESSION['cek'] = true;
+      ?>
+        <script>
+          window.location.href='BuktiKegiatan.php';
+        </script>
+      <?php
+    }
+}
+
+
+
+
+?>
 </body>
 
 </html>

@@ -297,8 +297,16 @@ $dplpj = mysqli_fetch_row($qplpj);
 $idlpj = $dplpj[0];
 $qalpj = mysqli_query($koneksi, "SELECT approve from applpj where idlpj = '$idlpj' " );
 $dalpj = mysqli_fetch_row($qalpj);
+
 if ($dalpj[0] != true  ) {
-       
+      session_start();
+      $_SESSION['cek'] = true;
+      ?>
+        <script>
+          window.location.href='pelaporan_kegiatan.php';
+        </script>
+      <?php
+
     }
 
 

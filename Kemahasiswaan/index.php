@@ -55,9 +55,12 @@
                                         <?php
                                             $qakb = mysqli_query($koneksi,"SELECT id from approval_kegiatan where status <> 'Approve'");
                                            $dakb = mysqli_num_rows($qakb);
+                                            $qapk = mysqli_query($koneksi,"SELECT id from approval_pernyataan_kegiatan where status <> 'Approve'");
+                                           $dapk = mysqli_num_rows($qapk);
+                                           $total =  $dakb + $dapk;
                                         ?>
                                             Kegiatan yang Sedang Diajukan</div>
-                                     <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $dakb  ?></div></center>
+                                     <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $total  ?></div></center>
                                     </div>
                                     
                                 </div>
@@ -113,28 +116,57 @@
                                     <div class="col mr-2">
                                     <center> <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                         <?php
-                                          
-                                          $qp = mysqli_query($koneksi,"SELECT id, nama_kegiatan, Tanggal FROM pengajuan_kegiatan_mhs  ORDER BY Tanggal DESC ")
-                                          ;
                                           $ngaret = 0;
+                                          $qp = mysqli_query($koneksi,"SELECT id, nama_kegiatan, Tanggal FROM pengajuan_kegiatan_mhs  ORDER BY Tanggal DESC ");
                                           while ($dp = mysqli_fetch_array($qp)) {
                                               $dnow=date_create(date("Y-m-d"));
                                               $dcek=date_create($dp[2]);
-                                              $cek= $dcek < date_sub($dnow,date_interval_create_from_date_string("14 days"));
+                                              $cek= $dcek < date_sub($dnow,date_interval_create_from_date_string("0 days"));
                                               if ($cek) {
                                                   $ak = mysqli_query($koneksi,"SELECT id_pengajuan  FROM approval_kegiatan WHERE status = 'Approve' AND id_pengajuan = '$dp[0]'  ");
                                                   $dak = mysqli_fetch_row($ak);
                                                   if (isset($dak)) {
                                                       $qpro = mysqli_query($koneksi,"SELECT id FROM pengajuan_lpj WHERE id_pengajuan = '$dak[0]'");
                                                       $dpro = mysqli_fetch_row($qpro);
-                                                      if (!isset($dpro)) {
+                                                      if (empty($dpro) ) {
                                                       $ngaret++;
-                                                  }
+                                                        }else {
+                                                            $idlpj = $dpro[0];
+                                                            $qalpj = mysqli_query($koneksi, "SELECT approve FROM applpj WHERE idlpj = '$idlpj'");
+                                                            $dalpj = mysqli_fetch_row($qalpj);
+                                                            if (empty($dalpj) || $dalpj[0] != true ) {
+                                                                $ngaret++;
+                                                            }
+                                                        }
+
                                                   }
                                                   
                                               }
                                           }
                                           
+                                          $qspk = mysqli_query($koneksi, "SELECT id from surat_pernyataan_kegiatan");
+                                          while ($dspk = mysqli_fetch_array($qspk)) {
+                                              $idspk = $dspk[0];
+                                              $qapk = mysqli_query($koneksi, "SELECT id from approval_pernyataan_kegiatan where status = 'Approve' and id_pernyatan = '$idspk' ");
+                                              $dapk = mysqli_fetch_row($qapk);
+                                              if (empty($dapk)) {
+                                                $ngaret++;
+                                              }else {
+                                                $qbk = mysqli_query($koneksi, "SELECT id from bukti_kegiatan_mahasiswa where id_kegiatan = '$idspk' ");
+                                                $dbk = mysqli_fetch_row($qbk);
+                                                
+                                                if (!isset($dbk)) {
+                                                    $ngaret++;
+                                                }else {
+                                                    $qabk = mysqli_query($koneksi, "SELECT id from appbk where idbk = '$dbk[0]' and approve <> true ");
+                                                    $dabk = mysqli_fetch_row($qabk);
+                                                    if (isset($dabk)) {
+                                                        $ngaret++;
+                                                    }
+                                                }
+                                              }
+                                            
+                                          }
                                         ?>
                                             Pelaporan yang Belum Terkumpul</div>
                                      <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo  $ngaret ?></div></center>
@@ -156,9 +188,18 @@
                                         $total = 0;
                                         $plpj = mysqli_query($koneksi, "SELECT id from pengajuan_lpj  ");
                                         while ($dplpj = mysqli_fetch_array($plpj)) {
-                                            $qalp = mysqli_query($koneksi,"SELECT id, approve  from applpj where approve = 1 and idlpj = '$dplpj[id]' ");
+                                            $qalp = mysqli_query($koneksi,"SELECT id, approve  from applpj where approve = true and idlpj = '$dplpj[id]' ");
                                             $dalp =  mysqli_fetch_row($qalp);
-                                            if (isset($dalp)) {
+                                            if (!empty($dalp)) {
+                                                $total++;
+                                            }
+                                        }
+
+                                        $pbk = mysqli_query($koneksi, "SELECT id from bukti_kegiatan_mahasiswa  ");
+                                        while ($dpbk = mysqli_fetch_array($pbk)) {
+                                            $qalp = mysqli_query($koneksi,"SELECT id, approve  from appbk where approve = true and idbk = '$dpbk[id]' ");
+                                            $dalp =  mysqli_fetch_row($qalp);
+                                            if (!empty($dalp)) {
                                                 $total++;
                                             }
                                         }
@@ -167,7 +208,7 @@
                                         ?>
                                         <center><div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                          <a style="text-decoration:none; color:green;" href="lpj_belum.php">Kegiatan yang Sudah Selesai</a> </div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $ngaret ?></div></center>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?=  $total ?></div></center>
                                     </div>
                                    
                                 </div>

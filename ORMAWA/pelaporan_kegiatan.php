@@ -530,4 +530,22 @@ text: 'gagal upload',
 <?php
 unset($_SESSION['ulpj']);
 }
+
+if (!isset($_SESSION['cek'])) {
+?>
+                
+<?php
+unset($_SESSION['cek']);
+}  else if($_SESSION['cek']==true) {
+    ?>
+    <script>
+    Swal.fire({
+    icon: 'info',
+    title: 'tidak bisa mengajukan kegiatan',
+    text: 'lpj kegiatan sebelumnya harus dikumpul terlebih dahulu',
+    })
+    </script>
+    <?php
+unset($_SESSION['cek']);
+}
 ?>

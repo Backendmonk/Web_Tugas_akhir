@@ -182,25 +182,6 @@
 <!-- Page level custom scripts -->
 <script src="../js/demo/chart-area-demo.js"></script>
 <script src="../js/demo/chart-pie-demo.js"></script>
-<?php
-?>
-        <script>
-        Swal.fire({
-            title: 'Apakah mau kumpul lpj ?',
-            text: "LPJ dan Bukti Kegiatan terakhir belum dikumpul!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Kumpul LPJ'
-            }).then((result) => {
-            if (result.isConfirmed) {
-                window.location.href='pelaporan_kegiatan.php';
-            }
-            })
-        </script>
-    <?php
-    ?>
 </body>
 
 </html>
