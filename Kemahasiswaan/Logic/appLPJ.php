@@ -9,11 +9,16 @@ if (isset($_POST['ApLpj'])) {
     $date = date("Y-m-d");
     $qcek = mysqli_query($koneksi, "SELECT id from applpj where idlpj = '$idp'");
     $cek = mysqli_num_rows($qcek);
+    $kg = $_POST['kegiatan'];
 
     if ($cek) {
         $sql = "UPDATE applpj set nidn ='$nidn', approve = '$app', catatan = '$komen', TGL_PENGAJUANLPJ= '$date' where idlpj = '$idp'";
+
+        $q = mysqli_query($koneksi,"UPDATE `pelaporan` SET `Absensi`='Ada',`Berita_Acara`='Ada',`LPJ`='approve'WHERE `Nama_Kegiatan` = '$kg'");
     } else {
         $sql = "INSERT INTO `applpj` ( `idlpj`, `nidn`, `approve`, catatan,TGL_PENGAJUANLPJ) VALUES ('$idp','$nidn', '$app', '$komen' ,'$date')";
+        
+        $q = mysqli_query($koneksi,"UPDATE `pelaporan` SET `Absensi`='Ada',`Berita_Acara`='Ada',`LPJ`='approve'WHERE `Nama_Kegiatan` = '$kg' ");
     }
     $y = mysqli_query($koneksi,$sql);
     session_start();

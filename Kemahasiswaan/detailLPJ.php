@@ -283,6 +283,7 @@
                     <form action="Logic/appLPJ.php" method="post" >
                         <input type="text" name="kema" value="<?= $array["NIDN_KEMAHASISWAAN"] ?>" hidden>
                         <input type="text" name="idp" value="<?= trim($arr['id']) ?>" hidden>
+                        <input type ="text" name = "kegiatan" value="<?php echo $arr['nama_kegiatan'];?>" hidden>
                         Apakah sudah yakin di approve?
                         <p style="font-size:10px;">Catatan Optional</p>
                            <textarea class="form-control" name="komentar" rows="4" cols="50"> </textarea>
