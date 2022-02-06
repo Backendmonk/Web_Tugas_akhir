@@ -72,6 +72,7 @@
                                                 $dpo = mysqli_fetch_row($qpo);
                                         ?>
                     <p><?= $dpo[12] ?></p>
+                    <p><?php echo '<img src="../Ormawa/f_logo/'.$dpo[15].'" alt="HTML5 Icon" style="width:100px;height:100px">';  ?></p>
                     <p><?= $dpo[14] ?></p>
                     <a class="btn btn-primary col-2" href="lihatPdfOrmawa.php?id=f_renja/<?= $dpo[10] ?>" role="button">Renja</a>
                     <a class="btn btn-primary col-2" href="lihatPdfOrmawa.php?id=f_ad_art/<?= $dpo[11] ?>" role="button">AD ART</a>
@@ -116,10 +117,7 @@
                                             <td>BENDAHARA 2</td>
                                             <td><?= $dpo[9] ?></td>
                                         </tr>
-                                        <tr>
-                                            <td>Logo</td>
-                                            <td><?php echo '<img src="../Ormawa/f_logo/'.$dpo[15].'" alt="HTML5 Icon" style="width:50px;height:50px">';  ?></td>
-                                        </tr>
+                                        
                                     </tbody>
                                 </table>
                             </div>

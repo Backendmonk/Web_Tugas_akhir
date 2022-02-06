@@ -55,6 +55,7 @@
                                     <div class="col mr-2">
                                     <center> <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                         <?php
+                                        error_reporting(0);
                                             $qakb = mysqli_query($koneksi,"SELECT id from approval_kegiatan where status <> 'Approve'");
                                            $dakb = mysqli_num_rows($qakb);
                                             $qapk = mysqli_query($koneksi,"SELECT id from approval_pernyataan_kegiatan where status <> 'Approve'");
@@ -83,6 +84,7 @@
                                         <center><div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                         Kegiatan yang Sudah Disetujui</div>
                                             <?php 
+                                            error_reporting(0);
                                                 $total = 0;
                                                 $qak = mysqli_query($koneksi,"SELECT 
                                                 id_pengajuan from approval_kegiatan where status = 'Approve' ");
@@ -124,6 +126,7 @@
                                     <div class="col mr-2">
                                     <center> <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                         <?php
+                                        error_reporting(0);
                                           $ngaret = 0;
                                           $qp = mysqli_query($koneksi,"SELECT id, nama_kegiatan, Tanggal FROM pengajuan_kegiatan_mhs  ORDER BY Tanggal DESC ");
                                           while ($dp = mysqli_fetch_array($qp)) {
@@ -191,7 +194,7 @@
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
                                         <?php
-                                        
+                                        error_reporting(0);
                                         $total = 0;
                                         $plpj = mysqli_query($koneksi, "SELECT id from pengajuan_lpj  ");
                                         while ($dplpj = mysqli_fetch_array($plpj)) {
