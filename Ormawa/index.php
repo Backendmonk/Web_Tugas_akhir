@@ -58,6 +58,7 @@
                                     <div class="col mr-2">
                                     <center> <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                         <?php
+                                        error_reporting(0);
                                             $qor = mysqli_query($koneksi,"SELECT * FROM ormawa where ID_ORMAWA = '$array[ID_ORMAWA]' ");
                                             $dor = mysqli_fetch_row($qor);
                                             $qakb = mysqli_query($koneksi,"SELECT id from approval_kegiatan where nama_ormawa = '$dor[2]' and status <> 'Approve' ");
@@ -88,6 +89,7 @@
                                         <center><div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                         Kegiatan yang Sudah Disetujui</div>
                                             <?php 
+                                            error_reporting(0);
                                                 $total = 0;
                                                 $qak = mysqli_query($koneksi,"SELECT 
                                                 id_pengajuan from approval_kegiatan where status = 'Approve' and  nama_ormawa = '$dor[2]' ");
@@ -127,6 +129,7 @@
                                     <div class="col mr-2">
                                     <center> <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                         <?php
+                                        error_reporting(0);
                                           $ngaret = 0;
                                           $qp = mysqli_query($koneksi,"SELECT id, nama_kegiatan, Tanggal FROM pengajuan_kegiatan_mhs where id_ormawa = '$dor[0]'  ORDER BY Tanggal DESC ");
                                           while ($dp = mysqli_fetch_array($qp)) {
@@ -195,7 +198,7 @@
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
                                         <?php
-                                        
+                                        error_reporting(0);
                                         $total = 0;
                                         $plpj = mysqli_query($koneksi, "SELECT id from pengajuan_lpj where id_ormawa = '$dor[0]'  ");
                                         while ($dplpj = mysqli_fetch_array($plpj)) {

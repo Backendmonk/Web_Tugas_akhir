@@ -55,6 +55,7 @@
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">Table Ormawa</h6>
+                            
                             <?php
                                                 $sql = "SELECT * FROM ormawa Where ID_ORMAWA = '$id' ";
                                                 $qor = mysqli_query($koneksi,$sql);
@@ -114,6 +115,10 @@
                                         <tr>
                                             <td>BENDAHARA 2</td>
                                             <td><?= $dpo[9] ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Logo</td>
+                                            <td><?php echo '<img src="../Ormawa/f_logo/'.$dpo[15].'" alt="HTML5 Icon" style="width:50px;height:50px">';  ?></td>
                                         </tr>
                                     </tbody>
                                 </table>
