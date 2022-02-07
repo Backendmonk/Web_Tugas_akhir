@@ -52,6 +52,9 @@
                              <!-- Page Heading -->
                     <div class=" text-center  mb-4">
                         <h3 <span class="text-danger">STRUKTUR ORGANISASI</span> <span class=" text-gray-500"> ORMAWA <?php echo $do[0] ?></span> </h3>
+                        <?php
+                                echo '<center><img src="f_logo/'.$array['GAMBAR_STRUKTUR_ORGANISASI'].'" alt="HTML5 Icon" style="width:200px;height:200px"></center>';
+                        ?>
                        <?php 
                             $idOR = $array['ID_ORMAWA'];
                             $idkema = mysqli_query($koneksi,"SELECT NIDN from ormawa where ID_ORMAWA = $idOR");
@@ -67,6 +70,7 @@
                     <a class="btn btn-primary col-2" href="f_ad_art/<?= $array['AD_ART'] ?>" role="button">AD ART</a>
                     
                         </div>
+                        
                         <div class="card-body">
                             <div class="table-responsive">
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

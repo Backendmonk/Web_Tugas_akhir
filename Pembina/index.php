@@ -52,6 +52,7 @@
                                     <div class="col mr-2">
                                     <center> <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                         <?php
+                                        error_reporting(0);
                                             $qor = mysqli_query($koneksi,"SELECT * FROM ormawa where NIDN = '$array[NIDN]' ");
                                             $dor = mysqli_fetch_row($qor);
                                             $qakb = mysqli_query($koneksi,"SELECT id from approval_kegiatan where nama_ormawa = '$dor[2]' and status <> 'Approve' ");
@@ -121,6 +122,7 @@
                                     <div class="col mr-2">
                                     <center> <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                         <?php
+                                        error_reporting(0);
                                           $ngaret = 0;
                                           $qp = mysqli_query($koneksi,"SELECT id, nama_kegiatan, Tanggal FROM pengajuan_kegiatan_mhs where id_ormawa = '$dor[0]'  ORDER BY Tanggal DESC ");
                                           while ($dp = mysqli_fetch_array($qp)) {
@@ -189,6 +191,7 @@
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
                                         <?php
+                                        error_reporting(0);
                                         
                                         $total = 0;
                                         $plpj = mysqli_query($koneksi, "SELECT id from pengajuan_lpj where id_ormawa = '$dor[0]'  ");

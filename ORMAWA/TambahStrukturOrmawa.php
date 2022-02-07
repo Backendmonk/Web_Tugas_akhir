@@ -129,6 +129,10 @@
     <label for="email" class="form-label">Email</label>
     <input type="email" class="form-control"  name="email" id="email" value = "<?php echo $array['email']; ?>">
   </div>
+  <div class="col-md-6">
+    <label for="ad" class="form-label">Logo</label>
+    <input type="file" class="form-control"  name="logo" id="logo" value = "<?php echo $array['GAMBAR_STRUKTUR_ORGANISASI']; ?>">
+  </div>
 
 
   <div class="col-12">
@@ -212,6 +216,11 @@
         $filename_sb = $_FILES['ad_art']['name'];
         $ext_sb = pathinfo($filename_sb, PATHINFO_EXTENSION);
         $ekstensi_sb = array('doc','docx','pdf');
+
+        $ran_Num_lg = $_POST['namaOr'];
+        $filename_lg = $_FILES['logo']['name'];
+        $ext_lg = pathinfo($filename_lg, PATHINFO_EXTENSION);
+        $ekstensi_lg = array('jpg','png','jpeg');
        
         if(!in_array($ext_kg,$ekstensi_kg)){
               ?>
@@ -237,12 +246,31 @@
                     </script>
           <?php
         }
+
+        elseif (!in_array($ext_lg,$ekstensi_lg)) {
+          ?>
+          <script>
+                Swal.fire({
+                icon: 'error',
+                title: 'Gagal',
+                text: 'Ekstensi Salah',
+                
+                })
+                </script>
+      <?php
+    }
+   
        
         else{
         // tmp file
-       
+        move_uploaded_file($_FILES['renja']['tmp_name'], 'f_renja/'.$ran_Num_kg.'_'.$filename_kg);
+        $renja = $ran_Num_kg.'_'.$filename_kg;
+        move_uploaded_file($_FILES['ad_art']['tmp_name'], 'f_ad_art/'.$ran_Num_sb.'_'.$filename_sb);
+        $ad_art = $ran_Num_sb.'_'.$filename_sb;
+        move_uploaded_file($_FILES['logo']['tmp_name'], 'f_logo/'.$ran_Num_lg.'_'.$filename_lg);
+        $logo = $ran_Num_lg.'_'.$filename_lg;
 
-        $sql = "UPDATE pengurus_ormawa SET NAMA_WAKIL = '$namaWk', NAMA_WAKIL2 = '$namaWk2', SEKRETARIS1 = '$sekre1', SEKRETARIS2 = '$sekre2',BENDAHARA1='$ben1',BENDAHARA2='$ben2', RENJA = '$renja', AD_ART = '$ad_art', MASA_JABATAN ='$masaJab', TAHUN_DILANTIK='$thnDlt', email = '$email'  WHERE ID_ORMAWA='$id' AND USERNAME_KETUA = '$username' ";
+        $sql = "UPDATE pengurus_ormawa SET NAMA_WAKIL = '$namaWk', NAMA_WAKIL2 = '$namaWk2', SEKRETARIS1 = '$sekre1', SEKRETARIS2 = '$sekre2',BENDAHARA1='$ben1',BENDAHARA2='$ben2', RENJA = '$renja', AD_ART = '$ad_art', MASA_JABATAN ='$masaJab', TAHUN_DILANTIK='$thnDlt', email = '$email',GAMBAR_STRUKTUR_ORGANISASI = '$logo'  WHERE ID_ORMAWA='$id' AND USERNAME_KETUA = '$username' ";
         // var_dump($sql);
           //update query
           $query = mysqli_query($koneksi,$sql);

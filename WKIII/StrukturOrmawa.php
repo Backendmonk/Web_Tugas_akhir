@@ -70,7 +70,7 @@ include "SessionWKIII.php";
                                                 $qpo = mysqli_query($koneksi,$sqlpo);
                                                 $dpo = mysqli_fetch_row($qpo);
                                         ?>
-                                         <p><?= $dpo[15] ?></p>
+                                         <p><?php echo '<img src="../Ormawa/f_logo/'.$dpo[15].'" alt="HTML5 Icon" style="width:100px;height:100px">';  ?></p>
                                         <a class="btn btn-primary col-2" href="../ormawa/f_renja/<?= $dpo[10] ?>" role="button">Renja</a>
                     <a class="btn btn-primary col-2" href="../ormawa/f_ad_art/<?= $dpo[11] ?>" role="button">AD ART</a>
                      
