@@ -107,7 +107,7 @@ include "SessionPengurus.php";
                                                                     <td><?php echo $data['status'];?></td>
 
                                                                     <td><?php echo $data['catatan'];?></td>
-                                                                    <td><button type="button" class="btn btn-primary"><a style="color:white; text-decoration:none;" href= "Detail_pengajuan_tracking.php?id= <?php echo $data['id_pengajuan']?>">Lihat Lebih Detail</a></button></td>
+                                                                    <td><button type="button" class="btn btn-primary"><a style="color:white; text-decoration:none;" href= "Detail_pengajuan.php?id= <?php echo $data['id_pengajuan']?>">Lihat Lebih Detail</a></button></td>
                                                                     
                                                                    <?php } ?>
                                                                 </tr>
@@ -180,7 +180,7 @@ include "SessionPengurus.php";
                                                                     <td><?php echo $data['catatan'];?></td>
                                                                     
 
-                                                                    <td><button type="button" class="btn btn-primary"><a style="color:white; text-decoration:none;" href= "detail_pernyataan_tracking.php?id= <?php echo $data['id_pernyatan']?>">Lihat Lebih Detail</a></button></td>
+                                                                    <td><button type="button" class="btn btn-primary"><a style="color:white; text-decoration:none;" href= "detail_pernyataan.php?id= <?php echo $data['id_pernyatan']?>">Lihat Lebih Detail</a></button></td>
                                                                     
                                                                    <?php }?>
                                                                    </tr>

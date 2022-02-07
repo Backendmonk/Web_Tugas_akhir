@@ -89,44 +89,44 @@
                                 <tr>
                                     <th>Konsep Kegiatan</th>
                                     <td>:</td>
-                                    <td><textarea class="form-control" rows="4" cols="50"> <?php echo $arr['konsep_kegiatan'];?></textarea></td>
+                                    <td><textarea readonly class="form-control" rows="4" cols="50"> <?php echo $arr['konsep_kegiatan'];?></textarea></td>
                                 </tr>
 
                                 
                                 <tr>
                                     <th>SUB Kegiatan</th>
                                     <td>:</td>
-                                    <td><textarea class="form-control" rows="4" cols="50"> <?php echo $arr['sub_kegiatan'];?></textarea></td>
+                                    <td><textarea readonly class="form-control" rows="4" cols="50"> <?php echo $arr['sub_kegiatan'];?></textarea></td>
                                 </tr>
 
                                 <tr>
                                     <th>PJ Kegiatan</th>
                                     <td>:</td>
-                                    <td><textarea class="form-control" rows="4" cols="50"> <?php echo $arr['pj_kegiatan'];?></textarea></td>
+                                    <td><textarea readonly class="form-control" rows="4" cols="50"> <?php echo $arr['pj_kegiatan'];?></textarea></td>
                                 </tr>
 
                                 <tr>
                                     <th>latar Belakang</th>
                                     <td>:</td>
-                                    <td><textarea class="form-control" rows="4" cols="50"> <?php echo $arr['latar_belakang'];?></textarea></td>
+                                    <td><textarea readonly class="form-control" rows="4" cols="50"> <?php echo $arr['latar_belakang'];?></textarea></td>
                                 </tr>
 
                                 <tr>
                                     <th>Tujuan Kegiatan</th>
                                     <td>:</td>
-                                    <td><textarea class="form-control" rows="4" cols="50"> <?php echo $arr['tujuan_kegiatan'];?></textarea></td>
+                                    <td><textarea readonly class="form-control" rows="4" cols="50"> <?php echo $arr['tujuan_kegiatan'];?></textarea></td>
                                 </tr>
 
                                 <tr>
                                     <th>Hasil Dan Harapan</th>
                                     <td>:</td>
-                                    <td><textarea class="form-control" rows="4" cols="50"> <?php echo $arr['hasil_harapan'];?></textarea></td>
+                                    <td><textarea readonly class="form-control" rows="4" cols="50"> <?php echo $arr['hasil_harapan'];?></textarea></td>
                                 </tr>
                                 <tr>
 
                                     <th>Target Pemasaran</th>
                                     <td>:</td>
-                                    <td><textarea class="form-control" rows="4" cols="50"> <?php echo $arr['targer_pemasaran'];?></textarea></td>
+                                    <td><textarea readonly class="form-control" rows="4" cols="50"> <?php echo $arr['targer_pemasaran'];?></textarea></td>
                                 </tr>
 
                                 <tr>

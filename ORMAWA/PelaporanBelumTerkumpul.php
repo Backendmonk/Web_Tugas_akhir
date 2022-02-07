@@ -111,7 +111,7 @@ include "SessionPengurus.php";
                                                                     <td><?php echo $dak[7];?></td>
 
                                                                     <td><?php echo $dak[6];?></td>
-                                                                    <td><button type="button" class="btn btn-primary"><a style="color:white; text-decoration:none;" href= "Detail_pengajuan_tracking.php?id= <?php echo $dak[1]?>">Lihat Lebih Detail</a></button></td>
+                                                                    <td><button type="button" class="btn btn-primary"><a style="color:white; text-decoration:none;" href= "Detail_pengajuan.php?id= <?php echo $dak[1]?>">Lihat Lebih Detail</a></button></td>
                                                                 <?php
                                                               }else {
                                                                   $idlpj = $dpro[0];
@@ -130,7 +130,7 @@ include "SessionPengurus.php";
                                                                     <td><?php echo $dak[7];?></td>
 
                                                                     <td><?php echo $dak[6];?></td>
-                                                                    <td><button type="button" class="btn btn-primary"><a style="color:white; text-decoration:none;" href= "Detail_pengajuan_tracking.php?id= <?php echo $dak[1]?>">Lihat Lebih Detail</a></button></td>
+                                                                    <td><button type="button" class="btn btn-primary"><a style="color:white; text-decoration:none;" href= "detail_pernyataan.php?id= <?php echo $dak[1]?>">Lihat Lebih Detail</a></button></td>
                                                                     <?php
                                                                   }
                                                               }

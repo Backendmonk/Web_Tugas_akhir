@@ -218,7 +218,7 @@
                                                                     <td><?php echo $dapk['catatan'];?></td>
                                                                     
 
-                                                                    <td><button type="button" class="btn btn-primary"><a style="color:white; text-decoration:none;" href= "detail_pernyataan_tracking.php?id= <?php echo $dapk['id_pernyatan']?>">Lihat Lebih Detail</a></button></td>
+                                                                    <td><button type="button" class="btn btn-primary"><a style="color:white; text-decoration:none;" href= "detail_pernyataan.php?id= <?php echo $dapk['id_pernyatan']?>">Lihat Lebih Detail</a></button></td>
                                                                     </tr>
                                                           <?php
                                                       }else {
@@ -239,7 +239,7 @@
                                                                     <td><?php echo $dapk['catatan'];?></td>
                                                                     
 
-                                                                    <td><button type="button" class="btn btn-primary"><a style="color:white; text-decoration:none;" href= "detail_pernyataan_tracking.php?id= <?php echo $dapk['id_pernyatan']?>">Lihat Lebih Detail</a></button></td>
+                                                                    <td><button type="button" class="btn btn-primary"><a style="color:white; text-decoration:none;" href= "detail_pernyataan.php?id= <?php echo $dapk['id_pernyatan']?>">Lihat Lebih Detail</a></button></td>
                                                                     </tr>
                                                           <?php
                                                           }

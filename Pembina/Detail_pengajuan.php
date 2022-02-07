@@ -90,7 +90,7 @@
                                 <tr>
                                     <th>Konsep Kegiatan</th>
                                     <td>:</td>
-                                    <td><readonly> <textarea class="form-control" rows="4" cols="50"> <?php echo $arr['konsep_kegiatan'];?></textarea></td>
+                                    <td><readonly> <textarea readonly class="form-control" rows="4" cols="50"> <?php echo $arr['konsep_kegiatan'];?></textarea></td>
                                 </tr>
 
                                 

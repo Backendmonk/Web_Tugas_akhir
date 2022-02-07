@@ -285,4 +285,23 @@
 </body>
 
 </html>
-<?php include 'Template/EditProfilePass.php' ?>
+<?php include 'Template/EditProfilePass.php' ;
+
+if (!isset($_SESSION['cek'])) {
+    ?>
+                    
+    <?php
+    unset($_SESSION['cek']);
+    }  else if($_SESSION['cek']==true) {
+        ?>
+        <script>
+        Swal.fire({
+        icon: 'info',
+        title: 'kegiatan sebelumnya belum di acc',
+        text: '',
+        })
+        </script>
+        <?php
+    unset($_SESSION['cek']);
+    }
+    ?>

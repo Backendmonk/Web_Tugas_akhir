@@ -84,7 +84,7 @@
                                     <tbody>
                                     <tr>
                                         <?php
-                                                 $plpj = mysqli_query($koneksi, "SELECT id, nama_ormawa, nama_kegiatan from pengajuan_lpj  ");
+                                                 $plpj = mysqli_query($koneksi, "SELECT id, nama_ormawa, nama_kegiatan, id_pengajuan from pengajuan_lpj  ");
                                                  while ($dplpj = mysqli_fetch_array($plpj)) {
                                                      $qalp = mysqli_query($koneksi,"SELECT * from applpj where approve = true and idlpj = '$dplpj[id]' ");
                                                      $dalp =  mysqli_fetch_array($qalp);
@@ -112,7 +112,7 @@
                                                                     echo $approve;?></td>
 
                                                                     <td><?php echo  $dalp['catatan'];?></td>
-                                                                    <td><button type="button" class="btn btn-primary"><a style="color:white; text-decoration:none;" href= "Detail_pengajuan_tracking.php?id= <?php echo  $dalp['id_pengajuan']?>">Lihat Lebih Detail</a></button></td>
+                                                                    <td><button type="button" class="btn btn-primary"><a style="color:white; text-decoration:none;" href= "Detail_pengajuan_tracking.php?id= <?php echo  $dplpj['id_pengajuan']?>">Lihat Lebih Detail</a></button></td>
                                                                     
                                                                    <?php } ?>
                                                                 </tr>
@@ -194,7 +194,7 @@
                                                                     <td><?php echo $dalp['catatan'];?></td>
                                                                     
 
-                                                                    <td><button type="button" class="btn btn-primary"><a style="color:white; text-decoration:none;" href= "detail_pernyataan_tracking.php?id= <?php echo $dpbk['id_kegiatan']?>">Lihat Lebih Detail</a></button></td>
+                                                                    <td><button type="button" class="btn btn-primary"><a style="color:white; text-decoration:none;" href="detail_pernyataan_tracking.php?id= <?php echo $dpbk['id_kegiatan']?>">Lihat Lebih Detail</a></button></td>
                                                                     
                                                                    <?php }?>
                                                                    </tr>
